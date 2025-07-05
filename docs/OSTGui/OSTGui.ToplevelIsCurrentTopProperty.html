@@ -1,0 +1,211 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+    <TITLE>IsCurrentTop Property</TITLE>
+    <META content="text/html; charset=Windows-1252" http-equiv="Content-Type">
+    <LINK rel="stylesheet" type="text/css" href="mainstyle.css">
+    <script defer src="mobilstyle.js"></script>
+</HEAD>
+<BODY id=bodyID class=dtBODY onclick="divrightClick(event)">
+    <DIV id=nsbanner>
+        <DIV id=bannerrow1>
+            <TABLE class=bannerparthead cellSpacing=0>
+                <TBODY>
+                    <TR id=hdr>
+                        <TD class=runninghead></TD>
+                        <TD class=product></TD>
+                    </TR>
+                </TBODY>
+            </TABLE>
+        </DIV>
+        <DIV id=TitleRow>
+            <H1 class=dtH1>Верхний.ТекущийСверху&nbsp;(Toplevel.IsCurrentTop)&nbsp;Свойство</H1>
+        </DIV>
+    </DIV>
+    <DIV id=nstext>
+        <H4 class=dtH4>Использование</H4>
+        <P>Только чтение.</P>
+        <H4 class=dtH4>Значение</H4>
+        <P>Тип: Булево.</P>
+        <P>Возвращает значение, указывающее, является ли этот элемент в настоящее на переднем плане (активен).</P>
+        <H4 class=dtH4>Примечание</H4>
+        <P>Анализ для элемента производится в пределах своего родителя.</P>
+        <H4 class=dtH4>Пример</H4>
+            <PRE class=code>
+ТекущийСверху = Верхний1.ТекущийСверху;
+</PRE>
+            <details>
+                <summary>Полный пример кода</summary>
+                    <PRE class=code>
+<a id="copy1" href="jаvascript://" title="Выделяет код, копирует и снимает выделение.">Копировать</a>     <a id="select1" href="jаvascript://" title="Выделяет код.">Выделить всё</a>
+<hr style="border-color: lightgray;"><DIV id="cont1">
+Перем ТФ, Верхний1, Верхний2, Верхний3;
+
+Процедура ПриОткрытии() Экспорт
+	ТекущийСверху = Верхний1.ТекущийСверху;
+	ТФ.Верхний.Текст = "Верхний1.ТекущийСверху = " + Верхний1.ТекущийСверху + "
+	|Верхний2.ТекущийСверху = " + Верхний2.ТекущийСверху + "
+	|Верхний3.ТекущийСверху = " + Верхний3.ТекущийСверху + "
+	|";
+КонецПроцедуры
+
+ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
+ТФ = Новый ТерминалФормыДляОдноСкрипта();
+ТФ.Активировать();
+
+Верхний1 = ТФ.Верхний(7, 10, 40, 5);
+ЦветоваяСхема1 = ТФ.ЦветоваяСхема();
+Верхний1.ЦветоваяСхема = ЦветоваяСхема1;
+Верхний1.Текст = "Когда я был маленький – очень, очень давно, – я читал одну книжку: она называлась «Пиноккио»";
+Граница1 = ТФ.Граница();
+Граница1.Заголовок = "Верхний1";
+Граница1.СтильГраницы = ТФ.СтильГраницы.Двойная;
+Верхний1.Граница = Граница1;
+ТФ.Верхний.Добавить(Верхний1);
+
+Верхний2 = ТФ.Верхний(10, 15, 40, 5);
+ЦветоваяСхема2 = ТФ.ЦветоваяСхема();
+Верхний2.ЦветоваяСхема = ЦветоваяСхема2;
+Верхний2.Текст = "Когда я был маленький – очень, очень давно, – я читал одну книжку: она называлась «Пиноккио»";
+Граница2 = ТФ.Граница();
+Граница2.Заголовок = "Верхний2";
+Граница2.СтильГраницы = ТФ.СтильГраницы.Двойная;
+Верхний2.Граница = Граница2;
+ТФ.Верхний.Добавить(Верхний2);
+
+Верхний3 = ТФ.Верхний(30, 12, 40, 5);
+ЦветоваяСхема3 = ТФ.ЦветоваяСхема();
+Верхний3.ЦветоваяСхема = ЦветоваяСхема3;
+Верхний3.Текст = "Когда я был маленький – очень, очень давно, – я читал одну книжку: она называлась «Пиноккио»";
+Граница3 = ТФ.Граница();
+Граница3.Заголовок = "Верхний3";
+Граница3.СтильГраницы = ТФ.СтильГраницы.Двойная;
+Верхний3.Граница = Граница3;
+ТФ.Верхний.Добавить(Верхний3);
+
+ТФ.Верхний.НаПереднийПлан(Верхний2);
+
+ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
+
+ТФ.Запуск();
+</DIV>
+</PRE>
+            </details>
+        <P></P>
+        <details>
+            <summary>Тестовый код</summary>
+            <PRE class=code>
+<a id="copy2" href="jаvascript://" title="Выделяет код, копирует и снимает выделение.">Копировать</a>     <a id="select2" href="jаvascript://" title="Выделяет код.">Выделить всё</a>
+<hr style="border-color: lightgray;"><DIV id="cont2">
+Перем ТФ, ТекущийСверху, Верхний1, Верхний2, Верхний3;
+
+Процедура ПриОткрытии() Экспорт
+	ТекущийСверху = Верхний2.ТекущийСверху;
+	ТФ.Верхний.Текст = "Верхний1.ТекущийСверху = " + Верхний1.ТекущийСверху + "
+	|Верхний2.ТекущийСверху = " + Верхний2.ТекущийСверху + "
+	|Верхний3.ТекущийСверху = " + Верхний3.ТекущийСверху + "
+	|";
+КонецПроцедуры
+
+ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
+ТФ = Новый ТерминалФормыДляОдноСкрипта();
+ТФ.Активировать();
+
+Верхний1 = ТФ.Верхний(7, 10, 40, 5);
+ЦветоваяСхема1 = ТФ.ЦветоваяСхема();
+Верхний1.ЦветоваяСхема = ЦветоваяСхема1;
+Верхний1.Текст = "Когда я был маленький – очень, очень давно, – я читал одну книжку: она называлась «Пиноккио»";
+Граница1 = ТФ.Граница();
+Граница1.Заголовок = "Верхний1";
+Граница1.СтильГраницы = ТФ.СтильГраницы.Двойная;
+Верхний1.Граница = Граница1;
+ТФ.Верхний.Добавить(Верхний1);
+
+Верхний2 = ТФ.Верхний(10, 15, 40, 5);
+ЦветоваяСхема2 = ТФ.ЦветоваяСхема();
+Верхний2.ЦветоваяСхема = ЦветоваяСхема2;
+Верхний2.Текст = "Когда я был маленький – очень, очень давно, – я читал одну книжку: она называлась «Пиноккио»";
+Граница2 = ТФ.Граница();
+Граница2.Заголовок = "Верхний2";
+Граница2.СтильГраницы = ТФ.СтильГраницы.Двойная;
+Верхний2.Граница = Граница2;
+ТФ.Верхний.Добавить(Верхний2);
+
+Верхний3 = ТФ.Верхний(30, 12, 40, 5);
+ЦветоваяСхема3 = ТФ.ЦветоваяСхема();
+Верхний3.ЦветоваяСхема = ЦветоваяСхема3;
+Верхний3.Текст = "Когда я был маленький – очень, очень давно, – я читал одну книжку: она называлась «Пиноккио»";
+Граница3 = ТФ.Граница();
+Граница3.Заголовок = "Верхний3";
+Граница3.СтильГраницы = ТФ.СтильГраницы.Двойная;
+Верхний3.Граница = Граница3;
+ТФ.Верхний.Добавить(Верхний3);
+
+ТФ.Верхний.НаПереднийПлан(Верхний2);
+
+ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
+ТФ.ЗапуститьИЗавершить();
+
+Сообщить(?(
+ТекущийСверху
+, "", "!!! ") + "Верхний.ТекущийСверху (Toplevel.IsCurrentTop) Свойство" + " " + ТекущаяДата() + Символы.ПС);
+</DIV>
+</PRE>
+        </details>
+        <P></P>
+        <H4 class=dtH4>Смотрите также</H4>
+        <P><A href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</A></P>
+    </DIV>
+    <script>
+        window.onload = function () {
+            var a = document.getElementById('select1');
+            a.onclick = function () {
+                window.getSelection().removeAllRanges();
+                var ta1 = document.getElementById('cont1');
+                var range1 = document.createRange();
+                range1.selectNode(ta1);
+                window.getSelection().addRange(range1);
+                return false;
+            }
+
+            var b = document.getElementById('copy1');
+            b.onclick = function () {
+                window.getSelection().removeAllRanges();
+                var ta2 = document.getElementById('cont1');
+                var range2 = document.createRange();
+                range2.selectNode(ta2);
+                window.getSelection().addRange(range2);
+                try {
+                    document.execCommand('copy');
+                } catch (err) { }
+                window.getSelection().removeRange(range2);
+                return false;
+            }
+
+            var c = document.getElementById('select2');
+            c.onclick = function () {
+                window.getSelection().removeAllRanges();
+                var ta3 = document.getElementById('cont2');
+                var range3 = document.createRange();
+                range3.selectNode(ta3);
+                window.getSelection().addRange(range3);
+                return false;
+            }
+
+            var d = document.getElementById('copy2');
+            d.onclick = function () {
+                window.getSelection().removeAllRanges();
+                var ta4 = document.getElementById('cont2');
+                var range4 = document.createRange();
+                range4.selectNode(ta4);
+                window.getSelection().addRange(range4);
+                try {
+                    document.execCommand('copy');
+                } catch (err) { }
+                window.getSelection().removeRange(range4);
+                return false;
+            }
+        }
+    </script>
+</BODY>
+</HTML>
