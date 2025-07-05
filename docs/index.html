@@ -1,0 +1,68 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+    <TITLE>Главная</TITLE>
+    <META content="text/html; charset=Windows-1252" http-equiv="Content-Type">
+    <LINK rel="stylesheet" type="text/css" href="styleos.css">
+	<script defer src="mobil.js"></script>
+</HEAD>
+<body>
+    <header>
+        <section>
+            <div>
+                <div id="logo"><big><big><big>Терминал-формы<br><small><small>для сценарного языка</small></small> OneScript </big></big></big></div>
+            </div>
+            <div style="direction: rtl; overflow:hidden; padding: 8px 0px 0px 0px; margin-top:-7px;">
+				<DIV id=div22>
+					<input type="checkbox" id="toggle">
+					<label id="label1" class="hamburger-icon" onclick="label1click()"><div></div><div></div><div></div></label>
+				</DIV>
+                <nav>
+                    <a onclick="navclick(event)" href="index.html">Главная</a>
+                    <a onclick="navclick(event)" href="screenshot.html">Скриншоты</a>
+                    <a onclick="navclick(event)" href="howworks.html">Как это работает</a>
+                    <a onclick="navclick(event)" href="doc.html">Документация</a>
+                    <a onclick="navclick(event)" href="down.html">Скачать</a>
+                    <a onclick="navclick(event)" href="kont.html">Контакты</a>
+					<input type="checkbox" id="toggle2">
+                    <a id="mobil" onclick="mobilClick()">`</a>
+                </nav>
+            </div>
+        </section>
+    </header>
+    <section>
+	
+		<p>&nbsp;&nbsp;&nbsp; Есть такой замечательный проект - сценарный язык <A href="https://oscript.io/" target="_blank">OneScript</A>. Для 
+		него можно написать библиотеку например на <B>C#</B> и расширить функционал языка. В своё время я так и сделал, написал 
+		<A href="https://infostart.ru/1c/articles/1617468/" target="_blank">библиотеку форм и дизайнер форм</A>. Формы работают в среде Windows и в среде Linux 
+		(благодаря библиотекам mono-complete). А вот на macOS возникли проблемы - отсутствие для последних версий 64-х битной версии <B>Mono</B>. Досадно. 
+		Но - мы не привыкли отступать! Занялся поиском способа создать формы для односкрипта, работающие на любой платформе. А что у нас работает на любой платформе? 
+		Ну конечно же браузер. Кстати такой успешный проект уже существует, посмотрите на разработку 
+		<A href="https://github.com/autumn-library/winow/" target="_blank">Минималистичный веб-сервер на нативном TCPСервер</A>.</p>
+		<p>&nbsp;&nbsp;&nbsp; А что если сделать немного по другому? Как говорится - Охота пуще неволи! Наметил цели.
+			<div class=marginleft40>
+				<li>Нужна программа с браузером в окне, но не браузер с нашей программой.</li>
+				<li>Нужен простой код создания и управления элементами и простая обработка событий. Что то вроде 
+<PRE class=code>
+Кнопка1 = ДФ.Кнопка();
+Кнопка1.Родитель = Форма1;
+Кнопка1.Текст = "Кнопка";
+Кнопка1.Нажатие = 
+  ДФ.Действие(ЭтотОбъект, 
+    "Кнопка1_Нажатие");
+</PRE>
+				</li>
+				<li>Запуск на любой платформе где можно запустить браузер Chrome.</li>
+				<li>Избежать необходимости изучать дополнительные фреймворки.</li>
+				<li>Приложение должно работать в фоне, запускаться при старте системы и оффлайн.</li>
+				<li>Версия браузера определяется пользователем, а не системой.</li>
+				<li>Возможность создания меню, нескольких окон, иконки в трее (менюбаре), управление ими.</li>
+				<li>Возможность режима kiosk-mode (как в десктопных играх) и для создания презентаций в том числе.</li>
+			</div>
+		</p>
+		<p>&nbsp;&nbsp;&nbsp; Получились декларативные формы, десктопное приложение на базе веб-технологий, со всеми возможностями движка Chrome. За подробностями переходите 
+		в раздел <B>Как это работает</B>.</p>
+		<p></p>
+    </section>
+</body>
+</HTML>

@@ -1,0 +1,99 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+    <TITLE>Какэтоработает</TITLE>
+    <META content="text/html; charset=Windows-1252" http-equiv="Content-Type">
+    <LINK rel="stylesheet" type="text/css" href="styleos.css">
+	<script defer src="mobil.js"></script>
+</HEAD>
+<body>
+    <header>
+        <section>
+            <div>
+                <div id="logo"><big><big><big>Терминал-формы<br><small><small>для сценарного языка</small></small> OneScript </big></big></big></div>
+            </div>
+            <div style="direction: rtl; overflow:hidden; padding: 8px 0px 0px 0px; margin-top:-7px;">
+				<DIV id=div22>
+					<input type="checkbox" id="toggle">
+					<label id="label1" class="hamburger-icon" onclick="label1click()"><div></div><div></div><div></div></label>
+				</DIV>
+                <nav>
+                    <a onclick="navclick(event)" href="index.html">Главная</a>
+                    <a onclick="navclick(event)" href="screenshot.html">Скриншоты</a>
+                    <a onclick="navclick(event)" href="howworks.html">Как это работает</a>
+                    <a onclick="navclick(event)" href="doc.html">Документация</a>
+                    <a onclick="navclick(event)" href="down.html">Скачать</a>
+                    <a onclick="navclick(event)" href="kont.html">Контакты</a>
+					<input type="checkbox" id="toggle2">
+                    <a id="mobil" onclick="mobilClick()">`</a>
+                </nav>
+            </div>
+        </section>
+    </header>
+    <section class="content">
+
+		<p>Итак, как нам создать десктопное приложение на базе веб-технологий? Прежде всего нам нужен <B>OneScript</B>.</p>
+		<p>Ознакомьтесь со статьей на ресурсе infostart.ru - <b>Как решать повседневные задачи с помощью OneScript</b> <a href="https://infostart.ru/public/327581/index.php?ID=327581%3Flogout%3Dyes" target="_blank">здесь</a></p>
+		<p>Скачайте и установите <b>1Script - язык сценариев для специалистов по 1С</b> (сайт) <a href="http://oscript.io/" target="_blank">здесь</a></p>
+		<p>Скачайте одну из версий <a href="https://nwjs.io/" target="_blank">NW.js</a> (лицензия <B>MIT License</B>). Вам будут доступны для скачивания каталоги с 
+			библиотеками и исполняемым файлом <B>nw.exe</B>. Версию выберите под вашу операционную систему. Версия <B>v0.45.6</B> минимальна по размеру. Ниже этой версии 
+			нельзя использовать в нашей разработке. Версии выше включают в себя движок Chrome поновее, но размер каталога увеличивается. Версия <B>v0.89.0</B> максимальная 
+			из допустимых. Это тот диапазон версий, в котором запуск приложения будет успешным. <B>NW.js</B> (ранее известный 
+			как node-webkit) позволяет вызывать все модули Node.js напрямую из DOM и обеспечивает новый способ написания приложений со всеми веб-технологиями.
+		</p>
+		<p>Работа с <B>NW.js</B> проста. При запуске <B>nw.exe</B> ищет в указанном каталоге файл манифеста <B>package.json</B>. 
+		Логика работы <B>html</B> находится в скрипте js в файле <B>index.html</B>.
+		<figure>
+			
+			<div style="display: flex; flex-wrap: wrap;">
+				<div style="flex-direction: row;">
+					<div style="flex-direction: column;">
+						<img id="myImg01" src="MyApp1.jpg" alt="Файлы для NWJS" onclick="clickimg(event)">
+						<div id="myModal01" class="modal">
+							<span id="close01" class="close">×</span>
+							<img id="img01" class="modal-content">
+							<div id="caption">Файлы для NWJS</div>
+						</div>
+					</div>
+					<div style="flex-direction: column;">Файлы для NWJS</div>
+				</div>
+			</div>
+		</figure>
+		</p>
+		<p>Кроме <B>HTML</B> и <B>JavaScript</B> у нас будет возможность использовать файлы стилей <B>CSS</B>.</p>
+		<p>Пока всё выглядит хорошо, но для нашего приложения этого недостаточно. Как организовать взаимодействие с <B>OneScript</B>? Тут и 
+		пригодилась моя разработка <a href="https://infostart.ru/1c/articles/1908087/" target="_blank">Библиотека создания клиент-серверных приложений для сценарного языка OneScript</a>. 
+		TCP сервер будет посредником между приложением и односкриптом. Остальное дело техники. В скрипте js в файле <B>index.html</B> есть функции отправки <B>POST</B> запросов при 
+		возникновении событий. TCP сервер, запущенный как фоновое задание, их анализирует и запускает обработчики событий односкрипта. Результаты обработчиков событий 
+		отправляются в ответе TCP сервера и будут отражены в приложении. Для программиста работа будет заключаться просто в написании файлов сценария на 
+		языке односкрипта, <B>БЕЗ</B> написания <B>POST</B> запросов, <B>БЕЗ</B> построения маршрутов, <B>БЕЗ</B> каких либо URL. 
+		TCP сервер будет загружен фоновым заданием автоматически при старте. Скачивать отдельно его библиотеку не нужно, он внедрен в библиотеку декларативных форм. 
+		Нужно будет только написать стартовый <B>*.os</B> сценарий и, в зависимости от задачи, 
+		сценарии в каталогах <B>Классы</B> и <B>Модули</B> в соответствии с 
+		<a href="https://oscript.io/library" target="_blank">Соглашением об устройстве библиотеки</a>.</p>
+		<p>Каталог <B>nwjs45_6</B> весит 238 мегабайт. Его вы можете поместить где либо в другом общедоступном месте и использовать для разных приложений декларативных форм. 
+		Его не обязательно включать в каждый ваш проект. Обновлять версию <B>nwjs</B> нет необходимости. Все примеры проверялись на работоспособность с этой версией.</p>
+		<p>
+		<figure>
+			<div style="display: flex; flex-wrap: wrap;">
+				<div style="flex-direction: row;">
+					<div style="flex-direction: column;">
+						<img id="myImg02" src="Scheme1.jpg" alt="Схема взаимодействия" onclick="clickimg(event)">
+						<div id="myModal02" class="modal">
+							<span id="close02" class="close">×</span>
+							<img id="img02" class="modal-content">
+							<div id="caption">Схема взаимодействия</div>
+						</div>
+					</div>
+					<div style="flex-direction: column;">Схема взаимодействия</div>
+				</div>
+			</div>
+		</figure></p>
+		</p>
+		<p>В ОС Windows формы (начиная с версии 2.0.0.0) можно открыть непосредственно в браузере, установленном по умолчанию. 
+		При этом <B>NWJS</B> не понадобится, но функционал будет немного уменьшен.</p>
+		<p>В ОС Linux избегайте пробелов в именах файлов и каталогов.</p>
+			
+    </section>
+</body>
+</HTML>
