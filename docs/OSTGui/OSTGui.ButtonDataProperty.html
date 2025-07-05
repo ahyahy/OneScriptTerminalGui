@@ -1,0 +1,202 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+    <TITLE>Data Property</TITLE>
+    <META content="text/html; charset=Windows-1252" http-equiv="Content-Type">
+    <LINK rel="stylesheet" type="text/css" href="mainstyle.css">
+    <script defer src="mobilstyle.js"></script>
+</HEAD>
+<BODY id=bodyID class=dtBODY onclick="divrightClick(event)">
+    <DIV id=nsbanner>
+        <DIV id=bannerrow1>
+            <TABLE class=bannerparthead cellSpacing=0>
+                <TBODY>
+                    <TR id=hdr>
+                        <TD class=runninghead></TD>
+                        <TD class=product></TD>
+                    </TR>
+                </TBODY>
+            </TABLE>
+        </DIV>
+        <DIV id=TitleRow>
+            <H1 class=dtH1>Кнопка.Данные&nbsp;(Button.Data)&nbsp;Свойство</H1>
+        </DIV>
+    </DIV>
+    <DIV id=nstext>
+        <H4 class=dtH4>Использование</H4>
+        <P>Чтение и запись.</P>
+        <H4 class=dtH4>Значение</H4>
+        <P>Тип: Произвольный.</P>
+        <P>Возвращает или задает произвольные данные для элемента.</P>
+        <H4 class=dtH4>Примечание</H4>
+        <P></P>
+        <H4 class=dtH4>Пример</H4>
+            <PRE class=code>
+Структура1 = Новый Структура("Планета","Земля");
+Структура1.Вставить("Звезда", "Солнце");
+Структура1.Вставить("Спутник", "Луна");
+Кнопка1.Данные = Структура1;
+</PRE>
+            <details>
+                <summary>Полный пример кода</summary>
+                    <PRE class=code>
+<a id="copy1" href="jаvascript://" title="Выделяет код, копирует и снимает выделение.">Копировать</a>     <a id="select1" href="jаvascript://" title="Выделяет код.">Выделить всё</a>
+<hr style="border-color: lightgray;"><DIV id="cont1">
+Перем ТФ, Текст, Кнопка1;
+
+Процедура ПриОткрытии() Экспорт
+	Текст = Кнопка1.Текст;
+КонецПроцедуры
+
+ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
+ТФ = Новый ТерминалФормыДляОдноСкрипта();
+ТФ.Активировать();
+
+Окно1 = ТФ.Окно("Окно1");
+Окно1.Икс = ТФ.Позиция.Абсолютно(1);
+Окно1.Игрек = ТФ.Позиция.Абсолютно(1);
+Окно1.Ширина = ТФ.Величина.Абсолютно(50);
+Окно1.Высота = ТФ.Величина.Абсолютно(15);
+ТФ.Верхний.Добавить(Окно1);
+
+Кнопка1 = ТФ.Кнопка("Кнопка1 - большая кнопка");
+Кнопка1.Икс = ТФ.Позиция.Абсолютно(1);
+Кнопка1.Игрек = ТФ.Позиция.Абсолютно(1);
+Кнопка1.СтильКомпоновки = ТФ.СтильКомпоновки.Вычислено;
+Кнопка1.Ширина = ТФ.Величина.Заполнить(1);
+Кнопка1.Высота = ТФ.Величина.Заполнить(1);
+Окно1.Добавить(Кнопка1);
+
+Граница1 = ТФ.Граница();
+Граница1.СтильГраницы = ТФ.СтильГраницы.Закругленная;
+Кнопка1.Граница = Граница1;
+
+Структура1 = Новый Структура("Планета","Земля");
+Структура1.Вставить("Звезда", "Солнце");
+Структура1.Вставить("Спутник", "Луна");
+Кнопка1.Данные = Структура1;
+
+Кнопка1.Текст = "Кнопка1.Данные = " + Кнопка1.Данные + "
+|Кнопка1.Данные[""Планета""] = " + Кнопка1.Данные["Планета"] + "
+|Кнопка1.Данные[""Звезда""] = " + Кнопка1.Данные["Звезда"] + "
+|Кнопка1.Данные[""Спутник""] = " + Кнопка1.Данные["Спутник"] + "
+|";
+
+ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
+
+ТФ.Запуск();
+</DIV>
+</PRE>
+            </details>
+        <P></P>
+        <details>
+            <summary>Тестовый код</summary>
+            <PRE class=code>
+<a id="copy2" href="jаvascript://" title="Выделяет код, копирует и снимает выделение.">Копировать</a>     <a id="select2" href="jаvascript://" title="Выделяет код.">Выделить всё</a>
+<hr style="border-color: lightgray;"><DIV id="cont2">
+Перем ТФ, Текст, Кнопка1;
+
+Процедура ПриОткрытии() Экспорт
+	Текст = Кнопка1.Текст;
+КонецПроцедуры
+
+ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
+ТФ = Новый ТерминалФормыДляОдноСкрипта();
+ТФ.Активировать();
+
+Окно1 = ТФ.Окно("Окно1");
+Окно1.Икс = ТФ.Позиция.Абсолютно(1);
+Окно1.Игрек = ТФ.Позиция.Абсолютно(1);
+Окно1.Ширина = ТФ.Величина.Абсолютно(50);
+Окно1.Высота = ТФ.Величина.Абсолютно(15);
+ТФ.Верхний.Добавить(Окно1);
+
+Кнопка1 = ТФ.Кнопка("Кнопка1 - большая кнопка");
+Кнопка1.Икс = ТФ.Позиция.Абсолютно(1);
+Кнопка1.Игрек = ТФ.Позиция.Абсолютно(1);
+Кнопка1.СтильКомпоновки = ТФ.СтильКомпоновки.Вычислено;
+Кнопка1.Ширина = ТФ.Величина.Заполнить(1);
+Кнопка1.Высота = ТФ.Величина.Заполнить(1);
+Окно1.Добавить(Кнопка1);
+
+Граница1 = ТФ.Граница();
+Граница1.СтильГраницы = ТФ.СтильГраницы.Закругленная;
+Кнопка1.Граница = Граница1;
+
+Структура1 = Новый Структура("Планета","Земля");
+Структура1.Вставить("Звезда", "Солнце");
+Структура1.Вставить("Спутник", "Луна");
+Кнопка1.Данные = Структура1;
+
+Кнопка1.Текст = "Кнопка1.Данные = " + Кнопка1.Данные + "
+|Кнопка1.Данные[""Планета""] = " + Кнопка1.Данные["Планета"] + "
+|Кнопка1.Данные[""Звезда""] = " + Кнопка1.Данные["Звезда"] + "
+|Кнопка1.Данные[""Спутник""] = " + Кнопка1.Данные["Спутник"] + "
+|";
+
+ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
+ТФ.ЗапуститьИЗавершить();
+
+Сообщить(?(
+Текст = Кнопка1.Текст
+, "", "!!! ") + "Кнопка.Данные (Button.Data) Свойство" + " " + ТекущаяДата() + Символы.ПС);
+</DIV>
+</PRE>
+        </details>
+        <P></P>
+        <H4 class=dtH4>Смотрите также</H4>
+        <P><A href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</A></P>
+    </DIV>
+    <script>
+        window.onload = function () {
+            var a = document.getElementById('select1');
+            a.onclick = function () {
+                window.getSelection().removeAllRanges();
+                var ta1 = document.getElementById('cont1');
+                var range1 = document.createRange();
+                range1.selectNode(ta1);
+                window.getSelection().addRange(range1);
+                return false;
+            }
+
+            var b = document.getElementById('copy1');
+            b.onclick = function () {
+                window.getSelection().removeAllRanges();
+                var ta2 = document.getElementById('cont1');
+                var range2 = document.createRange();
+                range2.selectNode(ta2);
+                window.getSelection().addRange(range2);
+                try {
+                    document.execCommand('copy');
+                } catch (err) { }
+                window.getSelection().removeRange(range2);
+                return false;
+            }
+
+            var c = document.getElementById('select2');
+            c.onclick = function () {
+                window.getSelection().removeAllRanges();
+                var ta3 = document.getElementById('cont2');
+                var range3 = document.createRange();
+                range3.selectNode(ta3);
+                window.getSelection().addRange(range3);
+                return false;
+            }
+
+            var d = document.getElementById('copy2');
+            d.onclick = function () {
+                window.getSelection().removeAllRanges();
+                var ta4 = document.getElementById('cont2');
+                var range4 = document.createRange();
+                range4.selectNode(ta4);
+                window.getSelection().addRange(range4);
+                try {
+                    document.execCommand('copy');
+                } catch (err) { }
+                window.getSelection().removeRange(range4);
+                return false;
+            }
+        }
+    </script>
+</BODY>
+</HTML>
