@@ -8,7 +8,7 @@ namespace ostgui
         public new TfMenuBarItem dll_obj;
         public Terminal.Gui.MenuBarItem M_MenuBarItem;
 
-        public MenuBarItem() : base()
+        public MenuBarItem()
         {
             Clicked = delegate ()
             {
@@ -28,7 +28,7 @@ namespace ostgui
             OneScriptTerminalGui.AddToHashtable(M_MenuBarItem, this);
         }
 
-        public MenuBarItem(string p1, string p2) : base(p1, p2)
+        public MenuBarItem(string p1, string p2)
         {
             Clicked = delegate ()
             {
@@ -67,9 +67,9 @@ namespace ostgui
 
         public TfMenuBarItem()
         {
-            MenuBarItem MenuItem1 = new MenuBarItem();
-            MenuItem1.dll_obj = this;
-            Base_obj = MenuItem1;
+            MenuBarItem MenuBarItem1 = new MenuBarItem();
+            MenuBarItem1.dll_obj = this;
+            Base_obj = MenuBarItem1;
 
             menuBarItemChildren = new TfMenuBarItemChildren();
             menuBarItemChildren.M_MenuBarItem = Base_obj;
@@ -77,9 +77,9 @@ namespace ostgui
 
         public TfMenuBarItem(string p1, string p2)
         {
-            MenuBarItem MenuItem1 = new MenuBarItem(p1, p2);
-            MenuItem1.dll_obj = this;
-            Base_obj = MenuItem1;
+            MenuBarItem MenuBarItem1 = new MenuBarItem(p1, p2);
+            MenuBarItem1.dll_obj = this;
+            Base_obj = MenuBarItem1;
 
             menuBarItemChildren = new TfMenuBarItemChildren();
             menuBarItemChildren.M_MenuBarItem = Base_obj;
