@@ -28,25 +28,6 @@ namespace ostgui
             OneScriptTerminalGui.AddToHashtable(M_MenuBarItem, this);
         }
 
-        public MenuBarItem(string p1, string p2)
-        {
-            Clicked = delegate ()
-            {
-                if (dll_obj.Clicked != null)
-                {
-                    TfEventArgs TfEventArgs1 = new TfEventArgs();
-                    TfEventArgs1.sender = dll_obj;
-                    TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.Clicked);
-                    OneScriptTerminalGui.Event = TfEventArgs1;
-                    OneScriptTerminalGui.ExecuteEvent(dll_obj.Clicked);
-                }
-            };
-
-            M_MenuBarItem = new Terminal.Gui.MenuBarItem(p1, p2, Clicked);
-            base.M_MenuItem = M_MenuBarItem;
-            OneScriptTerminalGui.AddToHashtable(M_MenuBarItem, this);
-        }
-
         public Terminal.Gui.MenuItem[] Children
         {
             get { return M_MenuBarItem.Children; }
@@ -68,16 +49,6 @@ namespace ostgui
         public TfMenuBarItem()
         {
             MenuBarItem MenuBarItem1 = new MenuBarItem();
-            MenuBarItem1.dll_obj = this;
-            Base_obj = MenuBarItem1;
-
-            menuBarItemChildren = new TfMenuBarItemChildren();
-            menuBarItemChildren.M_MenuBarItem = Base_obj;
-        }
-
-        public TfMenuBarItem(string p1, string p2)
-        {
-            MenuBarItem MenuBarItem1 = new MenuBarItem(p1, p2);
             MenuBarItem1.dll_obj = this;
             Base_obj = MenuBarItem1;
 

@@ -18,6 +18,19 @@ namespace ostgui
             buttons.Add(ValueFactory.Create("No"));
         }
 
+        private int Clicked = -1;
+        private object token = null;
+        private void StartTimer()
+        {
+            token = Application.MainLoop.AddTimeout(TimeSpan.FromMilliseconds(Interval), (m) =>
+            {
+                System.Char char1 = Convert.ToChar(buttons.Get(DefaultButtonIndex).ToString().Substring(0, 1));
+                Application.Driver.SendKeys(char1, ConsoleKey.Escape, false, false, false);
+                Application.MainLoop.RemoveTimeout(token);
+                return false;
+            });
+        }
+
         private bool autoSize = true;
         [ContextProperty("АвтоРазмер", "AutoSize")]
         public bool AutoSize
@@ -48,6 +61,14 @@ namespace ostgui
         {
             get { return defaultButtonIndex; }
             set { defaultButtonIndex = value; }
+        }
+
+        private int interval = 0;
+        [ContextProperty("Интервал", "Interval")]
+        public int Interval
+        {
+            get { return interval; }
+            set { interval = value; }
         }
 
         private ArrayImpl buttons;
@@ -108,7 +129,15 @@ namespace ostgui
                 _width = Width;
                 _height = Height;
             }
-            return Terminal.Gui.MessageBox.Query(_width, _height, Title, Message, _buttons);
+
+            if (Interval > 0)
+            {
+                StartTimer();
+            }
+
+            Clicked = Terminal.Gui.MessageBox.Query(_width, _height, Title, Message, DefaultButtonIndex, _buttons);
+            Application.MainLoop.RemoveTimeout(token);
+            return Clicked;
         }
 
     }

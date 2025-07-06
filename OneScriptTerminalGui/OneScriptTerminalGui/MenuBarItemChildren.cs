@@ -23,12 +23,22 @@ namespace ostgui
         }
 
         [ContextMethod("Добавить", "Add")]
-        public void Add(IValue p1)
+        public void Add(IValue p1 = null)
         {
-            Terminal.Gui.MenuItem[] MenuItem2 = new Terminal.Gui.MenuItem[M_Object.Length + 1];
-            M_Object.CopyTo(MenuItem2, 0);
-            MenuItem2[M_Object.Length] = (Terminal.Gui.MenuItem)((dynamic)p1).Base_obj.M_MenuItem;
-            M_Object = MenuItem2;
+            if (p1 == null)
+            {
+                Terminal.Gui.MenuItem[] MenuItem2 = new Terminal.Gui.MenuItem[M_Object.Length + 1];
+                M_Object.CopyTo(MenuItem2, 0);
+                MenuItem2[M_Object.Length] = null;
+                M_Object = MenuItem2;
+            }
+            else
+            {
+                Terminal.Gui.MenuItem[] MenuItem2 = new Terminal.Gui.MenuItem[M_Object.Length + 1];
+                M_Object.CopyTo(MenuItem2, 0);
+                MenuItem2[M_Object.Length] = (Terminal.Gui.MenuItem)((dynamic)p1).Base_obj.M_MenuItem;
+                M_Object = MenuItem2;
+            }
         }
 
         [ContextMethod("Очистить", "Clear")]

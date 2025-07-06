@@ -158,12 +158,8 @@ namespace ostgui
         public TfAction NotifyNewRunState { get; set; }
 
         [ContextMethod("ЭлементМеню", "MenuItem")]
-        public TfMenuItem MenuItem(string p1 = null, string p2 = null)
+        public TfMenuItem MenuItem()
         {
-            if (p1 != null && p2 != null)
-            {
-                return new TfMenuItem(p1, p2);
-            }
             return new TfMenuItem();
         }
 
@@ -190,12 +186,8 @@ namespace ostgui
         }
 
         [ContextMethod("ПунктМеню", "MenuBarItem")]
-        public TfMenuBarItem MenuBarItem(string p1 = null, string p2 = null)
+        public TfMenuBarItem MenuBarItem()
         {
-            if (p1 != null && p2 != null)
-            {
-                return new TfMenuBarItem(p1, p2);
-            }
             return new TfMenuBarItem();
         }
 

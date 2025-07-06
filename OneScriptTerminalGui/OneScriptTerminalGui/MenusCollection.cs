@@ -21,13 +21,12 @@ namespace ostgui
         }
 
         [ContextMethod("Добавить", "Add")]
-        public TfMenuBarItem Add(TfMenuBarItem p1)
+        public void Add(TfMenuBarItem p1)
         {
             Terminal.Gui.MenuBarItem[] MenuBarItem2 = new Terminal.Gui.MenuBarItem[M_Object.Length + 1];
             M_Object.CopyTo(MenuBarItem2, 0);
             MenuBarItem2[M_Object.Length] = p1.Base_obj.M_MenuBarItem;
             M_Object = MenuBarItem2;
-            return p1;
         }
 
         [ContextMethod("Очистить", "Clear")]

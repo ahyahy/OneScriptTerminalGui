@@ -9,24 +9,6 @@ namespace ostgui
         public Terminal.Gui.MenuItem m_MenuItem;
         public System.Action Clicked;
 
-        public MenuItem(string p1, string p2)
-        {
-            Clicked = delegate ()
-            {
-                if (dll_obj.Clicked != null)
-                {
-                    TfEventArgs TfEventArgs1 = new TfEventArgs();
-                    TfEventArgs1.sender = dll_obj;
-                    TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.Clicked);
-                    OneScriptTerminalGui.Event = TfEventArgs1;
-                    OneScriptTerminalGui.ExecuteEvent(dll_obj.Clicked);
-                }
-            };
-
-            M_MenuItem = new Terminal.Gui.MenuItem(p1, p2, Clicked);
-            OneScriptTerminalGui.AddToHashtable(M_MenuItem, this);
-        }
-
         public MenuItem()
         {
             Clicked = delegate ()
@@ -117,13 +99,6 @@ namespace ostgui
         public TfMenuItem()
         {
             MenuItem MenuItem1 = new MenuItem();
-            MenuItem1.dll_obj = this;
-            Base_obj = MenuItem1;
-        }
-
-        public TfMenuItem(string p1, string p2)
-        {
-            MenuItem MenuItem1 = new MenuItem(p1, p2);
             MenuItem1.dll_obj = this;
             Base_obj = MenuItem1;
         }
