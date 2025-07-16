@@ -6,6 +6,7 @@ using ScriptEngine.Machine.Contexts;
 using ScriptEngine.Machine;
 using ScriptEngine.HostedScript.Library;
 using Terminal.Gui;
+using System.Reflection;
 
 namespace ostgui
 {
@@ -19,22 +20,22 @@ namespace ostgui
         public static TfEventArgs Event = null;
         public static bool handleEvents = true;
 
-        //static byte[] StreamToBytes(Stream input)
-        //{
-        //    var capacity = input.CanSeek ? (int)input.Length : 0;
-        //    using (var output = new MemoryStream(capacity))
-        //    {
-        //        int readLength;
-        //        var buffer = new byte[4096];
-        //        do
-        //        {
-        //            readLength = input.Read(buffer, 0, buffer.Length);
-        //            output.Write(buffer, 0, readLength);
-        //        }
-        //        while (readLength != 0);
-        //        return output.ToArray();
-        //    }
-        //}
+        static byte[] StreamToBytes(Stream input)
+        {
+            var capacity = input.CanSeek ? (int)input.Length : 0;
+            using (var output = new MemoryStream(capacity))
+            {
+                int readLength;
+                var buffer = new byte[4096];
+                do
+                {
+                    readLength = input.Read(buffer, 0, buffer.Length);
+                    output.Write(buffer, 0, readLength);
+                }
+                while (readLength != 0);
+                return output.ToArray();
+            }
+        }
 
         public static OneScriptTerminalGui getInstance()
         {
@@ -54,23 +55,23 @@ namespace ostgui
         [ScriptConstructor]
         public static IRuntimeContextInstance Constructor()
         {
-            //AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
-            //{
-            //    string resourcepath = "ostgui." + new AssemblyName(args.Name).Name + ".dll";
-            //    if (Assembly.GetExecutingAssembly().GetName().Name == "OneScriptTerminalGui" &&
-            //        resourcepath != "ostgui.Terminal.Gui.dll")
-            //    {
-            //        var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourcepath);
-            //        if (stream != null)
-            //        {
-            //            using (stream)
-            //            {
-            //                return Assembly.Load(StreamToBytes(stream));
-            //            }
-            //        }
-            //    }
-            //    return null;
-            //};
+            AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
+            {
+                string resourcepath = "ostgui." + new AssemblyName(args.Name).Name + ".dll";
+                if (Assembly.GetExecutingAssembly().GetName().Name == "OneScriptTerminalGui" &&
+                    resourcepath != "ostgui.Terminal.Gui.dll")
+                {
+                    var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourcepath);
+                    if (stream != null)
+                    {
+                        using (stream)
+                        {
+                            return Assembly.Load(StreamToBytes(stream));
+                        }
+                    }
+                }
+                return null;
+            };
 
             OnOpen = delegate ()
             {
@@ -94,9 +95,340 @@ namespace ostgui
             OnOpen.Invoke();
         }
 
+        [ContextProperty("РазмерИзменен", "Resized")]
+        public TfAction Resized { get; set; }
+
         public static SystemGlobalContext GlobalContext()
         {
             return GlobalsManager.GetGlobalContext<SystemGlobalContext>();
+        }
+
+        private static TfConsoleKey tf_ConsoleKey = new TfConsoleKey();
+        [ContextProperty("КлавишиКонсоли", "ConsoleKey")]
+        public TfConsoleKey ConsoleKey
+        {
+            get { return tf_ConsoleKey; }
+        }
+
+        private static TfCommandTUI tf_CommandTUI = new TfCommandTUI();
+        [ContextProperty("КомандаTUI", "CommandTUI")]
+        public TfCommandTUI CommandTUI
+        {
+            get { return tf_CommandTUI; }
+        }
+
+        [ContextMethod("Эмодзи", "Emoji")]
+        public string Emoji(IValue p1)
+        {
+            var sb = new StringBuilder();
+            if (p1.SystemType.Name == "Число")
+            {
+                try
+                {
+                    sb.Append(Char.ConvertFromUtf32(Convert.ToInt32(p1.AsNumber()))).ToString();
+                }
+                catch { }
+            }
+            else if (p1.SystemType.Name == "Строка")
+            {
+                string p2 = p1.AsString();
+                p2 = p2.Replace("0x", "").Replace("0х", "").Replace("\\u", "");
+                try
+                {
+                    try
+                    {
+                        int num = Convert.ToInt32(p2);
+                        string str = Char.ConvertFromUtf32(num);
+                        sb.Append(str).ToString();
+                    }
+                    catch
+                    {
+                        int num = Convert.ToInt32(p2, 16);
+                        string str = Char.ConvertFromUtf32(num);
+                        sb.Append(str).ToString();
+                    }
+                }
+                catch { }
+            }
+            return sb.ToString();
+        }
+
+        [ContextProperty("Высота", "Rows")]
+        public int Rows
+        {
+            get { return Application.Driver.Rows; }
+        }
+
+        [ContextProperty("Ширина", "Cols")]
+        public int Cols
+        {
+            get { return Application.Driver.Cols; }
+        }
+
+        [ContextMethod("КлавишаВвод", "ButtonEnter")]
+        public void ButtonEnter()
+        {
+            Application.Driver.SendKeys(System.Char.MinValue, System.ConsoleKey.Enter, false, false, false);
+        }
+
+        [ContextMethod("СтрелкаВправо", "RightArrow")]
+        public void RightArrow()
+        {
+            string str = Application.Driver.RightArrow.ToString();
+            System.Char char1 = Convert.ToChar(str.Substring(0, 1));
+            Application.Driver.SendKeys(char1, System.ConsoleKey.RightArrow, false, false, false);
+        }
+
+        [ContextMethod("СтрелкаВлево", "LeftArrow")]
+        public void LeftArrow()
+        {
+            string str = Application.Driver.LeftArrow.ToString();
+            System.Char char1 = Convert.ToChar(str.Substring(0, 1));
+            Application.Driver.SendKeys(char1, System.ConsoleKey.LeftArrow, false, false, false);
+        }
+
+        [ContextMethod("СтрелкаВниз", "DownArrow")]
+        public void DownArrow()
+        {
+            string str = Application.Driver.DownArrow.ToString();
+            System.Char char1 = Convert.ToChar(str.Substring(0, 1));
+            Application.Driver.SendKeys(char1, System.ConsoleKey.DownArrow, false, false, false);
+        }
+
+        [ContextMethod("СтрелкаВверх", "UpArrow")]
+        public void UpArrow()
+        {
+            string str = Application.Driver.UpArrow.ToString();
+            System.Char char1 = Convert.ToChar(str.Substring(0, 1));
+            Application.Driver.SendKeys(char1, System.ConsoleKey.UpArrow, false, false, false);
+        }
+
+        [ContextMethod("ПраваяКвадратная", "RightBracket")]
+        public string RightBracket()
+        {
+            return Application.Driver.RightBracket.ToString();
+        }
+
+        [ContextMethod("ЛеваяКвадратная", "LeftBracket")]
+        public string LeftBracket()
+        {
+            return Application.Driver.LeftBracket.ToString();
+        }
+
+        [ContextMethod("МалыйБлок", "BlocksMeterSegment")]
+        public string BlocksMeterSegment()
+        {
+            return Application.Driver.BlocksMeterSegment.ToString();
+        }
+
+        [ContextMethod("БольшойБлок", "ContinuousMeterSegment")]
+        public string ContinuousMeterSegment()
+        {
+            return Application.Driver.ContinuousMeterSegment.ToString();
+        }
+
+        [ContextMethod("ЛевыйИндикатор", "LeftDefaultIndicator")]
+        public string LeftDefaultIndicator()
+        {
+            return Application.Driver.LeftDefaultIndicator.ToString();
+        }
+
+        [ContextMethod("ПравыйИндикатор", "RightDefaultIndicator")]
+        public string RightDefaultIndicator()
+        {
+            return Application.Driver.RightDefaultIndicator.ToString();
+        }
+
+        [ContextMethod("ВерхняяСтрелка", "ArrowUp")]
+        public string ArrowUp()
+        {
+            return Application.Driver.UpArrow.ToString();
+        }
+
+        [ContextMethod("ЛеваяСтрелка", "ArrowLeft")]
+        public string ArrowLeft()
+        {
+            return Application.Driver.LeftArrow.ToString();
+        }
+
+       [ContextMethod("НижняяСтрелка", "ArrowDown")]
+        public string ArrowDown()
+        {
+            return Application.Driver.DownArrow.ToString();
+        }
+
+       [ContextMethod("ПраваяСтрелка", "ArrowRight")]
+        public string ArrowRight()
+        {
+            return Application.Driver.RightArrow.ToString();
+        }
+
+       [ContextMethod("ВерхнийТройник", "TopTee")]
+        public string TopTee()
+        {
+            return Application.Driver.TopTee.ToString();
+        }
+
+       [ContextMethod("ЛевыйТройник", "LeftTee")]
+        public string LeftTee()
+        {
+            return Application.Driver.LeftTee.ToString();
+        }
+
+       [ContextMethod("НижнийТройник", "BottomTee")]
+        public string BottomTee()
+        {
+            return Application.Driver.BottomTee.ToString();
+        }
+
+       [ContextMethod("ПравыйТройник", "RightTee")]
+        public string RightTee()
+        {
+            return Application.Driver.RightTee.ToString();
+        }
+
+        [ContextMethod("Пометка", "Checked")]
+        public string Checked()
+        {
+            return Application.Driver.Checked.ToString();
+        }
+
+        [ContextMethod("Алмаз", "Diamond")]
+        public string Diamond()
+        {
+            return Application.Driver.Diamond.ToString();
+        }
+
+        [ContextMethod("ДвойнаяГоризонтальная", "HDLine")]
+        public string HDLine()
+        {
+            return Application.Driver.HDLine.ToString();
+        }
+
+        [ContextMethod("Горизонтальная", "HLine")]
+        public string HLine()
+        {
+            return Application.Driver.HLine.ToString();
+        }
+
+        [ContextMethod("ГоризонтальнаяСЗакругленнымиУглами", "HRLine")]
+        public string HRLine()
+        {
+            return Application.Driver.HRLine.ToString();
+        }
+
+        [ContextMethod("НижнийЛевыйУгол", "LLCorner")]
+        public string LLCorner()
+        {
+            return Application.Driver.LLCorner.ToString();
+        }
+
+        [ContextMethod("НижнийЛевыйДвойнойУгол", "LLDCorner")]
+        public string LLDCorner()
+        {
+            return Application.Driver.LLDCorner.ToString();
+        }
+
+        [ContextMethod("НижнийЛевыйЗакругленныйУгол", "LLRCorner")]
+        public string LLRCorner()
+        {
+            return Application.Driver.LLRCorner.ToString();
+        }
+
+        [ContextMethod("НижнийПравыйУгол", "LRCorner")]
+        public string LRCorner()
+        {
+            return Application.Driver.LRCorner.ToString();
+        }
+
+        [ContextMethod("НижнийПравыйДвойнойУгол", "LRDCorner")]
+        public string LRDCorner()
+        {
+            return Application.Driver.LRDCorner.ToString();
+        }
+
+        [ContextMethod("НижнийПравыйЗакругленныйУгол", "LRRCorner")]
+        public string LRRCorner()
+        {
+            return Application.Driver.LRRCorner.ToString();
+        }
+
+        [ContextMethod("Выделенный", "Selected")]
+        public string Selected()
+        {
+            return Application.Driver.Selected.ToString();
+        }
+
+        [ContextMethod("Точечный", "Stipple")]
+        public string Stipple()
+        {
+            return Application.Driver.Stipple.ToString();
+        }
+
+        [ContextMethod("ВерхнийЛевыйУгол", "ULCorner")]
+        public string ULCorner()
+        {
+            return Application.Driver.ULCorner.ToString();
+        }
+
+        [ContextMethod("ВерхнийЛевыйДвойнойУгол", "ULDCorner")]
+        public string ULDCorner()
+        {
+            return Application.Driver.ULDCorner.ToString();
+        }
+
+        [ContextMethod("ВерхнийЛевыйЗакругленныйУгол", "ULRCorner")]
+        public string ULRCorner()
+        {
+            return Application.Driver.ULRCorner.ToString();
+        }
+
+        [ContextMethod("БезПометки", "UnChecked")]
+        public string UnChecked()
+        {
+            return Application.Driver.UnChecked.ToString();
+        }
+
+        [ContextMethod("БезВыделения", "UnSelected")]
+        public string UnSelected()
+        {
+            return Application.Driver.UnSelected.ToString();
+        }
+
+        [ContextMethod("ВерхнийПравыйУгол", "URCorner")]
+        public string URCorner()
+        {
+            return Application.Driver.URCorner.ToString();
+        }
+
+        [ContextMethod("ВерхнийПравыйДвойнойУгол", "URDCorner")]
+        public string URDCorner()
+        {
+            return Application.Driver.URDCorner.ToString();
+        }
+
+        [ContextMethod("ВерхнийПравыйЗакругленныйУгол", "URRCorner")]
+        public string URRCorner()
+        {
+            return Application.Driver.URRCorner.ToString();
+        }
+
+        [ContextMethod("ВертикальнаяДвойная", "VDLine")]
+        public string VDLine()
+        {
+            return Application.Driver.VDLine.ToString();
+        }
+
+        [ContextMethod("Вертикальная", "VLine")]
+        public string VLine()
+        {
+            return Application.Driver.VLine.ToString();
+        }
+
+        [ContextMethod("ВертикальнаяСЗакругленнымиУглами", "VRLine")]
+        public string VRLine()
+        {
+            return Application.Driver.VRLine.ToString();
         }
 
         [ContextMethod("Таймер", "Timer")]
@@ -112,9 +444,10 @@ namespace ostgui
         }
 
         [ContextMethod("ОтправитьКлавиши", "SendKeys")]
-        public void SendKeys(string p1, int p2, bool p3, bool p4, bool p5)
+        public void SendKeys(string p1, bool p3, bool p4, bool p5)
         {
-            Application.Driver.SendKeys(p1.ToCharArray()[0], (System.ConsoleKey)p2, p3, p4, p5);
+            System.Char char1 = Convert.ToChar(p1.Substring(0, 1));
+            Application.Driver.SendKeys(char1, (System.ConsoleKey)0, p3, p4, p5);
         }
 
         [ContextProperty("ТекстБуфераОбмена", "ClipboardText")]
@@ -224,7 +557,8 @@ namespace ostgui
         [ContextMethod("Завершить", "Shutdown")]
         public void Shutdown()
         {
-            Application.Shutdown();
+            //Application.Shutdown();
+            Application.RequestStop(Top.Base_obj.M_Toplevel);
         }
 
         [ContextMethod("ОформительТекста", "TextFormatter")]
@@ -295,14 +629,8 @@ namespace ostgui
         [ContextMethod("Запуск", "Run")]
         public void Run()
         {
-            ////Top.CorrectionZet(); // Конфликтует с созданием меню.
-            //Application.Run();
-
-            // Запуск с подавлением вывода ошибок.
-            Application.Run((m) =>
-            {
-                return false;
-            });
+            //Top.CorrectionZet(); // Конфликтует с созданием меню.
+            Application.Run();
         }
 
         [ContextProperty("РазрешитьСобытия", "AllowEvents")]
@@ -594,7 +922,6 @@ namespace ostgui
             }
         }
 
-        [ContextMethod("Элемент", "View")]
         public TfView View(IValue p1 = null, IValue p2 = null, IValue p3 = null)
         {
             if (p1 == null && p2 == null && p3 == null)
@@ -649,17 +976,6 @@ namespace ostgui
                 if (p1.SystemType.Name == "Число" && p2.SystemType.Name == "Число")
                 {
                     return new TfSize(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()));
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else if (p1 != null && p2 == null)
-            {
-                if (p1.GetType() == typeof(TfPoint))
-                {
-                    return new TfSize((TfPoint)p1);
                 }
                 else
                 {

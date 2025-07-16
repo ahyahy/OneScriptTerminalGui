@@ -48,6 +48,21 @@ namespace ostgui
             get { return keyToString.AsString(); }
         }
 
+        public IValue newTitle = null;
+        [ContextProperty("НовыйЗаголовок", "NewTitle")]
+        public string NewTitle
+        {
+            get { return newTitle.AsString(); }
+        }
+
+        public IValue newMenuBarItem = null;
+        [ContextProperty("НовыйПунктМеню", "NewMenuBarItem")]
+        public IValue NewMenuBarItem
+        {
+            get { return newMenuBarItem; }
+            set { newMenuBarItem = value; }
+        }
+
         public IValue cancel = null;
         [ContextProperty("Отмена", "Cancel")]
         public bool Cancel
@@ -70,13 +85,6 @@ namespace ostgui
             get { return parameter; }
         }
 
-        public TfRect rect = null;
-        [ContextProperty("Прямоугольник", "Rect")]
-        public TfRect Rect
-        {
-            get { return rect; }
-        }
-
         public TfSize size = null;
         [ContextProperty("Размер", "Size")]
         public TfSize Size
@@ -84,25 +92,18 @@ namespace ostgui
             get { return size; }
         }
 
-        public IValue ofY = null;
-        [ContextProperty("СмещениеИгрек", "OfY")]
-        public int OfY
+        public IValue oldTitle = null;
+        [ContextProperty("СтарыйЗаголовок", "OldTitle")]
+        public string OldTitle
         {
-            get { return Convert.ToInt32(ofY.AsNumber()); }
+            get { return oldTitle.AsString(); }
         }
 
-        public IValue ofX = null;
-        [ContextProperty("СмещениеИкс", "OfX")]
-        public int OfX
+        public IValue currentMenu = null;
+        [ContextProperty("ТекущийПунктМеню", "CurrentMenu")]
+        public IValue CurrentMenu
         {
-            get { return Convert.ToInt32(ofX.AsNumber()); }
-        }
-
-        public TfRect oldBounds = null;
-        [ContextProperty("СтарыеГраницы", "OldBounds")]
-        public TfRect OldBounds
-        {
-            get { return oldBounds; }
+            get { return currentMenu; }
         }
 
         public IValue flags = null;
@@ -117,6 +118,13 @@ namespace ostgui
         public IValue View
         {
             get { return view; }
+        }
+
+        public IValue menuItem = null;
+        [ContextProperty("ЭлементМеню", "MenuItem")]
+        public IValue MenuItem
+        {
+            get { return menuItem; }
         }
 
         public IValue isAlt = null;

@@ -5,8 +5,8 @@ using System.Collections;
 
 namespace ostgui
 {
-    [ContextClass("ТфКоманда", "TfCommand")]
-    public class TfCommand : AutoContext<TfCommand>, ICollectionContext, IEnumerable<IValue>
+    [ContextClass("ТфКомандаTUI", "TfCommandTUI")]
+    public class TfCommandTUI : AutoContext<TfCommandTUI>, ICollectionContext, IEnumerable<IValue>
     {
         private List<IValue> _list;
 
@@ -33,7 +33,7 @@ namespace ostgui
             }
         }
 
-        public TfCommand()
+        public TfCommandTUI()
         {
             _list = new List<IValue>();
             _list.Add(ValueFactory.Create(Redo));

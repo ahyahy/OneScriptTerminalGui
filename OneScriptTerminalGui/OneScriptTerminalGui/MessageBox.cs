@@ -20,16 +20,6 @@ namespace ostgui
 
         private int Clicked = -1;
         private object token = null;
-        private void StartTimer()
-        {
-            token = Application.MainLoop.AddTimeout(TimeSpan.FromMilliseconds(Interval), (m) =>
-            {
-                System.Char char1 = Convert.ToChar(buttons.Get(DefaultButtonIndex).ToString().Substring(0, 1));
-                Application.Driver.SendKeys(char1, ConsoleKey.Escape, false, false, false);
-                Application.MainLoop.RemoveTimeout(token);
-                return false;
-            });
-        }
 
         private bool autoSize = true;
         [ContextProperty("АвтоРазмер", "AutoSize")]
@@ -63,14 +53,6 @@ namespace ostgui
             set { defaultButtonIndex = value; }
         }
 
-        private int interval = 0;
-        [ContextProperty("Интервал", "Interval")]
-        public int Interval
-        {
-            get { return interval; }
-            set { interval = value; }
-        }
-
         private ArrayImpl buttons;
         [ContextProperty("Кнопки", "Buttons")]
         public ArrayImpl Buttons
@@ -98,6 +80,10 @@ namespace ostgui
         [ContextMethod("Запрос", "Query")]
         public int Query()
         {
+            // Уберем на время появления модального окна события мыши.
+            dynamic actRootMouseEvent = Application.RootMouseEvent;
+            Application.RootMouseEvent = null;
+
             int maxLengthButtons = 0;
             NStack.ustring[] _buttons = new NStack.ustring[Buttons.Count()];
             for (int i = 0; i < Buttons.Count(); i++)
@@ -130,13 +116,10 @@ namespace ostgui
                 _height = Height;
             }
 
-            if (Interval > 0)
-            {
-                StartTimer();
-            }
-
             Clicked = Terminal.Gui.MessageBox.Query(_width, _height, Title, Message, DefaultButtonIndex, _buttons);
             Application.MainLoop.RemoveTimeout(token);
+            // Вернем события мыши.
+            Application.RootMouseEvent = actRootMouseEvent;
             return Clicked;
         }
 

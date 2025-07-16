@@ -53,8 +53,8 @@ namespace ostgui
                 base.M_Responder = m_View;
                 m_View.Added += M_View_Added;
                 m_View.CanFocusChanged += M_View_CanFocusChanged;
-                m_View.DrawContent += M_View_DrawContent;
-                m_View.DrawContentComplete += M_View_DrawContentComplete;
+                //m_View.DrawContent += M_View_DrawContent;
+                //m_View.DrawContentComplete += M_View_DrawContentComplete;
                 m_View.EnabledChanged += M_View_EnabledChanged;
                 m_View.Enter += M_View_Enter;
                 m_View.HotKeyChanged += M_View_HotKeyChanged;
@@ -62,8 +62,8 @@ namespace ostgui
                 //m_View.KeyDown += M_View_KeyDown;
                 m_View.KeyPress += M_View_KeyPress;
                 //m_View.KeyUp += M_View_KeyUp;
-                m_View.LayoutComplete += M_View_LayoutComplete;
-                m_View.LayoutStarted += M_View_LayoutStarted;
+                //m_View.LayoutComplete += M_View_LayoutComplete;
+                //m_View.LayoutStarted += M_View_LayoutStarted;
                 m_View.Leave += M_View_Leave;
                 m_View.MouseClick += M_View_MouseClick;
                 m_View.MouseEnter += M_View_MouseEnter;
@@ -83,6 +83,65 @@ namespace ostgui
                     }
                 };
                 m_View.ShortcutAction = OnShortcutAction;
+
+                // Обеспечим данными событие мыши MouseEnter.
+                Application.RootMouseEvent += delegate (MouseEvent me)
+                {
+                    Terminal.Gui.View host1 = me.View;
+                    MouseEvent myme = new MouseEvent();
+                    myme.Flags = me.Flags;
+                    myme.Handled = me.Handled;
+                    myme.View = me.View;
+                    int meX = me.X;
+                    int meY = me.Y;
+                    Terminal.Gui.Point point = host1.ScreenToView(me.X, me.Y);
+                    int frameX = host1.Frame.X;
+                    int frameY = host1.Frame.Y;
+                    int frameWidth = host1.Frame.Width;
+                    int frameHeight = host1.Frame.Height;
+                    int x = point.X;
+                    int y = point.Y;
+                    if (me.View.GetType().ToString() == "Terminal.Gui.Window+ContentView")
+                    {
+                        if (meX >= (frameX + 1))
+                        {
+                            if (meY >= (frameY + 1))
+                            {
+                                if (meX < (frameX + frameWidth + 1))
+                                {
+                                    if (meY > (frameY + frameHeight + 1))
+                                    {
+                                        myme.X = x;
+                                        myme.Y = y;
+                                        host1.OnMouseEnter(myme);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if (me.View.GetType().ToString() == "Terminal.Gui.Window")
+                    {
+                        // Ничего не делаем.
+                    }
+                    else
+                    {
+                        if (meX >= frameX)
+                        {
+                            if (meY >= frameY)
+                            {
+                                if (meX < (frameX + frameWidth))
+                                {
+                                    if (meY < (frameY + frameHeight))
+                                    {
+                                        myme.X = x;
+                                        myme.Y = y;
+                                        host1.OnMouseEnter(myme);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
             }
         }
 
@@ -116,33 +175,41 @@ namespace ostgui
         private void M_View_MouseLeave(Terminal.Gui.View.MouseEventArgs obj)
         {
             dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
+            if (Sender.GetType() == typeof(TfWindow))
+            {
+                return;
+            }
+            if (Sender.GetType() == typeof(TfMenuBar))
+            {
+                return;
+            }
             if (Sender.MouseLeave != null)
             {
                 TfEventArgs TfEventArgs1 = new TfEventArgs();
                 TfEventArgs1.sender = Sender;
                 TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.MouseLeave);
                 TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
-                TfEventArgs1.ofX = ValueFactory.Create(obj.MouseEvent.OfX);
-                TfEventArgs1.ofY = ValueFactory.Create(obj.MouseEvent.OfY);
                 TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj.MouseEvent.View).dll_obj;
                 TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
                 TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
                 OneScriptTerminalGui.Event = TfEventArgs1;
-                OneScriptTerminalGui.ExecuteEvent(Sender.йййййййй);
+                OneScriptTerminalGui.ExecuteEvent(Sender.MouseLeave);
             }
         }
 
         private void M_View_MouseEnter(Terminal.Gui.View.MouseEventArgs obj)
         {
             dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
+            if (Sender.GetType() == typeof(TfWindow))
+            {
+                return;
+            }
             if (Sender.MouseEnter != null)
             {
                 TfEventArgs TfEventArgs1 = new TfEventArgs();
                 TfEventArgs1.sender = Sender;
                 TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.MouseEnter);
                 TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
-                TfEventArgs1.ofX = ValueFactory.Create(obj.MouseEvent.OfX);
-                TfEventArgs1.ofY = ValueFactory.Create(obj.MouseEvent.OfY);
                 TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj.MouseEvent.View).dll_obj;
                 TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
                 TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
@@ -154,14 +221,16 @@ namespace ostgui
         private void M_View_MouseClick(Terminal.Gui.View.MouseEventArgs obj)
         {
             dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
+            if (Sender.GetType() == typeof(TfWindow))
+            {
+                return;
+            }
             if (Sender.MouseClick != null)
             {
                 TfEventArgs TfEventArgs1 = new TfEventArgs();
                 TfEventArgs1.sender = Sender;
                 TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.MouseClick);
                 TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
-                TfEventArgs1.ofX = ValueFactory.Create(obj.MouseEvent.OfX);
-                TfEventArgs1.ofY = ValueFactory.Create(obj.MouseEvent.OfY);
                 TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj.MouseEvent.View).dll_obj;
                 TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
                 TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
@@ -173,44 +242,47 @@ namespace ostgui
         private void M_View_Leave(Terminal.Gui.View.FocusEventArgs obj)
         {
             dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
+            if (Sender.GetType() == typeof(TfWindow))
+            {
+                return;
+            }
             if (Sender.Leave != null)
             {
                 TfEventArgs TfEventArgs1 = new TfEventArgs();
                 TfEventArgs1.sender = Sender;
                 TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.Leave);
-                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj.View).dll_obj;
                 OneScriptTerminalGui.Event = TfEventArgs1;
                 OneScriptTerminalGui.ExecuteEvent(Sender.Leave);
             }
         }
 
-        private void M_View_LayoutStarted(Terminal.Gui.View.LayoutEventArgs obj)
-        {
-            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-            if (Sender.LayoutStarted != null)
-            {
-                TfEventArgs TfEventArgs1 = new TfEventArgs();
-                TfEventArgs1.sender = Sender;
-                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.LayoutStarted);
-                TfEventArgs1.oldBounds = new TfRect(obj.OldBounds.X, obj.OldBounds.Y, obj.OldBounds.Width, obj.OldBounds.Height);
-                OneScriptTerminalGui.Event = TfEventArgs1;
-                OneScriptTerminalGui.ExecuteEvent(Sender.LayoutStarted);
-            }
-        }
+        //private void M_View_LayoutStarted(Terminal.Gui.View.LayoutEventArgs obj)
+        //{
+        //    dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
+        //    if (Sender.LayoutStarted != null)
+        //    {
+        //        TfEventArgs TfEventArgs1 = new TfEventArgs();
+        //        TfEventArgs1.sender = Sender;
+        //        TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.LayoutStarted);
+        //        TfEventArgs1.oldBounds = new TfRect(obj.OldBounds.X, obj.OldBounds.Y, obj.OldBounds.Width, obj.OldBounds.Height);
+        //        OneScriptTerminalGui.Event = TfEventArgs1;
+        //        OneScriptTerminalGui.ExecuteEvent(Sender.LayoutStarted);
+        //    }
+        //}
 
-        private void M_View_LayoutComplete(Terminal.Gui.View.LayoutEventArgs obj)
-        {
-            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-            if (Sender.LayoutComplete != null)
-            {
-                TfEventArgs TfEventArgs1 = new TfEventArgs();
-                TfEventArgs1.sender = Sender;
-                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.LayoutComplete);
-                TfEventArgs1.oldBounds = new TfRect(obj.OldBounds.X, obj.OldBounds.Y, obj.OldBounds.Width, obj.OldBounds.Height);
-                OneScriptTerminalGui.Event = TfEventArgs1;
-                OneScriptTerminalGui.ExecuteEvent(Sender.LayoutComplete);
-            }
-        }
+        //private void M_View_LayoutComplete(Terminal.Gui.View.LayoutEventArgs obj)
+        //{
+        //    dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
+        //    if (Sender.LayoutComplete != null)
+        //    {
+        //        TfEventArgs TfEventArgs1 = new TfEventArgs();
+        //        TfEventArgs1.sender = Sender;
+        //        TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.LayoutComplete);
+        //        TfEventArgs1.oldBounds = new TfRect(obj.OldBounds.X, obj.OldBounds.Y, obj.OldBounds.Width, obj.OldBounds.Height);
+        //        OneScriptTerminalGui.Event = TfEventArgs1;
+        //        OneScriptTerminalGui.ExecuteEvent(Sender.LayoutComplete);
+        //    }
+        //}
 
         private void M_View_KeyUp(Terminal.Gui.View.KeyEventEventArgs obj)
         {
@@ -241,7 +313,10 @@ namespace ostgui
             {
                 shortcutAction = Sender.ShortcutAction;
             }
-            catch { }
+            catch
+            {
+                return;
+            }
             if (shortcutAction != null)
             {
                 if (obj.KeyEvent.Key == (Terminal.Gui.Key)Sender.Shortcut)
@@ -323,7 +398,6 @@ namespace ostgui
                 TfEventArgs TfEventArgs1 = new TfEventArgs();
                 TfEventArgs1.sender = Sender;
                 TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.Enter);
-                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj.View).dll_obj;
                 OneScriptTerminalGui.Event = TfEventArgs1;
                 OneScriptTerminalGui.ExecuteEvent(Sender.Enter);
             }
@@ -342,33 +416,33 @@ namespace ostgui
             }
         }
 
-        private void M_View_DrawContentComplete(Terminal.Gui.Rect obj)
-        {
-            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-            if (Sender.DrawContentComplete != null)
-            {
-                TfEventArgs TfEventArgs1 = new TfEventArgs();
-                TfEventArgs1.sender = Sender;
-                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.DrawContentComplete);
-                TfEventArgs1.rect = new TfRect(obj.X, obj.Y, obj.Width, obj.Height);
-                OneScriptTerminalGui.Event = TfEventArgs1;
-                OneScriptTerminalGui.ExecuteEvent(Sender.DrawContentComplete);
-            }
-        }
+        //private void M_View_DrawContentComplete(Terminal.Gui.Rect obj)
+        //{
+        //    dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
+        //    if (Sender.DrawContentComplete != null)
+        //    {
+        //        TfEventArgs TfEventArgs1 = new TfEventArgs();
+        //        TfEventArgs1.sender = Sender;
+        //        TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.DrawContentComplete);
+        //        TfEventArgs1.rect = new TfRect(obj.X, obj.Y, obj.Width, obj.Height);
+        //        OneScriptTerminalGui.Event = TfEventArgs1;
+        //        OneScriptTerminalGui.ExecuteEvent(Sender.DrawContentComplete);
+        //    }
+        //}
 
-        private void M_View_DrawContent(Terminal.Gui.Rect obj)
-        {
-            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-            if (Sender.DrawContent != null)
-            {
-                TfEventArgs TfEventArgs1 = new TfEventArgs();
-                TfEventArgs1.sender = Sender;
-                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.DrawContent);
-                TfEventArgs1.rect = new TfRect(obj.X, obj.Y, obj.Width, obj.Height);
-                OneScriptTerminalGui.Event = TfEventArgs1;
-                OneScriptTerminalGui.ExecuteEvent(Sender.DrawContent);
-            }
-        }
+        //private void M_View_DrawContent(Terminal.Gui.Rect obj)
+        //{
+        //    dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
+        //    if (Sender.DrawContent != null)
+        //    {
+        //        TfEventArgs TfEventArgs1 = new TfEventArgs();
+        //        TfEventArgs1.sender = Sender;
+        //        TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.DrawContent);
+        //        TfEventArgs1.rect = new TfRect(obj.X, obj.Y, obj.Width, obj.Height);
+        //        OneScriptTerminalGui.Event = TfEventArgs1;
+        //        OneScriptTerminalGui.ExecuteEvent(Sender.DrawContent);
+        //    }
+        //}
 
         private void M_View_CanFocusChanged()
         {
@@ -938,12 +1012,14 @@ namespace ostgui
             Base_obj.CorrectionZet();
         }
 
-        public View Base_obj;
-
         public TfAction LayoutComplete { get; set; }
         public TfAction LayoutStarted { get; set; }
         public TfAction DrawContentComplete { get; set; }
         public TfAction DrawContent { get; set; }
+        public TfAction Added { get; set; }
+        public TfAction Removed { get; set; }
+
+        public View Base_obj;
 
         [ContextProperty("ВертикальноеВыравниваниеТекста", "VerticalTextAlignment")]
         public int VerticalTextAlignment
@@ -1195,9 +1271,6 @@ namespace ostgui
         [ContextProperty("ВидимостьИзменена", "VisibleChanged")]
         public TfAction VisibleChanged { get; set; }
 
-        [ContextProperty("ДобавленЭлемент", "Added")]
-        public TfAction Added { get; set; }
-
         [ContextProperty("ДоступностьИзменена", "EnabledChanged")]
         public TfAction EnabledChanged { get; set; }
 
@@ -1219,20 +1292,11 @@ namespace ostgui
         [ContextProperty("ПриНажатииМыши", "MouseClick")]
         public TfAction MouseClick { get; set; }
 
-        [ContextProperty("СочетаниеКлавишДействие", "ShortcutAction")]
-        public TfAction ShortcutAction { get; set; }
-
-        [ContextProperty("ФокусируемостьИзменена", "CanFocusChanged")]
-        public TfAction CanFocusChanged { get; set; }
-
-        [ContextProperty("ЭлементАктивирован", "InitializedItem")]
-        public TfAction InitializedItem { get; set; }
-
-        [ContextProperty("ЭлементПокинут", "Leave")]
+        [ContextProperty("ПриУходе", "Leave")]
         public TfAction Leave { get; set; }
 
-        [ContextProperty("ЭлементУдален", "Removed")]
-        public TfAction Removed { get; set; }
+        [ContextProperty("СочетаниеКлавишДействие", "ShortcutAction")]
+        public TfAction ShortcutAction { get; set; }
 
         [ContextMethod("ВерхнийРодитель", "GetTopSuperView")]
         public IValue GetTopSuperView()

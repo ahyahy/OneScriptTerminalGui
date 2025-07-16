@@ -61,13 +61,6 @@ namespace ostgui
             Base_obj = Size1;
         }
 
-        public TfSize(TfPoint p1)
-        {
-            Size Size1 = new Size(p1.Base_obj.M_Point);
-            Size1.dll_obj = this;
-            Base_obj = Size1;
-        }
-
         public TfSize(Size p1)
         {
             Size Size1 = p1;

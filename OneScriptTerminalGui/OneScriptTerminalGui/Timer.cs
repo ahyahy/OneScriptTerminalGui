@@ -10,6 +10,7 @@ namespace ostgui
     {
 
         private object token;
+        private bool stop = false;
 
         public TfTimer()
         {
@@ -29,6 +30,7 @@ namespace ostgui
         [ContextMethod("Начать", "Start")]
         public void Start()
         {
+            stop = false;
             token = Application.MainLoop.AddTimeout(TimeSpan.FromMilliseconds(Interval), (m) =>
             {
                 if (Tick != null)
@@ -39,6 +41,10 @@ namespace ostgui
                     OneScriptTerminalGui.Event = TfEventArgs1;
                     OneScriptTerminalGui.ExecuteEvent(Tick);
                 }
+                if (stop)
+                {
+                    return false;
+                }
                 return true;
             });
         }
@@ -46,6 +52,8 @@ namespace ostgui
         [ContextMethod("Остановить", "Stop")]
         public void Stop()
         {
+            stop = true;
+            // token для остановки не срабатывает, поэтому добавлено поле stop.
             Application.MainLoop.RemoveTimeout(token);
         }
 

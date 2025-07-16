@@ -203,14 +203,14 @@ namespace ostgui
 
         private void M_Toplevel_Resized(Terminal.Gui.Size obj)
         {
-            if (dll_obj.Resized != null)
+            if (OneScriptTerminalGui.instance.Resized != null)
             {
                 TfEventArgs TfEventArgs1 = new TfEventArgs();
                 TfEventArgs1.sender = dll_obj;
-                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.Resized);
+                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(OneScriptTerminalGui.instance.Resized);
                 TfEventArgs1.size = new TfSize(obj.Width, obj.Height);
                 OneScriptTerminalGui.Event = TfEventArgs1;
-                OneScriptTerminalGui.ExecuteEvent(dll_obj.Resized);
+                OneScriptTerminalGui.ExecuteEvent(OneScriptTerminalGui.instance.Resized);
             }
         }
 
@@ -300,12 +300,32 @@ namespace ostgui
             Base_obj.CorrectionZet();
         }
 
-        public Toplevel Base_obj;
-
+        public TfAction Unloaded { get; set; }
+        public TfAction Ready { get; set; }
+        public TfAction ChildUnloaded { get; set; }
+        public TfAction ChildLoaded { get; set; }
+        public TfAction ChildClosed { get; set; }
+        public TfAction QuitKeyChanged { get; set; }
+        public TfAction Closed { get; set; }
+        public TfAction CanFocusChanged { get; set; }
+        public TfAction InitializedItem { get; set; }
+        public TfAction Activate { get; set; }
+        public TfAction Deactivate { get; set; }
+        public TfAction AllChildClosed { get; set; }
+        public TfAction KeyPress { get; set; }
+        public TfAction Added { get; set; }
+        public TfAction Removed { get; set; }
         public TfAction LayoutComplete { get; set; }
         public TfAction LayoutStarted { get; set; }
         public TfAction DrawContentComplete { get; set; }
         public TfAction DrawContent { get; set; }
+        public TfAction Leave { get; set; }
+        public TfAction Enter { get; set; }
+        public TfAction Loaded { get; set; }
+        public TfAction Closing { get; set; }
+        public TfAction Resized { get; set; }
+
+        public Toplevel Base_obj;
 
         [ContextProperty("ВертикальноеВыравниваниеТекста", "VerticalTextAlignment")]
         public int VerticalTextAlignment
@@ -533,47 +553,11 @@ namespace ostgui
             set { Base_obj.Width = value.Base_obj; }
         }
 
-        [ContextProperty("Активирован", "Activate")]
-        public TfAction Activate { get; set; }
-
         [ContextProperty("ВидимостьИзменена", "VisibleChanged")]
         public TfAction VisibleChanged { get; set; }
 
-        [ContextProperty("ВсеДочерниеЗакрыты", "AllChildClosed")]
-        public TfAction AllChildClosed { get; set; }
-
-        [ContextProperty("Выгружен", "Unloaded")]
-        public TfAction Unloaded { get; set; }
-
-        [ContextProperty("Готов", "Ready")]
-        public TfAction Ready { get; set; }
-
-        [ContextProperty("Деактивирован", "Deactivate")]
-        public TfAction Deactivate { get; set; }
-
-        [ContextProperty("ДобавленЭлемент", "Added")]
-        public TfAction Added { get; set; }
-
         [ContextProperty("ДоступностьИзменена", "EnabledChanged")]
         public TfAction EnabledChanged { get; set; }
-
-        [ContextProperty("ДочернийВыгружен", "ChildUnloaded")]
-        public TfAction ChildUnloaded { get; set; }
-
-        [ContextProperty("ДочернийЗагружен", "ChildLoaded")]
-        public TfAction ChildLoaded { get; set; }
-
-        [ContextProperty("ДочернийЗакрыт", "ChildClosed")]
-        public TfAction ChildClosed { get; set; }
-
-        [ContextProperty("Закрыт", "Closed")]
-        public TfAction Closed { get; set; }
-
-        [ContextProperty("КлавишаВыходаИзменена", "QuitKeyChanged")]
-        public TfAction QuitKeyChanged { get; set; }
-
-        [ContextProperty("КлавишаНажата", "KeyPress")]
-        public TfAction KeyPress { get; set; }
 
         [ContextProperty("МышьНадЭлементом", "MouseEnter")]
         public TfAction MouseEnter { get; set; }
@@ -581,32 +565,8 @@ namespace ostgui
         [ContextProperty("МышьПокинулаЭлемент", "MouseLeave")]
         public TfAction MouseLeave { get; set; }
 
-        [ContextProperty("ПриВходе", "Enter")]
-        public TfAction Enter { get; set; }
-
-        [ContextProperty("ПриЗагруке", "Loaded")]
-        public TfAction Loaded { get; set; }
-
-        [ContextProperty("ПриЗакрытии", "Closing")]
-        public TfAction Closing { get; set; }
-
         [ContextProperty("ПриНажатииМыши", "MouseClick")]
         public TfAction MouseClick { get; set; }
-
-        [ContextProperty("РазмерИзменен", "Resized")]
-        public TfAction Resized { get; set; }
-
-        [ContextProperty("ФокусируемостьИзменена", "CanFocusChanged")]
-        public TfAction CanFocusChanged { get; set; }
-
-        [ContextProperty("ЭлементАктивирован", "InitializedItem")]
-        public TfAction InitializedItem { get; set; }
-
-        [ContextProperty("ЭлементПокинут", "Leave")]
-        public TfAction Leave { get; set; }
-
-        [ContextProperty("ЭлементУдален", "Removed")]
-        public TfAction Removed { get; set; }
 
         [ContextMethod("ВерхнийРодитель", "GetTopSuperView")]
         public IValue GetTopSuperView()

@@ -1,6 +1,7 @@
 ﻿using System;
 using ScriptEngine.Machine.Contexts;
 using ScriptEngine.Machine;
+using Terminal.Gui;
 
 namespace ostgui
 {
@@ -14,6 +15,7 @@ namespace ostgui
             M_Window = new Terminal.Gui.Window();
             base.M_Toplevel = M_Window;
             OneScriptTerminalGui.AddToHashtable(M_Window, this);
+            SetActions(M_Window);
         }
 
         public Window(string p1)
@@ -21,6 +23,7 @@ namespace ostgui
             M_Window = new Terminal.Gui.Window(p1);
             base.M_Toplevel = M_Window;
             OneScriptTerminalGui.AddToHashtable(M_Window, this);
+            SetActions(M_Window);
         }
 
         public Window(Rect p1, string p2)
@@ -28,6 +31,7 @@ namespace ostgui
             M_Window = new Terminal.Gui.Window(p1.M_Rect, p2);
             base.M_Toplevel = M_Window;
             OneScriptTerminalGui.AddToHashtable(M_Window, this);
+            SetActions(M_Window);
         }
 
         public Window(string p1, int p2, Border p3)
@@ -35,6 +39,7 @@ namespace ostgui
             M_Window = new Terminal.Gui.Window(p1, p2, p3.M_Border);
             base.M_Toplevel = M_Window;
             OneScriptTerminalGui.AddToHashtable(M_Window, this);
+            SetActions(M_Window);
         }
 
         public Window(Rect p1, string p2, int p3, Border p4)
@@ -42,6 +47,98 @@ namespace ostgui
             M_Window = new Terminal.Gui.Window(p1.M_Rect, p2, p3, p4.M_Border);
             base.M_Toplevel = M_Window;
             OneScriptTerminalGui.AddToHashtable(M_Window, this);
+            SetActions(M_Window);
+        }
+
+        private void SetActions(Terminal.Gui.Window window)
+        {
+            window.TitleChanged += Window_TitleChanged;
+            M_Window.Subviews[0].MouseEnter += Window_MouseEnter;
+            M_Window.Subviews[0].MouseLeave += Window_MouseLeave;
+            M_Window.MouseClick += Window_MouseClick;
+            M_Window.Subviews[0].Leave += M_Window_Leave;
+        }
+
+        private void M_Window_Leave(Terminal.Gui.View.FocusEventArgs obj)
+        {
+            if (dll_obj.Leave != null)
+            {
+                TfEventArgs TfEventArgs1 = new TfEventArgs();
+                TfEventArgs1.sender = dll_obj;
+                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.Leave);
+                OneScriptTerminalGui.Event = TfEventArgs1;
+                OneScriptTerminalGui.ExecuteEvent(dll_obj.Leave);
+            }
+        }
+
+        private void Window_MouseClick(Terminal.Gui.View.MouseEventArgs obj)
+        {
+            if (dll_obj.MouseClick != null)
+            {
+                TfEventArgs TfEventArgs1 = new TfEventArgs();
+                TfEventArgs1.sender = dll_obj;
+                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MouseClick);
+                TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
+                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(M_Window).dll_obj;
+                TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
+                TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
+                OneScriptTerminalGui.Event = TfEventArgs1;
+                OneScriptTerminalGui.ExecuteEvent(dll_obj.MouseClick);
+            }
+        }
+
+        private void Window_MouseLeave(Terminal.Gui.View.MouseEventArgs obj)
+        {
+            if (dll_obj.MouseLeave != null)
+            {
+                TfEventArgs TfEventArgs1 = new TfEventArgs();
+                TfEventArgs1.sender = dll_obj;
+                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MouseLeave);
+                TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
+                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj.MouseEvent.View).dll_obj;
+                TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
+                TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
+                OneScriptTerminalGui.Event = TfEventArgs1;
+                OneScriptTerminalGui.ExecuteEvent(dll_obj.MouseLeave);
+            }
+        }
+
+        private void Window_MouseEnter(Terminal.Gui.View.MouseEventArgs obj)
+        {
+            if (dll_obj.MouseEnter != null)
+            {
+                TfEventArgs TfEventArgs1 = new TfEventArgs();
+                TfEventArgs1.sender = dll_obj;
+                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MouseEnter);
+                TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
+                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(M_Window).dll_obj;
+                TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
+                TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
+                OneScriptTerminalGui.Event = TfEventArgs1;
+                OneScriptTerminalGui.ExecuteEvent(dll_obj.MouseEnter);
+            }
+        }
+
+        private void Window_TitleChanged(Terminal.Gui.Window.TitleEventArgs obj)
+        {
+            if (dll_obj.TitleChanged != null)
+            {
+                TfEventArgs TfEventArgs1 = new TfEventArgs();
+                TfEventArgs1.sender = dll_obj;
+                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.TitleChanged);
+                TfEventArgs1.cancel = ValueFactory.Create(obj.Cancel);
+                TfEventArgs1.newTitle = ValueFactory.Create(obj.NewTitle.ToString());
+                TfEventArgs1.oldTitle = ValueFactory.Create(obj.OldTitle.ToString());
+                OneScriptTerminalGui.Event = TfEventArgs1;
+                OneScriptTerminalGui.ExecuteEvent(dll_obj.TitleChanged);
+
+                if (TfEventArgs1.Cancel)
+                {
+                    M_Window.TitleChanged -= Window_TitleChanged;
+                    dll_obj.Title = TfEventArgs1.OldTitle;
+                    M_Window.TitleChanged += Window_TitleChanged;
+                }
+            }
         }
 
         public string Title
@@ -100,12 +197,23 @@ namespace ostgui
             Base_obj = Window1;
         }
 
-        public Window Base_obj;
-
+        public TfAction Activate { get; set; }
+        public TfAction Deactivate { get; set; }
+        public TfAction AllChildClosed { get; set; }
+        public TfAction KeyPress { get; set; }
+        public TfAction InitializedItem { get; set; }
+        public TfAction Added { get; set; }
+        public TfAction Removed { get; set; }
         public TfAction LayoutComplete { get; set; }
         public TfAction LayoutStarted { get; set; }
         public TfAction DrawContentComplete { get; set; }
         public TfAction DrawContent { get; set; }
+        public TfAction TitleChanging { get; set; }
+        public TfAction Loaded { get; set; }
+        public TfAction Resized { get; set; }
+        public TfAction Closing { get; set; }
+
+        public Window Base_obj;
 
         [ContextProperty("ВертикальноеВыравниваниеТекста", "VerticalTextAlignment")]
         public int VerticalTextAlignment
@@ -357,53 +465,14 @@ namespace ostgui
             set { Base_obj.Width = value.Base_obj; }
         }
 
-        [ContextProperty("Активирован", "Activate")]
-        public TfAction Activate { get; set; }
-
         [ContextProperty("ВидимостьИзменена", "VisibleChanged")]
         public TfAction VisibleChanged { get; set; }
-
-        [ContextProperty("ВсеДочерниеЗакрыты", "AllChildClosed")]
-        public TfAction AllChildClosed { get; set; }
-
-        [ContextProperty("Выгружен", "Unloaded")]
-        public TfAction Unloaded { get; set; }
-
-        [ContextProperty("Готов", "Ready")]
-        public TfAction Ready { get; set; }
-
-        [ContextProperty("Деактивирован", "Deactivate")]
-        public TfAction Deactivate { get; set; }
-
-        [ContextProperty("ДобавленЭлемент", "Added")]
-        public TfAction Added { get; set; }
 
         [ContextProperty("ДоступностьИзменена", "EnabledChanged")]
         public TfAction EnabledChanged { get; set; }
 
-        [ContextProperty("ДочернийВыгружен", "ChildUnloaded")]
-        public TfAction ChildUnloaded { get; set; }
-
-        [ContextProperty("ДочернийЗагружен", "ChildLoaded")]
-        public TfAction ChildLoaded { get; set; }
-
-        [ContextProperty("ДочернийЗакрыт", "ChildClosed")]
-        public TfAction ChildClosed { get; set; }
-
         [ContextProperty("ЗаголовокИзменен", "TitleChanged")]
         public TfAction TitleChanged { get; set; }
-
-        [ContextProperty("ЗаголовокИзменяется", "TitleChanging")]
-        public TfAction TitleChanging { get; set; }
-
-        [ContextProperty("Закрыт", "Closed")]
-        public TfAction Closed { get; set; }
-
-        [ContextProperty("КлавишаВыходаИзменена", "QuitKeyChanged")]
-        public TfAction QuitKeyChanged { get; set; }
-
-        [ContextProperty("КлавишаНажата", "KeyPress")]
-        public TfAction KeyPress { get; set; }
 
         [ContextProperty("МышьНадЭлементом", "MouseEnter")]
         public TfAction MouseEnter { get; set; }
@@ -414,29 +483,11 @@ namespace ostgui
         [ContextProperty("ПриВходе", "Enter")]
         public TfAction Enter { get; set; }
 
-        [ContextProperty("ПриЗагруке", "Loaded")]
-        public TfAction Loaded { get; set; }
-
-        [ContextProperty("ПриЗакрытии", "Closing")]
-        public TfAction Closing { get; set; }
-
         [ContextProperty("ПриНажатииМыши", "MouseClick")]
         public TfAction MouseClick { get; set; }
 
-        [ContextProperty("РазмерИзменен", "Resized")]
-        public TfAction Resized { get; set; }
-
-        [ContextProperty("ФокусируемостьИзменена", "CanFocusChanged")]
-        public TfAction CanFocusChanged { get; set; }
-
-        [ContextProperty("ЭлементАктивирован", "InitializedItem")]
-        public TfAction InitializedItem { get; set; }
-
-        [ContextProperty("ЭлементПокинут", "Leave")]
+        [ContextProperty("ПриУходе", "Leave")]
         public TfAction Leave { get; set; }
-
-        [ContextProperty("ЭлементУдален", "Removed")]
-        public TfAction Removed { get; set; }
 
         [ContextMethod("ВерхнийРодитель", "GetTopSuperView")]
         public IValue GetTopSuperView()

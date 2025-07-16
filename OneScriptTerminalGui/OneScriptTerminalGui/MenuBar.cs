@@ -13,6 +13,76 @@ namespace ostgui
             M_MenuBar = new Terminal.Gui.MenuBar();
             base.M_View = M_MenuBar;
             OneScriptTerminalGui.AddToHashtable(M_MenuBar, this);
+
+            M_MenuBar.MenuAllClosed += M_MenuBar_MenuAllClosed;
+            M_MenuBar.MenuOpened += M_MenuBar_MenuOpened;
+            M_MenuBar.MenuOpening += M_MenuBar_MenuOpening;
+            M_MenuBar.MouseLeave += M_MenuBar_MouseLeave;
+        }
+
+        private void M_MenuBar_MouseLeave(Terminal.Gui.View.MouseEventArgs obj)
+        {
+            if (dll_obj.MouseLeave != null)
+            {
+                TfEventArgs TfEventArgs1 = new TfEventArgs();
+                TfEventArgs1.sender = dll_obj;
+                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MouseLeave);
+                TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
+                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(M_MenuBar).dll_obj;
+                TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
+                TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
+                OneScriptTerminalGui.Event = TfEventArgs1;
+                OneScriptTerminalGui.ExecuteEvent(dll_obj.MouseLeave);
+            }
+        }
+
+        private void M_MenuBar_MenuOpening(Terminal.Gui.MenuOpeningEventArgs obj)
+        {
+            if (dll_obj.MenuOpening != null)
+            {
+                obj.NewMenuBarItem = obj.CurrentMenu;
+                TfEventArgs TfEventArgs1 = new TfEventArgs();
+                TfEventArgs1.sender = dll_obj;
+                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MenuOpening);
+                TfEventArgs1.cancel = ValueFactory.Create(false);
+                TfEventArgs1.cancel = ValueFactory.Create(obj.Cancel);
+                TfEventArgs1.currentMenu = OneScriptTerminalGui.RevertEqualsObj(obj.CurrentMenu).dll_obj;
+                TfEventArgs1.newMenuBarItem = OneScriptTerminalGui.RevertEqualsObj(obj.NewMenuBarItem).dll_obj;
+                OneScriptTerminalGui.Event = TfEventArgs1;
+                OneScriptTerminalGui.ExecuteEvent(dll_obj.MenuOpening);
+
+                if (TfEventArgs1.Cancel)
+                {
+                    M_MenuBar.MenuOpening -= M_MenuBar_MenuOpening;
+                    obj.NewMenuBarItem = ((TfMenuBarItem)TfEventArgs1.NewMenuBarItem).Base_obj.M_MenuBarItem;
+                    M_MenuBar.MenuOpening += M_MenuBar_MenuOpening;
+                }
+            }
+        }
+
+        private void M_MenuBar_MenuOpened(Terminal.Gui.MenuItem obj)
+        {
+            if (dll_obj.MenuOpened != null)
+            {
+                TfEventArgs TfEventArgs1 = new TfEventArgs();
+                TfEventArgs1.sender = dll_obj;
+                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MenuOpened);
+                TfEventArgs1.menuItem = OneScriptTerminalGui.RevertEqualsObj(obj).dll_obj;
+                OneScriptTerminalGui.Event = TfEventArgs1;
+                OneScriptTerminalGui.ExecuteEvent(dll_obj.MenuOpened);
+            }
+        }
+
+        private void M_MenuBar_MenuAllClosed()
+        {
+            if (dll_obj.MenuAllClosed != null)
+            {
+                TfEventArgs TfEventArgs1 = new TfEventArgs();
+                TfEventArgs1.sender = dll_obj;
+                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MenuAllClosed);
+                OneScriptTerminalGui.Event = TfEventArgs1;
+                OneScriptTerminalGui.ExecuteEvent(dll_obj.MenuAllClosed);
+            }
         }
 
         public bool UseSubMenusSingleFrame
@@ -40,7 +110,8 @@ namespace ostgui
 
         public bool CloseMenu()
         {
-            return M_MenuBar.CloseMenu();
+            M_MenuBar.OnMenuAllClosed();
+            return M_MenuBar.CloseMenu(true);
         }
 
         public void OpenMenu()
@@ -98,13 +169,19 @@ namespace ostgui
             menusCollection.M_MenuBar = Base_obj;
         }
 
-        public MenuBar Base_obj;
-
         public TfAction LayoutComplete { get; set; }
         public TfAction LayoutStarted { get; set; }
         public TfAction DrawContentComplete { get; set; }
         public TfAction DrawContent { get; set; }
         public TfAction ShortcutAction { get; set; }
+        public TfAction Added { get; set; }
+        public TfAction InitializedItem { get; set; }
+        public TfAction MenuClosing { get; set; }
+        public TfAction KeyPress { get; set; }
+        public TfAction Removed { get; set; }
+        public TfAction MouseClick { get; set; }
+
+        public MenuBar Base_obj;
 
         [ContextProperty("Данные", "Data")]
         public IValue Data
@@ -199,17 +276,11 @@ namespace ostgui
         [ContextProperty("ВсеЗакрыты", "MenuAllClosed")]
         public TfAction MenuAllClosed { get; set; }
 
-        [ContextProperty("ДобавленЭлемент", "Added")]
-        public TfAction Added { get; set; }
-
         [ContextProperty("ДоступностьИзменена", "EnabledChanged")]
         public TfAction EnabledChanged { get; set; }
 
-        [ContextProperty("КлавишаВызоваИзменена", "HotKeyChanged")]
-        public TfAction HotKeyChanged { get; set; }
-
-        [ContextProperty("КлавишаНажата", "KeyPress")]
-        public TfAction KeyPress { get; set; }
+        [ContextProperty("МенюОткрыто", "MenuOpened")]
+        public TfAction MenuOpened { get; set; }
 
         [ContextProperty("МышьНадЭлементом", "MouseEnter")]
         public TfAction MouseEnter { get; set; }
@@ -217,32 +288,8 @@ namespace ostgui
         [ContextProperty("МышьПокинулаЭлемент", "MouseLeave")]
         public TfAction MouseLeave { get; set; }
 
-        [ContextProperty("Открыто", "MenuOpened")]
-        public TfAction MenuOpened { get; set; }
-
-        [ContextProperty("ПриВходе", "Enter")]
-        public TfAction Enter { get; set; }
-
-        [ContextProperty("ПриЗакрытии", "MenuClosing")]
-        public TfAction MenuClosing { get; set; }
-
-        [ContextProperty("ПриНажатииМыши", "MouseClick")]
-        public TfAction MouseClick { get; set; }
-
         [ContextProperty("ПриОткрытии", "MenuOpening")]
         public TfAction MenuOpening { get; set; }
-
-        [ContextProperty("ФокусируемостьИзменена", "CanFocusChanged")]
-        public TfAction CanFocusChanged { get; set; }
-
-        [ContextProperty("ЭлементАктивирован", "InitializedItem")]
-        public TfAction InitializedItem { get; set; }
-
-        [ContextProperty("ЭлементПокинут", "Leave")]
-        public TfAction Leave { get; set; }
-
-        [ContextProperty("ЭлементУдален", "Removed")]
-        public TfAction Removed { get; set; }
 
         [ContextMethod("ВерхнийРодитель", "GetTopSuperView")]
         public IValue GetTopSuperView()

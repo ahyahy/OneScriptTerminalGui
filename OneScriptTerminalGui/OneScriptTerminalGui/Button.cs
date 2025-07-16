@@ -107,12 +107,16 @@ namespace ostgui
             Base_obj = Button1;
         }
 
-        public Button Base_obj;
-
         public TfAction LayoutComplete { get; set; }
         public TfAction LayoutStarted { get; set; }
         public TfAction DrawContentComplete { get; set; }
         public TfAction DrawContent { get; set; }
+        public TfAction InitializedItem { get; set; }
+        public TfAction CanFocusChanged { get; set; }
+        public TfAction Added { get; set; }
+        public TfAction Removed { get; set; }
+
+        public Button Base_obj;
 
         [ContextProperty("ВертикальноеВыравниваниеТекста", "VerticalTextAlignment")]
         public int VerticalTextAlignment
@@ -371,9 +375,6 @@ namespace ostgui
         [ContextProperty("ВидимостьИзменена", "VisibleChanged")]
         public TfAction VisibleChanged { get; set; }
 
-        [ContextProperty("ДобавленЭлемент", "Added")]
-        public TfAction Added { get; set; }
-
         [ContextProperty("ДоступностьИзменена", "EnabledChanged")]
         public TfAction EnabledChanged { get; set; }
 
@@ -398,20 +399,11 @@ namespace ostgui
         [ContextProperty("ПриНажатииМыши", "MouseClick")]
         public TfAction MouseClick { get; set; }
 
-        [ContextProperty("СочетаниеКлавишДействие", "ShortcutAction")]
-        public TfAction ShortcutAction { get; set; }
-
-        [ContextProperty("ФокусируемостьИзменена", "CanFocusChanged")]
-        public TfAction CanFocusChanged { get; set; }
-
-        [ContextProperty("ЭлементАктивирован", "InitializedItem")]
-        public TfAction InitializedItem { get; set; }
-
-        [ContextProperty("ЭлементПокинут", "Leave")]
+        [ContextProperty("ПриУходе", "Leave")]
         public TfAction Leave { get; set; }
 
-        [ContextProperty("ЭлементУдален", "Removed")]
-        public TfAction Removed { get; set; }
+        [ContextProperty("СочетаниеКлавишДействие", "ShortcutAction")]
+        public TfAction ShortcutAction { get; set; }
 
         [ContextMethod("ВерхнийРодитель", "GetTopSuperView")]
         public IValue GetTopSuperView()

@@ -66,6 +66,9 @@ namespace ostgui
         public TfAction LayoutStarted { get; set; }
         public TfAction DrawContentComplete { get; set; }
         public TfAction DrawContent { get; set; }
+        public TfAction Added { get; set; }
+        public TfAction InitializedItem { get; set; }
+        public TfAction Removed { get; set; }
 
         [ContextProperty("Данные", "Data")]
         public IValue Data
@@ -144,14 +147,8 @@ namespace ostgui
         [ContextProperty("ВидимостьИзменена", "VisibleChanged")]
         public TfAction VisibleChanged { get; set; }
 
-        [ContextProperty("ДобавленЭлемент", "Added")]
-        public TfAction Added { get; set; }
-
         [ContextProperty("ДоступностьИзменена", "EnabledChanged")]
         public TfAction EnabledChanged { get; set; }
-
-        [ContextProperty("КлавишаНажата", "KeyPress")]
-        public TfAction KeyPress { get; set; }
 
         [ContextProperty("МышьНадЭлементом", "MouseEnter")]
         public TfAction MouseEnter { get; set; }
@@ -159,26 +156,8 @@ namespace ostgui
         [ContextProperty("МышьПокинулаЭлемент", "MouseLeave")]
         public TfAction MouseLeave { get; set; }
 
-        [ContextProperty("ПриВходе", "Enter")]
-        public TfAction Enter { get; set; }
-
         [ContextProperty("ПриНажатииМыши", "MouseClick")]
         public TfAction MouseClick { get; set; }
-
-        [ContextProperty("СочетаниеКлавишДействие", "ShortcutAction")]
-        public TfAction ShortcutAction { get; set; }
-
-        [ContextProperty("ФокусируемостьИзменена", "CanFocusChanged")]
-        public TfAction CanFocusChanged { get; set; }
-
-        [ContextProperty("ЭлементАктивирован", "InitializedItem")]
-        public TfAction InitializedItem { get; set; }
-
-        [ContextProperty("ЭлементПокинут", "Leave")]
-        public TfAction Leave { get; set; }
-
-        [ContextProperty("ЭлементУдален", "Removed")]
-        public TfAction Removed { get; set; }
 
         [ContextMethod("ВерхнийРодитель", "GetTopSuperView")]
         public IValue GetTopSuperView()

@@ -61,11 +61,6 @@ namespace ostgui
         {
             get { return (int)M_Attribute.Background; }
         }
-
-        public Terminal.Gui.Attribute Get()
-        {
-            return Terminal.Gui.Attribute.Get();
-        }
     }
 
     [ContextClass("ТфАтрибут", "TfAttribute")]
@@ -125,12 +120,6 @@ namespace ostgui
         public int Background
         {
             get { return Base_obj.Background; }
-        }
-
-        [ContextMethod("Получить", "Get")]
-        public TfAttribute Get()
-        {
-            return new TfAttribute(Base_obj.Get());
         }
 
     }

@@ -35,7 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NStack, Version=1.1.1.0, Culture=neutral, PublicKeyToken=b1bc8ab4b95b4a4a, processorArchitecture=MSIL">
-      <HintPath>..\packages\NStack.Core.1.1.1\lib\netstandard2.0\NStack.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\NStack.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="ScriptEngine, Version=1.8.4.5, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -48,12 +51,12 @@
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.CodeDom, Version=9.0.0.4, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.CodeDom.9.0.4\lib\net462\System.CodeDom.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\System.CodeDom.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Management" />
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
-    </Reference>
+    <Reference Include="System.ValueTuple" />
     <Reference Include="Terminal.Gui, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e2bd4b710393a695, processorArchitecture=MSIL">
       <HintPath>..\packages\Terminal.Gui.1.19.0\lib\net472\Terminal.Gui.dll</HintPath>
     </Reference>
@@ -67,10 +70,11 @@
     <Compile Include="Color.cs" />
     <Compile Include="Colors.cs" />
     <Compile Include="ColorScheme.cs" />
-    <Compile Include="Command.cs" />
+    <Compile Include="CommandTUI.cs" />
     <Compile Include="ConsoleKey.cs" />
     <Compile Include="CursorVisibility.cs" />
     <Compile Include="Dim.cs" />
+    <Compile Include="Emo.cs" />
     <Compile Include="EventArgs.cs" />
     <Compile Include="Keys.cs" />
     <Compile Include="LayoutStyle.cs" />
@@ -86,6 +90,11 @@
     <Compile Include="Point.cs" />
     <Compile Include="Pos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Rect.cs" />
     <Compile Include="Responder.cs" />
     <Compile Include="Size.cs" />
@@ -105,6 +114,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NStack.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="System.CodeDom.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="System.ValueTuple.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
