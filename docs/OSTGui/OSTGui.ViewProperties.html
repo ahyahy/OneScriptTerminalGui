@@ -54,7 +54,7 @@
                     </TR>
                     <TR vAlign=top>
                         <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.ViewBoundsProperty.html">Границы&nbsp;(Bounds)</A></TD>
-                        <TD width="50%">Возвращает прямоугольник, используемый для этого элемента.</TD>
+                        <TD width="50%">Возвращает прямоугольник, используемый для элемента.</TD>
                     </TR>
                     <TR vAlign=top>
                         <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.ViewDataProperty.html">Данные&nbsp;(Data)</A></TD>
@@ -86,11 +86,15 @@
                     </TR>
                     <TR vAlign=top>
                         <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.ViewHotKeyProperty.html">КлавишаВызова&nbsp;(HotKey)</A></TD>
-                        <TD width="50%">Возвращает или задает клавишу вызова, определенную для этого элемента. Событие нажатия сработает, если элемент имеет фокус.</TD>
+                        <TD width="50%">Возвращает клавишу вызова, определенную для элемента. Событие нажатия сработает, если элемент имеет фокус.</TD>
                     </TR>
                     <TR vAlign=top>
                         <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.ViewLeftProperty.html">Лево&nbsp;(Left)</A></TD>
                         <TD width="50%">Возвращает объект <B>Позиция (Pos)</B>, соответствующий координате по оси X левого края элемента.</TD>
+                    </TR>
+                    <TR vAlign=top>
+                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.ViewTagProperty.html">Метка&nbsp;(Tag)</A></TD>
+                        <TD width="50%">Возвращает или задает объект, содержащий дополнительные данные.</TD>
                     </TR>
                     <TR vAlign=top>
                         <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.ViewTextDirectionProperty.html">НаправлениеТекста&nbsp;(TextDirection)</A></TD>
@@ -99,6 +103,10 @@
                     <TR vAlign=top>
                         <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.ViewBottomProperty.html">Низ&nbsp;(Bottom)</A></TD>
                         <TD width="50%">Возвращает объект <B>Позиция (Pos)</B>, соответствующий координате по оси Y, являющейся суммой значений свойств <B>Игрек (Y)</B> и <B>Высота (Height)</B> данного элемента.</TD>
+                    </TR>
+                    <TR vAlign=top>
+                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.ViewDisableHotKeyProperty.html">ОтключитьКлавишуВызова&nbsp;(DisableHotKey)</A></TD>
+                        <TD width="50%">Отключает поддержку клавиши вызова для элемента. Значение по умолчанию - <B>Ложь</B>.</TD>
                     </TR>
                     <TR vAlign=top>
                         <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.ViewVisibleProperty.html">Отображать&nbsp;(Visible)</A></TD>
@@ -122,15 +130,7 @@
                     </TR>
                     <TR vAlign=top>
                         <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.ViewSuperViewProperty.html">Родитель&nbsp;(SuperView)</A></TD>
-                        <TD width="50%">Возвращает контейнер (родителя) для этого элемента или <B>Неопределено</B>, если этот элемент не был добавлен в контейнер.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.ViewHotKeySpecifierProperty.html">СимволКлавишиВызова&nbsp;(HotKeySpecifier)</A></TD>
-                        <TD width="50%">Возвращает или задает символ для клавиши вызова (например, <B>"_"</B>). Установите <B>Неопределено</B>, чтобы отключить поддержку клавиши вызова для этого элемента. По умолчанию это <B>Неопределено</B>.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.ViewShortcutProperty.html">СочетаниеКлавиш&nbsp;(Shortcut)</A></TD>
-                        <TD width="50%">Возвращает или задает сочетание клавиш.</TD>
+                        <TD width="50%">Возвращает контейнер (родителя) для элемента или <B>Неопределено</B>, если этот элемент не был добавлен в контейнер.</TD>
                     </TR>
                     <TR vAlign=top>
                         <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.ViewLayoutStyleProperty.html">СтильКомпоновки&nbsp;(LayoutStyle)</A></TD>
@@ -158,7 +158,7 @@
                     </TR>
                     <TR vAlign=top>
                         <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.ViewColorSchemeProperty.html">ЦветоваяСхема&nbsp;(ColorScheme)</A></TD>
-                        <TD width="50%">Возвращает или задает цветовую схему для этого элемента. Если она не определена, будет возвращена цветовая схема родителя.</TD>
+                        <TD width="50%">Возвращает или задает цветовую схему для элемента. Если она не определена, будет возвращена цветовая схема родителя.</TD>
                     </TR>
                     <TR vAlign=top>
                         <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.ViewWidthProperty.html">Ширина&nbsp;(Width)</A></TD>
