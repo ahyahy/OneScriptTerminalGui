@@ -117,14 +117,62 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="NStack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\NStack.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ctxCopy" xml:space="preserve">
+    <value>_Copy</value>
   </data>
+  <data name="ctxCut" xml:space="preserve">
+    <value>Cu_t</value>
+  </data>
+  <data name="ctxDeleteAll" xml:space="preserve">
+    <value>_Delete All</value>
+  </data>
+  <data name="ctxPaste" xml:space="preserve">
+    <value>_Paste</value>
+  </data>
+  <data name="ctxRedo" xml:space="preserve">
+    <value>_Redo</value>
+  </data>
+  <data name="ctxSelectAll" xml:space="preserve">
+    <value>_Select All</value>
+  </data>
+  <data name="ctxUndo" xml:space="preserve">
+    <value>_Undo</value>
+  </data>
+  <data name="fdDirectory" xml:space="preserve">
+    <value>Directory</value>
+  </data>
+  <data name="fdFile" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="fdOpen" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="fdSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="fdSaveAs" xml:space="preserve">
+    <value>Save as</value>
+  </data>
+  <data name="fdSelectFolder" xml:space="preserve">
+    <value>Select folder</value>
+  </data>
+  <data name="fdSelectMixed" xml:space="preserve">
+    <value>Select Mixed</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="System_CodeDom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\System.CodeDom.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="System_ValueTuple" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\System.ValueTuple.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="wzBack" xml:space="preserve">
+    <value>_Back</value>
+  </data>
+  <data name="wzFinish" xml:space="preserve">
+    <value>Fi_nish</value>
+  </data>
+  <data name="wzNext" xml:space="preserve">
+    <value>_Next...</value>
   </data>
 </root>

@@ -56,10 +56,8 @@ namespace ostgui
             Base_obj = StatusBar1;
 
             statusBarItems = new TfStatusBarItems();
-            statusBarItems.M_StatusBar = Base_obj;
+            statusBarItems.M_StatusBar = Base_obj.M_StatusBar;
         }
-
-        public StatusBar Base_obj;
 
         public TfAction HotKeyChanged { get; set; }
         public TfAction LayoutComplete { get; set; }
@@ -69,6 +67,9 @@ namespace ostgui
         public TfAction Added { get; set; }
         public TfAction InitializedItem { get; set; }
         public TfAction Removed { get; set; }
+        public TfAction KeyPress { get; set; }
+
+        public StatusBar Base_obj;
 
         [ContextProperty("Данные", "Data")]
         public IValue Data
@@ -116,6 +117,13 @@ namespace ostgui
         {
             get { return new TfRect(Base_obj.Frame.M_Rect.X, Base_obj.Frame.M_Rect.Y, Base_obj.Frame.M_Rect.Width, Base_obj.Frame.M_Rect.Height); }
             set { Base_obj.Frame = value.Base_obj; }
+        }
+
+        [ContextProperty("Метка", "Tag")]
+        public IValue Tag
+        {
+            get { return Base_obj.Tag; }
+            set { Base_obj.Tag = value; }
         }
 
         [ContextProperty("Отображать", "Visible")]

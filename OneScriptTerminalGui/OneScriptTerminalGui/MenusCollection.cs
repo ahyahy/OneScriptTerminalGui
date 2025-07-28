@@ -6,7 +6,7 @@ namespace ostgui
     public class TfMenusCollection : AutoContext<TfMenusCollection>
     {
 
-        public ostgui.MenuBar M_MenuBar;
+        public Terminal.Gui.MenuBar M_MenuBar;
 
         public Terminal.Gui.MenuBarItem[] M_Object
         {
@@ -27,6 +27,7 @@ namespace ostgui
             M_Object.CopyTo(MenuBarItem2, 0);
             MenuBarItem2[M_Object.Length] = p1.Base_obj.M_MenuBarItem;
             M_Object = MenuBarItem2;
+            p1.M_MenuBar = M_MenuBar;
         }
 
         [ContextMethod("Очистить", "Clear")]

@@ -1,6 +1,8 @@
 ﻿using System;
 using ScriptEngine.Machine.Contexts;
 using ScriptEngine.Machine;
+using ScriptEngine.HostedScript.Library.ValueList;
+using System.Collections;
 
 namespace ostgui
 {
@@ -115,6 +117,7 @@ namespace ostgui
         public TfAction CanFocusChanged { get; set; }
         public TfAction Added { get; set; }
         public TfAction Removed { get; set; }
+        public TfAction HotKeyChanged { get; set; }
 
         public Button Base_obj;
 
@@ -216,13 +219,19 @@ namespace ostgui
         public int HotKey
         {
             get { return Base_obj.HotKey; }
-            set { Base_obj.HotKey = value; }
         }
 
         [ContextProperty("Лево", "Left")]
         public TfPos Left
         {
             get { return new TfPos(Base_obj.Left); }
+        }
+
+        [ContextProperty("Метка", "Tag")]
+        public IValue Tag
+        {
+            get { return Base_obj.Tag; }
+            set { Base_obj.Tag = value; }
         }
 
         [ContextProperty("НаправлениеТекста", "TextDirection")]
@@ -236,6 +245,26 @@ namespace ostgui
         public TfPos Bottom
         {
             get { return new TfPos(Base_obj.Bottom); }
+        }
+
+        private bool disableHotKey = false;
+        [ContextProperty("ОтключитьКлавишуВызова", "DisableHotKey")]
+        public bool DisableHotKey
+        {
+            get { return disableHotKey; }
+            set
+            {
+                if (value)
+                {
+                    Base_obj.HotKeySpecifier = (Rune)0xFFFF;
+                    disableHotKey = true;
+                }
+                else
+                {
+                    Base_obj.HotKeySpecifier = new Rune("_".ToCharArray()[0]);
+                    disableHotKey = false;
+                }
+            }
         }
 
         [ContextProperty("Отображать", "Visible")]
@@ -282,40 +311,6 @@ namespace ostgui
         public IValue SuperView
         {
             get { return OneScriptTerminalGui.RevertEqualsObj(Base_obj.SuperView.M_View).dll_obj; }
-        }
-
-        [ContextProperty("СимволКлавишиВызова", "HotKeySpecifier")]
-        public IValue HotKeySpecifier
-        {
-            get
-            {
-                if (Base_obj.HotKeySpecifier == (Rune)0xFFFF)
-                {
-                    return ValueFactory.CreateNullValue();
-                }
-                else
-                {
-                    return ValueFactory.Create(Base_obj.HotKeySpecifier.ToString());
-                }
-            }
-            set
-            {
-                if (value.SystemType.Name == "Неопределено")
-                {
-                    Base_obj.HotKeySpecifier = (Rune)0xFFFF;
-                }
-                else
-                {
-                    Base_obj.HotKeySpecifier = value.AsString().ToCharArray()[0];
-                }
-            }
-        }
-
-        [ContextProperty("СочетаниеКлавиш", "Shortcut")]
-        public int Shortcut
-        {
-            get { return Base_obj.Shortcut; }
-            set { Base_obj.Shortcut = value; }
         }
 
         [ContextProperty("СтильКомпоновки", "LayoutStyle")]
@@ -378,9 +373,6 @@ namespace ostgui
         [ContextProperty("ДоступностьИзменена", "EnabledChanged")]
         public TfAction EnabledChanged { get; set; }
 
-        [ContextProperty("КлавишаВызоваИзменена", "HotKeyChanged")]
-        public TfAction HotKeyChanged { get; set; }
-
         [ContextProperty("КлавишаНажата", "KeyPress")]
         public TfAction KeyPress { get; set; }
 
@@ -439,6 +431,12 @@ namespace ostgui
         public void Add(IValue p1)
         {
             Base_obj.Add(((dynamic)p1).Base_obj);
+        }
+
+        [ContextMethod("ДобавитьСочетаниеКлавиш", "AddShortcut")]
+        public void AddShortcut(decimal p1)
+        {
+            OneScriptTerminalGui.AddToShortcutDictionary(p1, this);
         }
 
         [ContextMethod("Заполнить", "Fill")]
@@ -530,6 +528,23 @@ namespace ostgui
             }
         }
 
+        [ContextMethod("ПолучитьСочетаниеКлавиш", "GetShortcut")]
+        public ValueListImpl GetShortcut()
+        {
+            ValueListImpl ValueListImpl1 = new ValueListImpl();
+            ArrayList ArrayList1 = OneScriptTerminalGui.GetFromShortcutDictionary(this);
+            for (int i = 0; i < ArrayList1.Count; i++)
+            {
+                decimal shortcut = (decimal)ArrayList1[i];
+                ValueListImpl1.Add(ValueFactory.Create(shortcut), OneScriptTerminalGui.instance.Keys.ToStringRu(shortcut));
+            }
+            if (ValueListImpl1.Count() > 0)
+            {
+                return ValueListImpl1;
+            }
+            return null;
+        }
+
         [ContextMethod("Правее", "PlaceRight")]
         public void PlaceRight(IValue p1, int p2)
         {
@@ -564,6 +579,12 @@ namespace ostgui
         public void RemoveAll()
         {
             Base_obj.RemoveAll();
+        }
+
+        [ContextMethod("УдалитьСочетаниеКлавиш", "RemoveShortcut")]
+        public void RemoveShortcut(decimal p1)
+        {
+            OneScriptTerminalGui.RemoveFromShortcutDictionary(p1, this);
         }
 
         [ContextMethod("УстановитьАвтоРазмер", "SetAutoSize")]

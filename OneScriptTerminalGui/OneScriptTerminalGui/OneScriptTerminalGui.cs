@@ -5,6 +5,7 @@ using System.Text;
 using ScriptEngine.Machine.Contexts;
 using ScriptEngine.Machine;
 using ScriptEngine.HostedScript.Library;
+using System.Collections.Generic;
 using Terminal.Gui;
 using System.Reflection;
 
@@ -19,6 +20,10 @@ namespace ostgui
         private static object syncRoot = new Object();
         public static TfEventArgs Event = null;
         public static bool handleEvents = true;
+        public static Dictionary<decimal, ArrayList> shortcutDictionary = new Dictionary<decimal, ArrayList>();
+        public static int lastMeX = -1;
+        public static int lastMeY = -1;
+        public static long lastEventTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
 
         static byte[] StreamToBytes(Stream input)
         {
@@ -103,6 +108,14 @@ namespace ostgui
             return GlobalsManager.GetGlobalContext<SystemGlobalContext>();
         }
 
+        private decimal quitKey;
+        [ContextProperty("КлавишаВыхода", "QuitKey")]
+        public decimal QuitKey
+        {
+            get { return quitKey; }
+            set { quitKey = value; }
+        }
+
         private static TfConsoleKey tf_ConsoleKey = new TfConsoleKey();
         [ContextProperty("КлавишиКонсоли", "ConsoleKey")]
         public TfConsoleKey ConsoleKey
@@ -169,38 +182,6 @@ namespace ostgui
         public void ButtonEnter()
         {
             Application.Driver.SendKeys(System.Char.MinValue, System.ConsoleKey.Enter, false, false, false);
-        }
-
-        [ContextMethod("СтрелкаВправо", "RightArrow")]
-        public void RightArrow()
-        {
-            string str = Application.Driver.RightArrow.ToString();
-            System.Char char1 = Convert.ToChar(str.Substring(0, 1));
-            Application.Driver.SendKeys(char1, System.ConsoleKey.RightArrow, false, false, false);
-        }
-
-        [ContextMethod("СтрелкаВлево", "LeftArrow")]
-        public void LeftArrow()
-        {
-            string str = Application.Driver.LeftArrow.ToString();
-            System.Char char1 = Convert.ToChar(str.Substring(0, 1));
-            Application.Driver.SendKeys(char1, System.ConsoleKey.LeftArrow, false, false, false);
-        }
-
-        [ContextMethod("СтрелкаВниз", "DownArrow")]
-        public void DownArrow()
-        {
-            string str = Application.Driver.DownArrow.ToString();
-            System.Char char1 = Convert.ToChar(str.Substring(0, 1));
-            Application.Driver.SendKeys(char1, System.ConsoleKey.DownArrow, false, false, false);
-        }
-
-        [ContextMethod("СтрелкаВверх", "UpArrow")]
-        public void UpArrow()
-        {
-            string str = Application.Driver.UpArrow.ToString();
-            System.Char char1 = Convert.ToChar(str.Substring(0, 1));
-            Application.Driver.SendKeys(char1, System.ConsoleKey.UpArrow, false, false, false);
         }
 
         [ContextMethod("ПраваяКвадратная", "RightBracket")]
@@ -1167,6 +1148,64 @@ namespace ostgui
                 {
                     hashtable[p1] = p2;
                 }
+            }
+        }
+
+        public static void AddToShortcutDictionary(decimal p1, IValue p2)
+        {
+            if (!shortcutDictionary.ContainsKey(p1))
+            {
+                ArrayList ArrayList1 = new ArrayList();
+                ArrayList1.Add(p2);
+                shortcutDictionary.Add(p1, ArrayList1);
+            }
+            else
+            {
+                ArrayList ArrayList1 = shortcutDictionary[p1];
+                if (!ArrayList1.Contains(p2))
+                {
+                    ArrayList1.Add(p2);
+                }
+            }
+        }
+
+        public static void RemoveFromShortcutDictionary(decimal p1, IValue p2)
+        {
+            if (shortcutDictionary.ContainsKey(p1))
+            {
+                try
+                {
+                    shortcutDictionary[p1].Remove(p2);
+                }
+                catch { }
+            }
+        }
+
+        public static ArrayList GetFromShortcutDictionary(IValue p1)
+        {
+            ArrayList ArrayList1 = new ArrayList();
+            foreach (var item in shortcutDictionary)
+            {
+                for (int i = 0; i < item.Value.Count; i++)
+                {
+                    if (item.Value[i] == p1)
+                    {
+                        ArrayList1.Add(item.Key);
+                    }
+                }
+            }
+            return ArrayList1;
+        }
+
+        public static dynamic RevertShortcut(dynamic shortcut)
+        {
+            try
+            {
+                return shortcutDictionary[shortcut];
+            }
+            catch
+            {
+                return null;
             }
         }
 

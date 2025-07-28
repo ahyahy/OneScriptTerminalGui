@@ -151,6 +151,12 @@ namespace ostgui
         {
             return OneScriptTerminalGui.RevertEqualsObj(M_MenuBar.GetTopSuperView());
         }
+
+        public int OpenIndex
+        {
+            get { return M_MenuBar.OpenIndex; }
+            set { M_MenuBar.OpenIndex = value; }
+        }
     }
 
     [ContextClass("ТфПанельМеню", "TfMenuBar")]
@@ -166,7 +172,7 @@ namespace ostgui
             Base_obj = MenuBar1;
 
             menusCollection = new TfMenusCollection();
-            menusCollection.M_MenuBar = Base_obj;
+            menusCollection.M_MenuBar = Base_obj.M_MenuBar;
         }
 
         public TfAction LayoutComplete { get; set; }
@@ -176,10 +182,14 @@ namespace ostgui
         public TfAction ShortcutAction { get; set; }
         public TfAction Added { get; set; }
         public TfAction InitializedItem { get; set; }
+        public TfAction Initialized { get; set; }
         public TfAction MenuClosing { get; set; }
         public TfAction KeyPress { get; set; }
         public TfAction Removed { get; set; }
         public TfAction MouseClick { get; set; }
+        public TfAction CanFocusChanged { get; set; }
+        public TfAction Enter { get; set; }
+        public TfAction Leave { get; set; }
 
         public MenuBar Base_obj;
 
@@ -224,6 +234,13 @@ namespace ostgui
             set { Base_obj.X = value.Base_obj; }
         }
 
+        [ContextProperty("ИндексОткрываемого", "OpenIndex")]
+        public int OpenIndex
+        {
+            get { return Base_obj.OpenIndex; }
+            set { Base_obj.OpenIndex = value; }
+        }
+
         [ContextProperty("Кадр", "Frame")]
         public TfRect Frame
         {
@@ -236,6 +253,13 @@ namespace ostgui
         {
             get { return Base_obj.Key; }
             set { Base_obj.Key = value; }
+        }
+
+        [ContextProperty("Метка", "Tag")]
+        public IValue Tag
+        {
+            get { return Base_obj.Tag; }
+            set { Base_obj.Tag = value; }
         }
 
         [ContextProperty("Открыто", "IsMenuOpen")]

@@ -7,7 +7,7 @@ namespace ostgui
     public class TfStatusBarItems : AutoContext<TfStatusBarItems>
     {
 
-        public ostgui.StatusBar M_StatusBar;
+        public Terminal.Gui.StatusBar M_StatusBar;
 
         public Terminal.Gui.StatusItem[] M_Object
         {
@@ -22,13 +22,13 @@ namespace ostgui
         }
 
         [ContextMethod("Добавить", "Add")]
-        public TfStatusItem Add(TfStatusItem p1)
+        public void Add(TfStatusItem p1)
         {
             Terminal.Gui.StatusItem[] StatusItem2 = new Terminal.Gui.StatusItem[M_Object.Length + 1];
             M_Object.CopyTo(StatusItem2, 0);
             StatusItem2[M_Object.Length] = p1.Base_obj.M_StatusItem;
             M_Object = StatusItem2;
-            return p1;
+            p1.M_StatusBar = M_StatusBar;
         }
 
         [ContextMethod("Очистить", "Clear")]

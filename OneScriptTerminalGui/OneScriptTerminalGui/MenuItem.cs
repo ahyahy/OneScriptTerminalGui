@@ -1,5 +1,7 @@
 ﻿using ScriptEngine.Machine.Contexts;
 using ScriptEngine.Machine;
+using ScriptEngine.HostedScript.Library.ValueList;
+using System.Collections;
 
 namespace ostgui
 {
@@ -32,6 +34,12 @@ namespace ostgui
         {
             get { return m_MenuItem; }
             set { m_MenuItem = value; }
+        }
+
+        public IValue Tag
+        {
+            get { return M_MenuItem.Tag; }
+            set { M_MenuItem.Tag = value; }
         }
 
         public object Data
@@ -119,6 +127,19 @@ namespace ostgui
             set { Base_obj.Title = value; }
         }
 
+        [ContextProperty("КлавишаВызова", "HotKey")]
+        public string HotKey
+        {
+            get { return Base_obj.HotKey; }
+        }
+
+        [ContextProperty("Метка", "Tag")]
+        public IValue Tag
+        {
+            get { return Base_obj.Tag; }
+            set { Base_obj.Tag = value; }
+        }
+
         [ContextProperty("Подсказка", "Help")]
         public string Help
         {
@@ -142,6 +163,38 @@ namespace ostgui
 
         [ContextProperty("Нажатие", "Clicked")]
         public TfAction Clicked { get; set; }
+
+        [ContextProperty("СочетаниеКлавишДействие", "ShortcutAction")]
+        public TfAction ShortcutAction { get; set; }
+
+        [ContextMethod("ДобавитьСочетаниеКлавиш", "AddShortcut")]
+        public void AddShortcut(decimal p1)
+        {
+            OneScriptTerminalGui.AddToShortcutDictionary(p1, this);
+        }
+
+        [ContextMethod("ПолучитьСочетаниеКлавиш", "GetShortcut")]
+        public ValueListImpl GetShortcut()
+        {
+            ValueListImpl ValueListImpl1 = new ValueListImpl();
+            ArrayList ArrayList1 = OneScriptTerminalGui.GetFromShortcutDictionary(this);
+            for (int i = 0; i < ArrayList1.Count; i++)
+            {
+                decimal shortcut = (decimal)ArrayList1[i];
+                ValueListImpl1.Add(ValueFactory.Create(shortcut), OneScriptTerminalGui.instance.Keys.ToStringRu(shortcut));
+            }
+            if (ValueListImpl1.Count() > 0)
+            {
+                return ValueListImpl1;
+            }
+            return null;
+        }
+
+        [ContextMethod("УдалитьСочетаниеКлавиш", "RemoveShortcut")]
+        public void RemoveShortcut(decimal p1)
+        {
+            OneScriptTerminalGui.RemoveFromShortcutDictionary(p1, this);
+        }
 
     }
 }

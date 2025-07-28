@@ -61,12 +61,128 @@ namespace ostgui.Properties {
         }
         
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
+        ///   Ищет локализованную строку, похожую на _Copy.
         /// </summary>
-        internal static byte[] NStack {
+        internal static string ctxCopy {
             get {
-                object obj = ResourceManager.GetObject("NStack", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("ctxCopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Cu_t.
+        /// </summary>
+        internal static string ctxCut {
+            get {
+                return ResourceManager.GetString("ctxCut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на _Delete All.
+        /// </summary>
+        internal static string ctxDeleteAll {
+            get {
+                return ResourceManager.GetString("ctxDeleteAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на _Paste.
+        /// </summary>
+        internal static string ctxPaste {
+            get {
+                return ResourceManager.GetString("ctxPaste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на _Redo.
+        /// </summary>
+        internal static string ctxRedo {
+            get {
+                return ResourceManager.GetString("ctxRedo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на _Select All.
+        /// </summary>
+        internal static string ctxSelectAll {
+            get {
+                return ResourceManager.GetString("ctxSelectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на _Undo.
+        /// </summary>
+        internal static string ctxUndo {
+            get {
+                return ResourceManager.GetString("ctxUndo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Directory.
+        /// </summary>
+        internal static string fdDirectory {
+            get {
+                return ResourceManager.GetString("fdDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на File.
+        /// </summary>
+        internal static string fdFile {
+            get {
+                return ResourceManager.GetString("fdFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Open.
+        /// </summary>
+        internal static string fdOpen {
+            get {
+                return ResourceManager.GetString("fdOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Save.
+        /// </summary>
+        internal static string fdSave {
+            get {
+                return ResourceManager.GetString("fdSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Save as.
+        /// </summary>
+        internal static string fdSaveAs {
+            get {
+                return ResourceManager.GetString("fdSaveAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Select folder.
+        /// </summary>
+        internal static string fdSelectFolder {
+            get {
+                return ResourceManager.GetString("fdSelectFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Select Mixed.
+        /// </summary>
+        internal static string fdSelectMixed {
+            get {
+                return ResourceManager.GetString("fdSelectMixed", resourceCulture);
             }
         }
         
@@ -87,6 +203,33 @@ namespace ostgui.Properties {
             get {
                 object obj = ResourceManager.GetObject("System_ValueTuple", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на _Back.
+        /// </summary>
+        internal static string wzBack {
+            get {
+                return ResourceManager.GetString("wzBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Fi_nish.
+        /// </summary>
+        internal static string wzFinish {
+            get {
+                return ResourceManager.GetString("wzFinish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на _Next....
+        /// </summary>
+        internal static string wzNext {
+            get {
+                return ResourceManager.GetString("wzNext", resourceCulture);
             }
         }
     }
