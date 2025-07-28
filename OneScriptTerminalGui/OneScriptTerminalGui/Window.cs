@@ -1,7 +1,6 @@
 ﻿using System;
 using ScriptEngine.Machine.Contexts;
 using ScriptEngine.Machine;
-using Terminal.Gui;
 
 namespace ostgui
 {
@@ -57,6 +56,27 @@ namespace ostgui
             M_Window.Subviews[0].MouseLeave += Window_MouseLeave;
             M_Window.MouseClick += Window_MouseClick;
             M_Window.Subviews[0].Leave += M_Window_Leave;
+            M_Window.KeyPress += M_Window_KeyPress;
+        }
+
+        private void M_Window_KeyPress(Terminal.Gui.View.KeyEventEventArgs obj)
+        {
+            if (dll_obj.KeyPress != null)
+            {
+                TfEventArgs TfEventArgs1 = new TfEventArgs();
+                TfEventArgs1.sender = dll_obj;
+                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.KeyPress);
+                TfEventArgs1.isAlt = ValueFactory.Create(obj.KeyEvent.IsAlt);
+                TfEventArgs1.isCapslock = ValueFactory.Create(obj.KeyEvent.IsCapslock);
+                TfEventArgs1.isCtrl = ValueFactory.Create(obj.KeyEvent.IsCtrl);
+                TfEventArgs1.isNumlock = ValueFactory.Create(obj.KeyEvent.IsNumlock);
+                TfEventArgs1.isScrolllock = ValueFactory.Create(obj.KeyEvent.IsScrolllock);
+                TfEventArgs1.isShift = ValueFactory.Create(obj.KeyEvent.IsShift);
+                TfEventArgs1.keyValue = ValueFactory.Create(obj.KeyEvent.KeyValue);
+                TfEventArgs1.keyToString = ValueFactory.Create(obj.KeyEvent.Key.ToString());
+                OneScriptTerminalGui.Event = TfEventArgs1;
+                OneScriptTerminalGui.ExecuteEvent(dll_obj.KeyPress);
+            }
         }
 
         private void M_Window_Leave(Terminal.Gui.View.FocusEventArgs obj)
@@ -200,7 +220,6 @@ namespace ostgui
         public TfAction Activate { get; set; }
         public TfAction Deactivate { get; set; }
         public TfAction AllChildClosed { get; set; }
-        public TfAction KeyPress { get; set; }
         public TfAction InitializedItem { get; set; }
         public TfAction Added { get; set; }
         public TfAction Removed { get; set; }
@@ -327,6 +346,13 @@ namespace ostgui
         public TfPos Left
         {
             get { return new TfPos(Base_obj.Left); }
+        }
+
+        [ContextProperty("Метка", "Tag")]
+        public IValue Tag
+        {
+            get { return Base_obj.Tag; }
+            set { Base_obj.Tag = value; }
         }
 
         [ContextProperty("Модально", "Modal")]
@@ -473,6 +499,9 @@ namespace ostgui
 
         [ContextProperty("ЗаголовокИзменен", "TitleChanged")]
         public TfAction TitleChanged { get; set; }
+
+        [ContextProperty("КлавишаНажата", "KeyPress")]
+        public TfAction KeyPress { get; set; }
 
         [ContextProperty("МышьНадЭлементом", "MouseEnter")]
         public TfAction MouseEnter { get; set; }

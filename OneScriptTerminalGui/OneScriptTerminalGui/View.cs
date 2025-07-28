@@ -2,6 +2,8 @@
 using ScriptEngine.Machine.Contexts;
 using ScriptEngine.Machine;
 using Terminal.Gui;
+using System.Collections;
+using ScriptEngine.HostedScript.Library.ValueList;
 
 namespace ostgui
 {
@@ -113,7 +115,12 @@ namespace ostgui
                                     {
                                         myme.X = x;
                                         myme.Y = y;
-                                        host1.OnMouseEnter(myme);
+                                        if (OneScriptTerminalGui.lastMeX != x || OneScriptTerminalGui.lastMeY != y)
+                                        {
+                                            host1.OnMouseEnter(myme);
+                                            OneScriptTerminalGui.lastMeX = x;
+                                            OneScriptTerminalGui.lastMeY = y;
+                                        }
                                     }
                                 }
                             }
@@ -135,7 +142,12 @@ namespace ostgui
                                     {
                                         myme.X = x;
                                         myme.Y = y;
-                                        host1.OnMouseEnter(myme);
+                                        if (OneScriptTerminalGui.lastMeX != x || OneScriptTerminalGui.lastMeY != y)
+                                        {
+                                            host1.OnMouseEnter(myme);
+                                            OneScriptTerminalGui.lastMeX = x;
+                                            OneScriptTerminalGui.lastMeY = y;
+                                        }
                                     }
                                 }
                             }
@@ -307,21 +319,130 @@ namespace ostgui
 
         private void M_View_KeyPress(Terminal.Gui.View.KeyEventEventArgs obj)
         {
-            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-            TfAction shortcutAction = null;
-            try
+            // Обработаем клавишу выхода для приложения.
+            if (OneScriptTerminalGui.instance.QuitKey == Convert.ToDecimal(obj.KeyEvent.KeyValue))
             {
-                shortcutAction = Sender.ShortcutAction;
-            }
-            catch
-            {
+                Application.RequestStop(OneScriptTerminalGui.instance.Top.Base_obj.M_Toplevel);
                 return;
             }
-            if (shortcutAction != null)
+
+            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
+            // Обработаем клавиши вызова для панели меню.
+            if (Sender.GetType() == typeof(TfToplevel))
             {
-                if (obj.KeyEvent.Key == (Terminal.Gui.Key)Sender.Shortcut)
+                TfMenuBar TfMenuBar1 = null;
+                try
                 {
-                    M_View.ShortcutAction.Invoke();
+                    TfMenuBar1 = ((TfToplevel)Sender).MenuBar;
+                }
+                catch { }
+                if (TfMenuBar1 != null)
+                {
+                    if (((TfToplevel)Sender).MenuBar.IsMenuOpen)
+                    {
+                        TfMenuBar menuBar = ((TfToplevel)Sender).MenuBar;
+                        Terminal.Gui.MenuBar m_menuBar = menuBar.Base_obj.M_MenuBar;
+                        for (int i = 0; i < menuBar.Menus.Count; i++)
+                        {
+                            TfMenuBarItem TfMenuBarItem1 = menuBar.Menus.MenuBarItem(i);
+                            string hotKey = TfMenuBarItem1.HotKey.ToLower();
+                            System.Char char1 = Convert.ToChar(hotKey.Substring(0, 1));
+                            int num = Convert.ToInt32(char1);
+                            if (num == (int)obj.KeyEvent.Key)
+                            {
+                                m_menuBar.CloseMenu(true);
+                                m_menuBar.OpenIndex = i;
+                                m_menuBar.OpenMenu();
+                                m_menuBar.OpenIndex = 0;
+                                TfMenuBarItem1.Base_obj.M_MenuBarItem.Action.Invoke();
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Здесь мы  в хэш таблице ищем сочетание клавиш и соответствующий объект.
+            ArrayList ShortcutDictionaryValue = null;
+            try
+            {
+                ShortcutDictionaryValue = OneScriptTerminalGui.RevertShortcut(Convert.ToDecimal((int)obj.KeyEvent.Key));
+            }
+            catch { }
+            if (ShortcutDictionaryValue != null)
+            {
+                for (int i = 0; i < ShortcutDictionaryValue.Count; i++)
+                {
+                    dynamic shortcutObj = ShortcutDictionaryValue[i];
+                    // Если shortcutObj это пункт меню
+                    if (shortcutObj.GetType() == typeof(TfMenuBarItem))
+                    {
+                        Terminal.Gui.MenuBar menuBar = ((TfMenuBarItem)shortcutObj).M_MenuBar;
+                        if (menuBar.Visible && menuBar.Enabled)
+                        {
+                            //public static object lastEventObj = null;
+                            //public static object lastEventValue = null;
+                            //public static long lastEventTime = TimeSpan.TicksPerMillisecond;
+                            // Предотвратим повторы события, если клавиша не отпущена.
+                            long nowEventTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
+                            if ((nowEventTime - OneScriptTerminalGui.lastEventTime) > 90)
+                            {
+                                if (shortcutObj.ShortcutAction != null)
+                                {
+                                    TfEventArgs TfEventArgs1 = new TfEventArgs();
+                                    TfEventArgs1.sender = dll_obj;
+                                    TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(shortcutObj.ShortcutAction);
+                                    OneScriptTerminalGui.Event = TfEventArgs1;
+                                    OneScriptTerminalGui.ExecuteEvent(shortcutObj.ShortcutAction);
+                                }
+                            }
+                            else { }
+                            OneScriptTerminalGui.lastEventTime = nowEventTime;
+                        }
+                    }
+                    else if (shortcutObj.GetType() == typeof(TfStatusItem))
+                    {
+                        Terminal.Gui.StatusBar statusBar = ((TfStatusItem)shortcutObj).M_StatusBar;
+                        if (statusBar.Visible && statusBar.Enabled)
+                        {
+                            //public static object lastEventObj = null;
+                            //public static object lastEventValue = null;
+                            //public static long lastEventTime = TimeSpan.TicksPerMillisecond;
+                            // Предотвратим повторы события, если клавиша не отпущена.
+                            long nowEventTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
+                            if ((nowEventTime - OneScriptTerminalGui.lastEventTime) > 90)
+                            {
+                                if (shortcutObj.ShortcutAction != null)
+                                {
+                                    TfEventArgs TfEventArgs1 = new TfEventArgs();
+                                    TfEventArgs1.sender = dll_obj;
+                                    TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(shortcutObj.ShortcutAction);
+                                    OneScriptTerminalGui.Event = TfEventArgs1;
+                                    OneScriptTerminalGui.ExecuteEvent(shortcutObj.ShortcutAction);
+                                }
+                            }
+                            else { }
+                            OneScriptTerminalGui.lastEventTime = nowEventTime;
+                        }
+                    }
+                    else
+                    {
+                        // Предотвратим повторы события, если клавиша не отпущена.
+                        long nowEventTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
+                        if ((nowEventTime - OneScriptTerminalGui.lastEventTime) > 90)
+                        {
+                            if (shortcutObj.ShortcutAction != null)
+                            {
+                                TfEventArgs TfEventArgs1 = new TfEventArgs();
+                                TfEventArgs1.sender = dll_obj;
+                                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(shortcutObj.ShortcutAction);
+                                OneScriptTerminalGui.Event = TfEventArgs1;
+                                OneScriptTerminalGui.ExecuteEvent(shortcutObj.ShortcutAction);
+                            }
+                        }
+                        else { }
+                        OneScriptTerminalGui.lastEventTime = nowEventTime;
+                    }
                 }
             }
             if (Sender.KeyPress != null)
@@ -469,6 +590,12 @@ namespace ostgui
                 OneScriptTerminalGui.Event = TfEventArgs1;
                 OneScriptTerminalGui.ExecuteEvent(Sender.Added);
             }
+        }
+
+        public IValue Tag
+        {
+            get { return M_View.Tag; }
+            set { M_View.Tag = value; }
         }
 
         public ostgui.Pos X
@@ -624,14 +751,6 @@ namespace ostgui
         {
             get { return M_View.PreserveTrailingSpaces; }
             set { M_View.PreserveTrailingSpaces = value; }
-        }
-
-        public Terminal.Gui.Key shortcut;
-        [ContextProperty("СочетаниеКлавиш", "Shortcut")]
-        public int Shortcut
-        {
-            get { return (int)shortcut; }
-            set { shortcut = (Terminal.Gui.Key)value; }
         }
 
         public string ShortcutTag
@@ -957,7 +1076,7 @@ namespace ostgui
         public void Fill(int p1 = 0, int p2 = 0)
         {
             M_View.Width = Terminal.Gui.Dim.Fill(p1);
-            M_View.Height = Terminal.Gui.Dim.Fill(p1);
+            M_View.Height = Terminal.Gui.Dim.Fill(p2);
         }
     }
 
@@ -1018,6 +1137,7 @@ namespace ostgui
         public TfAction DrawContent { get; set; }
         public TfAction Added { get; set; }
         public TfAction Removed { get; set; }
+        public TfAction HotKeyChanged { get; set; }
 
         public View Base_obj;
 
@@ -1119,13 +1239,19 @@ namespace ostgui
         public int HotKey
         {
             get { return Base_obj.HotKey; }
-            set { Base_obj.HotKey = value; }
         }
 
         [ContextProperty("Лево", "Left")]
         public TfPos Left
         {
             get { return new TfPos(Base_obj.Left); }
+        }
+
+        [ContextProperty("Метка", "Tag")]
+        public IValue Tag
+        {
+            get { return Base_obj.Tag; }
+            set { Base_obj.Tag = value; }
         }
 
         [ContextProperty("НаправлениеТекста", "TextDirection")]
@@ -1139,6 +1265,26 @@ namespace ostgui
         public TfPos Bottom
         {
             get { return new TfPos(Base_obj.Bottom); }
+        }
+
+        private bool disableHotKey = false;
+        [ContextProperty("ОтключитьКлавишуВызова", "DisableHotKey")]
+        public bool DisableHotKey
+        {
+            get { return disableHotKey; }
+            set
+            {
+                if (value)
+                {
+                    Base_obj.HotKeySpecifier = (Rune)0xFFFF;
+                    disableHotKey = true;
+                }
+                else
+                {
+                    Base_obj.HotKeySpecifier = new Rune("_".ToCharArray()[0]);
+                    disableHotKey = false;
+                }
+            }
         }
 
         [ContextProperty("Отображать", "Visible")]
@@ -1178,40 +1324,6 @@ namespace ostgui
         public IValue SuperView
         {
             get { return OneScriptTerminalGui.RevertEqualsObj(Base_obj.SuperView.M_View).dll_obj; }
-        }
-
-        [ContextProperty("СимволКлавишиВызова", "HotKeySpecifier")]
-        public IValue HotKeySpecifier
-        {
-            get
-            {
-                if (Base_obj.HotKeySpecifier == (Rune)0xFFFF)
-                {
-                    return ValueFactory.CreateNullValue();
-                }
-                else
-                {
-                    return ValueFactory.Create(Base_obj.HotKeySpecifier.ToString());
-                }
-            }
-            set
-            {
-                if (value.SystemType.Name == "Неопределено")
-                {
-                    Base_obj.HotKeySpecifier = (Rune)0xFFFF;
-                }
-                else
-                {
-                    Base_obj.HotKeySpecifier = value.AsString().ToCharArray()[0];
-                }
-            }
-        }
-
-        [ContextProperty("СочетаниеКлавиш", "Shortcut")]
-        public int Shortcut
-        {
-            get { return Base_obj.Shortcut; }
-            set { Base_obj.Shortcut = value; }
         }
 
         [ContextProperty("СтильКомпоновки", "LayoutStyle")]
@@ -1274,9 +1386,6 @@ namespace ostgui
         [ContextProperty("ДоступностьИзменена", "EnabledChanged")]
         public TfAction EnabledChanged { get; set; }
 
-        [ContextProperty("КлавишаВызоваИзменена", "HotKeyChanged")]
-        public TfAction HotKeyChanged { get; set; }
-
         [ContextProperty("КлавишаНажата", "KeyPress")]
         public TfAction KeyPress { get; set; }
 
@@ -1332,6 +1441,12 @@ namespace ostgui
         public void Add(IValue p1)
         {
             Base_obj.Add(((dynamic)p1).Base_obj);
+        }
+
+        [ContextMethod("ДобавитьСочетаниеКлавиш", "AddShortcut")]
+        public void AddShortcut(decimal p1)
+        {
+            OneScriptTerminalGui.AddToShortcutDictionary(p1, this);
         }
 
         [ContextMethod("Заполнить", "Fill")]
@@ -1423,6 +1538,23 @@ namespace ostgui
             }
         }
 
+        [ContextMethod("ПолучитьСочетаниеКлавиш", "GetShortcut")]
+        public ValueListImpl GetShortcut()
+        {
+            ValueListImpl ValueListImpl1 = new ValueListImpl();
+            ArrayList ArrayList1 = OneScriptTerminalGui.GetFromShortcutDictionary(this);
+            for (int i = 0; i < ArrayList1.Count; i++)
+            {
+                decimal shortcut = (decimal)ArrayList1[i];
+                ValueListImpl1.Add(ValueFactory.Create(shortcut), OneScriptTerminalGui.instance.Keys.ToStringRu(shortcut));
+            }
+            if (ValueListImpl1.Count() > 0)
+            {
+                return ValueListImpl1;
+            }
+            return null;
+        }
+
         [ContextMethod("Правее", "PlaceRight")]
         public void PlaceRight(IValue p1, int p2)
         {
@@ -1457,6 +1589,12 @@ namespace ostgui
         public void RemoveAll()
         {
             Base_obj.RemoveAll();
+        }
+
+        [ContextMethod("УдалитьСочетаниеКлавиш", "RemoveShortcut")]
+        public void RemoveShortcut(decimal p1)
+        {
+            OneScriptTerminalGui.RemoveFromShortcutDictionary(p1, this);
         }
 
         [ContextMethod("УстановитьАвтоРазмер", "SetAutoSize")]
