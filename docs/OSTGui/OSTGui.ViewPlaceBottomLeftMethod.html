@@ -1,108 +1,57 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-<HEAD>
-    <TITLE>View.PlaceBottomLeft Method</TITLE>
-    <META content="text/html; charset=Windows-1252" http-equiv="Content-Type">
-    <LINK rel="stylesheet" type="text/css" href="mainstyle.css">
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>View.PlaceBottomLeft Method</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
     <script defer src="mobilstyle.js"></script>
-</HEAD>
-<BODY id=bodyID class=dtBODY>
-    <DIV id=nsbanner>
-        <DIV id=bannerrow1>
-            <TABLE class=bannerparthead cellSpacing=0>
-                <TBODY>
-                    <TR id=hdr>
-                        <TD class=runninghead></TD>
-                        <TD class=product></TD>
-                    </TR>
-                </TBODY>
-            </TABLE>
-        </DIV>
-        <DIV id=TitleRow>
-            <H1 class=dtH1>Элемент.НижеЛевее (View.PlaceBottomLeft)&nbsp;Метод</H1>
-        </DIV>
-    </DIV>
-    <DIV id=nstext>
-        <H4 class=dtH4>Синтаксис</H4>
-        <P>НижеЛевее(&lt;Элемент&gt;, &lt;СмещениеИгрек&gt;, &lt;СмещениеИкс&gt;)</P>
-        <H4 class=dtH4>Параметры</H4>
-        <DL>
-            <DT><I>Элемент</I> (обязательный)</DT>
-            <DD>Тип: Произвольный.</DD>
-            <DD>
+</head>
+<body id=bodyID class=dtBODY>
+    <div id=nsbanner>
+        <div id=bannerrow1>
+            <table class=bannerparthead cellSpacing=0>
+                <tbody>
+                    <tr id=hdr>
+                        <td class=runninghead></td>
+                        <td class=product></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id=TitleRow>
+            <h1 class=dtH1>Элемент.НижеЛевее (View.PlaceBottomLeft)&nbsp;Метод</h1>
+        </div>
+    </div>
+    <div id=nstext>
+        <h4 class=dtH4>Синтаксис</h4>
+        <p>НижеЛевее(&lt;Элемент&gt;, &lt;СмещениеИгрек&gt;, &lt;СмещениеИкс&gt;)</p>
+        <h4 class=dtH4>Параметры</h4>
+        <dl>
+            <dt><i>Элемент</i> (обязательный)</dt>
+            <dd>Тип: Произвольный.</dd>
+            <dd>
                 Элемент, относительно которого производим смещение.
-            </DD>
-            <DT><I>СмещениеИгрек</I> (обязательный)</DT>
-            <DD>Тип: Число.</DD>
-            <DD>
-                Величина смещения в целых числах верхнего края смещаемого элемента от нижнего края объекта, указанного в параметре <B>Элемент</B>.
-            </DD>
-            <DT><I>СмещениеИкс</I> (обязательный)</DT>
-            <DD>Тип: Число.</DD>
-            <DD>
-                Величина смещения в целых числах правого края смещаемого элемента от левого края объекта, указанного в параметре <B>Элемент</B>.
-            </DD>
-        </DL>
-        <H4 class=dtH4>Возвращаемое значение</H4>
-        <P></P>
-        <P></P>
-        <H4 class=dtH4>Описание</H4>
-        <P>Смещает ниже и левее этот элемент относительно объекта, указанного в параметре <B>Элемент</B>, на величины, указанные в параметрах.</P>
-        <H4 class=dtH4>Примечание</H4>
-        <P></P>
-        <H4 class=dtH4>Смотрите также</H4>
-        <P><A href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</A></P>
-    </DIV>
-    <script>
-        window.onload = function () {
-            var a = document.getElementById('select1');
-            a.onclick = function () {
-                window.getSelection().removeAllRanges();
-                var ta1 = document.getElementById('cont1');
-                var range1 = document.createRange();
-                range1.selectNode(ta1);
-                window.getSelection().addRange(range1);
-                return false;
-            }
-
-            var b = document.getElementById('copy1');
-            b.onclick = function () {
-                window.getSelection().removeAllRanges();
-                var ta2 = document.getElementById('cont1');
-                var range2 = document.createRange();
-                range2.selectNode(ta2);
-                window.getSelection().addRange(range2);
-                try {
-                    document.execCommand('copy');
-                } catch (err) { }
-                window.getSelection().removeRange(range2);
-                return false;
-            }
-
-            var c = document.getElementById('select2');
-            c.onclick = function () {
-                window.getSelection().removeAllRanges();
-                var ta3 = document.getElementById('cont2');
-                var range3 = document.createRange();
-                range3.selectNode(ta3);
-                window.getSelection().addRange(range3);
-                return false;
-            }
-
-            var d = document.getElementById('copy2');
-            d.onclick = function () {
-                window.getSelection().removeAllRanges();
-                var ta4 = document.getElementById('cont2');
-                var range4 = document.createRange();
-                range4.selectNode(ta4);
-                window.getSelection().addRange(range4);
-                try {
-                    document.execCommand('copy');
-                } catch (err) { }
-                window.getSelection().removeRange(range4);
-                return false;
-            }
-        }
-    </script>
-</BODY>
-</HTML>
+            </dd>
+            <dt><i>СмещениеИгрек</i> (обязательный)</dt>
+            <dd>Тип: Число.</dd>
+            <dd>
+                Величина смещения в целых числах верхнего края смещаемого элемента от нижнего края объекта, указанного в параметре <b>Элемент</b>.
+            </dd>
+            <dt><i>СмещениеИкс</i> (обязательный)</dt>
+            <dd>Тип: Число.</dd>
+            <dd>
+                Величина смещения в целых числах правого края смещаемого элемента от левого края объекта, указанного в параметре <b>Элемент</b>.
+            </dd>
+        </dl>
+        <h4 class=dtH4>Возвращаемое значение</h4>
+        <p></p>
+        <p></p>
+        <h4 class=dtH4>Описание</h4>
+        <p>Смещает ниже и левее этот элемент относительно объекта, указанного в параметре <b>Элемент</b>, на величины, указанные в параметрах.</p>
+        <h4 class=dtH4>Примечание</h4>
+        <p></p>
+        <h4 class=dtH4>Смотрите также</h4>
+        <p><a href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</a></p>
+    </div>
+</body>
+</html>
