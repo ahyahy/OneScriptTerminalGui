@@ -2,6 +2,7 @@
 using ScriptEngine.Machine;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 
 namespace ostgui
 {
@@ -33,81 +34,67 @@ namespace ostgui
             }
         }
 
+        [ContextProperty("Количество", "Count")]
+        public int CountProp
+        {
+            get { return _list.Count; }
+        }
+
+        [ContextMethod("Получить", "Get")]
+        public IValue Get(int index)
+        {
+            return _list[index];
+        }
+
+        [ContextMethod("Имя")]
+        public string NameRu(decimal p1)
+        {
+            return namesRu.TryGetValue(p1, out string name) ? name : p1.ToString();
+        }
+
+        [ContextMethod("Name")]
+        public string NameEn(decimal p1)
+        {
+            return namesEn.TryGetValue(p1, out string name) ? name : p1.ToString();
+        }
+
         public TfBorderStyle()
         {
-            _list = new List<IValue>();
-            _list.Add(ValueFactory.Create(Double));
-            _list.Add(ValueFactory.Create(Rounded));
-            _list.Add(ValueFactory.Create(Single));
-            _list.Add(ValueFactory.Create(None));
+            _list = new List<decimal>
+            {
+                Double,
+                Rounded,
+                Single,
+                None,
+            }.Select(ValueFactory.Create).ToList();
         }
+
+        private static readonly Dictionary<decimal, string> namesRu = new Dictionary<decimal, string>
+        {
+            {2, "Двойная"},
+            {3, "Закругленная"},
+            {1, "Одинарная"},
+            {0, "Отсутствие"},
+        };
+
+        private static readonly Dictionary<decimal, string> namesEn = new Dictionary<decimal, string>
+        {
+            {2, "Double"},
+            {3, "Rounded"},
+            {1, "Single"},
+            {0, "None"},
+        };
 
         [ContextProperty("Двойная", "Double")]
-        public int Double
-        {
-            get { return 2; }
-        }
+        public decimal Double => 2;
 
         [ContextProperty("Закругленная", "Rounded")]
-        public int Rounded
-        {
-            get { return 3; }
-        }
+        public decimal Rounded => 3;
 
         [ContextProperty("Одинарная", "Single")]
-        public int Single
-        {
-            get { return 1; }
-        }
+        public decimal Single => 1;
 
         [ContextProperty("Отсутствие", "None")]
-        public int None
-        {
-            get { return 0; }
-        }
-
-        [ContextMethod("ВСтроку", "ВСтроку")]
-        public string ToStringRu(decimal p1)
-        {
-            string str = p1.ToString();
-            switch (p1)
-            {
-                case 2:
-                    str = "Двойная";
-                    break;
-                case 3:
-                    str = "Закругленная";
-                    break;
-                case 1:
-                    str = "Одинарная";
-                    break;
-                case 0:
-                    str = "Отсутствие";
-                    break;
-            }
-            return str;
-        }
-
-        [ContextMethod("ToString", "ToString")]
-        public string ToStringEn(decimal p1)
-        {
-            string str = p1.ToString();
-            switch (p1)
-            {
-                case 2:
-                    str = "Double";
-                    break;
-                case 3:
-                    str = "Rounded";
-                    break;
-                case 1:
-                    str = "Single";
-                    break;
-                case 0:
-                    str = "None";
-                    break;
-            }
-            return str;
-        }
+        public decimal None => 0;
     }
 }

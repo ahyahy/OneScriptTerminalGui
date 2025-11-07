@@ -11,28 +11,13 @@ namespace ostgui
         public Border()
         {
             M_Border = new Terminal.Gui.Border();
-            OneScriptTerminalGui.AddToHashtable(M_Border, this);
-            M_Border.BorderChanged += M_Border_BorderChanged;
+            Utils.AddToHashtable(M_Border, this);
         }
 
         public Border(Terminal.Gui.Border p1)
         {
             M_Border = p1;
-            OneScriptTerminalGui.AddToHashtable(M_Border, this);
-            M_Border.BorderChanged += M_Border_BorderChanged;
-        }
-
-        private void M_Border_BorderChanged(Terminal.Gui.Border obj)
-        {
-            if (dll_obj.BorderChanged != null)
-            {
-                TfEventArgs TfEventArgs1 = new TfEventArgs();
-                TfEventArgs1.sender = dll_obj;
-                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.BorderChanged);
-                TfEventArgs1.border = OneScriptTerminalGui.RevertEqualsObj(obj).dll_obj;
-                OneScriptTerminalGui.Event = TfEventArgs1;
-                OneScriptTerminalGui.ExecuteEvent(dll_obj.BorderChanged);
-            }
+            Utils.AddToHashtable(M_Border, this);
         }
 
         public int ActualHeight
@@ -59,7 +44,7 @@ namespace ostgui
 
         public IValue Parent
         {
-            get { return OneScriptTerminalGui.RevertEqualsObj(M_Border.Parent).dll_obj; }
+            get { return Utils.RevertEqualsObj(M_Border.Parent).dll_obj; }
         }
 
         public Point Effect3DOffset
@@ -168,12 +153,6 @@ namespace ostgui
             set { Base_obj.Title = value; }
         }
 
-        [ContextProperty("Родитель", "Parent")]
-        public IValue Parent
-        {
-            get { return Base_obj.Parent; }
-        }
-
         [ContextProperty("Смещение3D", "Effect3DOffset")]
         public TfPoint Effect3DOffset
         {
@@ -222,9 +201,6 @@ namespace ostgui
             get { return Base_obj.Effect3D; }
             set { Base_obj.Effect3D = value; }
         }
-
-        [ContextProperty("ГраницаИзменена", "BorderChanged")]
-        public TfAction BorderChanged { get; set; }
 
         [ContextMethod("ВычислитьТолщину", "GetSumThickness")]
         public TfThickness GetSumThickness()

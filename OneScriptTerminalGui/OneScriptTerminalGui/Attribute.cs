@@ -10,31 +10,25 @@ namespace ostgui
         public Attribute()
         {
             M_Attribute = new Terminal.Gui.Attribute();
-            OneScriptTerminalGui.AddToHashtable(M_Attribute, this);
+            Utils.AddToHashtable(M_Attribute, this);
         }
 
         public Attribute(int p1)
         {
             M_Attribute = new Terminal.Gui.Attribute((Terminal.Gui.Color)p1);
-            OneScriptTerminalGui.AddToHashtable(M_Attribute, this);
+            Utils.AddToHashtable(M_Attribute, this);
         }
 
         public Attribute(int p1, int p2)
         {
             M_Attribute = new Terminal.Gui.Attribute((Terminal.Gui.Color)p1, (Terminal.Gui.Color)p2);
-            OneScriptTerminalGui.AddToHashtable(M_Attribute, this);
-        }
-
-        public Attribute(int p1, int p2, int p3)
-        {
-            M_Attribute = new Terminal.Gui.Attribute(p1, (Terminal.Gui.Color)p2, (Terminal.Gui.Color)p3);
-            OneScriptTerminalGui.AddToHashtable(M_Attribute, this);
+            Utils.AddToHashtable(M_Attribute, this);
         }
 
         public Attribute(Terminal.Gui.Attribute p1)
         {
             M_Attribute = p1;
-            OneScriptTerminalGui.AddToHashtable(M_Attribute, this);
+            Utils.AddToHashtable(M_Attribute, this);
         }
 
         public bool Initialized
@@ -88,13 +82,6 @@ namespace ostgui
             Base_obj = Attribute1;
         }
 
-        public TfAttribute(int p1, int p2, int p3)
-        {
-            Attribute Attribute1 = new Attribute(p1, p2, p3);
-            Attribute1.dll_obj = this;
-            Base_obj = Attribute1;
-        }
-
         public TfAttribute(ostgui.Attribute p1)
         {
             Attribute Attribute1 = p1;
@@ -103,12 +90,6 @@ namespace ostgui
         }
 
         public Attribute Base_obj;
-
-        [ContextProperty("Значение", "Value")]
-        public int Value
-        {
-            get { return Base_obj.Value; }
-        }
 
         [ContextProperty("ОсновнойЦвет", "Foreground")]
         public int Foreground
