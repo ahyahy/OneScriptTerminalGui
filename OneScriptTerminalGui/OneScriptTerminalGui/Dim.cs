@@ -1,5 +1,4 @@
-﻿using System;
-using ScriptEngine.Machine.Contexts;
+﻿using ScriptEngine.Machine.Contexts;
 using ScriptEngine.Machine;
 
 namespace ostgui
@@ -12,13 +11,13 @@ namespace ostgui
         public Dim()
         {
             M_Dim = new Terminal.Gui.Dim();
-            OneScriptTerminalGui.AddToHashtable(M_Dim, this);
+            Utils.AddToHashtable(M_Dim, this);
         }
 
         public Dim(Terminal.Gui.Dim p1)
         {
             M_Dim = p1;
-            OneScriptTerminalGui.AddToHashtable(M_Dim, this);
+            Utils.AddToHashtable(M_Dim, this);
         }
 
         public Dim Percent(float p1, bool p2 = false)
@@ -104,7 +103,7 @@ namespace ostgui
         [ContextMethod("Процент", "Percent")]
         public TfDim Percent(IValue p1, bool p2 = false)
         {
-            return new TfDim(Base_obj.Percent(Convert.ToSingle(p1.AsNumber()), p2));
+            return new TfDim(Base_obj.Percent(Utils.ToFloat(p1), p2));
         }
 
         [ContextMethod("Сложить", "Summation")]
