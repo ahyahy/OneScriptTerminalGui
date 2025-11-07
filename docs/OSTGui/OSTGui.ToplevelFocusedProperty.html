@@ -1,44 +1,44 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-<HEAD>
-    <TITLE>Focused Property</TITLE>
-    <META content="text/html; charset=Windows-1252" http-equiv="Content-Type">
-    <LINK rel="stylesheet" type="text/css" href="mainstyle.css">
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Focused Property</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
     <script defer src="mobilstyle.js"></script>
-</HEAD>
-<BODY id=bodyID class=dtBODY onclick="divrightClick(event)">
-    <DIV id=nsbanner>
-        <DIV id=bannerrow1>
-            <TABLE class=bannerparthead cellSpacing=0>
-                <TBODY>
-                    <TR id=hdr>
-                        <TD class=runninghead></TD>
-                        <TD class=product></TD>
-                    </TR>
-                </TBODY>
-            </TABLE>
-        </DIV>
-        <DIV id=TitleRow>
-            <H1 class=dtH1>Верхний.ВФокусе&nbsp;(Toplevel.Focused)&nbsp;Свойство</H1>
-        </DIV>
-    </DIV>
-    <DIV id=nstext>
-        <H4 class=dtH4>Использование</H4>
-        <P>Только чтение.</P>
-        <H4 class=dtH4>Значение</H4>
-        <P>Тип: Произвольный.</P>
-        <P>Возвращает элемент, который в настоящее время имеет фокус или <B>Неопределено</B>, если ничего не сфокусировано.</P>
-        <H4 class=dtH4>Примечание</H4>
-        <P></P>
-        <H4 class=dtH4>Пример</H4>
-            <PRE class=code>
+</head>
+<body id=bodyID class=dtBODY onclick="divrightClick(event)">
+    <div id=nsbanner>
+        <div id=bannerrow1>
+            <table class=bannerparthead cellSpacing=0>
+                <tbody>
+                    <tr id=hdr>
+                        <td class=runninghead></td>
+                        <td class=product></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id=TitleRow>
+            <h1 class=dtH1>Верхний.ВФокусе&nbsp;(Toplevel.Focused)&nbsp;Свойство</h1>
+        </div>
+    </div>
+    <div id=nstext>
+        <h4 class=dtH4>Использование</h4>
+        <p>Только чтение.</p>
+        <h4 class=dtH4>Значение</h4>
+        <p>Тип: Произвольный.</p>
+        <p>Возвращает элемент, который в настоящее время имеет фокус или <b>Неопределено</b>, если ничего не сфокусировано.</p>
+        <h4 class=dtH4>Примечание</h4>
+        <p></p>
+        <h4 class=dtH4>Пример</h4>
+            <pre class=code>
 Текст = "ТФ.Верхний.ВФокусе.Заголовок = " + ТФ.Верхний.ВФокусе.Заголовок;
-</PRE>
+</pre>
             <details>
                 <summary>Полный пример кода</summary>
-                    <PRE class=code>
-<a id="copy1" href="jаvascript://" title="Выделяет код, копирует и снимает выделение.">Копировать</a>     <a id="select1" href="jаvascript://" title="Выделяет код.">Выделить всё</a>
-<hr style="border-color: lightgray;"><DIV id="cont1">
+                    <pre class=code>
+<button id="copy1" type="button" style="font-size:100%;">Копировать</button>
+<hr style="border-color: lightgray;"><div id="cont1">
 Перем ТФ;
 
 Процедура ПриОткрытии() Экспорт
@@ -47,7 +47,6 @@
 
 ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
 ТФ = Новый ТерминалФормыДляОдноСкрипта();
-ТФ.Активировать();
 
 Окно1 = ТФ.Окно();
 Окно1.Заголовок = "Окно1";
@@ -68,14 +67,11 @@
 Окно2.Высота = ТФ.Величина.Абсолютно(4);
 ТФ.Верхний.Добавить(Окно2);
 
-Прямоугольник1 = ТФ.Прямоугольник(1, 12, 55, 4);
-Окно3 = ТФ.Окно(Прямоугольник1, "Окно3");
+Окно3 = ТФ.Окно("Окно3", 1, 12, 55, 4);
 Окно3.Текст = "Но так как книжка потерялась, то я рассказывал каждый раз по-разному, выдумывал такие похождения, каких в книге совсем не было.";
 ТФ.Верхний.Добавить(Окно3);
 
-Граница1 = ТФ.Граница();
-Граница1.СтильГраницы = ТФ.СтильГраницы.Одинарная;
-Окно4 = ТФ.Окно("Окно4", 2, Граница1);
+Окно4 = ТФ.Окно("Окно4");
 Окно4.Текст = "Теперь, через много-много лет, я припомнил моего старого друга 
 |Буратино и надумал рассказать вам, девочки и мальчики, необычайную историю 
 |про этого деревянного человечка.";
@@ -85,25 +81,22 @@
 Окно4.Высота = ТФ.Величина.Абсолютно(5);
 ТФ.Верхний.Добавить(Окно4);
 
-Прямоугольник2 = ТФ.Прямоугольник(1, 23, 55, 4);
-Граница2 = ТФ.Граница();
-Граница2.СтильГраницы = ТФ.СтильГраницы.Одинарная;
-Окно5 = ТФ.Окно(Прямоугольник2, "Окно5", 2, Граница2);
+Окно5 = ТФ.Окно("Окно5", 1, 23, 55, 4);
 Окно5.Текст = "Cтоляру Джузеппе попалось под руку полено, которое пищало человеческим голосом.";
 ТФ.Верхний.Добавить(Окно5);
 
 ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
 
 ТФ.Запуск();
-</DIV>
-</PRE>
+</div>
+</pre>
             </details>
-        <P></P>
+        <p></p>
         <details>
             <summary>Тестовый код</summary>
-            <PRE class=code>
-<a id="copy2" href="jаvascript://" title="Выделяет код, копирует и снимает выделение.">Копировать</a>     <a id="select2" href="jаvascript://" title="Выделяет код.">Выделить всё</a>
-<hr style="border-color: lightgray;"><DIV id="cont2">
+            <pre class=code>
+<button id="copy2" type="button" style="font-size:100%;">Копировать</button>
+<hr style="border-color: lightgray;"><div id="cont2">
 Перем ТФ, Текст;
 
 Процедура ПриОткрытии() Экспорт
@@ -112,7 +105,6 @@
 
 ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
 ТФ = Новый ТерминалФормыДляОдноСкрипта();
-ТФ.Активировать();
 
 Окно1 = ТФ.Окно();
 Окно1.Заголовок = "Окно1";
@@ -133,14 +125,11 @@
 Окно2.Высота = ТФ.Величина.Абсолютно(4);
 ТФ.Верхний.Добавить(Окно2);
 
-Прямоугольник1 = ТФ.Прямоугольник(1, 12, 55, 4);
-Окно3 = ТФ.Окно(Прямоугольник1, "Окно3");
+Окно3 = ТФ.Окно("Окно3", 1, 12, 55, 4);
 Окно3.Текст = "Но так как книжка потерялась, то я рассказывал каждый раз по-разному, выдумывал такие похождения, каких в книге совсем не было.";
 ТФ.Верхний.Добавить(Окно3);
 
-Граница1 = ТФ.Граница();
-Граница1.СтильГраницы = ТФ.СтильГраницы.Одинарная;
-Окно4 = ТФ.Окно("Окно4", 2, Граница1);
+Окно4 = ТФ.Окно("Окно4");
 Окно4.Текст = "Теперь, через много-много лет, я припомнил моего старого друга 
 |Буратино и надумал рассказать вам, девочки и мальчики, необычайную историю 
 |про этого деревянного человечка.";
@@ -150,10 +139,7 @@
 Окно4.Высота = ТФ.Величина.Абсолютно(5);
 ТФ.Верхний.Добавить(Окно4);
 
-Прямоугольник2 = ТФ.Прямоугольник(1, 23, 55, 4);
-Граница2 = ТФ.Граница();
-Граница2.СтильГраницы = ТФ.СтильГраницы.Одинарная;
-Окно5 = ТФ.Окно(Прямоугольник2, "Окно5", 2, Граница2);
+Окно5 = ТФ.Окно("Окно5", 1, 23, 55, 4);
 Окно5.Текст = "Cтоляру Джузеппе попалось под руку полено, которое пищало человеческим голосом.";
 ТФ.Верхний.Добавить(Окно5);
 
@@ -163,63 +149,12 @@
 Сообщить(?(
 Текст = "ТФ.Верхний.ВФокусе.Заголовок = Окно1"
 , "", "!!! ") + "Верхний.ВФокусе (Toplevel.Focused) Свойство" + " " + ТекущаяДата() + Символы.ПС);
-</DIV>
-</PRE>
+</div>
+</pre>
         </details>
-        <P></P>
-        <H4 class=dtH4>Смотрите также</H4>
-        <P><A href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</A></P>
-    </DIV>
-    <script>
-        window.onload = function () {
-            var a = document.getElementById('select1');
-            a.onclick = function () {
-                window.getSelection().removeAllRanges();
-                var ta1 = document.getElementById('cont1');
-                var range1 = document.createRange();
-                range1.selectNode(ta1);
-                window.getSelection().addRange(range1);
-                return false;
-            }
-
-            var b = document.getElementById('copy1');
-            b.onclick = function () {
-                window.getSelection().removeAllRanges();
-                var ta2 = document.getElementById('cont1');
-                var range2 = document.createRange();
-                range2.selectNode(ta2);
-                window.getSelection().addRange(range2);
-                try {
-                    document.execCommand('copy');
-                } catch (err) { }
-                window.getSelection().removeRange(range2);
-                return false;
-            }
-
-            var c = document.getElementById('select2');
-            c.onclick = function () {
-                window.getSelection().removeAllRanges();
-                var ta3 = document.getElementById('cont2');
-                var range3 = document.createRange();
-                range3.selectNode(ta3);
-                window.getSelection().addRange(range3);
-                return false;
-            }
-
-            var d = document.getElementById('copy2');
-            d.onclick = function () {
-                window.getSelection().removeAllRanges();
-                var ta4 = document.getElementById('cont2');
-                var range4 = document.createRange();
-                range4.selectNode(ta4);
-                window.getSelection().addRange(range4);
-                try {
-                    document.execCommand('copy');
-                } catch (err) { }
-                window.getSelection().removeRange(range4);
-                return false;
-            }
-        }
-    </script>
-</BODY>
-</HTML>
+        <p></p>
+        <h4 class=dtH4>Смотрите также</h4>
+        <p><a href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</a></p>
+    </div>
+</body>
+</html>
