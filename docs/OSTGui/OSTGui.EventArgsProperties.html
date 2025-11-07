@@ -1,126 +1,274 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-<HEAD>
-    <TITLE>EventArgs Properties</TITLE>
-    <META content="text/html; charset=Windows-1252" http-equiv="Content-Type">
-    <LINK rel="stylesheet" type="text/css" href="mainstyle.css">
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>EventArgs Properties</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
     <script defer src="mobilstyle.js"></script>
-</HEAD>
-<BODY id=bodyID class=dtBODY onclick="divrightClick(event)">
-    <DIV id=nsbanner>
-        <DIV id=bannerrow1>
-            <TABLE class=bannerparthead cellSpacing=0>
-                <TBODY>
-                    <TR id=hdr>
-                        <TD class=runninghead></TD>
-                        <TD class=product></TD>
-                    </TR>
-                </TBODY>
-            </TABLE>
-        </DIV>
-        <DIV id=TitleRow>
-            <H1 class=dtH1>АргументыСобытия (EventArgs)&nbsp;Свойства</H1>
-        </DIV>
-    </DIV>
-    <DIV id=nstext>
-        <P></P>
-        <H4 class=dtH4>Свойства</H4>
-        <DIV class=tablediv>
-            <TABLE class=dtTABLE cellSpacing=0>
-                <TBODY>					
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsBorderProperty.html">Граница&nbsp;(Border)</A></TD>
-                        <TD width="50%">Возвращает изменяемую границу.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsYProperty.html">Игрек&nbsp;(Y)</A></TD>
-                        <TD width="50%">Возвращает координату <B>Y</B> для события мыши.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsXProperty.html">Икс&nbsp;(X)</A></TD>
-                        <TD width="50%">Возвращает координату <B>X</B> для события мыши.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsKeyValueProperty.html">Клавиша&nbsp;(KeyValue)</A></TD>
-                        <TD width="50%">Возвращает значение для клавиши в виде целого числа.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsKeyToStringProperty.html">КлавишаСтрокой&nbsp;(KeyToString)</A></TD>
-                        <TD width="50%">Возвращает значение для клавиши в виде строки вместе со значением модификатора, если таковой был применен.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsNewTitleProperty.html">НовыйЗаголовок&nbsp;(NewTitle)</A></TD>
-                        <TD width="50%">Возвращает новый заголовок.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsNewMenuBarItemProperty.html">НовыйПунктМеню&nbsp;(NewMenuBarItem)</A></TD>
-                        <TD width="50%">Пункт меню для подмены.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsCancelProperty.html">Отмена&nbsp;(Cancel)</A></TD>
-                        <TD width="50%">Возвращает или задает значение, указывающее, следует ли отменить событие.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsSenderProperty.html">Отправитель&nbsp;(Sender)</A></TD>
-                        <TD width="50%">Возвращает источник (объект) последнего события.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsParameterProperty.html">Параметр&nbsp;(Parameter)</A></TD>
-                        <TD width="50%">Возвращает объект, заданный при установке обработчика события, для передачи в обработчик события.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsSizeProperty.html">Размер&nbsp;(Size)</A></TD>
-                        <TD width="50%">Возвращает экземпляр класса <B>Размер (Size)</B>, предсталяющий новый размер терминала.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsOldTitleProperty.html">СтарыйЗаголовок&nbsp;(OldTitle)</A></TD>
-                        <TD width="50%">Возвращает старый заголовок.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsCurrentMenuProperty.html">ТекущийПунктМеню&nbsp;(CurrentMenu)</A></TD>
-                        <TD width="50%">Текущий родитель пункта меню.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsFlagsProperty.html">ФлагиМыши&nbsp;(Flags)</A></TD>
-                        <TD width="50%">Возвращает флаги мыши для события мыши.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsViewProperty.html">Элемент&nbsp;(View)</A></TD>
-                        <TD width="50%">Возвращает элемент.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsMenuItemProperty.html">ЭлементМеню&nbsp;(MenuItem)</A></TD>
-                        <TD width="50%">Возвращает элемент меню.</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsIsAltProperty.html">ЭтоAlt&nbsp;(IsAlt)</A></TD>
-                        <TD width="50%">Возвращает значение, указывающее, была ли нажата клавиша <B>Alt</B> (реальная или синтезированная).</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsIsCapslockProperty.html">ЭтоCapslock&nbsp;(IsCapslock)</A></TD>
-                        <TD width="50%">Возвращает значение, указывающее, была ли нажата клавиша <B>CapsLock</B> (реальная или синтезированная).</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsIsCtrlProperty.html">ЭтоCtrl&nbsp;(IsCtrl)</A></TD>
-                        <TD width="50%">Возвращает значение, указывающее, была ли нажата клавиша <B>Ctrl</B> (реальная или синтезированная).</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsIsNumlockProperty.html">ЭтоNumlock&nbsp;(IsNumlock)</A></TD>
-                        <TD width="50%">Возвращает значение, указывающее, была ли нажата клавиша <B>NumLock</B> (реальная или синтезированная).</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsIsScrolllockProperty.html">ЭтоScrolllock&nbsp;(IsScrolllock)</A></TD>
-                        <TD width="50%">Возвращает значение, указывающее, была ли нажата клавиша <B>ScrollLock</B> (реальная или синтезированная).</TD>
-                    </TR>
-                    <TR vAlign=top>
-                        <TD width="50%"><IMG src="pubproperty.gif"></IMG><A href="OSTGui.EventArgsIsShiftProperty.html">ЭтоShift&nbsp;(IsShift)</A></TD>
-                        <TD width="50%">Возвращает значение, указывающее, была ли нажата клавиша <B>Shift</B> (реальная или синтезированная).</TD>
-                    </TR>
-                </TBODY>
-            </TABLE>
-        </DIV>
-        <H4 class=dtH4>Смотрите также</H4>
-        <P><A href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</A></P>
-    </DIV>
-</BODY>
-</HTML>
+</head>
+<body id=bodyID class=dtBODY onclick="divrightClick(event)">
+    <div id=nsbanner>
+        <div id=bannerrow1>
+            <table class=bannerparthead cellSpacing=0>
+                <tbody>
+                    <tr id=hdr>
+                        <td class=runninghead></td>
+                        <td class=product></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id=TitleRow>
+            <h1 class=dtH1>АргументыСобытия (EventArgs)&nbsp;Свойства</h1>
+        </div>
+    </div>
+    <div id=nstext>
+        <p></p>
+        <h4 class=dtH4>Свойства</h4>
+        <div class=tablediv>
+            <table class=dtTABLE cellSpacing=0>
+                <tbody>					
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsOldYearProperty.html">БылоГод&nbsp;(OldYear)</a></td>
+                        <td width="50%">Возвращает предыдущее значение года.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsOldDayProperty.html">БылоДень&nbsp;(OldDay)</a></td>
+                        <td width="50%">Возвращает предыдущее значение дня.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsOldMonthProperty.html">БылоМесяц&nbsp;(OldMonth)</a></td>
+                        <td width="50%">Возвращает предыдущее значение месяца.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsOldMinutesProperty.html">БылоМинут&nbsp;(OldMinutes)</a></td>
+                        <td width="50%">Возвращает предыдущее значение минут.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsOldSecondsProperty.html">БылоСекунд&nbsp;(OldSeconds)</a></td>
+                        <td width="50%">Возвращает предыдущее значение секунд.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsOldTicksProperty.html">БылоТактов&nbsp;(OldTicks)</a></td>
+                        <td width="50%">Возвращает предыдущее значение тактов (тиков).</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsOldHoursProperty.html">БылоЧасов&nbsp;(OldHours)</a></td>
+                        <td width="50%">Возвращает предыдущее значение часов.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsTabProperty.html">Вкладка&nbsp;(Tab)</a></td>
+                        <td width="50%">Возвращает вкладку по которой кликнули мышью.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsTreeViewProperty.html">Дерево&nbsp;(TreeView)</a></td>
+                        <td width="50%">Дерево, содержащее активированный узел.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsValueProperty.html">Значение&nbsp;(Value)</a></td>
+                        <td width="50%">Возвращает значение элемента.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsYProperty.html">Игрек&nbsp;(Y)</a></td>
+                        <td width="50%">Возвращает координату <b>Y</b> для события мыши.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsXProperty.html">Икс&nbsp;(X)</a></td>
+                        <td width="50%">Возвращает координату <b>X</b> для события мыши.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsSelectedItemProperty.html">ИндексВыбранного&nbsp;(SelectedItem)</a></td>
+                        <td width="50%">Возвращает индекс выбранного элемента.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsColumnIndexProperty.html">ИндексКолонки&nbsp;(ColumnIndex)</a></td>
+                        <td width="50%">Возвращает индекс колонки.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsPreviousSelectedItemProperty.html">ИндексПредыдущегоВыбранного&nbsp;(PreviousSelectedItem)</a></td>
+                        <td width="50%">Возвращает индекс предыдущего выбранного элемента.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsRowIndexProperty.html">ИндексСтроки&nbsp;(RowIndex)</a></td>
+                        <td width="50%">Возвращает индекс строки.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsKeyValueProperty.html">Клавиша&nbsp;(KeyValue)</a></td>
+                        <td width="50%">Возвращает значение для клавиши в виде целого числа.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsKeyToStringProperty.html">КлавишаСтрокой&nbsp;(KeyToString)</a></td>
+                        <td width="50%">Возвращает значение для клавиши в виде строки вместе со значением модификатора, если таковой был применен.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsNewTabProperty.html">НоваяВкладка&nbsp;(NewTab)</a></td>
+                        <td width="50%">Возвращает вновь открытую вкладку.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsNewColProperty.html">НоваяКолонка&nbsp;(NewCol)</a></td>
+                        <td width="50%">Возвращает индекс новой колонки.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsNewRowProperty.html">НоваяСтрока&nbsp;(NewRow)</a></td>
+                        <td width="50%">Возвращает индекс новой строки.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsNewMenuBarItemProperty.html">НовыйПунктМеню&nbsp;(NewMenuBarItem)</a></td>
+                        <td width="50%">Пункт меню для подмены.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsNewTextProperty.html">НовыйТекст&nbsp;(NewText)</a></td>
+                        <td width="50%">Возвращает текст элемента после изменения.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsNewNodeProperty.html">НовыйУзел&nbsp;(NewNode)</a></td>
+                        <td width="50%">Новый узел дерева.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsCancelProperty.html">Отмена&nbsp;(Cancel)</a></td>
+                        <td width="50%">Возвращает или задает значение, указывающее, следует ли отменить событие.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsSenderProperty.html">Отправитель&nbsp;(Sender)</a></td>
+                        <td width="50%">Возвращает источник (объект) последнего события.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsParameterProperty.html">Параметр&nbsp;(Parameter)</a></td>
+                        <td width="50%">Возвращает объект, заданный при установке обработчика события, для передачи в обработчик события.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsDirectoryPathProperty.html">ПутьКаталога&nbsp;(DirectoryPath)</a></td>
+                        <td width="50%">Возвращает абсолютный путь до каталога.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsFilePathProperty.html">ПутьФайла&nbsp;(FilePath)</a></td>
+                        <td width="50%">Возвращает абсолютный путь до файла.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsSizeProperty.html">Размер&nbsp;(Size)</a></td>
+                        <td width="50%">Возвращает экземпляр класса <b>Размер (Size)</b>, предсталяющий новый размер терминала.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsDialogResultProperty.html">РезультатДиалога&nbsp;(DialogResult)</a></td>
+                        <td width="50%">Возвращает значение перечисления <b>РезультатДиалога (DialogResult)</b>, указывающее, какие кнопки были нажаты в диалоговом окне.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsNewYearProperty.html">СталоГод&nbsp;(NewYear)</a></td>
+                        <td width="50%">Возвращает новое значение года.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsNewDayProperty.html">СталоДень&nbsp;(NewDay)</a></td>
+                        <td width="50%">Возвращает новое значение дня.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsNewMonthProperty.html">СталоМесяц&nbsp;(NewMonth)</a></td>
+                        <td width="50%">Возвращает новое значение месяца.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsNewMinutesProperty.html">СталоМинут&nbsp;(NewMinutes)</a></td>
+                        <td width="50%">Возвращает новое значение минут.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsNewSecondsProperty.html">СталоСекунд&nbsp;(NewSeconds)</a></td>
+                        <td width="50%">Возвращает новое значение секунд.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsNewTicksProperty.html">СталоТактов&nbsp;(NewTicks)</a></td>
+                        <td width="50%">Возвращает новое значение тактов (тиков).</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsNewHoursProperty.html">СталоЧасов&nbsp;(NewHours)</a></td>
+                        <td width="50%">Возвращает новое значение часов.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsOldTabProperty.html">СтараяВкладка&nbsp;(OldTab)</a></td>
+                        <td width="50%">Возвращает предыдущую открытую вкладку.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsOldColProperty.html">СтараяКолонка&nbsp;(OldCol)</a></td>
+                        <td width="50%">Возвращает индекс старой колонки.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsOldRowProperty.html">СтараяСтрока&nbsp;(OldRow)</a></td>
+                        <td width="50%">Возвращает индекс старой строки.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsOldToggledProperty.html">СтарыйСтатус&nbsp;(OldToggled)</a></td>
+                        <td width="50%">Старое состояние флажка.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsOldTextProperty.html">СтарыйТекст&nbsp;(OldText)</a></td>
+                        <td width="50%">Возвращает текст элемента до изменения.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsOldNodeProperty.html">СтарыйУзел&nbsp;(OldNode)</a></td>
+                        <td width="50%">Старый узел дерева.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsDataTableProperty.html">ТаблицаДанных&nbsp;(DataTable)</a></td>
+                        <td width="50%">Возвращает таблицу данных (источник) для редактируемой ячейки.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsCurrentMenuProperty.html">ТекущийПунктМеню&nbsp;(CurrentMenu)</a></td>
+                        <td width="50%">Текущий родитель пункта меню.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsTreeNodeProperty.html">УзелДерева&nbsp;(TreeNode)</a></td>
+                        <td width="50%">Активированный узел дерева.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsFilePathsProperty.html">Файлы&nbsp;(FilePaths)</a></td>
+                        <td width="50%">Возвращает массив путей выбранных файлов.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsFlagsProperty.html">ФлагиМыши&nbsp;(Flags)</a></td>
+                        <td width="50%">Возвращает флаги мыши для события мыши.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsTimeFormatProperty.html">ФорматВремени&nbsp;(TimeFormat)</a></td>
+                        <td width="50%">Возвращает формат времени.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsDateFormatProperty.html">ФорматДаты&nbsp;(DateFormat)</a></td>
+                        <td width="50%">Возвращает формат даты.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsViewProperty.html">Элемент&nbsp;(View)</a></td>
+                        <td width="50%">Возвращает элемент.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsMenuItemProperty.html">ЭлементМеню&nbsp;(MenuItem)</a></td>
+                        <td width="50%">Возвращает элемент меню.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsIsAltProperty.html">ЭтоAlt&nbsp;(IsAlt)</a></td>
+                        <td width="50%">Возвращает значение, указывающее, была ли нажата клавиша <b>Alt</b> (реальная или синтезированная).</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsIsCapslockProperty.html">ЭтоCapslock&nbsp;(IsCapslock)</a></td>
+                        <td width="50%">Возвращает значение, указывающее, была ли нажата клавиша <b>CapsLock</b> (реальная или синтезированная).</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsIsCtrlProperty.html">ЭтоCtrl&nbsp;(IsCtrl)</a></td>
+                        <td width="50%">Возвращает значение, указывающее, была ли нажата клавиша <b>Ctrl</b> (реальная или синтезированная).</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsIsNumlockProperty.html">ЭтоNumlock&nbsp;(IsNumlock)</a></td>
+                        <td width="50%">Возвращает значение, указывающее, была ли нажата клавиша <b>NumLock</b> (реальная или синтезированная).</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsIsScrolllockProperty.html">ЭтоScrolllock&nbsp;(IsScrolllock)</a></td>
+                        <td width="50%">Возвращает значение, указывающее, была ли нажата клавиша <b>ScrollLock</b> (реальная или синтезированная).</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsIsShiftProperty.html">ЭтоShift&nbsp;(IsShift)</a></td>
+                        <td width="50%">Возвращает значение, указывающее, была ли нажата клавиша <b>Shift</b> (реальная или синтезированная).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h4 class=dtH4>Смотрите также</h4>
+        <p><a href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</a></p>
+    </div>
+</body>
+</html>
