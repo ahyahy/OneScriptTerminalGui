@@ -1,84 +1,84 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-<HEAD>
-    <TITLE>OneScriptTerminalGui.Button Method</TITLE>
-    <META content="text/html; charset=Windows-1252" http-equiv="Content-Type">
-    <LINK rel="stylesheet" type="text/css" href="mainstyle.css">
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>OneScriptTerminalGui.Button Method</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
     <script defer src="mobilstyle.js"></script>
-</HEAD>
-<BODY id=bodyID class=dtBODY onclick="divrightClick(event)">
-    <DIV id=nsbanner>
-        <DIV id=bannerrow1>
-            <TABLE class=bannerparthead cellSpacing=0>
-                <TBODY>
-                    <TR id=hdr>
-                        <TD class=runninghead></TD>
-                        <TD class=product></TD>
-                    </TR>
-                </TBODY>
-            </TABLE>
-        </DIV>
-        <DIV id=TitleRow>
-            <H1 class=dtH1>ТерминалФормыДляОдноСкрипта.Кнопка (OneScriptTerminalGui.Button)&nbsp;Метод</H1>
-        </DIV>
-    </DIV>
-    <DIV id=nstext>
-        <H4 class=dtH4>Синтаксис</H4>
-        <P>Кнопка()</P>
-        <P>Кнопка(&lt;Текст&gt;, &lt;ПоУмолчанию&gt;)</P>
-        <P>Кнопка(&lt;Икс&gt;, &lt;Игрек&gt;, &lt;Текст&gt;)</P>
-        <P>Кнопка(&lt;Икс&gt;, &lt;Игрек&gt;, &lt;Текст&gt;, &lt;ПоУмолчанию&gt;)</P>
-        <H4 class=dtH4>Параметры</H4>
-        <DL>
-            <DT><I>Текст</I> (обязательный)</DT>
-            <DD>Тип: Строка.</DD>
-            <DD>Текст для кнопки.</DD>
-            <DT><I>ПоУмолчанию</I> (обязательный)</DT>
-            <DD>Тип: Булево.</DD>
-            <DD>Использовать ли кнопку как кнопку, назначенную по умолчанию.</DD>
-            <DT><I>Икс</I> (обязательный)</DT>
-            <DD>Тип: Число.</DD>
-            <DD>Координата по оси икс левого верхнего угла кнопки.</DD>
-            <DT><I>Игрек</I> (обязательный)</DT>
-            <DD>Тип: Число.</DD>
-            <DD>Координата по оси игрек левого верхнего угла кнопки.</DD>
-		</DL>
-        <H4 class=dtH4>Возвращаемое значение</H4>
-        <P>Тип: <A href="OSTGui.Button.html">Кнопка&nbsp;(Button)</A>.</P>
-        <P></P>
-        <H4 class=dtH4>Описание</H4>
-        <P>Создаёт новый экземпляр класса <B>Кнопка (Button)</B>.</P>
-        <H4 class=dtH4>Примечание</H4>
-        <P>
-			Конструктор без параметров создает объект со свойством <B>СтильКомпоновки (LayoutStyle)</B> установленным в значение <B>Вычислено (Computed)</B>. 
-			Ширина кнопки вычисляется на основе длины текста. Высота всегда будет равна <B>1</B>.
-		</P>
-        <P>
-			Конструктор с двумя параметрами (<B>Текст</B> и <B>ПоУмолчанию</B>) создает кнопку для диалогового окна.
-			Свойство <B>СтильКомпоновки (LayoutStyle)</B> будет установлено в значение <B>Вычислено (Computed)</B>.
-			Если параметр <B>ПоУмолчанию</B> равен <B>Истина</B>, используется специальное оформление, и пользователь, нажимающий 
-			клавишу <B>Enter</B> в диалоговом окне, косвенно активирует эту кнопку.
-		</P>
-        <P>
-			Конструктор с тремя параметрами (<B>Икс</B>, <B>Игрек</B>, <B>Текст</B>) создает кнопку с шириной, вычисленной на основе длины текста. 
-			Свойство <B>СтильКомпоновки (LayoutStyle)</B> будет установлено в значение <B>Абсолютно (Absolute)</B>. 
-			Высота всегда будет равна <B>1</B>.
-		</P>
-        <P>
-			Конструктор с четырьмя параметрами (<B>Икс</B>, <B>Игрек</B>, <B>Текст</B>, <B>ПоУмолчанию</B>) создает кнопку для диалогового окна.
-			Свойство <B>СтильКомпоновки (LayoutStyle)</B> будет установлено в значение <B>Абсолютно (Absolute)</B>. 
-			Если параметр <B>ПоУмолчанию</B> равен <B>Истина</B>, используется специальное оформление, и пользователь, нажимающий клавишу <B>Enter</B> в 
+</head>
+<body id=bodyID class=dtBODY onclick="divrightClick(event)">
+    <div id=nsbanner>
+        <div id=bannerrow1>
+            <table class=bannerparthead cellSpacing=0>
+                <tbody>
+                    <tr id=hdr>
+                        <td class=runninghead></td>
+                        <td class=product></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id=TitleRow>
+            <h1 class=dtH1>ТерминалФормыДляОдноСкрипта.Кнопка (OneScriptTerminalGui.Button)&nbsp;Метод</h1>
+        </div>
+    </div>
+    <div id=nstext>
+        <h4 class=dtH4>Синтаксис</h4>
+        <p>Кнопка()</p>
+        <p>Кнопка(&lt;Текст&gt;, &lt;ПоУмолчанию&gt;)</p>
+        <p>Кнопка(&lt;Икс&gt;, &lt;Игрек&gt;, &lt;Текст&gt;)</p>
+        <p>Кнопка(&lt;Икс&gt;, &lt;Игрек&gt;, &lt;Текст&gt;, &lt;ПоУмолчанию&gt;)</p>
+        <h4 class=dtH4>Параметры</h4>
+        <dl>
+            <dt><i>Текст</i> (обязательный)</dt>
+            <dd>Тип: Строка.</dd>
+            <dd>Текст для кнопки.</dd>
+            <dt><i>ПоУмолчанию</i> (обязательный)</dt>
+            <dd>Тип: Булево.</dd>
+            <dd>Использовать ли кнопку как кнопку, назначенную по умолчанию.</dd>
+            <dt><i>Икс</i> (обязательный)</dt>
+            <dd>Тип: Число.</dd>
+            <dd>Координата по оси икс левого верхнего угла кнопки.</dd>
+            <dt><i>Игрек</i> (обязательный)</dt>
+            <dd>Тип: Число.</dd>
+            <dd>Координата по оси игрек левого верхнего угла кнопки.</dd>
+		</dl>
+        <h4 class=dtH4>Возвращаемое значение</h4>
+        <p>Тип: <a href="OSTGui.Button.html">Кнопка&nbsp;(Button)</a>.</p>
+        <p></p>
+        <h4 class=dtH4>Описание</h4>
+        <p>Создаёт новый экземпляр класса <b>Кнопка (Button)</b>.</p>
+        <h4 class=dtH4>Примечание</h4>
+        <p>
+			Конструктор без параметров создает объект со свойством <b>СтильКомпоновки (LayoutStyle)</b> установленным в значение <b>Вычислено (Computed)</b>. 
+			Ширина кнопки вычисляется на основе длины текста. Высота всегда будет равна <b>1</b>.
+		</p>
+        <p>
+			Конструктор с двумя параметрами (<b>Текст</b> и <b>ПоУмолчанию</b>) создает кнопку для диалогового окна.
+			Свойство <b>СтильКомпоновки (LayoutStyle)</b> будет установлено в значение <b>Вычислено (Computed)</b>.
+			Если параметр <b>ПоУмолчанию</b> равен <b>Истина</b>, используется специальное оформление, и пользователь, нажимающий 
+			клавишу <b>Enter</b> в диалоговом окне, косвенно активирует эту кнопку.
+		</p>
+        <p>
+			Конструктор с тремя параметрами (<b>Икс</b>, <b>Игрек</b>, <b>Текст</b>) создает кнопку с шириной, вычисленной на основе длины текста. 
+			Свойство <b>СтильКомпоновки (LayoutStyle)</b> будет установлено в значение <b>Абсолютно (Absolute)</b>. 
+			Высота всегда будет равна <b>1</b>.
+		</p>
+        <p>
+			Конструктор с четырьмя параметрами (<b>Икс</b>, <b>Игрек</b>, <b>Текст</b>, <b>ПоУмолчанию</b>) создает кнопку для диалогового окна.
+			Свойство <b>СтильКомпоновки (LayoutStyle)</b> будет установлено в значение <b>Абсолютно (Absolute)</b>. 
+			Если параметр <b>ПоУмолчанию</b> равен <b>Истина</b>, используется специальное оформление, и пользователь, нажимающий клавишу <b>Enter</b> в 
 			диалоговом окне, косвенно активирует эту кнопку.
-		</P>
-        <H4 class=dtH4>Пример</H4>
-            <PRE class=code>
+		</p>
+        <h4 class=dtH4>Пример</h4>
+            <pre class=code>
 Кнопка1 = ТФ.Кнопка("Кнопка1");
-</PRE>
+</pre>
             <details>
                 <summary>Полный пример кода</summary>
-                    <PRE class=code>
-<a id="copy1" href="jаvascript://" title="Выделяет код, копирует и снимает выделение.">Копировать</a>     <a id="select1" href="jаvascript://" title="Выделяет код.">Выделить всё</a>
-<hr style="border-color: lightgray;"><DIV id="cont1">
+                    <pre class=code>
+<button id="copy1" type="button" style="font-size:100%;">Копировать</button>
+<hr style="border-color: lightgray;"><div id="cont1">
 Перем ТФ, Кнопка1;
 
 Процедура ПриОткрытии() Экспорт
@@ -88,7 +88,6 @@
 
 ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
 ТФ = Новый ТерминалФормыДляОдноСкрипта();
-ТФ.Активировать();
 
 Кнопка1 = ТФ.Кнопка("Кнопка1");
 Кнопка1.Икс = ТФ.Позиция.Абсолютно(1);
@@ -103,15 +102,15 @@
 ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
 
 ТФ.Запуск();
-</DIV>
-</PRE>
+</div>
+</pre>
             </details>
-        <P></P>
+        <p></p>
         <details>
             <summary>Тестовый код</summary>
-            <PRE class=code>
-<a id="copy2" href="jаvascript://" title="Выделяет код, копирует и снимает выделение.">Копировать</a>     <a id="select2" href="jаvascript://" title="Выделяет код.">Выделить всё</a>
-<hr style="border-color: lightgray;"><DIV id="cont2">
+            <pre class=code>
+<button id="copy2" type="button" style="font-size:100%;">Копировать</button>
+<hr style="border-color: lightgray;"><div id="cont2">
 Перем ТФ, Кнопка, Кнопка1;
 
 Процедура ПриОткрытии() Экспорт
@@ -121,7 +120,6 @@
 
 ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
 ТФ = Новый ТерминалФормыДляОдноСкрипта();
-ТФ.Активировать();
 
 Кнопка1 = ТФ.Кнопка("Кнопка1");
 Кнопка1.Икс = ТФ.Позиция.Абсолютно(1);
@@ -139,63 +137,12 @@
 Сообщить(?(
 ТипЗнч(Кнопка) = Тип("ТфКнопка")
 , "", "!!! ") + "ТерминалФормыДляОдноСкрипта.Кнопка (OneScriptTerminalGui.Button) Метод" + " " + ТекущаяДата() + Символы.ПС);
-</DIV>
-</PRE>
+</div>
+</pre>
         </details>
-        <P></P>
-        <H4 class=dtH4>Смотрите также</H4>
-        <P><A href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</A></P>
-    </DIV>
-    <script>
-        window.onload = function () {
-            var a = document.getElementById('select1');
-            a.onclick = function () {
-                window.getSelection().removeAllRanges();
-                var ta1 = document.getElementById('cont1');
-                var range1 = document.createRange();
-                range1.selectNode(ta1);
-                window.getSelection().addRange(range1);
-                return false;
-            }
-
-            var b = document.getElementById('copy1');
-            b.onclick = function () {
-                window.getSelection().removeAllRanges();
-                var ta2 = document.getElementById('cont1');
-                var range2 = document.createRange();
-                range2.selectNode(ta2);
-                window.getSelection().addRange(range2);
-                try {
-                    document.execCommand('copy');
-                } catch (err) { }
-                window.getSelection().removeRange(range2);
-                return false;
-            }
-
-            var c = document.getElementById('select2');
-            c.onclick = function () {
-                window.getSelection().removeAllRanges();
-                var ta3 = document.getElementById('cont2');
-                var range3 = document.createRange();
-                range3.selectNode(ta3);
-                window.getSelection().addRange(range3);
-                return false;
-            }
-
-            var d = document.getElementById('copy2');
-            d.onclick = function () {
-                window.getSelection().removeAllRanges();
-                var ta4 = document.getElementById('cont2');
-                var range4 = document.createRange();
-                range4.selectNode(ta4);
-                window.getSelection().addRange(range4);
-                try {
-                    document.execCommand('copy');
-                } catch (err) { }
-                window.getSelection().removeRange(range4);
-                return false;
-            }
-        }
-    </script>
-</BODY>
-</HTML>
+        <p></p>
+        <h4 class=dtH4>Смотрите также</h4>
+        <p><a href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</a></p>
+    </div>
+</body>
+</html>
