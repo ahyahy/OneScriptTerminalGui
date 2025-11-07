@@ -30,3 +30,30 @@ document.addEventListener('DOMContentLoaded', function (event) {
 	localStorage["destination"] = '' + document.location;
 });
 // ================================
+// Функции копирования примеров.
+window.onload = function () {
+	var a = document.getElementById('copy1');
+	a.onclick = function () {
+		window.getSelection().removeAllRanges();
+		var range1 = document.createRange();
+		range1.selectNode(document.getElementById('cont1'));
+		try {
+			navigator.clipboard.writeText(range1);
+		} catch (err) { }
+		window.getSelection().removeRange(range1);
+		return false;
+	}
+
+	var b = document.getElementById('copy2');
+	b.onclick = function () {
+		window.getSelection().removeAllRanges();
+		var range2 = document.createRange();
+		range2.selectNode(document.getElementById('cont2'));
+		try {
+			navigator.clipboard.writeText(range2);
+		} catch (err) { }
+		window.getSelection().removeRange(range2);
+		return false;
+	}
+}
+// ================================

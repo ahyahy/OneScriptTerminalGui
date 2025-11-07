@@ -1,67 +1,67 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-<HEAD>
-    <TITLE>OneScriptTerminalGui</TITLE>
-    <META content="text/html; charset=Windows-1252" http-equiv="Content-Type">
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>OneScriptTerminalGui</title>
+    <meta charset="UTF-8">
     <META name="keywords" content="OneScript, OneScriptTerminalGui, 1С">
-    <LINK rel="stylesheet" type="text/css" href="mainstyle.css">
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
     <script defer src="mobilstyle.js"></script>
-</HEAD>
-<BODY id=bodyID class=dtBODY onclick="divrightClick(event)">
-    <DIV id=nsbanner>
-        <DIV id=bannerrow1>
-            <TABLE class=bannerparthead cellSpacing=0>
-                <TBODY>
-                    <TR id=hdr>
-                        <TD class=runninghead></TD>
-                        <TD class=product></TD>
-                    </TR>
-                </TBODY>
-            </TABLE>
-        </DIV>
-        <DIV id=TitleRow>
-            <H1 class=dtH1>Библиотека OneScriptTerminalGui</H1>
-        </DIV>
-    </DIV>
-    <DIV id=nstext>
+</head>
+<body id=bodyID class=dtBODY onclick="divrightClick(event)">
+    <div id=nsbanner>
+        <div id=bannerrow1>
+            <table class=bannerparthead cellSpacing=0>
+                <tbody>
+                    <tr id=hdr>
+                        <td class=runninghead></td>
+                        <td class=product></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id=TitleRow>
+            <h1 class=dtH1>Библиотека OneScriptTerminalGui</h1>
+        </div>
+    </div>
+    <div id=nstext>
         <br>
-        <H3 class=dtH3>Назначение</H3>
+        <h3 class=dtH3>Назначение</h3>
         <br>
-        <P>
+        <p>
 			Цель данной разработки - создать простой инструмент для построения текстового интерфейса (TUI) на сценарном языке OneScript.
-		</P>
-        <P>
+		</p>
+        <p>
             TUI – это сокращение для text-based user interface (текстовый пользовательский интерфейс) или terminal user interface 
 			(терминальный пользовательский интерфейс). Слово "текстовый" в этом словосочетании означает, что всё показанное на экране, 
 			представляет собой большой текст – набор символов, с помощью которого имитируются различные элементы управления, а слово 
 			"терминальный" – что обратиться к этому интерфейсу возможно только из терминала.
-        </P>
-        <P>
+        </p>
+        <p>
 			Как правило работа сценариев OneScript выполняется в режиме терминала (консоли). Дополнительные возможности по представлению 
 			результатов выполнения сценария могли бы улучшить взаимодействие пользователя и компьютера. Это может быть выделение текста цветом, 
 			вывод данных в структурированном виде в таблицу, индикация прогресса выполнения, окна, кнопки, списки и многое другое, что 
 			доступно в графическом пользовательском интерфейсе (GUI).
-		</P>
-        <P>
+		</p>
+        <p>
 			Библиотека основана на разработке 
-			<A href="https://github.com/gui-cs/Terminal.Gui" target="blank">Terminal.Gui</A>, распространяемой под лицензией MIT License.
-		</P>
-        <P>
-			Все визуальные элементы наследуются от класса <B>Элемент (View)</B>. Класс <B>Элемент (View)</B> обеспечивает минимальную функциональность 
+			<a href="https://github.com/gui-cs/Terminal.Gui" target="blank">Terminal.Gui</a>, распространяемой под лицензией MIT License.
+		</p>
+        <p>
+			Все визуальные элементы наследуются от класса <b>Элемент (View)</b>. Класс <b>Элемент (View)</b> обеспечивает минимальную функциональность 
 			элемента пользовательского интерфейса, такую как расположение, размер, цвет, текст, а также общие события для обработки ввода 
-			с клавиатуры и мыши. Расположение визуальных элементов может быть абсолютным (<B>СтильКомпоновки.Абсолютно (LayoutStyle.Absolute)</B>) 
-			или вычисляемым (<B>СтильКомпоновки.Вычислено (LayoutStyle.Computed)</B>). Абсолютное расположение позволяет разработчикам 
+			с клавиатуры и мыши. Расположение визуальных элементов может быть абсолютным (<b>СтильКомпоновки.Абсолютно (LayoutStyle.Absolute)</b>) 
+			или вычисляемым (<b>СтильКомпоновки.Вычислено (LayoutStyle.Computed)</b>). Абсолютное расположение позволяет разработчикам 
 			указывать точную строку и столбец в терминале, где должен быть размещён верхний левый угол элемента. Компоновка автоматически размещает 
 			элементы в терминале в соответствии с ограничениями, заданными разработчиком с помощью классов 
-			<B>Позиция (Pos)</B> и <B>Величина (Dim)</B>. Почти каждый элемент может быть контейнером для произвольного количества дочерних элементов.
-		</P>
-        <P>
+			<b>Позиция (Pos)</b> и <b>Величина (Dim)</b>. Почти каждый элемент может быть контейнером для произвольного количества дочерних элементов.
+		</p>
+        <p>
 			Есть возможность создать панель меню, а также всплывающие контекстные меню. Для отображения дополнительной информации в нижней части 
 			экрана можно создать панель состояния.
-		</P>
-        <P></P>
+		</p>
+        <p></p>
         <br>
-        <P>.</P>
-    </DIV>
-</BODY>
-</HTML>
+        <p>.</p>
+    </div>
+</body>
+</html>
