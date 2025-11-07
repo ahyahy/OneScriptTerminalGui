@@ -12,7 +12,7 @@ namespace ostgui
         {
             M_StatusBar = new Terminal.Gui.StatusBar();
             base.M_View = M_StatusBar;
-            OneScriptTerminalGui.AddToHashtable(M_StatusBar, this);
+            Utils.AddToHashtable(M_StatusBar, this);
         }
 
         public string ShortcutDelimiter
@@ -39,7 +39,7 @@ namespace ostgui
 
         public new Toplevel GetTopSuperView()
         {
-            return OneScriptTerminalGui.RevertEqualsObj(M_StatusBar.GetTopSuperView());
+            return Utils.RevertEqualsObj(M_StatusBar.GetTopSuperView());
         }
     }
 
@@ -59,22 +59,12 @@ namespace ostgui
             statusBarItems.M_StatusBar = Base_obj.M_StatusBar;
         }
 
-        public TfAction HotKeyChanged { get; set; }
-        public TfAction LayoutComplete { get; set; }
-        public TfAction LayoutStarted { get; set; }
-        public TfAction DrawContentComplete { get; set; }
-        public TfAction DrawContent { get; set; }
-        public TfAction Added { get; set; }
-        public TfAction InitializedItem { get; set; }
-        public TfAction Removed { get; set; }
-        public TfAction KeyPress { get; set; }
-
         public StatusBar Base_obj;
 
         [ContextProperty("Данные", "Data")]
         public IValue Data
         {
-            get { return OneScriptTerminalGui.RevertObj(Base_obj.Data); }
+            get { return Utils.RevertObj(Base_obj.Data); }
             set { Base_obj.Data = value; }
         }
 
@@ -92,10 +82,20 @@ namespace ostgui
         }
 
         [ContextProperty("Игрек", "Y")]
-        public TfPos Y
+        public IValue Y
         {
             get { return new TfPos(Base_obj.Y); }
-            set { Base_obj.Y = value.Base_obj; }
+            set
+            {
+                if (Utils.IsType<TfPos>(value))
+                {
+                    Base_obj.M_StatusBar.Y = ((TfPos)value).Base_obj.M_Pos;
+                }
+                else if (Utils.IsNumber(value))
+                {
+                    Base_obj.M_StatusBar.Y = Terminal.Gui.Pos.At(Utils.ToInt32(value));
+                }
+            }
         }
 
         [ContextProperty("Идентификатор", "Id")]
@@ -106,16 +106,30 @@ namespace ostgui
         }
 
         [ContextProperty("Икс", "X")]
-        public TfPos X
+        public IValue X
         {
             get { return new TfPos(Base_obj.X); }
-            set { Base_obj.X = value.Base_obj; }
+            set
+            {
+                if (Utils.IsType<TfPos>(value))
+                {
+                    Base_obj.M_StatusBar.X = ((TfPos)value).Base_obj.M_Pos;
+                }
+                else if (Utils.IsNumber(value))
+                {
+                    Base_obj.M_StatusBar.X = Terminal.Gui.Pos.At(Utils.ToInt32(value));
+                }
+            }
         }
 
         [ContextProperty("Кадр", "Frame")]
         public TfRect Frame
         {
-            get { return new TfRect(Base_obj.Frame.M_Rect.X, Base_obj.Frame.M_Rect.Y, Base_obj.Frame.M_Rect.Width, Base_obj.Frame.M_Rect.Height); }
+            get
+            {
+                Terminal.Gui.Rect frame = Base_obj.Frame.M_Rect;
+                return new TfRect(frame.X, frame.Y, frame.Width, frame.Height);
+            }
             set { Base_obj.Frame = value.Base_obj; }
         }
 
@@ -136,14 +150,32 @@ namespace ostgui
         [ContextProperty("Родитель", "SuperView")]
         public IValue SuperView
         {
-            get { return OneScriptTerminalGui.RevertEqualsObj(Base_obj.SuperView.M_View).dll_obj; }
+            get
+            {
+                if (Base_obj.M_StatusBar.SuperView.GetType().ToString().Contains("+ContentView"))
+                {
+                    return Utils.RevertEqualsObj(Base_obj.M_StatusBar.SuperView.SuperView).dll_obj;
+                }
+                return Utils.RevertEqualsObj(Base_obj.M_StatusBar.SuperView).dll_obj;
+            }
         }
 
+        private TfColorScheme colorScheme;
         [ContextProperty("ЦветоваяСхема", "ColorScheme")]
         public TfColorScheme ColorScheme
         {
-            get { return Base_obj.ColorScheme.dll_obj; }
-            set { Base_obj.ColorScheme = value.Base_obj; }
+            get { return colorScheme; }
+            set
+            {
+                colorScheme = new TfColorScheme();
+                Terminal.Gui.ColorScheme _colorScheme = value.Base_obj.M_ColorScheme;
+                colorScheme.Base_obj.M_ColorScheme.Disabled = _colorScheme.Disabled;
+                colorScheme.Base_obj.M_ColorScheme.Focus = _colorScheme.Focus;
+                colorScheme.Base_obj.M_ColorScheme.HotFocus = _colorScheme.HotFocus;
+                colorScheme.Base_obj.M_ColorScheme.HotNormal = _colorScheme.HotNormal;
+                colorScheme.Base_obj.M_ColorScheme.Normal = _colorScheme.Normal;
+                Base_obj.ColorScheme = colorScheme.Base_obj;
+            }
         }
 
         [ContextProperty("Элементы", "Items")]
@@ -151,12 +183,6 @@ namespace ostgui
         {
             get { return statusBarItems; }
         }
-
-        [ContextProperty("ВидимостьИзменена", "VisibleChanged")]
-        public TfAction VisibleChanged { get; set; }
-
-        [ContextProperty("ДоступностьИзменена", "EnabledChanged")]
-        public TfAction EnabledChanged { get; set; }
 
         [ContextProperty("МышьНадЭлементом", "MouseEnter")]
         public TfAction MouseEnter { get; set; }

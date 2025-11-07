@@ -1,4 +1,5 @@
 ﻿using System;
+using ScriptEngine.Machine;
 using ScriptEngine.Machine.Contexts;
 using Terminal.Gui;
 
@@ -14,6 +15,28 @@ namespace ostgui
 
         public TfTimer()
         {
+        }
+
+        public int Iterations { get; set; }
+        public void TimerStartAndStop(TfAction action)
+        {
+            int iterations = 0;
+            object token2 = null;
+            token2 = Application.MainLoop.AddTimeout(TimeSpan.FromMilliseconds(Interval), (m) =>
+            {
+                TfEventArgs TfEventArgs1 = new TfEventArgs();
+                TfEventArgs1.sender = this;
+                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+                OneScriptTerminalGui.Event = TfEventArgs1;
+                OneScriptTerminalGui.ExecuteEvent(action);
+                iterations = iterations + 1;
+                if (iterations >= Iterations)
+                {
+                    Application.MainLoop.RemoveTimeout(token2);
+                    return false;
+                }
+                return true;
+            });
         }
 
         private int interval = 0;

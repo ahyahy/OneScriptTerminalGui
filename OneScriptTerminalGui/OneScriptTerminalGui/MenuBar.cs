@@ -12,7 +12,7 @@ namespace ostgui
         {
             M_MenuBar = new Terminal.Gui.MenuBar();
             base.M_View = M_MenuBar;
-            OneScriptTerminalGui.AddToHashtable(M_MenuBar, this);
+            Utils.AddToHashtable(M_MenuBar, this);
 
             M_MenuBar.MenuAllClosed += M_MenuBar_MenuAllClosed;
             M_MenuBar.MenuOpened += M_MenuBar_MenuOpened;
@@ -28,7 +28,7 @@ namespace ostgui
                 TfEventArgs1.sender = dll_obj;
                 TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MouseLeave);
                 TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
-                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(M_MenuBar).dll_obj;
+                TfEventArgs1.view = Utils.RevertEqualsObj(M_MenuBar).dll_obj;
                 TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
                 TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
                 OneScriptTerminalGui.Event = TfEventArgs1;
@@ -46,8 +46,8 @@ namespace ostgui
                 TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MenuOpening);
                 TfEventArgs1.cancel = ValueFactory.Create(false);
                 TfEventArgs1.cancel = ValueFactory.Create(obj.Cancel);
-                TfEventArgs1.currentMenu = OneScriptTerminalGui.RevertEqualsObj(obj.CurrentMenu).dll_obj;
-                TfEventArgs1.newMenuBarItem = OneScriptTerminalGui.RevertEqualsObj(obj.NewMenuBarItem).dll_obj;
+                TfEventArgs1.currentMenu = Utils.RevertEqualsObj(obj.CurrentMenu).dll_obj;
+                TfEventArgs1.newMenuBarItem = Utils.RevertEqualsObj(obj.NewMenuBarItem).dll_obj;
                 OneScriptTerminalGui.Event = TfEventArgs1;
                 OneScriptTerminalGui.ExecuteEvent(dll_obj.MenuOpening);
 
@@ -67,7 +67,7 @@ namespace ostgui
                 TfEventArgs TfEventArgs1 = new TfEventArgs();
                 TfEventArgs1.sender = dll_obj;
                 TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MenuOpened);
-                TfEventArgs1.menuItem = OneScriptTerminalGui.RevertEqualsObj(obj).dll_obj;
+                TfEventArgs1.menuItem = Utils.RevertEqualsObj(obj).dll_obj;
                 OneScriptTerminalGui.Event = TfEventArgs1;
                 OneScriptTerminalGui.ExecuteEvent(dll_obj.MenuOpened);
             }
@@ -133,7 +133,7 @@ namespace ostgui
 
         public ostgui.View LastFocused
         {
-            get { return OneScriptTerminalGui.RevertEqualsObj(M_MenuBar.LastFocused); }
+            get { return Utils.RevertEqualsObj(M_MenuBar.LastFocused); }
         }
 
         public string ShortcutDelimiter
@@ -149,7 +149,7 @@ namespace ostgui
 
         public new Toplevel GetTopSuperView()
         {
-            return OneScriptTerminalGui.RevertEqualsObj(M_MenuBar.GetTopSuperView());
+            return Utils.RevertEqualsObj(M_MenuBar.GetTopSuperView());
         }
 
         public int OpenIndex
@@ -175,28 +175,12 @@ namespace ostgui
             menusCollection.M_MenuBar = Base_obj.M_MenuBar;
         }
 
-        public TfAction LayoutComplete { get; set; }
-        public TfAction LayoutStarted { get; set; }
-        public TfAction DrawContentComplete { get; set; }
-        public TfAction DrawContent { get; set; }
-        public TfAction ShortcutAction { get; set; }
-        public TfAction Added { get; set; }
-        public TfAction InitializedItem { get; set; }
-        public TfAction Initialized { get; set; }
-        public TfAction MenuClosing { get; set; }
-        public TfAction KeyPress { get; set; }
-        public TfAction Removed { get; set; }
-        public TfAction MouseClick { get; set; }
-        public TfAction CanFocusChanged { get; set; }
-        public TfAction Enter { get; set; }
-        public TfAction Leave { get; set; }
-
         public MenuBar Base_obj;
 
         [ContextProperty("Данные", "Data")]
         public IValue Data
         {
-            get { return OneScriptTerminalGui.RevertObj(Base_obj.Data); }
+            get { return Utils.RevertObj(Base_obj.Data); }
             set { Base_obj.Data = value; }
         }
 
@@ -214,10 +198,20 @@ namespace ostgui
         }
 
         [ContextProperty("Игрек", "Y")]
-        public TfPos Y
+        public IValue Y
         {
             get { return new TfPos(Base_obj.Y); }
-            set { Base_obj.Y = value.Base_obj; }
+            set
+            {
+                if (Utils.IsType<TfPos>(value))
+                {
+                    Base_obj.M_MenuBar.Y = ((TfPos)value).Base_obj.M_Pos;
+                }
+                else if (Utils.IsNumber(value))
+                {
+                    Base_obj.M_MenuBar.Y = Terminal.Gui.Pos.At(Utils.ToInt32(value));
+                }
+            }
         }
 
         [ContextProperty("Идентификатор", "Id")]
@@ -228,10 +222,20 @@ namespace ostgui
         }
 
         [ContextProperty("Икс", "X")]
-        public TfPos X
+        public IValue X
         {
             get { return new TfPos(Base_obj.X); }
-            set { Base_obj.X = value.Base_obj; }
+            set
+            {
+                if (Utils.IsType<TfPos>(value))
+                {
+                    Base_obj.M_MenuBar.X = ((TfPos)value).Base_obj.M_Pos;
+                }
+                else if (Utils.IsNumber(value))
+                {
+                    Base_obj.M_MenuBar.X = Terminal.Gui.Pos.At(Utils.ToInt32(value));
+                }
+            }
         }
 
         [ContextProperty("ИндексОткрываемого", "OpenIndex")]
@@ -244,7 +248,11 @@ namespace ostgui
         [ContextProperty("Кадр", "Frame")]
         public TfRect Frame
         {
-            get { return new TfRect(Base_obj.Frame.M_Rect.X, Base_obj.Frame.M_Rect.Y, Base_obj.Frame.M_Rect.Width, Base_obj.Frame.M_Rect.Height); }
+            get
+            {
+                Terminal.Gui.Rect frame = Base_obj.Frame.M_Rect;
+                return new TfRect(frame.X, frame.Y, frame.Width, frame.Height);
+            }
             set { Base_obj.Frame = value.Base_obj; }
         }
 
@@ -284,24 +292,36 @@ namespace ostgui
         [ContextProperty("Родитель", "SuperView")]
         public IValue SuperView
         {
-            get { return OneScriptTerminalGui.RevertEqualsObj(Base_obj.SuperView.M_View).dll_obj; }
+            get
+            {
+                if (Base_obj.M_MenuBar.SuperView.GetType().ToString().Contains("+ContentView"))
+                {
+                    return Utils.RevertEqualsObj(Base_obj.M_MenuBar.SuperView.SuperView).dll_obj;
+                }
+                return Utils.RevertEqualsObj(Base_obj.M_MenuBar.SuperView).dll_obj;
+            }
         }
 
+        private TfColorScheme colorScheme;
         [ContextProperty("ЦветоваяСхема", "ColorScheme")]
         public TfColorScheme ColorScheme
         {
-            get { return Base_obj.ColorScheme.dll_obj; }
-            set { Base_obj.ColorScheme = value.Base_obj; }
+            get { return colorScheme; }
+            set
+            {
+                colorScheme = new TfColorScheme();
+                Terminal.Gui.ColorScheme _colorScheme = value.Base_obj.M_ColorScheme;
+                colorScheme.Base_obj.M_ColorScheme.Disabled = _colorScheme.Disabled;
+                colorScheme.Base_obj.M_ColorScheme.Focus = _colorScheme.Focus;
+                colorScheme.Base_obj.M_ColorScheme.HotFocus = _colorScheme.HotFocus;
+                colorScheme.Base_obj.M_ColorScheme.HotNormal = _colorScheme.HotNormal;
+                colorScheme.Base_obj.M_ColorScheme.Normal = _colorScheme.Normal;
+                Base_obj.ColorScheme = colorScheme.Base_obj;
+            }
         }
-
-        [ContextProperty("ВидимостьИзменена", "VisibleChanged")]
-        public TfAction VisibleChanged { get; set; }
 
         [ContextProperty("ВсеЗакрыты", "MenuAllClosed")]
         public TfAction MenuAllClosed { get; set; }
-
-        [ContextProperty("ДоступностьИзменена", "EnabledChanged")]
-        public TfAction EnabledChanged { get; set; }
 
         [ContextProperty("МенюОткрыто", "MenuOpened")]
         public TfAction MenuOpened { get; set; }

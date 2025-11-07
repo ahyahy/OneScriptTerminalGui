@@ -159,13 +159,6 @@
   <data name="fdSelectMixed" xml:space="preserve">
     <value>Select Mixed</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="System_CodeDom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\System.CodeDom.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="System_ValueTuple" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\System.ValueTuple.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="wzBack" xml:space="preserve">
     <value>_Back</value>
   </data>

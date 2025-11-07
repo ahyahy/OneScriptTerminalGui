@@ -14,7 +14,7 @@ namespace ostgui
         public TextFormatter()
         {
             M_TextFormatter = new Terminal.Gui.TextFormatter();
-            OneScriptTerminalGui.AddToHashtable(M_TextFormatter, this);
+            Utils.AddToHashtable(M_TextFormatter, this);
         }
 
         public bool AutoSize
@@ -260,6 +260,13 @@ namespace ostgui
         public TextFormatter Base_obj;
 
         public TfAction HotKeyChanged { get; set; }
+
+        [ContextProperty("АвтоРазмер", "AutoSize")]
+        public bool AutoSize
+        {
+            get { return Base_obj.AutoSize; }
+            set { Base_obj.AutoSize = value; }
+        }
 
         [ContextProperty("ВертикальноеВыравнивание", "VerticalAlignment")]
         public int VerticalAlignment

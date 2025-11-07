@@ -1,5 +1,4 @@
-﻿using System;
-using ScriptEngine.Machine.Contexts;
+﻿using ScriptEngine.Machine.Contexts;
 using ScriptEngine.Machine;
 
 namespace ostgui
@@ -12,13 +11,13 @@ namespace ostgui
         public Pos()
         {
             M_Pos = new Terminal.Gui.Pos();
-            OneScriptTerminalGui.AddToHashtable(M_Pos, this);
+            Utils.AddToHashtable(M_Pos, this);
         }
 
         public Pos(Terminal.Gui.Pos p1)
         {
             M_Pos = p1;
-            OneScriptTerminalGui.AddToHashtable(M_Pos, this);
+            Utils.AddToHashtable(M_Pos, this);
         }
 
         public Pos At(int p1)
@@ -151,9 +150,9 @@ namespace ostgui
         }
 
         [ContextMethod("Процент", "Percent")]
-        public TfPos Percent(IValue p1)
+        public TfPos Percent(decimal p1)
         {
-            return new TfPos(Base_obj.Percent(Convert.ToSingle(p1.AsNumber())));
+            return new TfPos(Base_obj.Percent(Utils.ToFloat(p1)));
         }
 
         [ContextMethod("Сложить", "Summation")]

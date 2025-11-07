@@ -2,6 +2,7 @@
 using ScriptEngine.Machine;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 
 namespace ostgui
 {
@@ -33,55 +34,55 @@ namespace ostgui
             }
         }
 
+        [ContextProperty("Количество", "Count")]
+        public int CountProp
+        {
+            get { return _list.Count; }
+        }
+
+        [ContextMethod("Получить", "Get")]
+        public IValue Get(int index)
+        {
+            return _list[index];
+        }
+
+        [ContextMethod("Имя")]
+        public string NameRu(decimal p1)
+        {
+            return namesRu.TryGetValue(p1, out string name) ? name : p1.ToString();
+        }
+
+        [ContextMethod("Name")]
+        public string NameEn(decimal p1)
+        {
+            return namesEn.TryGetValue(p1, out string name) ? name : p1.ToString();
+        }
+
         public TfLayoutStyle()
         {
-            _list = new List<IValue>();
-            _list.Add(ValueFactory.Create(Absolute));
-            _list.Add(ValueFactory.Create(Computed));
+            _list = new List<decimal>
+            {
+                Absolute,
+                Computed,
+            }.Select(ValueFactory.Create).ToList();
         }
+
+        private static readonly Dictionary<decimal, string> namesRu = new Dictionary<decimal, string>
+        {
+            {0, "Абсолютно"},
+            {1, "Вычислено"},
+        };
+
+        private static readonly Dictionary<decimal, string> namesEn = new Dictionary<decimal, string>
+        {
+            {0, "Absolute"},
+            {1, "Computed"},
+        };
 
         [ContextProperty("Абсолютно", "Absolute")]
-        public int Absolute
-        {
-            get { return 0; }
-        }
+        public decimal Absolute => 0;
 
         [ContextProperty("Вычислено", "Computed")]
-        public int Computed
-        {
-            get { return 1; }
-        }
-
-        [ContextMethod("ВСтроку", "ВСтроку")]
-        public string ToStringRu(decimal p1)
-        {
-            string str = p1.ToString();
-            switch (p1)
-            {
-                case 0:
-                    str = "Абсолютно";
-                    break;
-                case 1:
-                    str = "Вычислено";
-                    break;
-            }
-            return str;
-        }
-
-        [ContextMethod("ToString", "ToString")]
-        public string ToStringEn(decimal p1)
-        {
-            string str = p1.ToString();
-            switch (p1)
-            {
-                case 0:
-                    str = "Absolute";
-                    break;
-                case 1:
-                    str = "Computed";
-                    break;
-            }
-            return str;
-        }
+        public decimal Computed => 1;
     }
 }

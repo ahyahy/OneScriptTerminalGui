@@ -2333,8 +2333,8 @@ namespace Terminal.Gui
         public static bool UseSystemConsole { get; set; } = false;
 
         //*master//
-        //// For Unit testing - ignores UseSystemConsole
-        //internal static bool ForceFakeConsole;
+        //////// For Unit testing - ignores UseSystemConsole
+        //////internal static bool ForceFakeConsole;
         //master*//
 
         /// <summary>
@@ -18188,7 +18188,13 @@ namespace Terminal.Gui
                     if (ExecuteSelection())
                     {
                         host.canceled = false;
-                        Application.RequestStop();
+
+                        //*master//
+                        //////Application.RequestStop();
+                        host.DialogResult = new ostgui.TfDialogResult().OK;
+                        host.OnDialogClosed(host);
+                        host.Visible = false;
+                        //master*//
                     }
                     return true;
                 case MouseFlags.Button1Clicked | MouseFlags.ButtonShift:
@@ -18635,12 +18641,90 @@ namespace Terminal.Gui
         }
     }
 
+    //*master//
+    public class DialogEventArgs : System.EventArgs
+    {
+        private decimal dialogResult;
+        private FileDialog dialog;
+        private string filePath;
+        private string directoryPath;
+        private ScriptEngine.HostedScript.Library.ArrayImpl filePaths;
+
+        public DialogEventArgs(FileDialog d)
+        {
+            dialogResult = d.DialogResult;
+            dialog = d;
+            filePath = d.FilePath.ToString();
+            directoryPath = d.DirectoryPath.ToString();
+            if (d.GetType() == typeof(OpenDialog))
+            {
+                ScriptEngine.HostedScript.Library.ArrayImpl ArrayImpl1 = new ScriptEngine.HostedScript.Library.ArrayImpl();
+                foreach (var file in ((OpenDialog)d).FilePaths)
+                {
+                    ArrayImpl1.Add(ScriptEngine.Machine.ValueFactory.Create(file));
+                }
+                filePaths = ArrayImpl1;
+            }
+            else
+            {
+                filePaths = null;
+            }
+        }
+
+        public decimal DialogResult
+        {
+            get { return dialogResult; }
+            set { dialogResult = value; }
+        }
+
+        public FileDialog Dialog
+        {
+            get { return dialog; }
+            set { dialog = value; }
+        }
+
+        public string FilePath
+        {
+            get { return filePath; }
+            set { filePath = value; }
+        }
+
+        public string DirectoryPath
+        {
+            get { return directoryPath; }
+            set { directoryPath = value; }
+        }
+
+        public ScriptEngine.HostedScript.Library.ArrayImpl FilePaths
+        {
+            get { return filePaths; }
+            set { filePaths = value; }
+        }
+    }
+    //master*//
+
     /// <summary>
     /// Base class for the <see cref="OpenDialog"/> and the <see cref="SaveDialog"/>
     /// </summary>
     public class FileDialog : Dialog
     {
-        Button prompt, cancel;
+        //*master//
+        public decimal DialogResult;
+        public event EventHandler<DialogEventArgs> DialogClosed;
+        public void OnDialogClosed(FileDialog fd)
+        {
+            var handler = DialogClosed;
+            if (handler != null)
+            {
+                handler(this, new DialogEventArgs(fd));
+            }
+        }
+        //master*//
+
+        //*master//
+        //////Button prompt, cancel;
+        public Button prompt, cancel;
+        //master*//
         Label nameFieldLabel, message, nameDirLabel;
         TextField dirEntry, nameEntry;
         internal DirListView dirListView;
@@ -18764,7 +18848,13 @@ namespace Terminal.Gui
             this.cancel = new Button("Cancel");
             this.cancel.Clicked += () =>
             {
-                Cancel();
+                //*master//
+                //////Cancel();
+                this.DialogResult = new ostgui.TfDialogResult().Cancel;
+                OnDialogClosed(this);
+                canceled = true;
+                this.Visible = false;
+                //master*//
             };
             AddButton(cancel);
 
@@ -18800,7 +18890,13 @@ namespace Terminal.Gui
                     FilePath = Path.Combine(FilePath.ToString(), $"{name}{ext}");
                 }
                 canceled = false;
-                Application.RequestStop();
+
+                //*master//
+                //////Application.RequestStop();
+                this.DialogResult = new ostgui.TfDialogResult().OK;
+                OnDialogClosed(this);
+                this.Visible = false;
+                //master*//
             };
             AddButton(this.prompt);
 
@@ -18826,15 +18922,24 @@ namespace Terminal.Gui
             {
                 if (e.KeyEvent.Key == Key.Esc)
                 {
-                    Cancel();
+                    //*master//
+                    //////Cancel();
+                    this.DialogResult = new ostgui.TfDialogResult().Cancel;
+                    OnDialogClosed(this);
+                    canceled = true;
+                    this.Visible = false;
+                    //master*//
+
                     e.Handled = true;
                 }
             };
-            void Cancel()
-            {
-                canceled = true;
-                Application.RequestStop();
-            }
+            //*master//
+            //////void Cancel()
+            //////{
+            //////    canceled = true;
+            //////    Application.RequestStop();
+            //////}
+            //master*//
         }
 
         private static int SetComboBoxHeight(List<string> allowedTypes)
@@ -18996,6 +19101,27 @@ namespace Terminal.Gui
     /// </remarks>
     public class SaveDialog : FileDialog
     {
+        //*master//
+        // Добавил перевод надписи кнопки, так как односкрипт двуязычный.
+        private int labelLanguage = 0;
+        public int LabelLanguage
+        {
+            get { return labelLanguage; }
+            set
+            {
+                if (value == 0)
+                {
+                    base.cancel.Text = "Отмена";
+                }
+                else
+                {
+                    base.cancel.Text = "Cancel";
+                }
+                labelLanguage = value;
+            }
+        }
+        //master*//
+
         /// <summary>
         /// Initializes a new <see cref="SaveDialog"/>.
         /// </summary>
@@ -19047,6 +19173,27 @@ namespace Terminal.Gui
     public class OpenDialog : FileDialog
     {
         OpenMode openMode;
+
+        //*master//
+        // Добавил перевод надписи кнопки, так как односкрипт двуязычный.
+        private int labelLanguage = 0;
+        public int LabelLanguage
+        {
+            get { return labelLanguage; }
+            set
+            {
+                if (value == 0)
+                {
+                    base.cancel.Text = "Отмена";
+                }
+                else
+                {
+                    base.cancel.Text = "Cancel";
+                }
+                labelLanguage = value;
+            }
+        }
+        //master*//
 
         /// <summary>
         /// Determine which <see cref="System.IO"/> type to open.
@@ -52240,13 +52387,29 @@ namespace Terminal.Gui
             IsInitialized = true;
             if (subviews?.Count > 0)
             {
-                foreach (var view in subviews)
+                //*master//
+                // Эту конструкцию помещаю в попытку, так как возникает ошибка обработки события 
+                // Текстовый.СодержимоеИзменено (TextView.ContentsChanged) Событие
+                //////foreach (var view in subviews)
+                //////{
+                //////    if (!view.IsInitialized)
+                //////    {
+                //////        view.EndInit();
+                //////    }
+                //////}
+
+                try
                 {
-                    if (!view.IsInitialized)
+                    foreach (var view in subviews)
                     {
-                        view.EndInit();
+                        if (!view.IsInitialized)
+                        {
+                            view.EndInit();
+                        }
                     }
                 }
+                catch { }
+                //master*//
             }
             Initialized?.Invoke(this, EventArgs.Empty);
         }
@@ -53132,8 +53295,49 @@ namespace Terminal.Gui
             return sz;
         }
 
+        //*master//
+        // Этот метод заменю на метод с ограничением минимального размера терминала, иначе в windows программа закрывается.
+        //////internal Size SetConsoleWindow(short cols, short rows)
+        //////{
+        //////    var csbi = new CONSOLE_SCREEN_BUFFER_INFOEX();
+        //////    csbi.cbSize = (uint)Marshal.SizeOf(csbi);
+
+        //////    if (!GetConsoleScreenBufferInfoEx(IsWindowsTerminal ? OutputHandle : screenBuffer, ref csbi))
+        //////    {
+        //////        throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());
+        //////    }
+        //////    var maxWinSize = GetLargestConsoleWindowSize(IsWindowsTerminal ? OutputHandle : screenBuffer);
+        //////    var newCols = Math.Min(cols, maxWinSize.X);
+        //////    var newRows = Math.Min(rows, maxWinSize.Y);
+        //////    csbi.dwSize = new Coord(newCols, Math.Max(newRows, (short)1));
+        //////    csbi.srWindow = new SmallRect(0, 0, newCols, newRows);
+        //////    csbi.dwMaximumWindowSize = new Coord(newCols, newRows);
+        //////    if (!SetConsoleScreenBufferInfoEx(IsWindowsTerminal ? OutputHandle : screenBuffer, ref csbi))
+        //////    {
+        //////        throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());
+        //////    }
+        //////    var winRect = new SmallRect(0, 0, (short)(newCols - 1), (short)Math.Max(newRows - 1, 0));
+        //////    if (!SetConsoleWindowInfo(OutputHandle, true, ref winRect))
+        //////    {
+        //////        //throw new System.ComponentModel.Win32Exception (Marshal.GetLastWin32Error ());
+        //////        return new Size(cols, rows);
+        //////    }
+        //////    SetConsoleOutputWindow(csbi);
+        //////    return new Size(winRect.Right + 1, newRows - 1 < 0 ? 0 : winRect.Bottom + 1);
+        //////}
         internal Size SetConsoleWindow(short cols, short rows)
         {
+            short _cols = cols;
+            short _rows = rows;
+            if (cols < Convert.ToInt16(ostgui.Utils.minCols))
+            {
+                _cols = Convert.ToInt16(ostgui.Utils.minCols);
+            }
+            if (rows < Convert.ToInt16(ostgui.Utils.minRows))
+            {
+                _rows = Convert.ToInt16(ostgui.Utils.minRows);
+            }
+
             var csbi = new CONSOLE_SCREEN_BUFFER_INFOEX();
             csbi.cbSize = (uint)Marshal.SizeOf(csbi);
 
@@ -53142,8 +53346,8 @@ namespace Terminal.Gui
                 throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());
             }
             var maxWinSize = GetLargestConsoleWindowSize(IsWindowsTerminal ? OutputHandle : screenBuffer);
-            var newCols = Math.Min(cols, maxWinSize.X);
-            var newRows = Math.Min(rows, maxWinSize.Y);
+            var newCols = Math.Min(_cols, maxWinSize.X);
+            var newRows = Math.Min(_rows, maxWinSize.Y);
             csbi.dwSize = new Coord(newCols, Math.Max(newRows, (short)1));
             csbi.srWindow = new SmallRect(0, 0, newCols, newRows);
             csbi.dwMaximumWindowSize = new Coord(newCols, newRows);
@@ -53155,11 +53359,12 @@ namespace Terminal.Gui
             if (!SetConsoleWindowInfo(OutputHandle, true, ref winRect))
             {
                 //throw new System.ComponentModel.Win32Exception (Marshal.GetLastWin32Error ());
-                return new Size(cols, rows);
+                return new Size(_cols, _rows);
             }
             SetConsoleOutputWindow(csbi);
             return new Size(winRect.Right + 1, newRows - 1 < 0 ? 0 : winRect.Bottom + 1);
         }
+        //master*//
 
         void SetConsoleOutputWindow(CONSOLE_SCREEN_BUFFER_INFOEX csbi)
         {
@@ -56969,6 +57174,10 @@ namespace Terminal.Gui.Trees
     /// </summary>
     public class TreeNode : ITreeNode
     {
+        //*master//
+        public ScriptEngine.Machine.IValue TagProp { get; set; }
+        //master*//
+
         /// <summary>
         /// Children of the current node
         /// </summary>
@@ -58434,7 +58643,10 @@ namespace Terminal.Gui.Resources
             {
                 if (object.ReferenceEquals(resourceMan, null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Terminal.Gui.Resources.Strings", typeof(Strings).Assembly);
+                    //*master//
+                    //////global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager(("Terminal.Gui.Resources.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ostgui.Properties.Resources", typeof(Strings).Assembly);
+                    //master*//
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -58463,10 +58675,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string ctxCopy
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("ctxCopy", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("ctxCopy", resourceCulture);
+                string str = ResourceManager.GetString("ctxCopy", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
 
         /// <summary>
@@ -58474,10 +58697,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string ctxCut
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("ctxCut", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("ctxCut", resourceCulture);
+                string str = ResourceManager.GetString("ctxCut", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
 
         /// <summary>
@@ -58485,10 +58719,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string ctxDeleteAll
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("ctxDeleteAll", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("ctxDeleteAll", resourceCulture);
+                string str = ResourceManager.GetString("ctxDeleteAll", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
 
         /// <summary>
@@ -58496,10 +58741,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string ctxPaste
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("ctxPaste", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("ctxPaste", resourceCulture);
+                string str = ResourceManager.GetString("ctxPaste", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
 
         /// <summary>
@@ -58507,10 +58763,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string ctxRedo
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("ctxRedo", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("ctxRedo", resourceCulture);
+                string str = ResourceManager.GetString("ctxRedo", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
 
         /// <summary>
@@ -58518,10 +58785,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string ctxSelectAll
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("ctxSelectAll", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("ctxSelectAll", resourceCulture);
+                string str = ResourceManager.GetString("ctxSelectAll", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
 
         /// <summary>
@@ -58529,10 +58807,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string ctxUndo
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("ctxUndo", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("ctxUndo", resourceCulture);
+                string str = ResourceManager.GetString("ctxUndo", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
 
         /// <summary>
@@ -58540,10 +58829,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string fdDirectory
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("fdDirectory", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("fdDirectory", resourceCulture);
+                string str = ResourceManager.GetString("fdDirectory", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
 
         /// <summary>
@@ -58551,10 +58851,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string fdFile
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("fdFile", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("fdFile", resourceCulture);
+                string str = ResourceManager.GetString("fdFile", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
 
         /// <summary>
@@ -58562,10 +58873,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string fdOpen
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("fdOpen", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("fdOpen", resourceCulture);
+                string str = ResourceManager.GetString("fdOpen", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
 
         /// <summary>
@@ -58573,10 +58895,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string fdSave
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("fdSave", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("fdSave", resourceCulture);
+                string str = ResourceManager.GetString("fdSave", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
 
         /// <summary>
@@ -58584,10 +58917,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string fdSaveAs
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("fdSaveAs", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("fdSaveAs", resourceCulture);
+                string str = ResourceManager.GetString("fdSaveAs", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
 
         /// <summary>
@@ -58595,10 +58939,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string fdSelectFolder
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("fdSelectFolder", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("fdSelectFolder", resourceCulture);
+                string str = ResourceManager.GetString("fdSelectFolder", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
 
         /// <summary>
@@ -58606,10 +58961,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string fdSelectMixed
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("fdSelectMixed", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("fdSelectMixed", resourceCulture);
+                string str = ResourceManager.GetString("fdSelectMixed", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
 
         /// <summary>
@@ -58617,10 +58983,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string wzBack
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("wzBack", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("wzBack", resourceCulture);
+                string str = ResourceManager.GetString("wzBack", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
 
         /// <summary>
@@ -58628,10 +59005,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string wzFinish
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("wzFinish", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("wzFinish", resourceCulture);
+                string str = ResourceManager.GetString("wzFinish", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
 
         /// <summary>
@@ -58639,10 +59027,21 @@ namespace Terminal.Gui.Resources
         /// </summary>
         internal static string wzNext
         {
+            //*master//
+            //////get
+            //////{
+            //////    return ResourceManager.GetString("wzNext", resourceCulture);
+            //////}
             get
             {
-                return ResourceManager.GetString("wzNext", resourceCulture);
+                string str = ResourceManager.GetString("wzNext", resourceCulture);
+                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+                {
+                    return ostgui.Utils.labelRusEn[str];
+                }
+                return str;
             }
+            //master*//
         }
     }
 }//namespace Terminal.Gui.Resources

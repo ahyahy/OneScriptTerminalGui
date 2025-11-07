@@ -7,56 +7,33 @@ namespace ostgui
     public class Window : Toplevel
     {
         public new TfWindow dll_obj;
-        public Terminal.Gui.Window M_Window;
+        public Terminal.Gui.Window m_Window;
+
+        public Terminal.Gui.Window M_Window
+        {
+            get { return m_Window; }
+            set
+            {
+                m_Window = value;
+                base.M_View = m_Window;
+            }
+        }
 
         public Window()
         {
             M_Window = new Terminal.Gui.Window();
             base.M_Toplevel = M_Window;
-            OneScriptTerminalGui.AddToHashtable(M_Window, this);
-            SetActions(M_Window);
-        }
-
-        public Window(string p1)
-        {
-            M_Window = new Terminal.Gui.Window(p1);
-            base.M_Toplevel = M_Window;
-            OneScriptTerminalGui.AddToHashtable(M_Window, this);
-            SetActions(M_Window);
-        }
-
-        public Window(Rect p1, string p2)
-        {
-            M_Window = new Terminal.Gui.Window(p1.M_Rect, p2);
-            base.M_Toplevel = M_Window;
-            OneScriptTerminalGui.AddToHashtable(M_Window, this);
-            SetActions(M_Window);
-        }
-
-        public Window(string p1, int p2, Border p3)
-        {
-            M_Window = new Terminal.Gui.Window(p1, p2, p3.M_Border);
-            base.M_Toplevel = M_Window;
-            OneScriptTerminalGui.AddToHashtable(M_Window, this);
-            SetActions(M_Window);
-        }
-
-        public Window(Rect p1, string p2, int p3, Border p4)
-        {
-            M_Window = new Terminal.Gui.Window(p1.M_Rect, p2, p3, p4.M_Border);
-            base.M_Toplevel = M_Window;
-            OneScriptTerminalGui.AddToHashtable(M_Window, this);
+            Utils.AddToHashtable(M_Window, this);
             SetActions(M_Window);
         }
 
         private void SetActions(Terminal.Gui.Window window)
         {
-            window.TitleChanged += Window_TitleChanged;
-            M_Window.Subviews[0].MouseEnter += Window_MouseEnter;
-            M_Window.Subviews[0].MouseLeave += Window_MouseLeave;
-            M_Window.MouseClick += Window_MouseClick;
-            M_Window.Subviews[0].Leave += M_Window_Leave;
-            M_Window.KeyPress += M_Window_KeyPress;
+            window.Subviews[0].MouseEnter += Window_MouseEnter;
+            window.Subviews[0].MouseLeave += Window_MouseLeave;
+            window.MouseClick += Window_MouseClick;
+            window.Subviews[0].Leave += M_Window_Leave;
+            window.KeyPress += M_Window_KeyPress;
         }
 
         private void M_Window_KeyPress(Terminal.Gui.View.KeyEventEventArgs obj)
@@ -99,7 +76,7 @@ namespace ostgui
                 TfEventArgs1.sender = dll_obj;
                 TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MouseClick);
                 TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
-                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(M_Window).dll_obj;
+                TfEventArgs1.view = Utils.RevertEqualsObj(M_Window).dll_obj;
                 TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
                 TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
                 OneScriptTerminalGui.Event = TfEventArgs1;
@@ -115,7 +92,7 @@ namespace ostgui
                 TfEventArgs1.sender = dll_obj;
                 TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MouseLeave);
                 TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
-                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj.MouseEvent.View).dll_obj;
+                TfEventArgs1.view = Utils.RevertEqualsObj(obj.MouseEvent.View).dll_obj;
                 TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
                 TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
                 OneScriptTerminalGui.Event = TfEventArgs1;
@@ -131,33 +108,11 @@ namespace ostgui
                 TfEventArgs1.sender = dll_obj;
                 TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MouseEnter);
                 TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
-                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(M_Window).dll_obj;
+                TfEventArgs1.view = Utils.RevertEqualsObj(M_Window).dll_obj;
                 TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
                 TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
                 OneScriptTerminalGui.Event = TfEventArgs1;
                 OneScriptTerminalGui.ExecuteEvent(dll_obj.MouseEnter);
-            }
-        }
-
-        private void Window_TitleChanged(Terminal.Gui.Window.TitleEventArgs obj)
-        {
-            if (dll_obj.TitleChanged != null)
-            {
-                TfEventArgs TfEventArgs1 = new TfEventArgs();
-                TfEventArgs1.sender = dll_obj;
-                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.TitleChanged);
-                TfEventArgs1.cancel = ValueFactory.Create(obj.Cancel);
-                TfEventArgs1.newTitle = ValueFactory.Create(obj.NewTitle.ToString());
-                TfEventArgs1.oldTitle = ValueFactory.Create(obj.OldTitle.ToString());
-                OneScriptTerminalGui.Event = TfEventArgs1;
-                OneScriptTerminalGui.ExecuteEvent(dll_obj.TitleChanged);
-
-                if (TfEventArgs1.Cancel)
-                {
-                    M_Window.TitleChanged -= Window_TitleChanged;
-                    dll_obj.Title = TfEventArgs1.OldTitle;
-                    M_Window.TitleChanged += Window_TitleChanged;
-                }
             }
         }
 
@@ -172,9 +127,9 @@ namespace ostgui
             return M_Window.ToString();
         }
 
-        public new Window GetTopSuperView()
+        public new Toplevel GetTopSuperView()
         {
-            return OneScriptTerminalGui.RevertEqualsObj(M_Window.GetTopSuperView());
+            return Utils.RevertEqualsObj(M_Window.GetTopSuperView());
         }
     }
 
@@ -189,50 +144,14 @@ namespace ostgui
             Base_obj = Window1;
         }
 
-        public TfWindow(string p1)
-        {
-            Window Window1 = new Window(p1);
-            Window1.dll_obj = this;
-            Base_obj = Window1;
-        }
-
-        public TfWindow(TfRect p1, string p2)
-        {
-            Window Window1 = new Window(p1.Base_obj, p2);
-            Window1.dll_obj = this;
-            Base_obj = Window1;
-        }
-
-        public TfWindow(string p1, int p2, TfBorder p3)
-        {
-            Window Window1 = new Window(p1, p2, p3.Base_obj);
-            Window1.dll_obj = this;
-            Base_obj = Window1;
-        }
-
-        public TfWindow(TfRect p1, string p2, int p3, TfBorder p4)
-        {
-            Window Window1 = new Window(p1.Base_obj, p2, p3, p4.Base_obj);
-            Window1.dll_obj = this;
-            Base_obj = Window1;
-        }
-
-        public TfAction Activate { get; set; }
-        public TfAction Deactivate { get; set; }
-        public TfAction AllChildClosed { get; set; }
-        public TfAction InitializedItem { get; set; }
-        public TfAction Added { get; set; }
-        public TfAction Removed { get; set; }
-        public TfAction LayoutComplete { get; set; }
-        public TfAction LayoutStarted { get; set; }
-        public TfAction DrawContentComplete { get; set; }
-        public TfAction DrawContent { get; set; }
-        public TfAction TitleChanging { get; set; }
-        public TfAction Loaded { get; set; }
-        public TfAction Resized { get; set; }
-        public TfAction Closing { get; set; }
-
         public Window Base_obj;
+
+        [ContextProperty("АвтоРазмер", "AutoSize")]
+        public bool AutoSize
+        {
+            get { return Base_obj.AutoSize; }
+            set { Base_obj.AutoSize = value; }
+        }
 
         [ContextProperty("ВертикальноеВыравниваниеТекста", "VerticalTextAlignment")]
         public int VerticalTextAlignment
@@ -254,7 +173,7 @@ namespace ostgui
             {
                 if (Base_obj.M_Window.Subviews[0].Focused != null)
                 {
-                    return OneScriptTerminalGui.RevertEqualsObj(Base_obj.M_Window.Subviews[0].Focused).dll_obj;
+                    return Utils.RevertEqualsObj(Base_obj.M_Window.Subviews[0].Focused).dll_obj;
                 }
                 return null;
             }
@@ -268,29 +187,57 @@ namespace ostgui
         }
 
         [ContextProperty("Высота", "Height")]
-        public TfDim Height
+        public IValue Height
         {
-            get { return Base_obj.Height.dll_obj; }
-            set { Base_obj.Height = value.Base_obj; }
+            get { return new TfDim().Height(this); }
+            set
+            {
+                if (Utils.IsType<TfDim>(value))
+                {
+                    Base_obj.M_View.Height = ((TfDim)value).Base_obj.M_Dim;
+                }
+                else if (Utils.IsNumber(value))
+                {
+                    Base_obj.M_View.Height = Terminal.Gui.Dim.Sized(Utils.ToInt32(value));
+                }
+            }
         }
 
         [ContextProperty("Граница", "Border")]
         public TfBorder Border
         {
             get { return Base_obj.Border.dll_obj; }
-            set { Base_obj.Border = value.Base_obj; }
+            set
+            {
+                TfBorder border = new TfBorder();
+                Terminal.Gui.Border _border = value.Base_obj.M_Border;
+                border.Base_obj.M_Border.Background = _border.Background;
+                border.Base_obj.M_Border.BorderBrush = _border.BorderBrush;
+                border.Base_obj.M_Border.BorderStyle = _border.BorderStyle;
+                border.Base_obj.M_Border.BorderThickness = _border.BorderThickness;
+                border.Base_obj.M_Border.Effect3D = _border.Effect3D;
+                border.Base_obj.M_Border.Effect3DBrush = _border.Effect3DBrush;
+                border.Base_obj.M_Border.Effect3DOffset = _border.Effect3DOffset;
+                border.Base_obj.M_Border.Padding = _border.Padding;
+                border.Base_obj.M_Border.Title = _border.Title;
+                Base_obj.Border = border.Base_obj;
+            }
         }
 
         [ContextProperty("Границы", "Bounds")]
         public TfRect Bounds
         {
-            get { return new TfRect(Base_obj.Frame.M_Rect.X, Base_obj.Frame.M_Rect.Y, Base_obj.Bounds.M_Rect.Width, Base_obj.Bounds.M_Rect.Height); }
+            get
+            {
+                Terminal.Gui.Rect bounds = Base_obj.Bounds.M_Rect;
+                return new TfRect(bounds.X, bounds.Y, bounds.Width, bounds.Height);
+            }
         }
 
         [ContextProperty("Данные", "Data")]
         public IValue Data
         {
-            get { return OneScriptTerminalGui.RevertObj(Base_obj.Data); }
+            get { return Utils.RevertObj(Base_obj.Data); }
             set { Base_obj.Data = value; }
         }
 
@@ -315,10 +262,20 @@ namespace ostgui
         }
 
         [ContextProperty("Игрек", "Y")]
-        public TfPos Y
+        public IValue Y
         {
             get { return new TfPos(Base_obj.Y); }
-            set { Base_obj.Y = value.Base_obj; }
+            set
+            {
+                if (Utils.IsType<TfPos>(value))
+                {
+                    Base_obj.M_Window.Y = ((TfPos)value).Base_obj.M_Pos;
+                }
+                else if (Utils.IsNumber(value))
+                {
+                    Base_obj.M_Window.Y = Terminal.Gui.Pos.At(Utils.ToInt32(value));
+                }
+            }
         }
 
         [ContextProperty("Идентификатор", "Id")]
@@ -329,16 +286,30 @@ namespace ostgui
         }
 
         [ContextProperty("Икс", "X")]
-        public TfPos X
+        public IValue X
         {
             get { return new TfPos(Base_obj.X); }
-            set { Base_obj.X = value.Base_obj; }
+            set
+            {
+                if (Utils.IsType<TfPos>(value))
+                {
+                    Base_obj.M_Window.X = ((TfPos)value).Base_obj.M_Pos;
+                }
+                else if (Utils.IsNumber(value))
+                {
+                    Base_obj.M_Window.X = Terminal.Gui.Pos.At(Utils.ToInt32(value));
+                }
+            }
         }
 
         [ContextProperty("Кадр", "Frame")]
         public TfRect Frame
         {
-            get { return new TfRect(Base_obj.Frame.M_Rect.X, Base_obj.Frame.M_Rect.Y, Base_obj.Frame.M_Rect.Width, Base_obj.Frame.M_Rect.Height); }
+            get
+            {
+                Terminal.Gui.Rect frame = Base_obj.Frame.M_Rect;
+                return new TfRect(frame.X, frame.Y, frame.Width, frame.Height);
+            }
             set { Base_obj.Frame = value.Base_obj; }
         }
 
@@ -353,13 +324,6 @@ namespace ostgui
         {
             get { return Base_obj.Tag; }
             set { Base_obj.Tag = value; }
-        }
-
-        [ContextProperty("Модально", "Modal")]
-        public bool Modal
-        {
-            get { return Base_obj.Modal; }
-            set { Base_obj.Modal = value; }
         }
 
         [ContextProperty("НаправлениеТекста", "TextDirection")]
@@ -385,7 +349,7 @@ namespace ostgui
         [ContextProperty("ОформительТекста", "TextFormatter")]
         public TfTextFormatter TextFormatter
         {
-            get { return OneScriptTerminalGui.RevertEqualsObj(Base_obj.M_Window.Subviews[0].TextFormatter).dll_obj; }
+            get { return Utils.RevertEqualsObj(Base_obj.M_Window.Subviews[0].TextFormatter).dll_obj; }
             set { Base_obj.M_Window.Subviews[0].TextFormatter = value.Base_obj.M_TextFormatter; }
         }
 
@@ -420,14 +384,11 @@ namespace ostgui
         {
             get
             {
-                try
+                if (Base_obj.M_Window.SuperView.GetType().ToString().Contains("+ContentView"))
                 {
-                    return OneScriptTerminalGui.RevertEqualsObj(Base_obj.M_Window.Subviews[0].SuperView.SuperView.SuperView).dll_obj;
+                    return Utils.RevertEqualsObj(Base_obj.M_Window.SuperView.SuperView).dll_obj;
                 }
-                catch (Exception)
-                {
-                    return OneScriptTerminalGui.RevertEqualsObj(Base_obj.M_Window.Subviews[0].SuperView.SuperView).dll_obj;
-                }
+                return Utils.RevertEqualsObj(Base_obj.M_Window.SuperView).dll_obj;
             }
         }
 
@@ -474,31 +435,43 @@ namespace ostgui
         [ContextProperty("Фокусируемый", "CanFocus")]
         public bool CanFocus
         {
-            get { return Base_obj.CanFocus; }
+            get { return Base_obj.M_Window.CanFocus; }
         }
 
+        private TfColorScheme colorScheme;
         [ContextProperty("ЦветоваяСхема", "ColorScheme")]
         public TfColorScheme ColorScheme
         {
-            get { return Base_obj.ColorScheme.dll_obj; }
-            set { Base_obj.ColorScheme = value.Base_obj; }
+            get { return colorScheme; }
+            set
+            {
+                colorScheme = new TfColorScheme();
+                Terminal.Gui.ColorScheme _colorScheme = value.Base_obj.M_ColorScheme;
+                colorScheme.Base_obj.M_ColorScheme.Disabled = _colorScheme.Disabled;
+                colorScheme.Base_obj.M_ColorScheme.Focus = _colorScheme.Focus;
+                colorScheme.Base_obj.M_ColorScheme.HotFocus = _colorScheme.HotFocus;
+                colorScheme.Base_obj.M_ColorScheme.HotNormal = _colorScheme.HotNormal;
+                colorScheme.Base_obj.M_ColorScheme.Normal = _colorScheme.Normal;
+                Base_obj.ColorScheme = colorScheme.Base_obj;
+            }
         }
 
         [ContextProperty("Ширина", "Width")]
-        public TfDim Width
+        public IValue Width
         {
-            get { return Base_obj.Width.dll_obj; }
-            set { Base_obj.Width = value.Base_obj; }
+            get { return new TfDim().Width(this); }
+            set
+            {
+                if (Utils.IsType<TfDim>(value))
+                {
+                    Base_obj.M_View.Width = ((TfDim)value).Base_obj.M_Dim;
+                }
+                else if (Utils.IsNumber(value))
+                {
+                    Base_obj.M_View.Width = Terminal.Gui.Dim.Sized(Utils.ToInt32(value));
+                }
+            }
         }
-
-        [ContextProperty("ВидимостьИзменена", "VisibleChanged")]
-        public TfAction VisibleChanged { get; set; }
-
-        [ContextProperty("ДоступностьИзменена", "EnabledChanged")]
-        public TfAction EnabledChanged { get; set; }
-
-        [ContextProperty("ЗаголовокИзменен", "TitleChanged")]
-        public TfAction TitleChanged { get; set; }
 
         [ContextProperty("КлавишаНажата", "KeyPress")]
         public TfAction KeyPress { get; set; }
@@ -523,11 +496,11 @@ namespace ostgui
         {
             try
             {
-                return OneScriptTerminalGui.RevertEqualsObj(Base_obj.M_Window.Subviews[0].SuperView.SuperView.SuperView.GetTopSuperView()).dll_obj;
+                return Utils.RevertEqualsObj(Base_obj.M_Window.Subviews[0].SuperView.SuperView.SuperView.GetTopSuperView()).dll_obj;
             }
             catch (Exception)
             {
-                return OneScriptTerminalGui.RevertEqualsObj(Base_obj.M_Window.Subviews[0].SuperView.SuperView.GetTopSuperView()).dll_obj;
+                return Utils.RevertEqualsObj(Base_obj.M_Window.Subviews[0].SuperView.SuperView.GetTopSuperView()).dll_obj;
             }
         }
 
@@ -556,9 +529,10 @@ namespace ostgui
         }
 
         [ContextMethod("Добавить", "Add")]
-        public void Add(IValue p1)
+        public IValue Add(IValue p1)
         {
             Base_obj.Add(((dynamic)p1).Base_obj);
+            return p1;
         }
 
         [ContextMethod("Заполнить", "Fill")]

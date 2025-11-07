@@ -78,7 +78,7 @@ namespace ostgui
         {
             foreach (var item in Base_obj.M_SubviewCollection)
             {
-                yield return (OneScriptTerminalGui.RevertEqualsObj(item).dll_obj as IValue);
+                yield return (Utils.RevertEqualsObj(item).dll_obj as IValue);
             }
         }
 
@@ -105,16 +105,16 @@ namespace ostgui
             return index1;
         }
 
+        [ContextMethod("Получить", "Get")]
+        public IValue Get(int p1)
+        {
+            return Utils.RevertEqualsObj(Base_obj.M_SubviewCollection[p1]).dll_obj;
+        }
+
         [ContextMethod("Содержит", "Contains")]
         public bool Contains(IValue p1)
         {
             return Base_obj.M_SubviewCollection.Contains((Terminal.Gui.View)((dynamic)p1).Base_obj.M_View);
-        }
-
-        [ContextMethod("Элемент", "Item")]
-        public IValue Item(int p1)
-        {
-            return OneScriptTerminalGui.RevertEqualsObj(Base_obj.M_SubviewCollection[p1]).dll_obj;
         }
 
     }

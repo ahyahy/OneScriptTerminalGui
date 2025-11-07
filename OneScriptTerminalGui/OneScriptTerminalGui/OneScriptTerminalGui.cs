@@ -1,61 +1,25 @@
 ﻿using System;
 using System.IO;
-using System.Collections;
 using System.Text;
 using ScriptEngine.Machine.Contexts;
 using ScriptEngine.Machine;
 using ScriptEngine.HostedScript.Library;
-using System.Collections.Generic;
 using Terminal.Gui;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace ostgui
 {
     [ContextClass("ТерминалФормыДляОдноСкрипта", "OneScriptTerminalGui")]
     public class OneScriptTerminalGui : AutoContext<OneScriptTerminalGui>
     {
-        public static TfToplevel top;
-        public static System.Collections.Hashtable hashtable = new Hashtable();
+        public TfToplevel top;
         public static OneScriptTerminalGui instance;
-        private static object syncRoot = new Object();
         public static TfEventArgs Event = null;
         public static bool handleEvents = true;
-        public static Dictionary<decimal, ArrayList> shortcutDictionary = new Dictionary<decimal, ArrayList>();
-        public static int lastMeX = -1;
-        public static int lastMeY = -1;
-        public static long lastEventTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
-
-        static byte[] StreamToBytes(Stream input)
-        {
-            var capacity = input.CanSeek ? (int)input.Length : 0;
-            using (var output = new MemoryStream(capacity))
-            {
-                int readLength;
-                var buffer = new byte[4096];
-                do
-                {
-                    readLength = input.Read(buffer, 0, buffer.Length);
-                    output.Write(buffer, 0, readLength);
-                }
-                while (readLength != 0);
-                return output.ToArray();
-            }
-        }
-
-        public static OneScriptTerminalGui getInstance()
-        {
-            if (instance == null)
-            {
-                lock (syncRoot)
-                {
-                    if (instance == null)
-                    {
-                        instance = new OneScriptTerminalGui();
-                    }
-                }
-            }
-            return instance;
-        }
+        private static Action OnOpen;
+        public static bool isWin = System.Environment.OSVersion.VersionString.Contains("Microsoft");
 
         [ScriptConstructor]
         public static IRuntimeContextInstance Constructor()
@@ -69,10 +33,9 @@ namespace ostgui
                     var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourcepath);
                     if (stream != null)
                     {
-                        using (stream)
-                        {
-                            return Assembly.Load(StreamToBytes(stream));
-                        }
+                        byte[] assemblyData = Utils.StreamToBytes(stream);
+                        stream.Dispose();
+                        return Assembly.Load(assemblyData);
                     }
                 }
                 return null;
@@ -90,23 +53,192 @@ namespace ostgui
                 }
             };
 
-            OneScriptTerminalGui inst = getInstance();
-            return inst;
+            instance = new OneScriptTerminalGui();
+            instance.Init();
+
+            if (isWin)
+            {
+                IntPtr hwnd = GetConsoleWindow();
+                if (hwnd != IntPtr.Zero)
+                {
+                    GetWindowRect(hwnd, out RECT originalRect);
+                    originalLeft = originalRect.left;
+                    currentLeft = originalLeft;
+
+                    // Запускаем мониторинг левой границы в отдельном потоке
+                    Thread monitorThread = new Thread(() => MonitorWindowPosition(hwnd));
+                    monitorThread.IsBackground = true;
+                    monitorThread.Start();
+                    isRunning = true;
+                }
+            }
+
+            return instance;
         }
 
-        static Action OnOpen;
-        private static void Application_NotifyNewRunState(Application.RunState obj)
+        [DllImport("user32.dll")]
+        private static extern bool GetWindowPlacement(IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
+
+        [DllImport("kernel32.dll")]
+        private static extern IntPtr GetConsoleWindow();
+
+        [DllImport("user32.dll")]
+        private static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+
+        [DllImport("user32.dll")]
+        private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, uint uFlags);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct RECT
         {
-            OnOpen.Invoke();
+            public int left, top, right, bottom;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct WINDOWPLACEMENT
+        {
+            public int length;
+            public int flags;
+            public int showCmd;
+            public POINT ptMinPosition;
+            public POINT ptMaxPosition;
+            public RECT rcNormalPosition;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct POINT
+        {
+            public int x, y;
+        }
+
+        private const uint SWP_NOZORDER = 0x0004;
+        private static bool isRunning = true;
+        private static int originalLeft;
+        private static int currentLeft;
+        private const int SW_MAXIMIZE = 3;
+
+        private static void MonitorWindowPosition(IntPtr hwnd)
+        {
+            int currentWidth;
+            int currentHeight;
+            WINDOWPLACEMENT placement = new WINDOWPLACEMENT();
+            bool isMaximizedByState = false;
+            while (isRunning)
+            {
+                // Проверка состояния окна
+                placement.length = Marshal.SizeOf(typeof(WINDOWPLACEMENT));
+                if (GetWindowRect(hwnd, out RECT currentRect))
+                {
+                    currentWidth = currentRect.right - currentRect.left;
+                    currentHeight = currentRect.bottom - currentRect.top;
+                    if (GetWindowPlacement(hwnd, ref placement))
+                    {
+                        isMaximizedByState = (placement.showCmd == SW_MAXIMIZE);
+                        if (isMaximizedByState)
+                        {
+                            SetWindowPos(hwnd, IntPtr.Zero,
+                                currentRect.left,
+                                currentRect.top,
+                                currentWidth,
+                                currentHeight,
+                                SWP_NOZORDER);
+                            currentLeft = currentRect.left;
+                        }
+                        else
+                        {
+                            // Если левая граница сдвинулась
+                            if (currentRect.left != currentLeft && currentLeft != 0)
+                            {
+                                SetWindowPos(hwnd, IntPtr.Zero,
+                                    currentRect.left,
+                                    currentRect.top,
+                                    Utils.minCols,
+                                    currentHeight,
+                                    SWP_NOZORDER);
+                                currentLeft = currentRect.left;
+                            }
+                        }
+                    }
+                }
+                Thread.Sleep(50); // Проверяем каждые 50мс
+            }
+        }
+
+        // Методы и свойства объекта OneScriptTerminalGui.
+
+        [ContextProperty("ПлатформаWin", "WinPlatform")]
+        public bool WinPlatform
+        {
+            get { return isWin; }
+        }
+
+        [ContextMethod("ТаймерНачатьИОстановить", "TimerStartAndStop")]
+        public void TimerStartAndStop(IRuntimeContextInstance p1, string p2, int p3 = 1000, int p4 = 1)
+        {
+            TfTimer timer = new TfTimer();
+            timer.Interval = p3;
+            timer.Iterations = p4;
+            TfAction action = Action(p1, p2);
+            timer.TimerStartAndStop(action);
+        }
+
+        [ContextProperty("ЛогФайл", "PathLog")]
+        public string PathLog
+        {
+            get { return Utils.PathLog; }
+            set { Utils.PathLog = value; }
+        }
+
+        [ContextProperty("Величина", "Dim")]
+        public TfDim Dim
+        {
+            get { return new TfDim(); }
+        }
+
+        [ContextProperty("Позиция", "Pos")]
+        public TfPos Pos
+        {
+            get { return new TfPos(); }
+        }
+
+        private int labelLanguage = 0;
+        public int LabelLanguage
+        {
+            get { return labelLanguage; }
+            set { labelLanguage = value; }
+        }
+
+        [ContextProperty("Отправитель", "Sender")]
+        public IValue Sender
+        {
+            get { return Utils.RevertEqualsObj(Event.Sender); }
+        }
+
+        [ContextProperty("АргументыСобытия", "EventArgs")]
+        public TfEventArgs EventArgs
+        {
+            get { return Event; }
+        }
+
+        public void Init()
+        {
+            Application.Init();
+            try
+            {
+                Utils.minCols = Cols;
+                Utils.minRows = Rows;
+
+                Application.NotifyNewRunState += Application_NotifyNewRunState;
+                top = new TfToplevel(Application.Top);
+            }
+            catch (Exception ex)
+            {
+                Utils.GlobalContext().Echo($"Ошибка инициализации: {ex.Message}");
+            }
         }
 
         [ContextProperty("РазмерИзменен", "Resized")]
         public TfAction Resized { get; set; }
-
-        public static SystemGlobalContext GlobalContext()
-        {
-            return GlobalsManager.GetGlobalContext<SystemGlobalContext>();
-        }
 
         private decimal quitKey;
         [ContextProperty("КлавишаВыхода", "QuitKey")]
@@ -116,35 +248,21 @@ namespace ostgui
             set { quitKey = value; }
         }
 
-        private static TfConsoleKey tf_ConsoleKey = new TfConsoleKey();
-        [ContextProperty("КлавишиКонсоли", "ConsoleKey")]
-        public TfConsoleKey ConsoleKey
-        {
-            get { return tf_ConsoleKey; }
-        }
-
-        private static TfCommandTUI tf_CommandTUI = new TfCommandTUI();
-        [ContextProperty("КомандаTUI", "CommandTUI")]
-        public TfCommandTUI CommandTUI
-        {
-            get { return tf_CommandTUI; }
-        }
-
         [ContextMethod("Эмодзи", "Emoji")]
         public string Emoji(IValue p1)
         {
             var sb = new StringBuilder();
-            if (p1.SystemType.Name == "Число")
+            if (Utils.IsNumber(p1))
             {
                 try
                 {
-                    sb.Append(Char.ConvertFromUtf32(Convert.ToInt32(p1.AsNumber()))).ToString();
+                    sb.Append(Char.ConvertFromUtf32(Utils.ToInt32(p1))).ToString();
                 }
                 catch { }
             }
-            else if (p1.SystemType.Name == "Строка")
+            else if (Utils.IsString(p1))
             {
-                string p2 = p1.AsString();
+                string p2 = Utils.ToString(p1);
                 p2 = p2.Replace("0x", "").Replace("0х", "").Replace("\\u", "");
                 try
                 {
@@ -152,13 +270,13 @@ namespace ostgui
                     {
                         int num = Convert.ToInt32(p2);
                         string str = Char.ConvertFromUtf32(num);
-                        sb.Append(str).ToString();
+                        sb.Append(str);
                     }
                     catch
                     {
                         int num = Convert.ToInt32(p2, 16);
                         string str = Char.ConvertFromUtf32(num);
-                        sb.Append(str).ToString();
+                        sb.Append(str);
                     }
                 }
                 catch { }
@@ -176,12 +294,6 @@ namespace ostgui
         public int Cols
         {
             get { return Application.Driver.Cols; }
-        }
-
-        [ContextMethod("КлавишаВвод", "ButtonEnter")]
-        public void ButtonEnter()
-        {
-            Application.Driver.SendKeys(System.Char.MinValue, System.ConsoleKey.Enter, false, false, false);
         }
 
         [ContextMethod("ПраваяКвадратная", "RightBracket")]
@@ -232,37 +344,37 @@ namespace ostgui
             return Application.Driver.LeftArrow.ToString();
         }
 
-       [ContextMethod("НижняяСтрелка", "ArrowDown")]
+        [ContextMethod("НижняяСтрелка", "ArrowDown")]
         public string ArrowDown()
         {
             return Application.Driver.DownArrow.ToString();
         }
 
-       [ContextMethod("ПраваяСтрелка", "ArrowRight")]
+        [ContextMethod("ПраваяСтрелка", "ArrowRight")]
         public string ArrowRight()
         {
             return Application.Driver.RightArrow.ToString();
         }
 
-       [ContextMethod("ВерхнийТройник", "TopTee")]
+        [ContextMethod("ВерхнийТройник", "TopTee")]
         public string TopTee()
         {
             return Application.Driver.TopTee.ToString();
         }
 
-       [ContextMethod("ЛевыйТройник", "LeftTee")]
+        [ContextMethod("ЛевыйТройник", "LeftTee")]
         public string LeftTee()
         {
             return Application.Driver.LeftTee.ToString();
         }
 
-       [ContextMethod("НижнийТройник", "BottomTee")]
+        [ContextMethod("НижнийТройник", "BottomTee")]
         public string BottomTee()
         {
             return Application.Driver.BottomTee.ToString();
         }
 
-       [ContextMethod("ПравыйТройник", "RightTee")]
+        [ContextMethod("ПравыйТройник", "RightTee")]
         public string RightTee()
         {
             return Application.Driver.RightTee.ToString();
@@ -412,23 +524,17 @@ namespace ostgui
             return Application.Driver.VRLine.ToString();
         }
 
-        [ContextMethod("Таймер", "Timer")]
-        public TfTimer Timer()
-        {
-            return new TfTimer();
-        }
-
-        [ContextMethod("ОкноСообщений", "MessageBox")]
-        public TfMessageBox MessageBox()
-        {
-            return new TfMessageBox();
-        }
-
         [ContextMethod("ОтправитьКлавиши", "SendKeys")]
         public void SendKeys(string p1, bool p3, bool p4, bool p5)
         {
             System.Char char1 = Convert.ToChar(p1.Substring(0, 1));
             Application.Driver.SendKeys(char1, (System.ConsoleKey)0, p3, p4, p5);
+        }
+
+        [ContextMethod("ОтправитьКлавишуКонсоли", "SendConsoleKey")]
+        public void SendConsoleKey(int p1, bool p2 = false, bool p3 = false, bool p4 = false)
+        {
+            Application.Driver.SendKeys(System.Char.MinValue, (System.ConsoleKey)p1, p2, p3, p4);
         }
 
         [ContextProperty("ТекстБуфераОбмена", "ClipboardText")]
@@ -438,17 +544,11 @@ namespace ostgui
             set { Terminal.Gui.Clipboard.Contents = value; }
         }
 
-        [ContextMethod("СтрокаСостояния", "StatusBar")]
-        public TfStatusBar StatusBar()
-        {
-            return new TfStatusBar();
-        }
-
         [ContextMethod("Выполнить", "Execute")]
         public IValue Execute(TfAction p1)
         {
             TfEventArgs eventArgs = new TfEventArgs();
-            eventArgs.sender = instance;
+            eventArgs.sender = this;
             eventArgs.parameter = OneScriptTerminalGui.GetEventParameter(p1);
             Event = eventArgs;
 
@@ -463,7 +563,7 @@ namespace ostgui
             }
             catch (Exception ex)
             {
-                GlobalContext().Echo("Ошибка2: " + ex.Message);
+                Utils.GlobalContext().Echo("Ошибка2: " + ex.Message);
             }
             return res;
         }
@@ -471,62 +571,14 @@ namespace ostgui
         [ContextProperty("ПриОткрытии", "NotifyNewRunState")]
         public TfAction NotifyNewRunState { get; set; }
 
-        [ContextMethod("ЭлементМеню", "MenuItem")]
-        public TfMenuItem MenuItem()
-        {
-            return new TfMenuItem();
-        }
-
-        [ContextProperty("Цвета", "Colors")]
-        public TfColors Colors
-        {
-            get { return new TfColors(); }
-        }
-
-        [ContextMethod("Толщина", "Thickness")]
-        public TfThickness Thickness(IValue p1, IValue p2 = null, IValue p3 = null, IValue p4 = null)
-        {
-            if (p2 != null && p3 != null && p4 != null)
-            {
-                return new TfThickness(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()), Convert.ToInt32(p3.AsNumber()), Convert.ToInt32(p4.AsNumber()));
-            }
-            return new TfThickness(Convert.ToInt32(p1.AsNumber()));
-        }
-
-        [ContextMethod("ЭлементСтрокиСостояния", "StatusItem")]
-        public TfStatusItem StatusItem(int p1, string p2)
-        {
-            return new TfStatusItem(p1, p2);
-        }
-
-        [ContextMethod("ПунктМеню", "MenuBarItem")]
-        public TfMenuBarItem MenuBarItem()
-        {
-            return new TfMenuBarItem();
-        }
-
-        [ContextMethod("ПанельМеню", "MenuBar")]
-        public TfMenuBar MenuBar()
-        {
-            return new TfMenuBar();
-        }
-
         [ContextMethod("ДобавитьВесьТекст", "AppendAllText")]
         public void AppendAllText(string p1, string p2)
         {
+            if (!File.Exists(p1))
+            {
+                File.Create(p1).Close();
+            }
             File.AppendAllText(p1, p2, Encoding.UTF8);
-        }
-
-        [ContextProperty("Величина", "Dim")]
-        public TfDim Dim
-        {
-            get { return new TfDim(); }
-        }
-
-        [ContextProperty("Позиция", "Pos")]
-        public TfPos Pos
-        {
-            get { return new TfPos(); }
         }
 
         [ContextMethod("Обновить", "Refresh")]
@@ -542,6 +594,432 @@ namespace ostgui
             Application.RequestStop(Top.Base_obj.M_Toplevel);
         }
 
+        [ContextMethod("ЗапуститьИЗавершить", "RunAndShutdown")]
+        public void RunAndShutdown()
+        {
+            try
+            {
+                //Top.CorrectionZet(); // Конфликтует с созданием меню.
+                Application.Begin(top.Base_obj.M_Toplevel);
+            }
+            catch (Exception ex)
+            {
+                Utils.WriteToFile("Error RunAndShutdown = " + ex.StackTrace);
+            }
+        }
+
+        [ContextMethod("Запуск", "Run")]
+        public void Run()
+        {
+            try
+            {
+                //Top.CorrectionZet(); // Конфликтует с созданием меню.
+                Application.Run();
+            }
+            catch (Exception ex)
+            {
+                Utils.WriteToFile("Error Run = " + ex.StackTrace);
+            }
+        }
+
+        [ContextProperty("РазрешитьСобытия", "AllowEvents")]
+        public bool HandleEvents
+        {
+            get { return handleEvents; }
+            set { handleEvents = value; }
+        }
+
+        // Методы создания перечислений.
+
+        private TfSortOrder tf_SortOrder;
+        [ContextProperty("ПорядокСортировки", "SortOrder")]
+        public TfSortOrder SortOrder
+        {
+            get
+            {
+                if (tf_SortOrder == null)
+                {
+                    tf_SortOrder = new TfSortOrder();
+                }
+                return tf_SortOrder;
+            }
+        }
+
+        private TfConsoleKey tf_ConsoleKey;
+        [ContextProperty("КлавишиКонсоли", "ConsoleKey")]
+        public TfConsoleKey ConsoleKey
+        {
+            get
+            {
+                if (tf_ConsoleKey == null)
+                {
+                    tf_ConsoleKey = new TfConsoleKey();
+                }
+                return tf_ConsoleKey;
+            }
+        }
+
+        private static TfCommandTUI tf_CommandTUI;
+        [ContextProperty("КомандаTUI", "CommandTUI")]
+        public TfCommandTUI CommandTUI
+        {
+            get
+            {
+                if (tf_CommandTUI == null)
+                {
+                    tf_CommandTUI = new TfCommandTUI();
+                }
+                return tf_CommandTUI;
+            }
+        }
+
+        private static TfDialogResult tf_DialogResult;
+        [ContextProperty("РезультатДиалога", "DialogResult")]
+        public TfDialogResult DialogResult
+        {
+            get
+            {
+                if (tf_DialogResult == null)
+                {
+                    tf_DialogResult = new TfDialogResult();
+                }
+                return tf_DialogResult;
+            }
+        }
+
+        private static TfLanguage tf_Language;
+        [ContextProperty("Язык", "Language")]
+        public TfLanguage Language
+        {
+            get
+            {
+                if (tf_Language == null)
+                {
+                    tf_Language = new TfLanguage();
+                }
+                return tf_Language;
+            }
+        }
+
+        private static TfVerticalTextAlignment tf_VerticalTextAlignment;
+        [ContextProperty("ВертикальноеВыравниваниеТекста", "VerticalTextAlignment")]
+        public TfVerticalTextAlignment VerticalTextAlignment
+        {
+            get
+            {
+                if (tf_VerticalTextAlignment == null)
+                {
+                    tf_VerticalTextAlignment = new TfVerticalTextAlignment();
+                }
+                return tf_VerticalTextAlignment;
+            }
+        }
+
+        private static TfCursorVisibility tf_CursorVisibility;
+        [ContextProperty("ВидКурсора", "CursorVisibility")]
+        public TfCursorVisibility CursorVisibility
+        {
+            get
+            {
+                if (tf_CursorVisibility == null)
+                {
+                    tf_CursorVisibility = new TfCursorVisibility();
+                }
+                return tf_CursorVisibility;
+            }
+        }
+
+        private static TfTextAlignment tf_TextAlignment;
+        [ContextProperty("ВыравниваниеТекста", "TextAlignment")]
+        public TfTextAlignment TextAlignment
+        {
+            get
+            {
+                if (tf_TextAlignment == null)
+                {
+                    tf_TextAlignment = new TfTextAlignment();
+                }
+                return tf_TextAlignment;
+            }
+        }
+
+        private static TfKeys tf_Keys;
+        [ContextProperty("Клавиши", "Keys")]
+        public TfKeys Keys
+        {
+            get
+            {
+                if (tf_Keys == null)
+                {
+                    tf_Keys = new TfKeys();
+                }
+                return tf_Keys;
+            }
+        }
+
+        private static TfTextDirection tf_TextDirection;
+        [ContextProperty("НаправлениеТекста", "TextDirection")]
+        public TfTextDirection TextDirection
+        {
+            get
+            {
+                if (tf_TextDirection == null)
+                {
+                    tf_TextDirection = new TfTextDirection();
+                }
+                return tf_TextDirection;
+            }
+        }
+
+        private static TfLayoutStyle tf_LayoutStyle;
+        [ContextProperty("СтильКомпоновки", "LayoutStyle")]
+        public TfLayoutStyle LayoutStyle
+        {
+            get
+            {
+                if (tf_LayoutStyle == null)
+                {
+                    tf_LayoutStyle = new TfLayoutStyle();
+                }
+                return tf_LayoutStyle;
+            }
+        }
+
+        private static TfProgressBarStyle tf_ProgressBarStyle;
+        [ContextProperty("СтильИндикатора", "ProgressBarStyle")]
+        public TfProgressBarStyle ProgressBarStyle
+        {
+            get
+            {
+                if (tf_ProgressBarStyle == null)
+                {
+                    tf_ProgressBarStyle = new TfProgressBarStyle();
+                }
+                return tf_ProgressBarStyle;
+            }
+        }
+
+        private static TfButtonAlignments tf_ButtonAlignments;
+        [ContextProperty("ВыравниваниеКнопок", "ButtonAlignments")]
+        public TfButtonAlignments ButtonAlignments
+        {
+            get
+            {
+                if (tf_ButtonAlignments == null)
+                {
+                    tf_ButtonAlignments = new TfButtonAlignments();
+                }
+                return tf_ButtonAlignments;
+            }
+        }
+
+        private static TfDisplayModeLayout tf_DisplayModeLayout;
+        [ContextProperty("МакетПереключателя", "DisplayModeLayout")]
+        public TfDisplayModeLayout DisplayModeLayout
+        {
+            get
+            {
+                if (tf_DisplayModeLayout == null)
+                {
+                    tf_DisplayModeLayout = new TfDisplayModeLayout();
+                }
+                return tf_DisplayModeLayout;
+            }
+        }
+
+        private static TfProgressBarFormat tf_ProgressBarFormat;
+        [ContextProperty("ФорматИндикатора", "ProgressBarFormat")]
+        public TfProgressBarFormat ProgressBarFormat
+        {
+            get
+            {
+                if (tf_ProgressBarFormat == null)
+                {
+                    tf_ProgressBarFormat = new TfProgressBarFormat();
+                }
+                return tf_ProgressBarFormat;
+            }
+        }
+
+        private static TfMenuItemCheckStyle tf_MenuItemCheckStyle;
+        [ContextProperty("СтильФлажкаЭлементаМеню", "MenuItemCheckStyle")]
+        public TfMenuItemCheckStyle MenuItemCheckStyle
+        {
+            get
+            {
+                if (tf_MenuItemCheckStyle == null)
+                {
+                    tf_MenuItemCheckStyle = new TfMenuItemCheckStyle();
+                }
+                return tf_MenuItemCheckStyle;
+            }
+        }
+
+        private static TfMouseFlags tf_MouseFlags;
+        [ContextProperty("ФлагиМыши", "MouseFlags")]
+        public TfMouseFlags MouseFlags
+        {
+            get
+            {
+                if (tf_MouseFlags == null)
+                {
+                    tf_MouseFlags = new TfMouseFlags();
+                }
+                return tf_MouseFlags;
+            }
+        }
+
+        private static TfColor tf_Color;
+        [ContextProperty("Цвет", "Color")]
+        public TfColor Color
+        {
+            get
+            {
+                if (tf_Color == null)
+                {
+                    tf_Color = new TfColor();
+                }
+                return tf_Color;
+            }
+        }
+
+        private static TfBorderStyle tf_BorderStyle;
+        [ContextProperty("СтильГраницы", "BorderStyle")]
+        public TfBorderStyle BorderStyle
+        {
+            get
+            {
+                if (tf_BorderStyle == null)
+                {
+                    tf_BorderStyle = new TfBorderStyle();
+                }
+                return tf_BorderStyle;
+            }
+        }
+
+        // Методы создания объектов.
+
+        [ContextMethod("Математика", "Math")]
+        public TfMath Math()
+        {
+            return new TfMath();
+        }
+
+        [ContextMethod("СтильВкладки", "TabStyle")]
+        public TfTabStyle TabStyle()
+        {
+            return new TfTabStyle();
+        }
+
+        [ContextMethod("Уведомление", "Balloons")]
+        public TfBalloons Balloons()
+        {
+            return new TfBalloons();
+        }
+
+        [ContextMethod("СтильКолонки", "ColumnStyle")]
+        public TfColumnStyle ColumnStyle()
+        {
+            return new TfColumnStyle();
+        }
+
+        [ContextMethod("СтилиКолонки", "ColumnStyles")]
+        public TfColumnStyles ColumnStyles()
+        {
+            return new TfColumnStyles();
+        }
+
+        [ContextMethod("Переключатель", "RadioGroup")]
+        public TfRadioGroup RadioGroup(int p1 = 1, int p2 = 1, int p3 = 10, int p4 = 5)
+        {
+            TfRadioGroup radioGroup = new TfRadioGroup();
+            radioGroup.X = ValueFactory.Create(p1);
+            radioGroup.Y = ValueFactory.Create(p2);
+            radioGroup.Width = ValueFactory.Create(p3);
+            radioGroup.Height = ValueFactory.Create(p4);
+            return radioGroup;
+        }
+
+        [ContextMethod("КолонкаДанных", "DataColumn")]
+        public TfDataColumn DataColumn(string p1 = "Column", int p2 = 0)
+        {
+            int type1 = p2;
+            System.Type DataType1 = typeof(System.String);
+            if (type1 == 0)
+            {
+                DataType1 = typeof(System.String);
+            }
+            else if (type1 == 1)
+            {
+                DataType1 = typeof(System.Decimal);
+            }
+            else if (type1 == 2)
+            {
+                DataType1 = typeof(System.Boolean);
+            }
+            else if (type1 == 3)
+            {
+                DataType1 = typeof(System.DateTime);
+            }
+            else if (type1 == 4)
+            {
+                DataType1 = typeof(System.Object);
+            }
+            return new TfDataColumn(p1, DataType1);
+        }
+
+        [ContextMethod("ТаблицаДанных", "DataTable")]
+        public TfDataTable DataTable()
+        {
+            return new TfDataTable();
+        }
+
+        [ContextProperty("ТипДанных", "DataType")]
+        public TfDataType DataType1
+        {
+            get { return new TfDataType(); }
+        }
+
+        [ContextMethod("Вкладка", "TabPage")]
+        public TfTabPage TabPage(string p1 = "Вкладка", IValue p2 = null)
+        {
+            IValue view;
+            if (p2 != null)
+            {
+                view = p2;
+            }
+            else
+            {
+                view = new TfToplevel();
+            }
+            TfTabPage tab = new TfTabPage();
+            tab.Text = p1;
+            tab.View = view;
+            return tab;
+        }
+
+        [ContextMethod("ПанельВкладок", "TabView")]
+        public TfTabView TabView(int p1 = 1, int p2 = 1, int p3 = 20, int p4 = 5)
+        {
+            TfTabView tabView = new TfTabView();
+            tabView.Frame = new TfRect(p1, p2, p3, p4);
+            return tabView;
+        }
+
+        [ContextMethod("СтильДерева", "TreeStyle")]
+        public TfTreeStyle TreeStyle()
+        {
+            return new TfTreeStyle();
+        }
+
+        [ContextMethod("УзелДерева", "TreeNode")]
+        public TfTreeNode TreeNode(string p1 = "Узел")
+        {
+            TfTreeNode treeNode = new TfTreeNode();
+            treeNode.Text = p1;
+            return treeNode;
+        }
+
         [ContextMethod("ОформительТекста", "TextFormatter")]
         public TfTextFormatter TextFormatter()
         {
@@ -555,70 +1033,431 @@ namespace ostgui
         }
 
         [ContextMethod("Атрибут", "Attribute")]
-        public TfAttribute Attribute(IValue p1 = null, IValue p2 = null, IValue p3 = null)
+        public TfAttribute Attribute(IValue p1 = null, IValue p2 = null)
         {
-            if (p1 == null && p2 == null && p3 == null)
+            if (Utils.AllNull(p1, p2))
             {
                 return new TfAttribute();
             }
-            else if (p1 != null && p2 == null && p3 == null)
+            else if (Utils.AllNotNull(p1) && Utils.AllNull(p2))
             {
-                if (p1.SystemType.Name == "Число")
-                {
-                    return new TfAttribute(Convert.ToInt32(p1.AsNumber()));
-                }
-                else
-                {
-                    return null;
-                }
+                return new TfAttribute(Utils.ToInt32(p1));
             }
-            else if (p1 != null && p2 != null && p3 == null)
+            else if (Utils.AllNotNull(p1, p2))
             {
-                if (p1.SystemType.Name == "Число")
-                {
-                    return new TfAttribute(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()));
-                }
-                else
-                {
-                    return null;
-                }
+                return new TfAttribute(Utils.ToInt32(p1), Utils.ToInt32(p2));
             }
-            else if (p1 != null && p2 != null && p3 != null)
-            {
-                if (p1.SystemType.Name == "Число")
-                {
-                    return new TfAttribute(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()), Convert.ToInt32(p3.AsNumber()));
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                return null;
-            }
+            return null;
         }
 
-        [ContextMethod("ЗапуститьИЗавершить", "RunAndShutdown")]
-        public void RunAndShutdown()
+        [ContextMethod("ЭлементМеню", "MenuItem")]
+        public TfMenuItem MenuItem(string p1 = "Элемент меню")
         {
-            //Top.CorrectionZet(); // Конфликтует с созданием меню.
-            Application.Begin(top.Base_obj.M_Toplevel);
+            TfMenuItem menuItem = new TfMenuItem();
+            menuItem.Title = p1;
+            return menuItem;
         }
 
-        [ContextMethod("Запуск", "Run")]
-        public void Run()
+        [ContextProperty("Цвета", "Colors")]
+        public TfColors Colors
         {
-            //Top.CorrectionZet(); // Конфликтует с созданием меню.
-            Application.Run();
+            get { return new TfColors(); }
         }
 
-        [ContextProperty("РазрешитьСобытия", "AllowEvents")]
-        public bool HandleEvents
+        [ContextMethod("Толщина", "Thickness")]
+        public TfThickness Thickness(IValue p1, IValue p2 = null, IValue p3 = null, IValue p4 = null)
         {
-            get { return handleEvents; }
-            set { handleEvents = value; }
+            if (p2 != null && p3 != null && p4 != null)
+            {
+                return new TfThickness(Utils.ToInt32(p1), Utils.ToInt32(p2), Utils.ToInt32(p3), Utils.ToInt32(p4));
+            }
+            return new TfThickness(Utils.ToInt32(p1));
+        }
+
+        [ContextMethod("ЭлементСтрокиСостояния", "StatusItem")]
+        public TfStatusItem StatusItem(int p1, string p2)
+        {
+            return new TfStatusItem(p1, p2);
+        }
+
+        [ContextMethod("ПунктМеню", "MenuBarItem")]
+        public TfMenuBarItem MenuBarItem(string p1 = "Пункт меню")
+        {
+            TfMenuBarItem menuBarItem = new TfMenuBarItem();
+            menuBarItem.Title = p1;
+            return menuBarItem;
+        }
+
+        [ContextMethod("ПанельМеню", "MenuBar")]
+        public TfMenuBar MenuBar()
+        {
+            return new TfMenuBar();
+        }
+
+        [ContextMethod("СтрокаСостояния", "StatusBar")]
+        public TfStatusBar StatusBar()
+        {
+            return new TfStatusBar();
+        }
+
+        [ContextMethod("Таймер", "Timer")]
+        public TfTimer Timer(int p1 = 1000)
+        {
+            TfTimer timer = new TfTimer();
+            timer.Interval = p1;
+            return timer;
+        }
+
+        [ContextMethod("ОкноСообщений", "MessageBox")]
+        public TfMessageBox MessageBox()
+        {
+            return new TfMessageBox();
+        }
+
+        [ContextMethod("СтильТаблицы", "TableStyle")]
+        public TfTableStyle TableStyle()
+        {
+            return new TfTableStyle();
+        }
+
+        [ContextMethod("КонтекстноеМеню", "ContextMenu")]
+        public TfContextMenu ContextMenu()
+        {
+            return new TfContextMenu();
+        }
+
+        [ContextMethod("Дерево", "TreeView")]
+        public TfTreeView TreeView(int p1 = 1, int p2 = 1, int p3 = 10, int p4 = 5)
+        {
+            TfTreeView treeView = new TfTreeView();
+            treeView.Frame = new TfRect(p1, p2, p3, p4);
+            return treeView;
+        }
+
+        [ContextMethod("Текстовый", "TextView")]
+        public TfTextView TextView(int p1 = 1, int p2 = 1, int p3 = 30, int p4 = 5)
+        {
+            TfTextView textView = new TfTextView();
+            textView.X = ValueFactory.Create(p1);
+            textView.Y = ValueFactory.Create(p2);
+            textView.Width = ValueFactory.Create(p3);
+            textView.Height = ValueFactory.Create(p4);
+            return textView;
+        }
+
+        [ContextMethod("ПолеДаты", "DateField")]
+        public TfDateField DateField(IValue p1 = null, int p2 = 1, int p3 = 1)
+        {
+            TfDateField dateField = new TfDateField();
+            DateTime dateTime = DateTime.Now;
+            if (p1 != null)
+            {
+                dateTime = p1.AsDate();
+            }
+            dateField.Base_obj.M_DateField.Date = dateTime;
+            dateField.X = ValueFactory.Create(p2);
+            dateField.Y = ValueFactory.Create(p3);
+            return dateField;
+        }
+
+        [ContextMethod("ПолеВремени", "TimeField")]
+        public TfTimeField TimeField(IValue p1 = null, int p2 = 1, int p3 = 1)
+        {
+            TfTimeField timeField = new TfTimeField();
+            DateTime dateTime = DateTime.Now;
+            if (p1 != null)
+            {
+                dateTime = p1.AsDate();
+            }
+            timeField.Base_obj.M_TimeField.Time = dateTime - DateTime.MinValue;
+            timeField.X = ValueFactory.Create(p2);
+            timeField.Y = ValueFactory.Create(p3);
+            return timeField;
+        }
+
+        [ContextMethod("ПолеВвода", "TextField")]
+        public TfTextField TextField(string p1 = "Поле ввода", int p2 = 1, int p3 = 1, int p4 = 14)
+        {
+            TfTextField textField = new TfTextField();
+            textField.Text = p1;
+            textField.X = ValueFactory.Create(p2);
+            textField.Y = ValueFactory.Create(p3);
+            textField.Width = ValueFactory.Create(p4);
+            return textField;
+        }
+
+        [ContextMethod("Таблица", "TableView")]
+        public TfTableView TableView(int p1 = 1, int p2 = 1, int p3 = 60, int p4 = 8)
+        {
+            TfTableView tableView = new TfTableView();
+            tableView.X = ValueFactory.Create(p1);
+            tableView.Y = ValueFactory.Create(p2);
+            tableView.Width = ValueFactory.Create(p3);
+            tableView.Height = ValueFactory.Create(p4);
+            return tableView;
+        }
+
+        [ContextMethod("ПолосаПрокрутки", "ScrollBarView")]
+        public TfScrollBarView ScrollBarView(IValue p1)
+        {
+            return new TfScrollBarView(p1, true, true);
+        }
+
+        [ContextMethod("Прокручиваемый", "ScrollView")]
+        public TfScrollView ScrollView(int p1 = 1, int p2 = 1, int p3 = 20, int p4 = 5)
+        {
+            TfScrollView scrollView = new TfScrollView();
+            scrollView.X = ValueFactory.Create(p1);
+            scrollView.Y = ValueFactory.Create(p2);
+            scrollView.Width = ValueFactory.Create(p3);
+            scrollView.Height = ValueFactory.Create(p4);
+            return scrollView;
+        }
+
+        [ContextMethod("РамкаГруппы", "FrameView")]
+        public TfFrameView FrameView(string p1 = "Рамка группы", int p2 = 1, int p3 = 1, int p4 = 17, int p5 = 5)
+        {
+            TfFrameView frameView = new TfFrameView();
+            frameView.Title = p1;
+            frameView.X = ValueFactory.Create(p2);
+            frameView.Y = ValueFactory.Create(p3);
+            frameView.Width = ValueFactory.Create(p4);
+            frameView.Height = ValueFactory.Create(p5);
+            return frameView;
+        }
+
+        [ContextMethod("ВыборЦвета", "ColorPicker")]
+        public TfColorPicker ColorPicker(string p1 = "Выбор цвета", int p2 = 1, int p3 = 1)
+        {
+            TfColorPicker сolorPicker = new TfColorPicker();
+            сolorPicker.Text = p1;
+            сolorPicker.X = ValueFactory.Create(p2);
+            сolorPicker.Y = ValueFactory.Create(p3);
+            return сolorPicker;
+        }
+
+        [ContextMethod("СписокЭлементов", "ListView")]
+        public TfListView ListView(int p1 = 1, int p2 = 1, int p3 = 30, int p4 = 5)
+        {
+            TfListView listView = new TfListView();
+            listView.X = ValueFactory.Create(p1);
+            listView.Y = ValueFactory.Create(p2);
+            listView.Width = ValueFactory.Create(p3);
+            listView.Height = ValueFactory.Create(p4);
+            return listView;
+        }
+
+        [ContextMethod("ПолеВыбора", "ComboBox")]
+        public TfComboBox ComboBox(int p1 = 1, int p2 = 1, int p3 = 30, int p4 = 5)
+        {
+            TfComboBox comboBox = new TfComboBox();
+            comboBox.X = ValueFactory.Create(p1);
+            comboBox.Y = ValueFactory.Create(p2);
+            comboBox.Width = ValueFactory.Create(p3);
+            comboBox.Height = ValueFactory.Create(p4);
+            return comboBox;
+        }
+
+        [ContextMethod("Диалог", "Dialog")]
+        public TfDialog Dialog(string p1 = "Диалог", int p2 = 1, int p3 = 1, int p4 = 30, int p5 = 10)
+        {
+            TfDialog dialog = new TfDialog();
+            dialog.Title = p1;
+            dialog.X = ValueFactory.Create(p2);
+            dialog.Y = ValueFactory.Create(p3);
+            dialog.Width = ValueFactory.Create(p4);
+            dialog.Height = ValueFactory.Create(p5);
+            return dialog;
+        }
+
+        [ContextMethod("ДиалогОткрытия", "OpenDialog")]
+        public TfOpenDialog OpenDialog(string p1 = "Диалог открытия", string p2 = "Сообщение", int p3 = 1, int p4 = 1, int p5 = 80, int p6 = 20, int p7 = 0)
+        {
+            LabelLanguage = p7;
+            TfOpenDialog openDialog = new TfOpenDialog();
+            openDialog.Title = p1;
+            openDialog.Message = p2;
+            openDialog.X = ValueFactory.Create(p3);
+            openDialog.Y = ValueFactory.Create(p4);
+            openDialog.Width = ValueFactory.Create(p5);
+            openDialog.Height = ValueFactory.Create(p6);
+            openDialog.Base_obj.LabelLanguage = LabelLanguage;
+            return openDialog;
+        }
+
+        [ContextMethod("ДиалогСохранения", "SaveDialog")]
+        public TfSaveDialog SaveDialog(string p1 = "Диалог сохранения", string p2 = "Сообщение", int p3 = 1, int p4 = 1, int p5 = 80, int p6 = 20, int p7 = 0)
+        {
+            LabelLanguage = p7;
+            TfSaveDialog saveDialog = new TfSaveDialog();
+            saveDialog.Title = p1;
+            saveDialog.Message = p2;
+            saveDialog.X = ValueFactory.Create(p3);
+            saveDialog.Y = ValueFactory.Create(p4);
+            saveDialog.Width = ValueFactory.Create(p5);
+            saveDialog.Height = ValueFactory.Create(p6);
+            saveDialog.Base_obj.LabelLanguage = LabelLanguage;
+            return saveDialog;
+        }
+
+        [ContextMethod("Индикатор", "ProgressBar")]
+        public TfProgressBar ProgОкноressBar(int p1 = 1, int p2 = 1, int p3 = 40, int p4 = 1)
+        {
+            TfProgressBar progressBar = new TfProgressBar();
+            progressBar.X = ValueFactory.Create(p1);
+            progressBar.Y = ValueFactory.Create(p2);
+            progressBar.Width = ValueFactory.Create(p3);
+            progressBar.Height = ValueFactory.Create(p4);
+            return progressBar;
+        }
+
+        [ContextMethod("Надпись", "Label")]
+        public TfLabel Label(string p1 = "Надпись", int p2 = 1, int p3 = 1, int p4 = 10, int p5 = 1)
+        {
+            TfLabel label = new TfLabel();
+            label.Text = p1;
+            label.X = ValueFactory.Create(p2);
+            label.Y = ValueFactory.Create(p3);
+            label.Width = ValueFactory.Create(p4);
+            label.Height = ValueFactory.Create(p5);
+            return label;
+        }
+
+        [ContextMethod("Флажок", "CheckBox")]
+        public TfCheckBox CheckBox(string p1 = "Флажок", int p2 = 1, int p3 = 1)
+        {
+            TfCheckBox checkBox = new TfCheckBox();
+            checkBox.Text = p1;
+            checkBox.X = ValueFactory.Create(p2);
+            checkBox.Y = ValueFactory.Create(p3);
+            return checkBox;
+        }
+
+        [ContextMethod("Граница", "Border")]
+        public TfBorder Border(IValue p1 = null)
+        {
+            TfBorder border = new TfBorder();
+            if (Utils.AllNotNull(p1))
+            {
+                border.BorderStyle = Utils.ToInt32(p1);
+            }
+            return border;
+        }
+
+        [ContextMethod("Окно", "Window")]
+        public TfWindow Window(string p1 = "Окно", int p2 = 1, int p3 = 1, int p4 = 10, int p5 = 5)
+        {
+            TfWindow window = new TfWindow();
+            window.Title = p1;
+            window.X = ValueFactory.Create(p2);
+            window.Y = ValueFactory.Create(p3);
+            window.Width = ValueFactory.Create(p4);
+            window.Height = ValueFactory.Create(p5);
+            return window;
+        }
+
+        [ContextMethod("Действие", "Action")]
+        public TfAction Action(IRuntimeContextInstance script = null, string methodName = null, IValue param = null)
+        {
+            return new TfAction(script, methodName, param);
+        }
+
+        [ContextProperty("Верхний", "Top")]
+        public TfToplevel Top
+        {
+            get { return top; }
+        }
+
+        [ContextMethod("Кнопка", "Button")]
+        public TfButton Button(string p1 = "Кнопка", int p2 = 1, int p3 = 1, int p4 = 10, int p5 = 1)
+        {
+            TfButton button = new TfButton();
+            button.Text = p1;
+            button.Frame = new TfRect(p2, p3, p4, p5);
+            return button;
+        }
+
+        public TfView View(IValue p1 = null, IValue p2 = null, IValue p3 = null)
+        {
+            if (Utils.AllNull(p1, p2, p3))
+            {
+                return new TfView();
+            }
+            else if (Utils.AllNotNull(p1) && Utils.AllNull(p2, p3))
+            {
+                if (Utils.IsType<TfRect>(p1))
+                {
+                    return new TfView((TfRect)p1);
+                }
+            }
+            else if (Utils.AllNotNull(p1, p2, p3))
+            {
+                if (Utils.IsNumber(p1) && Utils.IsNumber(p2) && Utils.IsString(p3))
+                {
+                    return new TfView(Utils.ToInt32(p1), Utils.ToInt32(p2), Utils.ToString(p3));
+                }
+                else if (Utils.IsType<TfRect>(p1) && Utils.IsString(p2) && Utils.IsType<TfBorder>(p3))
+                {
+                    return new TfView((TfRect)p1, Utils.ToString(p2), (TfBorder)p3);
+                }
+                else if (Utils.IsString(p1) && Utils.IsNumber(p2) && Utils.IsType<TfBorder>(p3))
+                {
+                    return new TfView(Utils.ToString(p1), Utils.ToInt32(p2), (TfBorder)p3);
+                }
+            }
+            return null;
+        }
+
+        [ContextMethod("Размер", "Size")]
+        public TfSize Size(int p1 = 10, int p2 = 5)
+        {
+            TfSize size = new TfSize();
+            size.Width = p1;
+            size.Height = p2;
+            return size;
+        }
+
+        [ContextMethod("Прямоугольник", "Rect")]
+        public TfRect Rect(int p1 = 1, int p2 = 1, int p3 = 10, int p4 = 5)
+        {
+            TfRect rect = new TfRect();
+            rect.X = p1;
+            rect.Y = p2;
+            rect.Width = p3;
+            rect.Height = p4;
+            return rect;
+        }
+
+        [ContextMethod("Точка", "Point")]
+        public TfPoint Rect(IValue p1 = null, IValue p2 = null)
+        {
+            if (Utils.AllNull(p1, p2))
+            {
+                return new TfPoint();
+            }
+            else if (Utils.AllNotNull(p1, p2))
+            {
+                return new TfPoint(Utils.ToInt32(p1), Utils.ToInt32(p2));
+            }
+            return null;
+        }
+
+        [ContextMethod("Верхний", "Toplevel")]
+        public TfToplevel Toplevel(int p1 = 1, int p2 = 1, int p3 = 10, int p4 = 5)
+        {
+            TfToplevel toplevel = new TfToplevel();
+            toplevel.X = ValueFactory.Create(p1);
+            toplevel.Y = ValueFactory.Create(p2);
+            toplevel.Width = ValueFactory.Create(p3);
+            toplevel.Height = ValueFactory.Create(p4);
+            return toplevel;
+        }
+
+        // Вспомогательные методы и объекты.
+
+        private void Application_NotifyNewRunState(Application.RunState obj)
+        {
+            OnOpen.Invoke();
         }
 
         public static dynamic GetEventParameter(dynamic dll_objEvent)
@@ -662,701 +1501,22 @@ namespace ostgui
             }
             catch (Exception ex)
             {
-                GlobalContext().Echo("Обработчик не выполнен: " + action.MethodName + Environment.NewLine + ex.StackTrace);
+                Utils.GlobalContext().Echo("Обработчик не выполнен: " + action.MethodName + Environment.NewLine + ex.StackTrace);
             }
             Event = null;
             Application.Refresh();
         }
 
-        [ContextProperty("Отправитель", "Sender")]
-        public IValue Sender
+        [ContextMethod("РазобратьСтроку", "SplitString")]
+        public ArrayImpl SplitString(string p1, string p2)
         {
-            get { return RevertEqualsObj(Event.Sender); }
+            return Utils.SplitString(p1, p2);
         }
 
-        [ContextProperty("АргументыСобытия", "EventArgs")]
-        public TfEventArgs EventArgs
+        [ContextProperty("НоваяСтрока", "NewLine")]
+        public string NewLine
         {
-            get { return Event; }
-        }
-
-        private static TfVerticalTextAlignment tf_VerticalTextAlignment = new TfVerticalTextAlignment();
-        [ContextProperty("ВертикальноеВыравниваниеТекста", "VerticalTextAlignment")]
-        public TfVerticalTextAlignment VerticalTextAlignment
-        {
-            get { return tf_VerticalTextAlignment; }
-        }
-
-        private static TfCursorVisibility tf_CursorVisibility = new TfCursorVisibility();
-        [ContextProperty("ВидКурсора", "CursorVisibility")]
-        public TfCursorVisibility CursorVisibility
-        {
-            get { return tf_CursorVisibility; }
-        }
-
-        private static TfTextAlignment tf_TextAlignment = new TfTextAlignment();
-        [ContextProperty("ВыравниваниеТекста", "TextAlignment")]
-        public TfTextAlignment TextAlignment
-        {
-            get { return tf_TextAlignment; }
-        }
-
-        private static TfKeys tf_Keys = new TfKeys();
-        [ContextProperty("Клавиши", "Keys")]
-        public TfKeys Keys
-        {
-            get { return tf_Keys; }
-        }
-
-        private static TfTextDirection tf_TextDirection = new TfTextDirection();
-        [ContextProperty("НаправлениеТекста", "TextDirection")]
-        public TfTextDirection TextDirection
-        {
-            get { return tf_TextDirection; }
-        }
-
-        private static TfLayoutStyle tf_LayoutStyle = new TfLayoutStyle();
-        [ContextProperty("СтильКомпоновки", "LayoutStyle")]
-        public TfLayoutStyle LayoutStyle
-        {
-            get { return tf_LayoutStyle; }
-        }
-
-        private static TfMenuItemCheckStyle tf_MenuItemCheckStyle = new TfMenuItemCheckStyle();
-        [ContextProperty("СтильФлажкаЭлементаМеню", "MenuItemCheckStyle")]
-        public TfMenuItemCheckStyle MenuItemCheckStyle
-        {
-            get { return tf_MenuItemCheckStyle; }
-        }
-
-        private static TfMouseFlags tf_MouseFlags = new TfMouseFlags();
-        [ContextProperty("ФлагиМыши", "MouseFlags")]
-        public TfMouseFlags MouseFlags
-        {
-            get { return tf_MouseFlags; }
-        }
-
-        private static TfColor tf_Color = new TfColor();
-        [ContextProperty("Цвет", "Color")]
-        public TfColor Color
-        {
-            get { return tf_Color; }
-        }
-
-        private static TfBorderStyle tf_BorderStyle = new TfBorderStyle();
-        [ContextProperty("СтильГраницы", "BorderStyle")]
-        public TfBorderStyle BorderStyle
-        {
-            get { return tf_BorderStyle; }
-        }
-
-        [ContextMethod("Граница", "Border")]
-        public TfBorder Border()
-        {
-            return new TfBorder();
-        }
-
-        [ContextMethod("Окно", "Window")]
-        public TfWindow Window(IValue p1 = null, IValue p2 = null, IValue p3 = null, IValue p4 = null)
-        {
-            if (p1 == null && p2 == null && p3 == null && p4 == null)
-            {
-                return new TfWindow();
-            }
-            else if (p1 != null && p2 == null && p3 == null && p4 == null)
-            {
-                if (p1.SystemType.Name == "Строка")
-                {
-                    return new TfWindow(p1.AsString());
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else if (p1 != null && p2 != null && p3 == null && p4 == null)
-            {
-                if (p1.GetType() == typeof(TfRect) && p2.SystemType.Name == "Строка")
-                {
-                    return new TfWindow((TfRect)p1, p2.AsString());
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else if (p1 != null && p2 != null && p3 != null && p4 == null)
-            {
-                if (p1.SystemType.Name == "Строка" && p2.SystemType.Name == "Число" && p3.GetType() == typeof(TfBorder))
-                {
-                    return new TfWindow(p1.AsString(), Convert.ToInt32(p2.AsNumber()), (TfBorder)p3);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else if (p1 != null && p2 != null && p3 != null && p4 != null)
-            {
-                if (p1.GetType() == typeof(TfRect) && p2.SystemType.Name == "Строка" && p3.SystemType.Name == "Число" && p4.GetType() == typeof(TfBorder))
-                {
-                    return new TfWindow((TfRect)p1, p2.AsString(), Convert.ToInt32(p3.AsNumber()), (TfBorder)p4);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        [ContextMethod("Действие", "Action")]
-        public TfAction Action(IRuntimeContextInstance script = null, string methodName = null, IValue param = null)
-        {
-            return new TfAction(script, methodName, param);
-        }
-
-        [ContextMethod("Активировать", "Init")]
-        public void Init()
-        {
-            Application.Init();
-            try
-            {
-                Application.NotifyNewRunState += Application_NotifyNewRunState;
-                top = new TfToplevel(Application.Top);
-            }
-            catch { }
-        }
-
-        [ContextProperty("Верхний", "Top")]
-        public TfToplevel Top
-        {
-            get { return top; }
-        }
-
-        [ContextMethod("Кнопка", "Button")]
-        public TfButton Button(IValue p1 = null, IValue p2 = null, IValue p3 = null, IValue p4 = null)
-        {
-            if (p1 == null && p2 == null && p3 == null && p4 == null)
-            {
-                return new TfButton();
-            }
-            else if (p1 != null && p2 != null && p3 != null && p4 != null)
-            {
-                if (p1.SystemType.Name == "Число" && p2.SystemType.Name == "Число" && p3.SystemType.Name == "Строка" && p4.SystemType.Name == "Булево")
-                {
-                    return new TfButton(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()), p3.AsString(), p4.AsBoolean());
-                }
-                else if (p1.SystemType.Name == "Число" && p2.SystemType.Name == "Число" && p3.SystemType.Name == "Число" && p4.SystemType.Name == "Число")
-                {
-                    TfButton TfButton1 = new TfButton();
-                    TfButton1.Base_obj.M_Button.X = Terminal.Gui.Pos.At(Convert.ToInt32(p1.AsNumber()));
-                    TfButton1.Base_obj.M_Button.Y = Terminal.Gui.Pos.At(Convert.ToInt32(p2.AsNumber()));
-                    TfButton1.Base_obj.M_Button.Width = Terminal.Gui.Dim.Sized(Convert.ToInt32(p3.AsNumber()));
-                    TfButton1.Base_obj.M_Button.Height = Terminal.Gui.Dim.Sized(Convert.ToInt32(p4.AsNumber()));
-                    return TfButton1;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else if (p1 != null && p2 != null && p3 != null && p4 == null)
-            {
-                if (p1.SystemType.Name == "Число" && p2.SystemType.Name == "Число" && p3.SystemType.Name == "Строка")
-                {
-                    return new TfButton(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()), p3.AsString());
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else if (p1 != null && p2 != null && p3 == null && p4 == null)
-            {
-                if (p1.SystemType.Name == "Строка" && p2.SystemType.Name == "Булево")
-                {
-                    return new TfButton(p1.AsString(), p2.AsBoolean());
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else if (p1 != null && p2 == null && p3 == null && p4 == null)
-            {
-                if (p1.SystemType.Name == "Строка")
-                {
-                    return new TfButton(p1.AsString());
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public TfView View(IValue p1 = null, IValue p2 = null, IValue p3 = null)
-        {
-            if (p1 == null && p2 == null && p3 == null)
-            {
-                return new TfView();
-            }
-            else if (p1 != null && p2 == null && p3 == null)
-            {
-                if (p1.GetType() == typeof(TfRect))
-                {
-                    return new TfView((TfRect)p1);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else if (p1 != null && p2 != null && p3 != null)
-            {
-                if (p1.SystemType.Name == "Число" && p2.SystemType.Name == "Число" && p3.SystemType.Name == "Строка")
-                {
-                    return new TfView(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()), p3.AsString());
-                }
-                else if (p1.GetType() == typeof(TfRect) && p2.SystemType.Name == "Строка" && p3.GetType() == typeof(TfBorder))
-                {
-                    return new TfView((TfRect)p1, p2.AsString(), (TfBorder)p3);
-                }
-                else if (p1.SystemType.Name == "Строка" && p2.SystemType.Name == "Число" && p3.GetType() == typeof(TfBorder))
-                {
-                    return new TfView(p1.AsString(), Convert.ToInt32(p2.AsNumber()), (TfBorder)p3);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        [ContextMethod("Размер", "Size")]
-        public TfSize Size(IValue p1 = null, IValue p2 = null)
-        {
-            if (p1 == null && p2 == null)
-            {
-                return new TfSize();
-            }
-            else if (p1 != null && p2 != null)
-            {
-                if (p1.SystemType.Name == "Число" && p2.SystemType.Name == "Число")
-                {
-                    return new TfSize(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()));
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        [ContextMethod("Прямоугольник", "Rect")]
-        public TfRect Rect(IValue p1 = null, IValue p2 = null, IValue p3 = null, IValue p4 = null)
-        {
-            if (p1 == null && p2 == null && p3 == null && p4 == null)
-            {
-                return new TfRect();
-            }
-            else if (p1 != null && p2 != null && p3 == null && p4 == null)
-            {
-                if (p1.GetType() == typeof(TfPoint) && p2.GetType() == typeof(TfSize))
-                {
-                    return new TfRect((TfPoint)p1, (TfSize)p2);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else if (p1 != null && p2 != null && p3 != null && p4 != null)
-            {
-                if (p1.SystemType.Name == "Число" && p2.SystemType.Name == "Число" && p3.SystemType.Name == "Число" && p4.SystemType.Name == "Число")
-                {
-                    return new TfRect(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()), Convert.ToInt32(p3.AsNumber()), Convert.ToInt32(p4.AsNumber()));
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        [ContextMethod("Точка", "Point")]
-        public TfPoint Rect(IValue p1 = null, IValue p2 = null)
-        {
-            if (p1 == null && p2 == null)
-            {
-                return new TfPoint();
-            }
-            else if (p1 != null && p2 != null)
-            {
-                if (p1.SystemType.Name == "Число" && p2.SystemType.Name == "Число")
-                {
-                    return new TfPoint(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()));
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else if (p1 != null && p2 == null)
-            {
-                if (p1.GetType() == typeof(TfSize))
-                {
-                    return new TfPoint((TfSize)p1);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        [ContextMethod("Верхний", "Toplevel")]
-        public TfToplevel Toplevel(IValue p1 = null, IValue p2 = null, IValue p3 = null, IValue p4 = null)
-        {
-            if (p1 != null)
-            {
-                if (p1.GetType() == typeof(TfRect))
-                {
-                    return new TfToplevel((TfRect)p1);
-                }
-                else if (p1.SystemType.Name == "Число")
-                {
-                    TfRect TfRect1 = new TfRect(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()), Convert.ToInt32(p3.AsNumber()), Convert.ToInt32(p4.AsNumber()));
-                    return new TfToplevel(TfRect1);
-                }
-            }
-            return new TfToplevel();
-        }
-
-        public static System.Collections.ArrayList StrFindBetween(string p1, string p2 = null, string p3 = null, bool p4 = true, bool p5 = true)
-        {
-            //p1 - исходная строка
-            //p2 - подстрока поиска от которой ведем поиск
-            //p3 - подстрока поиска до которой ведем поиск
-            //p4 - не включать p2 и p3 в результат
-            //p5 - в результат не будут включены участки, содержащие другие найденные участки, удовлетворяющие переданным параметрам
-            //функция возвращает массив строк
-            string str1 = p1;
-            int Position1;
-            System.Collections.ArrayList ArrayList1 = new System.Collections.ArrayList();
-            if (p2 != null && p3 == null)
-            {
-                Position1 = str1.IndexOf(p2);
-                while (Position1 >= 0)
-                {
-                    ArrayList1.Add(ValueFactory.Create("" + ((p4) ? str1.Substring(Position1 + p2.Length) : str1.Substring(Position1))));
-                    str1 = str1.Substring(Position1 + 1);
-                    Position1 = str1.IndexOf(p2);
-                }
-            }
-            else if (p2 == null && p3 != null)
-            {
-                Position1 = str1.IndexOf(p3) + 1;
-                int SumPosition1 = Position1;
-                while (Position1 > 0)
-                {
-                    ArrayList1.Add(ValueFactory.Create("" + ((p4) ? str1.Substring(0, SumPosition1 - 1) : str1.Substring(0, SumPosition1 - 1 + p3.Length))));
-                    try
-                    {
-                        Position1 = str1.Substring(SumPosition1 + 1).IndexOf(p3) + 1;
-                        SumPosition1 = SumPosition1 + Position1 + 1;
-                    }
-                    catch
-                    {
-                        break;
-                    }
-                }
-            }
-            else if (p2 != null && p3 != null)
-            {
-                Position1 = str1.IndexOf(p2);
-                while (Position1 >= 0)
-                {
-                    string Стр2;
-                    Стр2 = (p4) ? str1.Substring(Position1 + p2.Length) : str1.Substring(Position1);
-                    int Position2 = Стр2.IndexOf(p3) + 1;
-                    int SumPosition2 = Position2;
-                    while (Position2 > 0)
-                    {
-                        if (p5)
-                        {
-                            if (Стр2.Substring(0, SumPosition2 - 1).IndexOf(p3) <= -1)
-                            {
-                                ArrayList1.Add(ValueFactory.Create("" + ((p4) ? Стр2.Substring(0, SumPosition2 - 1) : Стр2.Substring(0, SumPosition2 - 1 + p3.Length))));
-                            }
-                        }
-                        else
-                        {
-                            ArrayList1.Add(ValueFactory.Create("" + ((p4) ? Стр2.Substring(0, SumPosition2 - 1) : Стр2.Substring(0, SumPosition2 - 1 + p3.Length))));
-                        }
-                        try
-                        {
-                            Position2 = Стр2.Substring(SumPosition2 + 1).IndexOf(p3) + 1;
-                            SumPosition2 = SumPosition2 + Position2 + 1;
-                        }
-                        catch
-                        {
-                            break;
-
-                        }
-                    }
-                    str1 = str1.Substring(Position1 + 1);
-                    Position1 = str1.IndexOf(p2);
-                }
-            }
-            return ArrayList1;
-        }
-
-        public static void AddToHashtable(dynamic p1, dynamic p2)
-        {
-            if (!hashtable.ContainsKey(p1))
-            {
-                hashtable.Add(p1, p2);
-            }
-            else
-            {
-                if (!((object)hashtable[p1]).Equals(p2))
-                {
-                    hashtable[p1] = p2;
-                }
-            }
-        }
-
-        public static void AddToShortcutDictionary(decimal p1, IValue p2)
-        {
-            if (!shortcutDictionary.ContainsKey(p1))
-            {
-                ArrayList ArrayList1 = new ArrayList();
-                ArrayList1.Add(p2);
-                shortcutDictionary.Add(p1, ArrayList1);
-            }
-            else
-            {
-                ArrayList ArrayList1 = shortcutDictionary[p1];
-                if (!ArrayList1.Contains(p2))
-                {
-                    ArrayList1.Add(p2);
-                }
-            }
-        }
-
-        public static void RemoveFromShortcutDictionary(decimal p1, IValue p2)
-        {
-            if (shortcutDictionary.ContainsKey(p1))
-            {
-                try
-                {
-                    shortcutDictionary[p1].Remove(p2);
-                }
-                catch { }
-            }
-        }
-
-        public static ArrayList GetFromShortcutDictionary(IValue p1)
-        {
-            ArrayList ArrayList1 = new ArrayList();
-            foreach (var item in shortcutDictionary)
-            {
-                for (int i = 0; i < item.Value.Count; i++)
-                {
-                    if (item.Value[i] == p1)
-                    {
-                        ArrayList1.Add(item.Key);
-                    }
-                }
-            }
-            return ArrayList1;
-        }
-
-        public static dynamic RevertShortcut(dynamic shortcut)
-        {
-            try
-            {
-                return shortcutDictionary[shortcut];
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public static dynamic RevertEqualsObj(dynamic initialObject)
-        {
-            try
-            {
-                return hashtable[initialObject];
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public static IValue RevertObj(dynamic initialObject)
-        {
-            //ScriptEngine.Machine.Values.NullValue NullValue1;
-            //ScriptEngine.Machine.Values.BooleanValue BooleanValue1;
-            //ScriptEngine.Machine.Values.DateValue DateValue1;
-            //ScriptEngine.Machine.Values.NumberValue NumberValue1;
-            //ScriptEngine.Machine.Values.StringValue StringValue1;
-
-            //ScriptEngine.Machine.Values.GenericValue GenericValue1;
-            //ScriptEngine.Machine.Values.TypeTypeValue TypeTypeValue1;
-            //ScriptEngine.Machine.Values.UndefinedValue UndefinedValue1;
-
-            // Если initialObject равен null.
-            try
-            {
-                if (initialObject == null)
-                {
-                    return (IValue)null;
-                }
-            }
-            catch { }
-            // Если initialObject равен null.
-            try
-            {
-                string str_initialObject = initialObject.GetType().ToString();
-            }
-            catch
-            {
-                return (IValue)null;
-            }
-            // initialObject не равен null
-            dynamic Obj1 = null;
-            string str1 = initialObject.GetType().ToString();
-            // Если initialObject второго уровня и у него есть ссылка на третий уровень.
-            try
-            {
-                Obj1 = initialObject.dll_obj;
-            }
-            catch { }
-            if (Obj1 != null)
-            {
-                return (IValue)Obj1;
-            }
-            // если initialObject не из пространства имен onescriptgui, то есть Уровень1 и у него есть аналог в
-            // пространстве имен ostgui с конструктором принимающим параметром initialObject
-            try
-            {
-                if (!str1.Contains("ostgui."))
-                {
-                    string str2 = "ostgui.Tf" + str1.Substring(str1.LastIndexOf(".") + 1);
-                    System.Type TestType = System.Type.GetType(str2, false, true);
-                    object[] args = { initialObject };
-                    Obj1 = Activator.CreateInstance(TestType, args);
-                }
-            }
-            catch { }
-            if (Obj1 != null)
-            {
-                return (IValue)Obj1;
-            }
-            // если initialObject из пространства имен onescriptgui, то есть Уровень2 и у него есть аналог в
-            // пространстве имен ostgui с конструктором принимающим параметром initialObject
-            try
-            {
-                if (str1.Contains("ostgui."))
-                {
-                    string str3 = str1.Replace("ostgui.", "ostgui.Tf");
-                    System.Type TestType = System.Type.GetType(str3, false, true);
-                    object[] args = { initialObject };
-                    Obj1 = Activator.CreateInstance(TestType, args);
-                }
-            }
-            catch { }
-            if (Obj1 != null)
-            {
-                return (IValue)Obj1;
-            }
-            // Если initialObject с возможными другими типами.
-            string str4 = null;
-            try
-            {
-                str4 = initialObject.SystemType.Name;
-            }
-            catch
-            {
-                if ((str1 == "System.String") ||
-                (str1 == "System.Decimal") ||
-                (str1 == "System.Int32") ||
-                (str1 == "System.Boolean") ||
-                (str1 == "System.DateTime"))
-                {
-                    return (IValue)ValueFactory.Create(initialObject);
-                }
-                else if (str1 == "System.Byte")
-                {
-                    int vOut = Convert.ToInt32(initialObject);
-                    return (IValue)ValueFactory.Create(vOut);
-                }
-                else if (str1 == "System.DBNull")
-                {
-                    string vOut = Convert.ToString(initialObject);
-                    return (IValue)ValueFactory.Create(vOut);
-                }
-            }
-            // Если тип initialObject определяется односкриптом.
-            if (str4 == "Неопределено")
-            {
-                return (IValue)null;
-            }
-            if (str4 == "Булево")
-            {
-                return (IValue)initialObject;
-            }
-            if (str4 == "Дата")
-            {
-                return (IValue)initialObject;
-            }
-            if (str4 == "Число")
-            {
-                return (IValue)initialObject;
-            }
-            if (str4 == "Строка")
-            {
-                return (IValue)initialObject;
-            }
-            // Если ничего не подходит.
-            return (IValue)initialObject;
-        }
-
-        public static void WriteToFile(string str)
-        {
-            // добавление в файл
-            using (System.IO.StreamWriter writer = new System.IO.StreamWriter("C:\\444\\Ошибки.txt", true, Encoding.UTF8))
-            {
-                writer.WriteLineAsync(str);
-            }
+            get { return Utils.NewLine; }
         }
     }
 }

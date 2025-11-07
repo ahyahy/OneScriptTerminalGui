@@ -15,31 +15,15 @@ namespace ostgui
         {
             M_Button = new Terminal.Gui.Button();
             base.M_View = M_Button;
-            OneScriptTerminalGui.AddToHashtable(M_Button, this);
+            Utils.AddToHashtable(M_Button, this);
             SetActions(M_Button);
         }
 
-        public Button(string p1, bool p2 = false)
+        public Button(Terminal.Gui.Button p1)
         {
-            M_Button = new Terminal.Gui.Button(p1, p2);
+            M_Button = p1;
             base.M_View = M_Button;
-            OneScriptTerminalGui.AddToHashtable(M_Button, this);
-            SetActions(M_Button);
-        }
-
-        public Button(int p1, int p2, string p3)
-        {
-            M_Button = new Terminal.Gui.Button(p1, p2, p3);
-            base.M_View = M_Button;
-            OneScriptTerminalGui.AddToHashtable(M_Button, this);
-            SetActions(M_Button);
-        }
-
-        public Button(int p1, int p2, string p3, bool p4)
-        {
-            M_Button = new Terminal.Gui.Button(p1, p2, p3, p4);
-            base.M_View = M_Button;
-            OneScriptTerminalGui.AddToHashtable(M_Button, this);
+            Utils.AddToHashtable(M_Button, this);
             SetActions(M_Button);
         }
 
@@ -73,7 +57,7 @@ namespace ostgui
 
         public new Toplevel GetTopSuperView()
         {
-            return OneScriptTerminalGui.RevertEqualsObj(M_Button.GetTopSuperView());
+            return Utils.RevertEqualsObj(M_Button.GetTopSuperView());
         }
     }
 
@@ -88,38 +72,21 @@ namespace ostgui
             Base_obj = Button1;
         }
 
-        public TfButton(string p1, bool p2 = false)
+        public TfButton(Terminal.Gui.Button p1)
         {
-            Button Button1 = new Button(p1, p2);
+            Button Button1 = new Button(p1);
             Button1.dll_obj = this;
             Base_obj = Button1;
         }
-
-        public TfButton(int p1, int p2, string p3)
-        {
-            Button Button1 = new Button(p1, p2, p3);
-            Button1.dll_obj = this;
-            Base_obj = Button1;
-        }
-
-        public TfButton(int p1, int p2, string p3, bool p4)
-        {
-            Button Button1 = new Button(p1, p2, p3, p4);
-            Button1.dll_obj = this;
-            Base_obj = Button1;
-        }
-
-        public TfAction LayoutComplete { get; set; }
-        public TfAction LayoutStarted { get; set; }
-        public TfAction DrawContentComplete { get; set; }
-        public TfAction DrawContent { get; set; }
-        public TfAction InitializedItem { get; set; }
-        public TfAction CanFocusChanged { get; set; }
-        public TfAction Added { get; set; }
-        public TfAction Removed { get; set; }
-        public TfAction HotKeyChanged { get; set; }
 
         public Button Base_obj;
+
+        [ContextProperty("АвтоРазмер", "AutoSize")]
+        public bool AutoSize
+        {
+            get { return Base_obj.AutoSize; }
+            set { Base_obj.AutoSize = value; }
+        }
 
         [ContextProperty("ВертикальноеВыравниваниеТекста", "VerticalTextAlignment")]
         public int VerticalTextAlignment
@@ -137,7 +104,14 @@ namespace ostgui
         [ContextProperty("ВФокусе", "Focused")]
         public IValue Focused
         {
-            get { return Base_obj.Focused; }
+            get
+            {
+                if (Base_obj.M_Button.Focused.GetType().ToString().Contains("+ContentView"))
+                {
+                    return Utils.RevertEqualsObj(Base_obj.M_Button.Focused.Focused).dll_obj;
+                }
+                return Utils.RevertEqualsObj(Base_obj.M_Button.Focused).dll_obj;
+            }
         }
 
         [ContextProperty("ВыравниваниеТекста", "TextAlignment")]
@@ -148,29 +122,57 @@ namespace ostgui
         }
 
         [ContextProperty("Высота", "Height")]
-        public TfDim Height
+        public IValue Height
         {
-            get { return Base_obj.Height.dll_obj; }
-            set { Base_obj.Height = value.Base_obj; }
+            get { return new TfDim().Height(this); }
+            set
+            {
+                if (Utils.IsType<TfDim>(value))
+                {
+                    Base_obj.M_View.Height = ((TfDim)value).Base_obj.M_Dim;
+                }
+                else if (Utils.IsNumber(value))
+                {
+                    Base_obj.M_View.Height = Terminal.Gui.Dim.Sized(Utils.ToInt32(value));
+                }
+            }
         }
 
         [ContextProperty("Граница", "Border")]
         public TfBorder Border
         {
             get { return Base_obj.Border.dll_obj; }
-            set { Base_obj.Border = value.Base_obj; }
+            set
+            {
+                TfBorder border = new TfBorder();
+                Terminal.Gui.Border _border = value.Base_obj.M_Border;
+                border.Base_obj.M_Border.Background = _border.Background;
+                border.Base_obj.M_Border.BorderBrush = _border.BorderBrush;
+                border.Base_obj.M_Border.BorderStyle = _border.BorderStyle;
+                border.Base_obj.M_Border.BorderThickness = _border.BorderThickness;
+                border.Base_obj.M_Border.Effect3D = _border.Effect3D;
+                border.Base_obj.M_Border.Effect3DBrush = _border.Effect3DBrush;
+                border.Base_obj.M_Border.Effect3DOffset = _border.Effect3DOffset;
+                border.Base_obj.M_Border.Padding = _border.Padding;
+                border.Base_obj.M_Border.Title = _border.Title;
+                Base_obj.Border = border.Base_obj;
+            }
         }
 
         [ContextProperty("Границы", "Bounds")]
         public TfRect Bounds
         {
-            get { return new TfRect(Base_obj.Frame.M_Rect.X, Base_obj.Frame.M_Rect.Y, Base_obj.Bounds.M_Rect.Width, Base_obj.Bounds.M_Rect.Height); }
+            get
+            {
+                Terminal.Gui.Rect bounds = Base_obj.Bounds.M_Rect;
+                return new TfRect(bounds.X, bounds.Y, bounds.Width, bounds.Height);
+            }
         }
 
         [ContextProperty("Данные", "Data")]
         public IValue Data
         {
-            get { return OneScriptTerminalGui.RevertObj(Base_obj.Data); }
+            get { return Utils.RevertObj(Base_obj.Data); }
             set { Base_obj.Data = value; }
         }
 
@@ -188,10 +190,20 @@ namespace ostgui
         }
 
         [ContextProperty("Игрек", "Y")]
-        public TfPos Y
+        public IValue Y
         {
             get { return new TfPos(Base_obj.Y); }
-            set { Base_obj.Y = value.Base_obj; }
+            set
+            {
+                if (Utils.IsType<TfPos>(value))
+                {
+                    Base_obj.M_Button.Y = ((TfPos)value).Base_obj.M_Pos;
+                }
+                else if (Utils.IsNumber(value))
+                {
+                    Base_obj.M_Button.Y = Terminal.Gui.Pos.At(Utils.ToInt32(value));
+                }
+            }
         }
 
         [ContextProperty("Идентификатор", "Id")]
@@ -202,16 +214,30 @@ namespace ostgui
         }
 
         [ContextProperty("Икс", "X")]
-        public TfPos X
+        public IValue X
         {
             get { return new TfPos(Base_obj.X); }
-            set { Base_obj.X = value.Base_obj; }
+            set
+            {
+                if (Utils.IsType<TfPos>(value))
+                {
+                    Base_obj.M_Button.X = ((TfPos)value).Base_obj.M_Pos;
+                }
+                else if (Utils.IsNumber(value))
+                {
+                    Base_obj.M_Button.X = Terminal.Gui.Pos.At(Utils.ToInt32(value));
+                }
+            }
         }
 
         [ContextProperty("Кадр", "Frame")]
         public TfRect Frame
         {
-            get { return new TfRect(Base_obj.Frame.M_Rect.X, Base_obj.Frame.M_Rect.Y, Base_obj.Frame.M_Rect.Width, Base_obj.Frame.M_Rect.Height); }
+            get
+            {
+                Terminal.Gui.Rect frame = Base_obj.Frame.M_Rect;
+                return new TfRect(frame.X, frame.Y, frame.Width, frame.Height);
+            }
             set { Base_obj.Frame = value.Base_obj; }
         }
 
@@ -310,7 +336,14 @@ namespace ostgui
         [ContextProperty("Родитель", "SuperView")]
         public IValue SuperView
         {
-            get { return OneScriptTerminalGui.RevertEqualsObj(Base_obj.SuperView.M_View).dll_obj; }
+            get
+            {
+                if (Base_obj.M_Button.SuperView.GetType().ToString().Contains("+ContentView"))
+                {
+                    return Utils.RevertEqualsObj(Base_obj.M_Button.SuperView.SuperView).dll_obj;
+                }
+                return Utils.RevertEqualsObj(Base_obj.M_Button.SuperView).dll_obj;
+            }
         }
 
         [ContextProperty("СтильКомпоновки", "LayoutStyle")]
@@ -353,25 +386,40 @@ namespace ostgui
             set { Base_obj.CanFocus = value; }
         }
 
+        private TfColorScheme colorScheme;
         [ContextProperty("ЦветоваяСхема", "ColorScheme")]
         public TfColorScheme ColorScheme
         {
-            get { return Base_obj.ColorScheme.dll_obj; }
-            set { Base_obj.ColorScheme = value.Base_obj; }
+            get { return colorScheme; }
+            set
+            {
+                colorScheme = new TfColorScheme();
+                Terminal.Gui.ColorScheme _colorScheme = value.Base_obj.M_ColorScheme;
+                colorScheme.Base_obj.M_ColorScheme.Disabled = _colorScheme.Disabled;
+                colorScheme.Base_obj.M_ColorScheme.Focus = _colorScheme.Focus;
+                colorScheme.Base_obj.M_ColorScheme.HotFocus = _colorScheme.HotFocus;
+                colorScheme.Base_obj.M_ColorScheme.HotNormal = _colorScheme.HotNormal;
+                colorScheme.Base_obj.M_ColorScheme.Normal = _colorScheme.Normal;
+                Base_obj.ColorScheme = colorScheme.Base_obj;
+            }
         }
 
         [ContextProperty("Ширина", "Width")]
-        public TfDim Width
+        public IValue Width
         {
-            get { return Base_obj.Width.dll_obj; }
-            set { Base_obj.Width = value.Base_obj; }
+            get { return new TfDim().Width(this); }
+            set
+            {
+                if (Utils.IsType<TfDim>(value))
+                {
+                    Base_obj.M_View.Width = ((TfDim)value).Base_obj.M_Dim;
+                }
+                else if (Utils.IsNumber(value))
+                {
+                    Base_obj.M_View.Width = Terminal.Gui.Dim.Sized(Utils.ToInt32(value));
+                }
+            }
         }
-
-        [ContextProperty("ВидимостьИзменена", "VisibleChanged")]
-        public TfAction VisibleChanged { get; set; }
-
-        [ContextProperty("ДоступностьИзменена", "EnabledChanged")]
-        public TfAction EnabledChanged { get; set; }
 
         [ContextProperty("КлавишаНажата", "KeyPress")]
         public TfAction KeyPress { get; set; }
@@ -428,15 +476,16 @@ namespace ostgui
         }
 
         [ContextMethod("Добавить", "Add")]
-        public void Add(IValue p1)
+        public IValue Add(IValue p1)
         {
             Base_obj.Add(((dynamic)p1).Base_obj);
+            return p1;
         }
 
         [ContextMethod("ДобавитьСочетаниеКлавиш", "AddShortcut")]
         public void AddShortcut(decimal p1)
         {
-            OneScriptTerminalGui.AddToShortcutDictionary(p1, this);
+            Utils.AddToShortcutDictionary(p1, this);
         }
 
         [ContextMethod("Заполнить", "Fill")]
@@ -532,11 +581,11 @@ namespace ostgui
         public ValueListImpl GetShortcut()
         {
             ValueListImpl ValueListImpl1 = new ValueListImpl();
-            ArrayList ArrayList1 = OneScriptTerminalGui.GetFromShortcutDictionary(this);
+            ArrayList ArrayList1 = Utils.GetFromShortcutDictionary(this);
             for (int i = 0; i < ArrayList1.Count; i++)
             {
                 decimal shortcut = (decimal)ArrayList1[i];
-                ValueListImpl1.Add(ValueFactory.Create(shortcut), OneScriptTerminalGui.instance.Keys.ToStringRu(shortcut));
+                ValueListImpl1.Add(ValueFactory.Create(shortcut), OneScriptTerminalGui.instance.Keys.NameEn(shortcut));
             }
             if (ValueListImpl1.Count() > 0)
             {
@@ -584,7 +633,7 @@ namespace ostgui
         [ContextMethod("УдалитьСочетаниеКлавиш", "RemoveShortcut")]
         public void RemoveShortcut(decimal p1)
         {
-            OneScriptTerminalGui.RemoveFromShortcutDictionary(p1, this);
+            Utils.RemoveFromShortcutDictionary(p1, this);
         }
 
         [ContextMethod("УстановитьАвтоРазмер", "SetAutoSize")]

@@ -23,7 +23,7 @@ namespace ostgui
         }
 
         [ContextMethod("Добавить", "Add")]
-        public void Add(IValue p1 = null)
+        public IValue Add(IValue p1 = null)
         {
             if (p1 == null)
             {
@@ -39,12 +39,19 @@ namespace ostgui
                 MenuItem2[M_Object.Length] = (Terminal.Gui.MenuItem)((dynamic)p1).Base_obj.M_MenuItem;
                 M_Object = MenuItem2;
             }
+            return p1;
         }
 
         [ContextMethod("Очистить", "Clear")]
         public void Clear()
         {
             M_Object = new Terminal.Gui.MenuItem[0];
+        }
+
+        [ContextMethod("Получить", "Get")]
+        public TfMenuItem Get(int p1)
+        {
+            return Utils.RevertEqualsObj(M_Object[p1]).dll_obj;
         }
 
         [ContextMethod("Удалить", "Remove")]
@@ -62,12 +69,6 @@ namespace ostgui
                 }
             }
             M_Object = MenuItem2;
-        }
-
-        [ContextMethod("ЭлементПунктаМеню", "ItemMenuBarItem")]
-        public TfMenuItem ItemMenuBarItem(int p1)
-        {
-            return OneScriptTerminalGui.RevertEqualsObj(M_Object[p1]).dll_obj;
         }
 
     }

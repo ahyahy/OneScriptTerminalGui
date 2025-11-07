@@ -10,42 +10,42 @@ namespace ostgui
         public ColorScheme()
         {
             M_ColorScheme = new Terminal.Gui.ColorScheme();
-            OneScriptTerminalGui.AddToHashtable(M_ColorScheme, this);
+            Utils.AddToHashtable(M_ColorScheme, this);
         }
 
         public ColorScheme(Terminal.Gui.ColorScheme p1)
         {
             M_ColorScheme = p1;
-            OneScriptTerminalGui.AddToHashtable(M_ColorScheme, this);
+            Utils.AddToHashtable(M_ColorScheme, this);
         }
 
         public Attribute HotNormal
         {
-            get { return OneScriptTerminalGui.RevertEqualsObj(M_ColorScheme.HotNormal); }
+            get { return Utils.RevertEqualsObj(M_ColorScheme.HotNormal); }
             set { M_ColorScheme.HotNormal = value.M_Attribute; }
         }
 
         public Attribute HotFocus
         {
-            get { return OneScriptTerminalGui.RevertEqualsObj(M_ColorScheme.HotFocus); }
+            get { return Utils.RevertEqualsObj(M_ColorScheme.HotFocus); }
             set { M_ColorScheme.HotFocus = value.M_Attribute; }
         }
 
         public Attribute Normal
         {
-            get { return OneScriptTerminalGui.RevertEqualsObj(M_ColorScheme.Normal); }
+            get { return Utils.RevertEqualsObj(M_ColorScheme.Normal); }
             set { M_ColorScheme.Normal = value.M_Attribute; }
         }
 
         public Attribute Disabled
         {
-            get { return OneScriptTerminalGui.RevertEqualsObj(M_ColorScheme.Disabled); }
+            get { return Utils.RevertEqualsObj(M_ColorScheme.Disabled); }
             set { M_ColorScheme.Disabled = value.M_Attribute; }
         }
 
         public Attribute Focus
         {
-            get { return OneScriptTerminalGui.RevertEqualsObj(M_ColorScheme.Focus); }
+            get { return Utils.RevertEqualsObj(M_ColorScheme.Focus); }
             set { M_ColorScheme.Focus = value.M_Attribute; }
         }
 

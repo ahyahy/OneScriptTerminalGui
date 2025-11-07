@@ -1,5 +1,4 @@
-﻿using System;
-using ScriptEngine.Machine.Contexts;
+﻿using ScriptEngine.Machine.Contexts;
 using ScriptEngine.Machine;
 
 namespace ostgui
@@ -222,9 +221,9 @@ namespace ostgui
             {
                 return ValueFactory.Create(Base_obj.Contains(((TfPoint)p1).Base_obj.M_Point));
             }
-            else if (p1.SystemType.Name == "Число" && p2 != null)
+            else if (Utils.IsNumber(p1) && p2 != null)
             {
-                return ValueFactory.Create(Base_obj.Contains(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber())));
+                return ValueFactory.Create(Base_obj.Contains(Utils.ToInt32(p1), Utils.ToInt32(p2)));
             }
             else
             {

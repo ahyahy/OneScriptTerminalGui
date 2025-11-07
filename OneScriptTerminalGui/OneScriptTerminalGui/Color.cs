@@ -2,6 +2,7 @@
 using ScriptEngine.Machine;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 
 namespace ostgui
 {
@@ -33,237 +34,139 @@ namespace ostgui
             }
         }
 
+        [ContextProperty("Количество", "Count")]
+        public int CountProp
+        {
+            get { return _list.Count; }
+        }
+
+        [ContextMethod("Получить", "Get")]
+        public IValue Get(int index)
+        {
+            return _list[index];
+        }
+
+        [ContextMethod("Имя")]
+        public string NameRu(decimal p1)
+        {
+            return namesRu.TryGetValue(p1, out string name) ? name : p1.ToString();
+        }
+
+        [ContextMethod("Name")]
+        public string NameEn(decimal p1)
+        {
+            return namesEn.TryGetValue(p1, out string name) ? name : p1.ToString();
+        }
+
         public TfColor()
         {
-            _list = new List<IValue>();
-            _list.Add(ValueFactory.Create(White));
-            _list.Add(ValueFactory.Create(Cyan));
-            _list.Add(ValueFactory.Create(Green));
-            _list.Add(ValueFactory.Create(Brown));
-            _list.Add(ValueFactory.Create(Red));
-            _list.Add(ValueFactory.Create(Magenta));
-            _list.Add(ValueFactory.Create(Gray));
-            _list.Add(ValueFactory.Create(Blue));
-            _list.Add(ValueFactory.Create(DarkGray));
-            _list.Add(ValueFactory.Create(Black));
-            _list.Add(ValueFactory.Create(BrightCyan));
-            _list.Add(ValueFactory.Create(BrightYellow));
-            _list.Add(ValueFactory.Create(BrightGreen));
-            _list.Add(ValueFactory.Create(BrightRed));
-            _list.Add(ValueFactory.Create(BrightMagenta));
-            _list.Add(ValueFactory.Create(BrightBlue));
+            _list = new List<decimal>
+            {
+                White,
+                Cyan,
+                Green,
+                Brown,
+                Red,
+                Magenta,
+                Gray,
+                Blue,
+                DarkGray,
+                Black,
+                BrightCyan,
+                BrightYellow,
+                BrightGreen,
+                BrightRed,
+                BrightMagenta,
+                BrightBlue,
+            }.Select(ValueFactory.Create).ToList();
         }
+
+        private static readonly Dictionary<decimal, string> namesRu = new Dictionary<decimal, string>
+        {
+            {15, "Белый"},
+            {3, "Голубой"},
+            {2, "Зеленый"},
+            {6, "Коричневый"},
+            {4, "Красный"},
+            {5, "Пурпурный"},
+            {7, "Серый"},
+            {1, "Синий"},
+            {8, "ТемноСерый"},
+            {0, "Черный"},
+            {11, "ЯркоГолубой"},
+            {14, "ЯркоЖелтый"},
+            {10, "ЯркоЗеленый"},
+            {12, "ЯркоКрасный"},
+            {13, "ЯркоПурпурный"},
+            {9, "ЯркоСиний"},
+        };
+
+        private static readonly Dictionary<decimal, string> namesEn = new Dictionary<decimal, string>
+        {
+            {15, "White"},
+            {3, "Cyan"},
+            {2, "Green"},
+            {6, "Brown"},
+            {4, "Red"},
+            {5, "Magenta"},
+            {7, "Gray"},
+            {1, "Blue"},
+            {8, "DarkGray"},
+            {0, "Black"},
+            {11, "BrightCyan"},
+            {14, "BrightYellow"},
+            {10, "BrightGreen"},
+            {12, "BrightRed"},
+            {13, "BrightMagenta"},
+            {9, "BrightBlue"},
+        };
 
         [ContextProperty("Белый", "White")]
-        public int White
-        {
-            get { return 15; }
-        }
+        public decimal White => 15;
 
         [ContextProperty("Голубой", "Cyan")]
-        public int Cyan
-        {
-            get { return 3; }
-        }
+        public decimal Cyan => 3;
 
         [ContextProperty("Зеленый", "Green")]
-        public int Green
-        {
-            get { return 2; }
-        }
+        public decimal Green => 2;
 
         [ContextProperty("Коричневый", "Brown")]
-        public int Brown
-        {
-            get { return 6; }
-        }
+        public decimal Brown => 6;
 
         [ContextProperty("Красный", "Red")]
-        public int Red
-        {
-            get { return 4; }
-        }
+        public decimal Red => 4;
 
         [ContextProperty("Пурпурный", "Magenta")]
-        public int Magenta
-        {
-            get { return 5; }
-        }
+        public decimal Magenta => 5;
 
         [ContextProperty("Серый", "Gray")]
-        public int Gray
-        {
-            get { return 7; }
-        }
+        public decimal Gray => 7;
 
         [ContextProperty("Синий", "Blue")]
-        public int Blue
-        {
-            get { return 1; }
-        }
+        public decimal Blue => 1;
 
         [ContextProperty("ТемноСерый", "DarkGray")]
-        public int DarkGray
-        {
-            get { return 8; }
-        }
+        public decimal DarkGray => 8;
 
         [ContextProperty("Черный", "Black")]
-        public int Black
-        {
-            get { return 0; }
-        }
+        public decimal Black => 0;
 
         [ContextProperty("ЯркоГолубой", "BrightCyan")]
-        public int BrightCyan
-        {
-            get { return 11; }
-        }
+        public decimal BrightCyan => 11;
 
         [ContextProperty("ЯркоЖелтый", "BrightYellow")]
-        public int BrightYellow
-        {
-            get { return 14; }
-        }
+        public decimal BrightYellow => 14;
 
         [ContextProperty("ЯркоЗеленый", "BrightGreen")]
-        public int BrightGreen
-        {
-            get { return 10; }
-        }
+        public decimal BrightGreen => 10;
 
         [ContextProperty("ЯркоКрасный", "BrightRed")]
-        public int BrightRed
-        {
-            get { return 12; }
-        }
+        public decimal BrightRed => 12;
 
         [ContextProperty("ЯркоПурпурный", "BrightMagenta")]
-        public int BrightMagenta
-        {
-            get { return 13; }
-        }
+        public decimal BrightMagenta => 13;
 
         [ContextProperty("ЯркоСиний", "BrightBlue")]
-        public int BrightBlue
-        {
-            get { return 9; }
-        }
-
-        [ContextMethod("ВСтроку", "ВСтроку")]
-        public string ToStringRu(decimal p1)
-        {
-            string str = p1.ToString();
-            switch (p1)
-            {
-                case 15:
-                    str = "Белый";
-                    break;
-                case 3:
-                    str = "Голубой";
-                    break;
-                case 2:
-                    str = "Зеленый";
-                    break;
-                case 6:
-                    str = "Коричневый";
-                    break;
-                case 4:
-                    str = "Красный";
-                    break;
-                case 5:
-                    str = "Пурпурный";
-                    break;
-                case 7:
-                    str = "Серый";
-                    break;
-                case 1:
-                    str = "Синий";
-                    break;
-                case 8:
-                    str = "ТемноСерый";
-                    break;
-                case 0:
-                    str = "Черный";
-                    break;
-                case 11:
-                    str = "ЯркоГолубой";
-                    break;
-                case 14:
-                    str = "ЯркоЖелтый";
-                    break;
-                case 10:
-                    str = "ЯркоЗеленый";
-                    break;
-                case 12:
-                    str = "ЯркоКрасный";
-                    break;
-                case 13:
-                    str = "ЯркоПурпурный";
-                    break;
-                case 9:
-                    str = "ЯркоСиний";
-                    break;
-            }
-            return str;
-        }
-
-        [ContextMethod("ToString", "ToString")]
-        public string ToStringEn(decimal p1)
-        {
-            string str = p1.ToString();
-            switch (p1)
-            {
-                case 15:
-                    str = "White";
-                    break;
-                case 3:
-                    str = "Cyan";
-                    break;
-                case 2:
-                    str = "Green";
-                    break;
-                case 6:
-                    str = "Brown";
-                    break;
-                case 4:
-                    str = "Red";
-                    break;
-                case 5:
-                    str = "Magenta";
-                    break;
-                case 7:
-                    str = "Gray";
-                    break;
-                case 1:
-                    str = "Blue";
-                    break;
-                case 8:
-                    str = "DarkGray";
-                    break;
-                case 0:
-                    str = "Black";
-                    break;
-                case 11:
-                    str = "BrightCyan";
-                    break;
-                case 14:
-                    str = "BrightYellow";
-                    break;
-                case 10:
-                    str = "BrightGreen";
-                    break;
-                case 12:
-                    str = "BrightRed";
-                    break;
-                case 13:
-                    str = "BrightMagenta";
-                    break;
-                case 9:
-                    str = "BrightBlue";
-                    break;
-            }
-            return str;
-        }
+        public decimal BrightBlue => 9;
     }
 }

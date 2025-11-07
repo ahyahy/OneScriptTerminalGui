@@ -13,7 +13,7 @@
 		ТекстДок = Новый ТекстовыйДокумент;
 		ТекстДок.Прочитать(ВыбранныеФайлы[А].ПолноеИмя);
 		Стр = ТекстДок.ПолучитьТекст();
-		М = СтрНайтиМежду(Стр, "<H1 class=dtH1", "/H1>", , );
+		М = СтрНайтиМежду(Стр, "<h1 class=dtH1", "/h1>", , );
 		Если М.Количество() > 0 Тогда
 			СтрЗаголовка= М[0];
 			Если (СтрНайти(СтрЗаголовка, Фильтр + "<") > 0) или (СтрНайти(СтрЗаголовка, Фильтр + " <") > 0) Тогда
@@ -105,19 +105,7 @@
 		|using Terminal.Gui;
 		|";
 		Возврат Стр;
-	ИначеЕсли КлассАнгл = "VerticalTextAlignment"
-		или КлассАнгл = "CursorVisibility"
-		или КлассАнгл = "TextAlignment"
-		или КлассАнгл = "Keys"
-		или КлассАнгл = "ConsoleKey"
-		или КлассАнгл = "CommandTUI"
-		или КлассАнгл = "TextDirection"
-		или КлассАнгл = "BorderStyle"
-		или КлассАнгл = "LayoutStyle"
-		или КлассАнгл = "MenuItemCheckStyle"
-		или КлассАнгл = "MouseFlags"
-		или КлассАнгл = "Color"
-		или КлассАнгл = "SubviewCollection"
+	ИначеЕсли КлассАнгл = "SubviewCollection"
 		Тогда
 		Стр = 
 		"using ScriptEngine.Machine.Contexts;
@@ -126,22 +114,167 @@
 		|using System.Collections;
 		|";
 		Возврат Стр;
+	ИначеЕсли КлассАнгл = "Balloons"
+		Тогда
+		Стр = 
+		"using System;
+		|using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|using ScriptEngine.HostedScript.Library;
+		|using Terminal.Gui;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "ColumnStyles"
+		Тогда
+		Стр = 
+		"using ScriptEngine.Machine.Contexts;
+		|using System.Collections.Generic;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "DataColumn"
+		Тогда
+		Стр = 
+		"using System;
+		|using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "DataColumnCollection"
+		Тогда
+		Стр = 
+		"using System;
+		|using System.Collections;
+		|using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "DataItem"
+		или КлассАнгл = "Math"
+		Тогда
+		Стр = 
+		"using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "DataRow"
+		Тогда
+		Стр = 
+		"using System;
+		|using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "CursorVisibility"
+		или КлассАнгл = "TextAlignment"
+		или КлассАнгл = "TextDirection"
+		или КлассАнгл = "ProgressBarFormat"
+		или КлассАнгл = "ProgressBarStyle"
+		или КлассАнгл = "MouseFlags"
+		или КлассАнгл = "MenuItemCheckStyle"
+		или КлассАнгл = "LayoutStyle"
+		или КлассАнгл = "Keys"
+		или КлассАнгл = "ConsoleKey"
+		или КлассАнгл = "ButtonAlignments"
+		или КлассАнгл = "BorderStyle"
+		или КлассАнгл = "DialogResult"
+		или КлассАнгл = "CommandTUI"
+		или КлассАнгл = "DisplayModeLayout"
+		или КлассАнгл = "Language"
+		или КлассАнгл = "VerticalTextAlignment"
+		или КлассАнгл = "Color"
+		или КлассАнгл = "DataType"
+		или КлассАнгл = "SortOrder"
+		
+		
+		
+		Тогда
+		Стр = 
+		"using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|using System.Collections.Generic;
+		|using System.Collections;
+		|using System.Linq;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "TreeNode"
+		Тогда
+		Стр = 
+		"using System.Collections.Generic;
+		|using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.HostedScript.Library;
+		|using ScriptEngine.Machine;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "DataTable"
+		Тогда
+		Стр = 
+		"using System;
+		|using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|using ScriptEngine.HostedScript.Library;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "DataRowCollection"
+		Тогда
+		Стр = 
+		"using System;
+		|using System.Collections;
+		|using ScriptEngine.Machine.Contexts;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "ContextMenu"
+		Тогда
+		Стр = 
+		"using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|using ScriptEngine.HostedScript.Library.ValueList;
+		|using System.Collections;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "TextView"
+		Тогда
+		Стр = 
+		"using System;
+		|using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|using ScriptEngine.HostedScript.Library.ValueList;
+		|using System.Collections;
+		|using System.Collections.Generic;
+		|";
+		Возврат Стр;
 	ИначеЕсли КлассАнгл = "Attribute"
 		или КлассАнгл = "MenusCollection"
 		или КлассАнгл = "StatusBarItems"
+		или КлассАнгл = "DataColumn"
+		или КлассАнгл = "TabStyle"
 		Тогда
 		Стр = 
 		"using ScriptEngine.Machine.Contexts;
 		|";
 		Возврат Стр;
-	ИначеЕсли КлассАнгл = "Border"
-		или КлассАнгл = "MenuBar"
-		или КлассАнгл = "StatusBar"
-		или КлассАнгл = "Toplevel"
-		или КлассАнгл = "MenuBarItemChildren"
+	ИначеЕсли КлассАнгл = "RadioGroupItems"
 		Тогда
 		Стр = 
 		"using ScriptEngine.Machine.Contexts;
+		|using NStack;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "Border"
+		или КлассАнгл = "MenuBar"
+		или КлассАнгл = "StatusBar"
+		или КлассАнгл = "MenuBarItemChildren"
+		или КлассАнгл = "TabPage"
+		Тогда
+		Стр = 
+		"using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "Toplevel"
+		Тогда
+		Стр = 
+		"using System;
+		|using ScriptEngine.Machine.Contexts;
 		|using ScriptEngine.Machine;
 		|";
 		Возврат Стр;
@@ -156,17 +289,106 @@
 		|";
 		Возврат Стр;
 	ИначеЕсли КлассАнгл = "Dim"
-		или КлассАнгл = "EventArgs"
 		или КлассАнгл = "Pos"
 		или КлассАнгл = "Rect"
+		Тогда
+		Стр = 
+		"using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "EventArgs"
 		Тогда
 		Стр = 
 		"using System;
 		|using ScriptEngine.Machine.Contexts;
 		|using ScriptEngine.Machine;
+		|using ScriptEngine.HostedScript.Library;
 		|";
 		Возврат Стр;
 	ИначеЕсли КлассАнгл = "Button"
+		или КлассАнгл = "CheckBox"
+		или КлассАнгл = "Label"
+		или КлассАнгл = "ProgressBar"
+		или КлассАнгл = "RadioGroup"
+		или КлассАнгл = "Dialog"
+		или КлассАнгл = "ListView"
+		или КлассАнгл = "ColorPicker"
+		или КлассАнгл = "FrameView"
+		или КлассАнгл = "ScrollView"
+		или КлассАнгл = "ScrollBarView"
+		или КлассАнгл = "TextField"
+		или КлассАнгл = "TimeField"
+		или КлассАнгл = "DateField"
+		или КлассАнгл = "TabView"
+		Тогда
+		Стр = 
+		"using System;
+		|using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|using ScriptEngine.HostedScript.Library.ValueList;
+		|using System.Collections;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "TableView"
+		Тогда
+		Стр = 
+		"using System;
+		|using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|using ScriptEngine.HostedScript.Library.ValueList;
+		|using ScriptEngine.HostedScript.Library;
+		|using System.Collections;
+		|using Terminal.Gui;
+		|using System.Collections.Generic;
+		|using System.Linq;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "TreeView"
+		Тогда
+		Стр = 
+		"using System;
+		|using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|using ScriptEngine.HostedScript.Library.ValueList;
+		|using System.Collections;
+		|using ScriptEngine.HostedScript.Library;
+		|using System.Linq;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "FileDialog"
+		Тогда
+		Стр = 
+		"using System;
+		|using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|using ScriptEngine.HostedScript.Library;
+		|using ScriptEngine.HostedScript.Library.ValueList;
+		|using System.Collections;
+		|using Terminal.Gui;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "SaveDialog"
+		или КлассАнгл = "OpenDialog"
+		Тогда
+		Стр = 
+		"using System;
+		|using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|using ScriptEngine.HostedScript.Library;
+		|using ScriptEngine.HostedScript.Library.ValueList;
+		|using System.Collections;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "TableStyle"
+		или КлассАнгл = "ColumnStyle"
+		Тогда
+		Стр = 
+		"using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.HostedScript.Library;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "ComboBox"
 		Тогда
 		Стр = 
 		"using System;
@@ -199,6 +421,7 @@
 		или КлассАнгл = "Point"
 		или КлассАнгл = "Size"
 		или КлассАнгл = "Thickness"
+		или КлассАнгл = "TabsCollection"
 		Тогда
 		Стр = 
 		"using ScriptEngine.Machine.Contexts;
@@ -228,6 +451,7 @@
 		Тогда
 		Стр = 
 		"using System;
+		|using ScriptEngine.Machine;
 		|using ScriptEngine.Machine.Contexts;
 		|using Terminal.Gui;
 		|";
@@ -241,6 +465,13 @@
 		|using Terminal.Gui;
 		|using System.Collections;
 		|using ScriptEngine.HostedScript.Library.ValueList;
+		|";
+		Возврат Стр;
+	ИначеЕсли КлассАнгл = "TreeStyle"
+		Тогда
+		Стр = 
+		"using System;
+		|using ScriptEngine.Machine.Contexts;
 		|";
 		Возврат Стр;
 		
@@ -314,38 +545,334 @@
 		|            Base_obj = Button1;
 		|        }
 		|
-		|        public TfButton(string p1, bool p2 = false)
+		|        public TfButton(Terminal.Gui.Button p1)
 		|        {
-		|            Button Button1 = new Button(p1, p2);
+		|            Button Button1 = new Button(p1);
 		|            Button1.dll_obj = this;
 		|            Base_obj = Button1;
 		|        }
-		|
-		|        public TfButton(int p1, int p2, string p3)
-		|        {
-		|            Button Button1 = new Button(p1, p2, p3);
-		|            Button1.dll_obj = this;
-		|            Base_obj = Button1;
-		|        }
-		|
-		|        public TfButton(int p1, int p2, string p3, bool p4)
-		|        {
-		|            Button Button1 = new Button(p1, p2, p3, p4);
-		|            Button1.dll_obj = this;
-		|            Base_obj = Button1;
-		|        }
-		|
-		|        public TfAction LayoutComplete { get; set; }
-		|        public TfAction LayoutStarted { get; set; }
-		|        public TfAction DrawContentComplete { get; set; }
-		|        public TfAction DrawContent { get; set; }
-		|        public TfAction InitializedItem { get; set; }
-		|        public TfAction CanFocusChanged { get; set; }
-		|        public TfAction Added { get; set; }
-		|        public TfAction Removed { get; set; }
-		|        public TfAction HotKeyChanged { get; set; }
 		|
 		|        public Button Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "TabsCollection" Тогда
+		Стр = 
+		"        public Terminal.Gui.TabView M_TabView;
+		|        public Terminal.Gui.TabView.Tab[] M_Object;
+		|";
+	ИначеЕсли КлассАнгл = "TreeNode" Тогда
+		Стр = 
+		"        public TfTreeNode()
+		|        {
+		|            TreeNode TreeNode1 = new TreeNode();
+		|            TreeNode1.dll_obj = this;
+		|            Base_obj = TreeNode1;
+		|        }
+		|
+		|        public TreeNode Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "ContextMenu" Тогда
+		Стр = 
+		"        public TfContextMenu()
+		|        {
+		|            ContextMenu ContextMenu1 = new ContextMenu();
+		|            ContextMenu1.dll_obj = this;
+		|            Base_obj = ContextMenu1;
+		|        }
+		|
+		|        public TfContextMenu(Terminal.Gui.ContextMenu p1)
+		|        {
+		|            ContextMenu ContextMenu1 = new ContextMenu(p1);
+		|            ContextMenu1.dll_obj = this;
+		|            Base_obj = ContextMenu1;
+		|        }
+		|
+		|        public ContextMenu Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "Balloons" Тогда
+		Стр = 
+		"        public TfBalloons()
+		|        {
+		|        }
+		|";
+	ИначеЕсли КлассАнгл = "Math" Тогда
+		Стр = 
+		"        public TfMath()
+		|        {
+		|        }
+		|";
+	ИначеЕсли КлассАнгл = "TabPage" Тогда
+		Стр = 
+		"        public TfTabPage()
+		|        {
+		|            TabPage TabPage1 = new TabPage();
+		|            TabPage1.dll_obj = this;
+		|            Base_obj = TabPage1;
+		|        }
+		|
+		|        public TfTabPage(string p1, IValue p2)
+		|        {
+		|            TabPage TabPage1 = new TabPage(p1, ((dynamic)p2).Base_obj);
+		|            TabPage1.dll_obj = this;
+		|            Base_obj = TabPage1;
+		|        }
+		|
+		|        public TabPage Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "DataColumn" Тогда
+		Стр = 
+		"        public TfDataColumn()
+		|        {
+		|            DataColumn DataColumn1 = new DataColumn();
+		|            DataColumn1.dll_obj = this;
+		|            Base_obj = DataColumn1;
+		|        }
+		|
+		|        public TfDataColumn(string p1)
+		|        {
+		|            DataColumn DataColumn1 = new DataColumn(p1);
+		|            DataColumn1.dll_obj = this;
+		|            Base_obj = DataColumn1;
+		|        }
+		|
+		|        public TfDataColumn(string p1, System.Type p2)
+		|        {
+		|            DataColumn DataColumn1 = new DataColumn(p1, p2);
+		|            DataColumn1.dll_obj = this;
+		|            Base_obj = DataColumn1;
+		|        }
+		|
+		|        public TfDataColumn(DataColumn p1)
+		|        {
+		|            DataColumn DataColumn1 = p1;
+		|            DataColumn1.dll_obj = this;
+		|            Base_obj = DataColumn1;
+		|        }
+		|
+		|        public DataColumn Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "DataColumnCollection" Тогда
+		Стр = 
+		"        public TfDataColumnCollection(DataColumnCollection p1)
+		|        {
+		|            DataColumnCollection DataColumnCollection1 = p1;
+		|            DataColumnCollection1.dll_obj = this;
+		|            Base_obj = DataColumnCollection1;
+		|        }
+		|
+		|        public DataColumnCollection Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "DataItem" Тогда
+		Стр = 
+		"        public TfDataItem()
+		|        {
+		|            DataItem DataItem1 = new DataItem();
+		|            DataItem1.dll_obj = this;
+		|            Base_obj = DataItem1;
+		|        }
+		|
+		|        public TfDataItem(DataItem p1)
+		|        {
+		|            DataItem DataItem1 = p1;
+		|            DataItem1.dll_obj = this;
+		|            Base_obj = DataItem1;
+		|        }
+		|
+		|        public DataItem Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "DataRow" Тогда
+		Стр = 
+		"        public TfDataRow(DataRow p1)
+		|        {
+		|            DataRow DataRow1 = p1;
+		|            DataRow1.dll_obj = this;
+		|            Base_obj = DataRow1;
+		|        }
+		|
+		|        public DataRow Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "DataRowCollection" Тогда
+		Стр = 
+		"        public TfDataRowCollection(DataRowCollection p1)
+		|        {
+		|            DataRowCollection DataRowCollection1 = p1;
+		|            DataRowCollection1.dll_obj = this;
+		|            Base_obj = DataRowCollection1;
+		|        }
+		|
+		|        public DataRowCollection Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "DataTable" Тогда
+		Стр = 
+		"        private TfDataColumnCollection columns;
+		|        private TfDataRowCollection rows;
+		|
+		|        public TfDataTable()
+		|        {
+		|            DataTable DataTable1 = new DataTable();
+		|            DataTable1.dll_obj = this;
+		|            Base_obj = DataTable1;
+		|            columns = new TfDataColumnCollection(Base_obj.Columns);
+		|            rows = new TfDataRowCollection(Base_obj.Rows);
+		|        }
+		|
+		|        public TfDataTable(string p1)
+		|        {
+		|            DataTable DataTable1 = new DataTable(p1);
+		|            DataTable1.dll_obj = this;
+		|            Base_obj = DataTable1;
+		|            columns = new TfDataColumnCollection(Base_obj.Columns);
+		|            rows = new TfDataRowCollection(Base_obj.Rows);
+		|        }
+		|
+		|        public TfDataTable(DataTable p1)
+		|        {
+		|            DataTable DataTable1 = p1;
+		|            DataTable1.dll_obj = this;
+		|            Base_obj = DataTable1;
+		|            columns = new TfDataColumnCollection(Base_obj.Columns);
+		|            rows = new TfDataRowCollection(Base_obj.Rows);
+		|        }
+		|
+		|        public DataTable Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "TextView" Тогда
+		Стр = 
+		"        public TfTextView()
+		|        {
+		|            TextView TextView1 = new TextView();
+		|            TextView1.dll_obj = this;
+		|            Base_obj = TextView1;
+		|        }
+		|
+		|        public TfBorder Border
+		|        {
+		|            get { return Base_obj.Border.dll_obj; }
+		|            set { Base_obj.Border = value.Base_obj; }
+		|        }
+		|
+		|        public TextView Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "ScrollBarView" Тогда
+		Стр = 
+		"        public TfScrollBarView()
+		|        {
+		|            ScrollBarView ScrollBarView1 = new ScrollBarView();
+		|            ScrollBarView1.dll_obj = this;
+		|            Base_obj = ScrollBarView1;
+		|        }
+		|
+		|        public TfScrollBarView(IValue p1, bool p2, bool p3 = true)
+		|        {
+		|            ScrollBarView ScrollBarView1 = new ScrollBarView(((dynamic)p1).Base_obj, p2, p3);
+		|            ScrollBarView1.dll_obj = this;
+		|            Base_obj = ScrollBarView1;
+		|        }
+		|
+		|        public ScrollBarView Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "TabView" Тогда
+		Стр = 
+		"        private TfTabsCollection tabsCollection;
+		|
+		|        public TfTabView()
+		|        {
+		|            TabView TabView1 = new TabView();
+		|            TabView1.dll_obj = this;
+		|            Base_obj = TabView1;
+		|
+		|            tabsCollection = new TfTabsCollection();
+		|            tabsCollection.M_TabView = Base_obj.M_TabView;
+		|        }
+		|
+		|        public TabView Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "TreeView" Тогда
+		Стр = 
+		"        public TfTreeView()
+		|        {
+		|            TreeView TreeView1 = new TreeView();
+		|            TreeView1.dll_obj = this;
+		|            Base_obj = TreeView1;
+		|        }
+		|
+		|        public TreeView Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "DateField" Тогда
+		Стр = 
+		"        public TfDateField()
+		|        {
+		|            DateField DateField1 = new DateField();
+		|            DateField1.dll_obj = this;
+		|            Base_obj = DateField1;
+		|        }
+		|
+		|        public DateField Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "TimeField" Тогда
+		Стр = 
+		"        public TfTimeField()
+		|        {
+		|            TimeField TimeField1 = new TimeField();
+		|            TimeField1.dll_obj = this;
+		|            Base_obj = TimeField1;
+		|        }
+		|
+		|        public TimeField Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "TextField" Тогда
+		Стр = 
+		"        public TfTextField()
+		|        {
+		|            TextField TextField1 = new TextField();
+		|            TextField1.dll_obj = this;
+		|            Base_obj = TextField1;
+		|        }
+		|
+		|        public TextField Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "TableView" Тогда
+		Стр = 
+		"        public TfTableView()
+		|        {
+		|            TableView TableView1 = new TableView();
+		|            TableView1.dll_obj = this;
+		|            Base_obj = TableView1;
+		|        }
+		|
+		|        public TableView Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "ScrollView" Тогда
+		Стр = 
+		"        public TfScrollView()
+		|        {
+		|            ScrollView ScrollView1 = new ScrollView();
+		|            ScrollView1.dll_obj = this;
+		|            Base_obj = ScrollView1;
+		|        }
+		|
+		|        public ScrollView Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "FrameView" Тогда
+		Стр = 
+		"        public TfFrameView()
+		|        {
+		|            FrameView FrameView1 = new FrameView();
+		|            FrameView1.dll_obj = this;
+		|            Base_obj = FrameView1;
+		|        }
+		|
+		|        public FrameView Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "ColorPicker" Тогда
+		Стр = 
+		"        public TfColorPicker()
+		|        {
+		|            ColorPicker ColorPicker1 = new ColorPicker();
+		|            ColorPicker1.dll_obj = this;
+		|            Base_obj = ColorPicker1;
+		|        }
+		|
+		|        public ColorPicker Base_obj;
 		|";
 	ИначеЕсли КлассАнгл = "ColorScheme" Тогда
 		Стр = 
@@ -373,6 +900,28 @@
 		|        public TfTimer()
 		|        {
 		|        }
+		|
+		|        public int Iterations { get; set; }
+		|        public void TimerStartAndStop(TfAction action)
+		|        {
+		|            int iterations = 0;
+		|            object token2 = null;
+		|            token2 = Application.MainLoop.AddTimeout(TimeSpan.FromMilliseconds(Interval), (m) =>
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = this;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(action);
+		|                iterations = iterations + 1;
+		|                if (iterations >= Iterations)
+		|                {
+		|                    Application.MainLoop.RemoveTimeout(token2);
+		|                    return false;
+		|                }
+		|                return true;
+		|            });
+		|        }
 		|";
 	ИначеЕсли КлассАнгл = "MessageBox" Тогда
 		Стр = 
@@ -385,6 +934,38 @@
 		|
 		|        private int Clicked = -1;
 		|        private object token = null;
+		|";
+	ИначеЕсли КлассАнгл = "ComboBox" Тогда
+		Стр = 
+		"        private TfValueList source;
+		|
+		|        public TfComboBox()
+		|        {
+		|            ComboBox ComboBox1 = new ComboBox();
+		|            ComboBox1.dll_obj = this;
+		|            Base_obj = ComboBox1;
+		|
+		|            source = new TfValueList();
+		|            source.M_Owner = Base_obj.M_ComboBox;
+		|        }
+		|
+		|        public ComboBox Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "ListView" Тогда
+		Стр = 
+		"        private TfValueList source;
+		|
+		|        public TfListView()
+		|        {
+		|            ListView ListView1 = new ListView();
+		|            ListView1.dll_obj = this;
+		|            Base_obj = ListView1;
+		|
+		|            source = new TfValueList();
+		|            source.M_Owner = Base_obj.M_ListView;
+		|        }
+		|
+		|        public ListView Base_obj;
 		|";
 	ИначеЕсли КлассАнгл = "Dim" Тогда
 		Стр = 
@@ -425,6 +1006,17 @@
 		|
 		|        public MenuItem Base_obj;
 		|";
+	ИначеЕсли КлассАнгл = "ProgressBar" Тогда
+		Стр = 
+		"        public TfProgressBar()
+		|        {
+		|            ProgressBar ProgressBar1 = new ProgressBar();
+		|            ProgressBar1.dll_obj = this;
+		|            Base_obj = ProgressBar1;
+		|        }
+		|
+		|        public ProgressBar Base_obj;
+		|";
 	ИначеЕсли КлассАнгл = "StatusBar" Тогда
 		Стр = 
 		"        private TfStatusBarItems statusBarItems;
@@ -439,17 +1031,91 @@
 		|            statusBarItems.M_StatusBar = Base_obj.M_StatusBar;
 		|        }
 		|
-		|        public TfAction HotKeyChanged { get; set; }
-		|        public TfAction LayoutComplete { get; set; }
-		|        public TfAction LayoutStarted { get; set; }
-		|        public TfAction DrawContentComplete { get; set; }
-		|        public TfAction DrawContent { get; set; }
-		|        public TfAction Added { get; set; }
-		|        public TfAction InitializedItem { get; set; }
-		|        public TfAction Removed { get; set; }
-		|        public TfAction KeyPress { get; set; }
-		|
 		|        public StatusBar Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "CheckBox" Тогда
+		Стр = 
+		"        public TfCheckBox()
+		|        {
+		|            CheckBox CheckBox1 = new CheckBox();
+		|            CheckBox1.dll_obj = this;
+		|            Base_obj = CheckBox1;
+		|        }
+		|
+		|        public CheckBox Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "Label" Тогда
+		Стр = 
+		"        public TfLabel()
+		|        {
+		|            Label Label1 = new Label();
+		|            Label1.dll_obj = this;
+		|            Base_obj = Label1;
+		|        }
+		|
+		|        public Label Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "Dialog" Тогда
+		Стр = 
+		"        public TfDialog()
+		|        {
+		|            Dialog Dialog1 = new Dialog();
+		|            Dialog1.dll_obj = this;
+		|            Base_obj = Dialog1;
+		|        }
+		|
+		|        public Dialog Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "FileDialog" Тогда
+		Стр = 
+		"        public TfFileDialog()
+		|        {
+		|            FileDialog FileDialog1 = new FileDialog();
+		|            FileDialog1.dll_obj = this;
+		|            Base_obj = FileDialog1;
+		|        }
+		|
+		|        public FileDialog Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "OpenDialog" Тогда
+		Стр = 
+		"        public TfOpenDialog()
+		|        {
+		|            OpenDialog OpenDialog1 = new OpenDialog();
+		|            OpenDialog1.dll_obj = this;
+		|            Base_obj = OpenDialog1;
+		|            Visible = false;
+		|        }
+		|
+		|        public OpenDialog Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "SaveDialog" Тогда
+		Стр = 
+		"        public TfSaveDialog()
+		|        {
+		|            SaveDialog SaveDialog1 = new SaveDialog();
+		|            SaveDialog1.dll_obj = this;
+		|            Base_obj = SaveDialog1;
+		|            Visible = false;
+		|        }
+		|
+		|        public SaveDialog Base_obj;
+		|";
+	ИначеЕсли КлассАнгл = "RadioGroup" Тогда
+		Стр = 
+		"        private TfRadioGroupItems radioGroupItems;
+		|
+		|        public TfRadioGroup()
+		|        {
+		|            RadioGroup RadioGroup1 = new RadioGroup();
+		|            RadioGroup1.dll_obj = this;
+		|            Base_obj = RadioGroup1;
+		|
+		|            radioGroupItems = new TfRadioGroupItems();
+		|            radioGroupItems.M_RadioGroup = Base_obj.M_RadioGroup;
+		|        }
+		|
+		|        public RadioGroup Base_obj;
 		|";
 	ИначеЕсли КлассАнгл = "StatusBarItems" Тогда
 		Стр = 
@@ -459,6 +1125,16 @@
 		|        {
 		|            get { return M_StatusBar.Items; }
 		|            set { M_StatusBar.Items = value; }
+		|        }
+		|";
+	ИначеЕсли КлассАнгл = "RadioGroupItems" Тогда
+		Стр = 
+		"        public Terminal.Gui.RadioGroup M_RadioGroup;
+		|
+		|        public ustring[] M_Object
+		|        {
+		|            get { return M_RadioGroup.RadioLabels; }
+		|            set { M_RadioGroup.RadioLabels = value; }
 		|        }
 		|";
 	ИначеЕсли КлассАнгл = "StatusItem" Тогда
@@ -505,22 +1181,6 @@
 		|            menusCollection = new TfMenusCollection();
 		|            menusCollection.M_MenuBar = Base_obj.M_MenuBar;
 		|        }
-		|
-		|        public TfAction LayoutComplete { get; set; }
-		|        public TfAction LayoutStarted { get; set; }
-		|        public TfAction DrawContentComplete { get; set; }
-		|        public TfAction DrawContent { get; set; }
-		|        public TfAction ShortcutAction { get; set; }
-		|        public TfAction Added { get; set; }
-		|        public TfAction InitializedItem { get; set; }
-		|        public TfAction Initialized { get; set; }
-		|        public TfAction MenuClosing { get; set; }
-		|        public TfAction KeyPress { get; set; }
-		|        public TfAction Removed { get; set; }
-		|        public TfAction MouseClick { get; set; }
-		|        public TfAction CanFocusChanged { get; set; }
-		|        public TfAction Enter { get; set; }
-		|        public TfAction Leave { get; set; }
 		|
 		|        public MenuBar Base_obj;
 		|";
@@ -629,7 +1289,7 @@
 		|        {
 		|            foreach (var item in Base_obj.M_SubviewCollection)
 		|            {
-		|                yield return (OneScriptTerminalGui.RevertEqualsObj(item).dll_obj as IValue);
+		|                yield return (Utils.RevertEqualsObj(item).dll_obj as IValue);
 		|            }
 		|        }
 		|
@@ -643,49 +1303,6 @@
 		|            Window1.dll_obj = this;
 		|            Base_obj = Window1;
 		|        }
-		|
-		|        public TfWindow(string p1)
-		|        {
-		|            Window Window1 = new Window(p1);
-		|            Window1.dll_obj = this;
-		|            Base_obj = Window1;
-		|        }
-		|
-		|        public TfWindow(TfRect p1, string p2)
-		|        {
-		|            Window Window1 = new Window(p1.Base_obj, p2);
-		|            Window1.dll_obj = this;
-		|            Base_obj = Window1;
-		|        }
-		|
-		|        public TfWindow(string p1, int p2, TfBorder p3)
-		|        {
-		|            Window Window1 = new Window(p1, p2, p3.Base_obj);
-		|            Window1.dll_obj = this;
-		|            Base_obj = Window1;
-		|        }
-		|
-		|        public TfWindow(TfRect p1, string p2, int p3, TfBorder p4)
-		|        {
-		|            Window Window1 = new Window(p1.Base_obj, p2, p3, p4.Base_obj);
-		|            Window1.dll_obj = this;
-		|            Base_obj = Window1;
-		|        }
-		|
-		|        public TfAction Activate { get; set; }
-		|        public TfAction Deactivate { get; set; }
-		|        public TfAction AllChildClosed { get; set; }
-		|        public TfAction InitializedItem { get; set; }
-		|        public TfAction Added { get; set; }
-		|        public TfAction Removed { get; set; }
-		|        public TfAction LayoutComplete { get; set; }
-		|        public TfAction LayoutStarted { get; set; }
-		|        public TfAction DrawContentComplete { get; set; }
-		|        public TfAction DrawContent { get; set; }
-		|        public TfAction TitleChanging { get; set; }
-		|        public TfAction Loaded { get; set; }
-		|        public TfAction Resized { get; set; }
-		|        public TfAction Closing { get; set; }
 		|
 		|        public Window Base_obj;
 		|";
@@ -740,13 +1357,6 @@
 		|        public TfAttribute(int p1, int p2)
 		|        {
 		|            Attribute Attribute1 = new Attribute(p1, p2);
-		|            Attribute1.dll_obj = this;
-		|            Base_obj = Attribute1;
-		|        }
-		|
-		|        public TfAttribute(int p1, int p2, int p3)
-		|        {
-		|            Attribute Attribute1 = new Attribute(p1, p2, p3);
 		|            Attribute1.dll_obj = this;
 		|            Base_obj = Attribute1;
 		|        }
@@ -866,14 +1476,6 @@
 		|            Base_obj.CorrectionZet();
 		|        }
 		|
-		|        public TfAction LayoutComplete { get; set; }
-		|        public TfAction LayoutStarted { get; set; }
-		|        public TfAction DrawContentComplete { get; set; }
-		|        public TfAction DrawContent { get; set; }
-		|        public TfAction Added { get; set; }
-		|        public TfAction Removed { get; set; }
-		|        public TfAction HotKeyChanged { get; set; }
-		|
 		|        public View Base_obj;
 		|";
 	ИначеЕсли КлассАнгл = "Toplevel" Тогда
@@ -881,28 +1483,6 @@
 		"        public TfToplevel()
 		|        {
 		|            Toplevel Toplevel1 = new Toplevel();
-		|            Toplevel1.dll_obj = this;
-		|            Base_obj = Toplevel1;
-		|        }
-		|
-		|        public TfToplevel(int p1, int p2, int p3, int p4)
-		|        {
-		|            TfRect Rect1 = new TfRect(p1, p2, p3, p4);
-		|            Toplevel Toplevel1 = new Toplevel(Rect1.Base_obj.M_Rect);
-		|            Toplevel1.dll_obj = this;
-		|            Base_obj = Toplevel1;
-		|        }
-		|
-		|        public TfToplevel(TfRect p1)
-		|        {
-		|            Toplevel Toplevel1 = new Toplevel(p1.Base_obj.M_Rect);
-		|            Toplevel1.dll_obj = this;
-		|            Base_obj = Toplevel1;
-		|        }
-		|
-		|        public TfToplevel(ostgui.Toplevel p1)
-		|        {
-		|            Toplevel Toplevel1 = p1;
 		|            Toplevel1.dll_obj = this;
 		|            Base_obj = Toplevel1;
 		|        }
@@ -918,30 +1498,6 @@
 		|        {
 		|            Base_obj.CorrectionZet();
 		|        }
-		|
-		|        public TfAction Unloaded { get; set; }
-		|        public TfAction Ready { get; set; }
-		|        public TfAction ChildUnloaded { get; set; }
-		|        public TfAction ChildLoaded { get; set; }
-		|        public TfAction ChildClosed { get; set; }
-		|        public TfAction QuitKeyChanged { get; set; }
-		|        public TfAction Closed { get; set; }
-		|        public TfAction CanFocusChanged { get; set; }
-		|        public TfAction InitializedItem { get; set; }
-		|        public TfAction Activate { get; set; }
-		|        public TfAction Deactivate { get; set; }
-		|        public TfAction AllChildClosed { get; set; }
-		|        public TfAction Added { get; set; }
-		|        public TfAction Removed { get; set; }
-		|        public TfAction LayoutComplete { get; set; }
-		|        public TfAction LayoutStarted { get; set; }
-		|        public TfAction DrawContentComplete { get; set; }
-		|        public TfAction DrawContent { get; set; }
-		|        public TfAction Leave { get; set; }
-		|        public TfAction Enter { get; set; }
-		|        public TfAction Loaded { get; set; }
-		|        public TfAction Closing { get; set; }
-		|        public TfAction Resized { get; set; }
 		|
 		|        public Toplevel Base_obj;
 		|";
@@ -971,22 +1527,22 @@
 	КонецЕсли;
 	ТекстДокСвойств.Прочитать(ФайлСвойств);
 	СтрТекстДокСвойств = ТекстДокСвойств.ПолучитьТекст();
-	М505 = СтрНайтиМежду(СтрТекстДокСвойств, "<TBODY>", "</TABLE>", Ложь, );
+	М505 = СтрНайтиМежду(СтрТекстДокСвойств, "<tbody>", "</table>", Ложь, );
 	Если Не (М505.Количество() > 1) Тогда
 		Возврат "";
 	КонецЕсли;
 	СтрТаблицаСвойств = М505[1];
-	Массив1 = СтрНайтиМежду(СтрТаблицаСвойств, "<TR vAlign=top>", "</TR>", Ложь, );
+	Массив1 = СтрНайтиМежду(СтрТаблицаСвойств, "<tr vAlign=top>", "</tr>", Ложь, );
 	// Сообщить("Массив1.Количество()=" + Массив1.Количество());
 	Если Массив1.Количество() > 0 Тогда
 		Стр = "";
 		Для А = 0 По Массив1.ВГраница() Цикл
 			//найдем первую ячейку строки таблицы
-			М07 = СтрНайтиМежду(Массив1[А], "<TD width=""50%"">", "</TD>", Ложь, );
+			М07 = СтрНайтиМежду(Массив1[А], "<td width=""50%"">", "</td>", Ложь, );
 			СтрХ = М07[0];
 			СтрХ = СтрЗаменить(СтрХ, "&nbsp;", " ");
 			
-			ИмяФайлаСвойства = КаталогСправки + "\" + СтрНайтиМежду(СтрХ, "<A href=""", """>", , )[0];
+			ИмяФайлаСвойства = КаталогСправки + "\" + СтрНайтиМежду(СтрХ, "<a href=""", """>", , )[0];
 			
 			КаталогНаДиске = Новый Файл(ИмяФайлаСвойства);
 			Если Не КаталогНаДиске.Существует() Тогда
@@ -996,16 +1552,16 @@
 			ТекстДокСвойства = Новый ТекстовыйДокумент;
 			ТекстДокСвойства.Прочитать(ИмяФайлаСвойства);
 			СтрТекстДокСвойства = ТекстДокСвойства.ПолучитьТекст();
-			СтрРаздела = СтрНайтиМежду(СтрТекстДокСвойства, "<H4 class=dtH4>Использование</H4>", "<H4 class=dtH4>Значение</H4>", , )[0];
-			СтрИспользование = СтрНайтиМежду(СтрРаздела, "<P>", "</P>", , )[0];
+			СтрРаздела = СтрНайтиМежду(СтрТекстДокСвойства, "<h4 class=dtH4>Использование</h4>", "<h4 class=dtH4>Значение</h4>", , )[0];
+			СтрИспользование = СтрНайтиМежду(СтрРаздела, "<p>", "</p>", , )[0];
 			СтрИспользование = СтрЗаменить(СтрИспользование, ".", "");
 
 			СвойствоАнгл = СтрНайтиМежду(СтрХ, "(", ")", , )[0];
 			СвойствоРус = СтрНайтиМежду(СтрХ, ".html"">", " (", , )[0];
 			
 			ТипЗнач = "xxxx";
-			СтрРаздела = СтрНайтиМежду(СтрТекстДокСвойства, "<H4 class=dtH4>Значение</H4>", "/P>", , )[0];
-			ТипЗнач = СтрНайтиМежду(СтрРаздела, "<P>Тип: ", "<", , )[0];
+			СтрРаздела = СтрНайтиМежду(СтрТекстДокСвойства, "<h4 class=dtH4>Значение</h4>", "/p>", , )[0];
+			ТипЗнач = СтрНайтиМежду(СтрРаздела, "<p>Тип: ", "<", , )[0];
 			ТипЗнач = СтрЗаменить(ТипЗнач, ".", "");
 			Если ТипЗнач = "Число" Тогда
 				ТипЗнач = "int";
@@ -1045,8 +1601,1318 @@
 				"        [ContextProperty(""Данные"", ""Data"")]
 				|        public IValue Data
 				|        {
-				|            get { return OneScriptTerminalGui.RevertObj(Base_obj.Data); }
+				|            get { return Utils.RevertObj(Base_obj.Data); }
 				|            set { Base_obj.Data = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "УзелДерева") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public TfTreeNode treeNode = null;
+				|        [ContextProperty(""УзелДерева"", ""TreeNode"")]
+				|        public TfTreeNode TreeNode
+				|        {
+				|            get { return treeNode; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СтарыйУзел") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public TfTreeNode oldNode = null;
+				|        [ContextProperty(""СтарыйУзел"", ""OldNode"")]
+				|        public TfTreeNode OldNode
+				|        {
+				|            get { return oldNode; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "НовыйУзел") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public TfTreeNode newNode = null;
+				|        [ContextProperty(""НовыйУзел"", ""NewNode"")]
+				|        public TfTreeNode NewNode
+				|        {
+				|            get { return newNode; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Дерево") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public TfTreeView treeView = null;
+				|        [ContextProperty(""Дерево"", ""TreeView"")]
+				|        public TfTreeView TreeView
+				|        {
+				|            get { return treeView; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "НоваяКолонка") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue newCol = null;
+				|        [ContextProperty(""НоваяКолонка"", ""NewCol"")]
+				|        public int NewCol
+				|        {
+				|            get { return Utils.ToInt32(newCol); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "НоваяСтрока") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue newRow = null;
+				|        [ContextProperty(""НоваяСтрока"", ""NewRow"")]
+				|        public int NewRow
+				|        {
+				|            get { return Utils.ToInt32(newRow); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СтараяКолонка") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue oldCol = null;
+				|        [ContextProperty(""СтараяКолонка"", ""OldCol"")]
+				|        public int OldCol
+				|        {
+				|            get { return Utils.ToInt32(oldCol); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СтараяСтрока") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue oldRow = null;
+				|        [ContextProperty(""СтараяСтрока"", ""OldRow"")]
+				|        public int OldRow
+				|        {
+				|            get { return Utils.ToInt32(oldRow); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ИндексСтроки") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue rowIndex = null;
+				|        [ContextProperty(""ИндексСтроки"", ""RowIndex"")]
+				|        public int RowIndex
+				|        {
+				|            get { return Utils.ToInt32(rowIndex); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ИндексКолонки") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue columnIndex = null;
+				|        [ContextProperty(""ИндексКолонки"", ""ColumnIndex"")]
+				|        public int ColumnIndex
+				|        {
+				|            get { return Utils.ToInt32(columnIndex); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ТаблицаДанных") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public TfDataTable dataTable = null;
+				|        [ContextProperty(""ТаблицаДанных"", ""DataTable"")]
+				|        public TfDataTable DataTable
+				|        {
+				|            get { return dataTable; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "НовыйТекст") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue newText = null;
+				|        [ContextProperty(""НовыйТекст"", ""NewText"")]
+				|        public string NewText
+				|        {
+				|            get { return Utils.ToString(newText); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СтарыйТекст") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue oldText = null;
+				|        [ContextProperty(""СтарыйТекст"", ""OldText"")]
+				|        public string OldText
+				|        {
+				|            get { return Utils.ToString(oldText); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Е") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Е"", ""E"")]
+				|        public double E
+				|        {
+				|            get { return System.Math.E; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Пи") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Пи"", ""PI"")]
+				|        public double PI
+				|        {
+				|            get { return System.Math.PI; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Значение") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue valueProp = null;
+				|        [ContextProperty(""Значение"", ""Value"")]
+				|        public IValue ValueProp
+				|        {
+				|            get { return valueProp; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Вкладка") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue tab = null;
+				|        [ContextProperty(""Вкладка"", ""Tab"")]
+				|        public TfTabPage Tab
+				|        {
+				|            get { return (TfTabPage)tab; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "НоваяВкладка") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue newTab = null;
+				|        [ContextProperty(""НоваяВкладка"", ""NewTab"")]
+				|        public TfTabPage NewTab
+				|        {
+				|            get { return (TfTabPage)newTab; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СтараяВкладка") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue oldTab = null;
+				|        [ContextProperty(""СтараяВкладка"", ""OldTab"")]
+				|        public TfTabPage OldTab
+				|        {
+				|            get { return (TfTabPage)oldTab; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ИндексВыбранного") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue selectedItem = null;
+				|        [ContextProperty(""ИндексВыбранного"", ""SelectedItem"")]
+				|        public int SelectedItem
+				|        {
+				|            get { return Utils.ToInt32(selectedItem); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ИндексПредыдущегоВыбранного") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue previousSelectedItem = null;
+				|        [ContextProperty(""ИндексПредыдущегоВыбранного"", ""PreviousSelectedItem"")]
+				|        public int PreviousSelectedItem
+				|        {
+				|            get { return Utils.ToInt32(previousSelectedItem); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ПозицияКурсора") и (КлассАнгл = "ColorPicker") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ПозицияКурсора"", ""CursorPosition"")]
+				|        public TfPoint CursorPosition
+				|        {
+				|            get { return new TfPoint(Base_obj.Cursor); }
+				|            set { Base_obj.Cursor = value.Base_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ПозицияКурсора") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ПозицияКурсора"", ""CursorPosition"")]
+				|        public TfPoint CursorPosition
+				|        {
+				|            get { return new TfPoint(Base_obj.CursorPosition); }
+				|            set { Base_obj.CursorPosition = value.Base_obj; }
+				|        }
+				|
+				|";
+				
+				
+				
+				
+
+				
+				
+				
+				
+				
+			ИначеЕсли (СвойствоРус = "ИмяФайла") и (КлассАнгл = "SaveDialog") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ИмяФайла"", ""FileName"")]
+				|        public string FileName
+				|        {
+				|            get { return Base_obj.M_SaveDialog.Subviews[0].Subviews[5].ToString(); }
+				|            set { ((Terminal.Gui.TextField)Base_obj.M_SaveDialog.Subviews[0].Subviews[5]).Text = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Стиль") и (КлассАнгл = "TabView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Стиль"", ""Style"")]
+				|        public TfTabStyle Style
+				|        {
+				|            get { return Base_obj.Style.dll_obj; }
+				|            set
+				|            {
+				|                Base_obj.Style = value.Base_obj;
+				|                Base_obj.ApplyStyleChanges();
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Фокусируемый") и (КлассАнгл = "Dialog") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Фокусируемый"", ""CanFocus"")]
+				|        public bool CanFocus
+				|        {
+				|            get { return Base_obj.M_Dialog.CanFocus; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Фокусируемый") и (КлассАнгл = "FileDialog") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Фокусируемый"", ""CanFocus"")]
+				|        public bool CanFocus
+				|        {
+				|            get { return Base_obj.M_FileDialog.CanFocus; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Фокусируемый") и (КлассАнгл = "OpenDialog") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Фокусируемый"", ""CanFocus"")]
+				|        public bool CanFocus
+				|        {
+				|            get { return Base_obj.M_OpenDialog.CanFocus; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Фокусируемый") и (КлассАнгл = "SaveDialog") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Фокусируемый"", ""CanFocus"")]
+				|        public bool CanFocus
+				|        {
+				|            get { return Base_obj.M_SaveDialog.CanFocus; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Фокусируемый") и (КлассАнгл = "Toplevel") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Фокусируемый"", ""CanFocus"")]
+				|        public bool CanFocus
+				|        {
+				|            get { return Base_obj.M_Toplevel.CanFocus; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Фокусируемый") и (КлассАнгл = "Window") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Фокусируемый"", ""CanFocus"")]
+				|        public bool CanFocus
+				|        {
+				|            get { return Base_obj.M_Window.CanFocus; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Год") и (КлассАнгл = "DateField") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Год"", ""Year"")]
+				|        public int Year
+				|        {
+				|            get { return Base_obj.M_DateField.Date.Year; }
+				|            set 
+				|            {
+				|                if (value >= 0 && value <= 9999)
+				|                {
+				|                    int deltaTime = Base_obj.M_DateField.Date.Year - value;
+				|                    Base_obj.M_DateField.Date = Base_obj.M_DateField.Date.AddYears(-deltaTime);
+				|                }
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "День") и (КлассАнгл = "DateField") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""День"", ""Day"")]
+				|        public int Day
+				|        {
+				|            get { return Base_obj.M_DateField.Date.Day; }
+				|            set
+				|            {
+				|                if (value > 0 && value <= 31)
+				|                {
+				|                    int deltaTime = Base_obj.M_DateField.Date.Day - value;
+				|                    Base_obj.M_DateField.Date = Base_obj.M_DateField.Date.AddDays(-deltaTime);
+				|                }
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Месяц") и (КлассАнгл = "DateField") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Месяц"", ""Month"")]
+				|        public int Month
+				|        {
+				|            get { return Base_obj.M_DateField.Date.Month; }
+				|            set
+				|            {
+				|                if (value > 0 && value < 13)
+				|                {
+				|                    int deltaTime = Base_obj.M_DateField.Date.Month - value;
+				|                    Base_obj.M_DateField.Date = Base_obj.M_DateField.Date.AddMonths(-deltaTime);
+				|                }
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Дата") и (КлассАнгл = "TimeField") Тогда
+				Стр = Стр +
+				"        private DateTime date;
+				|        [ContextProperty(""Дата"", ""Date"")]
+				|        public DateTime Date
+				|        {
+				|            get { return date; }
+				|            set { date = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Минуты") и (КлассАнгл = "TimeField") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Минуты"", ""Minutes"")]
+				|        public int Minutes
+				|        {
+				|            get { return Base_obj.M_TimeField.Time.Minutes; }
+				|            set
+				|            {
+				|                if (value >= 0 && value <= 59)
+				|                {
+				|                    int deltaTime = Base_obj.M_TimeField.Time.Minutes - value;
+				|                    Base_obj.M_TimeField.Time = Base_obj.M_TimeField.Time - TimeSpan.FromMinutes(deltaTime);
+				|                }
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Секунды") и (КлассАнгл = "TimeField") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Секунды"", ""Seconds"")]
+				|        public int Seconds
+				|        {
+				|            get { return Base_obj.M_TimeField.Time.Seconds; }
+				|            set
+				|            {
+				|                if (value >= 0 && value <= 59)
+				|                {
+				|                    int deltaTime = Base_obj.M_TimeField.Time.Seconds - value;
+				|                    Base_obj.M_TimeField.Time = Base_obj.M_TimeField.Time - TimeSpan.FromSeconds(deltaTime);
+				|                }
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Часы") и (КлассАнгл = "TimeField") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Часы"", ""Hours"")]
+				|        public int Hours
+				|        {
+				|            get { return Base_obj.M_TimeField.Time.Hours; }
+				|            set
+				|            {
+				|                if (value >= 0 && value < 24)
+				|                {
+				|                    int deltaTime = Base_obj.M_TimeField.Time.Hours - value;
+				|                    Base_obj.M_TimeField.Time = Base_obj.M_TimeField.Time - TimeSpan.FromHours(deltaTime);
+				|                }
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "КлавишаВызова") и (
+				(КлассАнгл = "MenuItem") 
+				или (КлассАнгл = "MenuBarItem") 
+				) 
+				Тогда
+				Стр = Стр +
+				"        [ContextProperty(""КлавишаВызова"", ""HotKey"")]
+				|        public string HotKey
+				|        {
+				|            get { return Base_obj.HotKey; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Значение") и (КлассАнгл = "ProgressBar") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Значение"", ""Fraction"")]
+				|        public decimal Fraction
+				|        {
+				|            get { return Base_obj.Fraction; }
+				|            set { Base_obj.Fraction = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Файлы") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public ArrayImpl filePaths = null;
+				|        [ContextProperty(""Файлы"", ""FilePaths"")]
+				|        public ArrayImpl FilePaths
+				|        {
+				|            get { return filePaths; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Источник") и (КлассАнгл = "ComboBox") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Источник"", ""Source"")]
+				|        public TfValueList Source
+				|        {
+				|            get { return source; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Источник") и (КлассАнгл = "ListView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Источник"", ""Source"")]
+				|        public TfValueList Source
+				|        {
+				|            get { return source; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ВыбранныйЦвет") и (КлассАнгл = "ColorPicker") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ВыбранныйЦвет"", ""SelectedColor"")]
+				|        public int SelectedColor
+				|        {
+				|            get { return Base_obj.SelectedColor; }
+				|            set { Base_obj.SelectedColor = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "РазмерСодержимого") и (КлассАнгл = "ScrollView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""РазмерСодержимого"", ""ContentSize"")]
+				|        public TfSize ContentSize
+				|        {
+				|            get { return new TfSize(Base_obj.ContentSize); }
+				|            set { Base_obj.ContentSize = value.Base_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СмещениеСодержимого") и (КлассАнгл = "ScrollView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""СмещениеСодержимого"", ""ContentOffset"")]
+				|        public TfPoint ContentOffset
+				|        {
+				|            get { return new TfPoint(Base_obj.ContentOffset); }
+				|            set { Base_obj.ContentOffset = value.Base_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СтандартнаяАктивацияЯчейки") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        private bool nativeCellActivated = true;
+				|        [ContextProperty(""СтандартнаяАктивацияЯчейки"", ""NativeCellActivated"")]
+				|        public bool NativeCellActivated
+				|        {
+				|            get { return nativeCellActivated; }
+				|            set { nativeCellActivated = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ВыбранныеРегионы") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ВыбранныеРегионы"", ""MultiSelectedRegions"")]
+				|        public IValue MultiSelectedRegions
+				|        {
+				|            get { return Base_obj.MultiSelectedRegions; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "КлавишаАктивацииЯчейки") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""КлавишаАктивацииЯчейки"", ""CellActivationKey"")]
+				|        public int CellActivationKey
+				|        {
+				|            get { return Base_obj.CellActivationKey; }
+				|            set { Base_obj.CellActivationKey = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "КонтекстноеМеню") и (КлассАнгл = "TextField") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""КонтекстноеМеню"", ""ContextMenu"")]
+				|        public TfContextMenu ContextMenu
+				|        {
+				|            get { return new TfContextMenu(Base_obj.M_TextField.ContextMenu); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Курсор") и (КлассАнгл = "TextField") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Курсор"", ""DesiredCursorVisibility"")]
+				|        public decimal DesiredCursorVisibility
+				|        {
+				|            get { return Base_obj.DesiredCursorVisibility; }
+				|            set { Base_obj.DesiredCursorVisibility = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Время") и (КлассАнгл = "TimeField") Тогда
+				Стр = Стр +
+				"        //////[ContextProperty(""Время"", ""Time"")]
+				|        //////public IValue Time
+				|        //////{
+				|        //////    get { return Base_obj.Time; }
+				|        //////    set { Base_obj.Time = value; }
+				|        //////}
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "КонтекстноеМеню") и (КлассАнгл = "TimeField") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""КонтекстноеМеню"", ""ContextMenu"")]
+				|        public TfContextMenu ContextMenu
+				|        {
+				|            get { return new TfContextMenu(Base_obj.M_TimeField.ContextMenu); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "КонтекстноеМеню") и (КлассАнгл = "DateField") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""КонтекстноеМеню"", ""ContextMenu"")]
+				|        public TfContextMenu ContextMenu
+				|        {
+				|            get {return new TfContextMenu(Base_obj.M_DateField.ContextMenu); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Курсор") и (КлассАнгл = "TimeField") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Курсор"", ""DesiredCursorVisibility"")]
+				|        public decimal DesiredCursorVisibility
+				|        {
+				|            get { return Base_obj.DesiredCursorVisibility; }
+				|            set { Base_obj.DesiredCursorVisibility = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Курсор") и (КлассАнгл = "DateField") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Курсор"", ""DesiredCursorVisibility"")]
+				|        public decimal DesiredCursorVisibility
+				|        {
+				|            get { return Base_obj.DesiredCursorVisibility; }
+				|            set { Base_obj.DesiredCursorVisibility = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Дата") и (КлассАнгл = "DateField") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Дата"", ""Date"")]
+				|        public DateTime Date
+				|        {
+				|            get { return Base_obj.Date; }
+				|            set { Base_obj.Date = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "КонтекстноеМеню") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""КонтекстноеМеню"", ""ContextMenu"")]
+				|        public TfContextMenu ContextMenu
+				|        {
+				|            get { return new TfContextMenu(Base_obj.M_TextView.ContextMenu); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Курсор") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Курсор"", ""DesiredCursorVisibility"")]
+				|        public decimal DesiredCursorVisibility
+				|        {
+				|            get { return Base_obj.DesiredCursorVisibility; }
+				|            set { Base_obj.DesiredCursorVisibility = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Выбранный") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Выбранный"", ""SelectedObject"")]
+				|        public TfTreeNode SelectedObject
+				|        {
+				|            get { return Base_obj.SelectedObject.dll_obj; }
+				|            set { Base_obj.SelectedObject = value.Base_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "КлавишаАктивации") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""КлавишаАктивации"", ""ObjectActivationKey"")]
+				|        public int ObjectActivationKey
+				|        {
+				|            get { return Base_obj.ObjectActivationKey; }
+				|            set { Base_obj.ObjectActivationKey = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Корневые") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Корневые"", ""Objects"")]
+				|        public ArrayImpl Objects
+				|        {
+				|            get { return Utils.TreeViewObjectsToArray(Base_obj.M_TreeView.Objects); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Курсор") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Курсор"", ""DesiredCursorVisibility"")]
+				|        public decimal DesiredCursorVisibility
+				|        {
+				|            get { return Base_obj.DesiredCursorVisibility; }
+				|            set { Base_obj.DesiredCursorVisibility = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Стиль") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Стиль"", ""Style"")]
+				|        public TfTreeStyle Style
+				|        {
+				|            get { return Base_obj.Style.dll_obj; }
+				|            set { Base_obj.Style = value.Base_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "КнопкаМышиДляАктивации") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""КнопкаМышиДляАктивации"", ""ObjectActivationButton"")]
+				|        public int ObjectActivationButton
+				|        {
+				|            get { return Base_obj.ObjectActivationButton; }
+				|            set { Base_obj.ObjectActivationButton = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Владелец") и (КлассАнгл = "ContextMenu") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Владелец"", ""Host"")]
+				|        public IValue Host
+				|        {
+				|            get { return Base_obj.Host.dll_obj; }
+				|            set { Base_obj.Host = ((dynamic)value).Base_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Клавиша") и (КлассАнгл = "ContextMenu") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Клавиша"", ""Key"")]
+				|        public int Key
+				|        {
+				|            get { return Base_obj.Key; }
+				|            set { Base_obj.Key = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "КнопкаМышиДляАктивации") и (КлассАнгл = "ContextMenu") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""КнопкаМышиДляАктивации"", ""MouseFlags"")]
+				|        public int MouseFlags
+				|        {
+				|            get { return Base_obj.MouseFlags; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ПанельМеню") и (КлассАнгл = "ContextMenu") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ПанельМеню"", ""MenuBar"")]
+				|        public TfMenuBar MenuBar
+				|        {
+				|            get { return Base_obj.MenuBar.dll_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ПодМеню") и (КлассАнгл = "ContextMenu") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ПодМеню"", ""SubMenu"")]
+				|        public TfMenuBarItem SubMenu
+				|        {
+				|            get { return Base_obj.MenuItems.dll_obj; }
+				|            set { Base_obj.MenuItems = value.Base_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Позиция") и (КлассАнгл = "ContextMenu") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Позиция"", ""Position"")]
+				|        public TfPoint Position
+				|        {
+				|            get { return new TfPoint(Base_obj.Position); }
+				|            set { Base_obj.Position = value.Base_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СтилиКолонки") и (КлассАнгл = "TableStyle") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""СтилиКолонки"", ""ColumnStyles"")]
+				|        public TfColumnStyles ColumnStyles
+				|        {
+				|            get { return Base_obj.ColumnStyles.dll_obj; }
+				|            set { Base_obj.ColumnStyles = value.Base_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "УстановщикЦветаСтроки") и (КлассАнгл = "TableStyle") Тогда
+				Стр = Стр +
+				"        //////[ContextProperty(""УстановщикЦветаСтроки"", ""RowColorGetter"")]
+				|        //////public IValue RowColorGetter
+				|        //////{
+				|        //////    get { return Base_obj.RowColorGetter; }
+				|        //////    set { Base_obj.RowColorGetter = value; }
+				|        //////}
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Вкладка") и (КлассАнгл = "TabView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Вкладка"", ""TabPage"")]
+				|        public TfTabPage TabPage
+				|        {
+				|            get { return Base_obj.TabPage.dll_obj; }
+				|            set { Base_obj.TabPage = value.Base_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Вкладки") и (КлассАнгл = "TabView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Вкладки"", ""Tabs"")]
+				|        public TfTabsCollection Tabs
+				|        {
+				|            get { return tabsCollection; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Стиль") и (КлассАнгл = "TabView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Стиль"", ""Style"")]
+				|        public TfTabStyle Style
+				|        {
+				|            get { return Base_obj.Style.dll_obj; }
+				|            set { Base_obj.Style = value.Base_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Элемент") и (КлассАнгл = "TabPage") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Элемент"", ""View"")]
+				|        public IValue View
+				|        {
+				|            get { return Utils.RevertEqualsObj(Base_obj.M_TabPage.View).dll_obj; }
+				|            set { Base_obj.M_TabPage.View = ((dynamic)value).Base_obj.M_View; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Количество") и (КлассАнгл = "TabsCollection") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Количество"", ""Count"")]
+				|        public int Count
+				|        {
+				|            get { return Utils.IReadOnlyCollectionToArray(M_TabView.Tabs).Length; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "РезультатДиалога") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue dialogResult = null;
+				|        [ContextProperty(""РезультатДиалога"", ""DialogResult"")]
+				|        public decimal DialogResult
+				|        {
+				|            get { return Utils.ToDecimal(dialogResult); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ПутьКаталога") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue directoryPath = null;
+				|        [ContextProperty(""ПутьКаталога"", ""DirectoryPath"")]
+				|        public string DirectoryPath
+				|        {
+				|            get { return directoryPath.AsString(); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ПутьФайла") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue filePath = null;
+				|        [ContextProperty(""ПутьФайла"", ""FilePath"")]
+				|        public string FilePath
+				|        {
+				|            get { return filePath.AsString(); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "БылоГод") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue oldYear = null;
+				|        [ContextProperty(""БылоГод"", ""OldYear"")]
+				|        public decimal OldYear
+				|        {
+				|            get { return Utils.ToDecimal(oldYear); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "БылоДень") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue oldDay = null;
+				|        [ContextProperty(""БылоДень"", ""OldDay"")]
+				|        public decimal OldDay
+				|        {
+				|            get { return Utils.ToDecimal(oldDay); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "БылоМесяц") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue oldMonth = null;
+				|        [ContextProperty(""БылоМесяц"", ""OldMonth"")]
+				|        public decimal OldMonth
+				|        {
+				|            get { return Utils.ToDecimal(oldMonth); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "БылоМинут") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue oldMinutes = null;
+				|        [ContextProperty(""БылоМинут"", ""OldMinutes"")]
+				|        public decimal OldMinutes
+				|        {
+				|            get { return Utils.ToDecimal(oldMinutes); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "БылоСекунд") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue oldSeconds = null;
+				|        [ContextProperty(""БылоСекунд"", ""OldSeconds"")]
+				|        public decimal OldSeconds
+				|        {
+				|            get { return Utils.ToDecimal(oldSeconds); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "БылоТактов") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue oldTicks = null;
+				|        [ContextProperty(""БылоТактов"", ""OldTicks"")]
+				|        public decimal OldTicks
+				|        {
+				|            get { return Utils.ToDecimal(oldTicks); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "БылоЧасов") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue oldHours = null;
+				|        [ContextProperty(""БылоЧасов"", ""OldHours"")]
+				|        public decimal OldHours
+				|        {
+				|            get { return Utils.ToDecimal(oldHours); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СталоГод") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue newYear = null;
+				|        [ContextProperty(""СталоГод"", ""NewYear"")]
+				|        public decimal NewYear
+				|        {
+				|            get { return Utils.ToDecimal(newYear); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СталоДень") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue newDay = null;
+				|        [ContextProperty(""СталоДень"", ""NewDay"")]
+				|        public decimal NewDay
+				|        {
+				|            get { return Utils.ToDecimal(newDay); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СталоМесяц") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue newMonth = null;
+				|        [ContextProperty(""СталоМесяц"", ""NewMonth"")]
+				|        public decimal NewMonth
+				|        {
+				|            get { return Utils.ToDecimal(newMonth); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СталоМинут") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue newMinutes = null;
+				|        [ContextProperty(""СталоМинут"", ""NewMinutes"")]
+				|        public decimal NewMinutes
+				|        {
+				|            get { return Utils.ToDecimal(newMinutes); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СталоСекунд") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue newSeconds = null;
+				|        [ContextProperty(""СталоСекунд"", ""NewSeconds"")]
+				|        public decimal NewSeconds
+				|        {
+				|            get { return Utils.ToDecimal(newSeconds); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СталоТактов") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue newTicks = null;
+				|        [ContextProperty(""СталоТактов"", ""NewTicks"")]
+				|        public decimal NewTicks
+				|        {
+				|            get { return Utils.ToDecimal(newTicks); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СталоЧасов") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue newHours = null;
+				|        [ContextProperty(""СталоЧасов"", ""NewHours"")]
+				|        public decimal NewHours
+				|        {
+				|            get { return Utils.ToDecimal(newHours); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ФорматВремени") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue timeFormat = null;
+				|        [ContextProperty(""ФорматВремени"", ""TimeFormat"")]
+				|        public string TimeFormat
+				|        {
+				|            get { return Utils.ToString(timeFormat); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ФорматДаты") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue dateFormat = null;
+				|        [ContextProperty(""ФорматДаты"", ""DateFormat"")]
+				|        public string DateFormat
+				|        {
+				|            get { return Utils.ToString(dateFormat); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Узлы") и (КлассАнгл = "TreeNode") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Узлы"", ""Children"")]
+				|        public ArrayImpl Children
+				|        {
+				|            get { return Utils.TreeNodeToArray(Base_obj.M_TreeNode.Children); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СтильТаблицы") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""СтильТаблицы"", ""Style"")]
+				|        public TfTableStyle Style
+				|        {
+				|            get { return Base_obj.Style.dll_obj; }
+				|            set { Base_obj.Style = value.Base_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ТаблицаДанных") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ТаблицаДанных"", ""Table"")]
+				|        public TfDataTable Table
+				|        {
+				|            get { return Base_obj.Table.dll_obj; }
+				|            set { Base_obj.Table = value.Base_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ИмяТаблицы") и (КлассАнгл = "DataTable") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ИмяТаблицы"", ""TableName"")]
+				|        public string TableName
+				|        {
+				|            get { return Base_obj.TableName; }
+				|            set { Base_obj.TableName = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Колонки") и (КлассАнгл = "DataTable") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Колонки"", ""Columns"")]
+				|        public TfDataColumnCollection Columns
+				|        {
+				|            get { return columns; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Строки") и (КлассАнгл = "DataTable") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Строки"", ""Rows"")]
+				|        public TfDataRowCollection Rows
+				|        {
+				|            get { return rows; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Таблица") и (КлассАнгл = "DataRow") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Таблица"", ""Table"")]
+				|        public TfDataTable Table
+				|        {
+				|            get { return (TfDataTable)Utils.RevertObj(Base_obj.Table); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Значение") и (КлассАнгл = "DataItem") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Значение"", ""Value"")]
+				|        public IValue Value
+				|        {
+				|            get { return Utils.RevertObj(Base_obj.Value); }
+				|            set
+				|            {
+				|                Base_obj.Value = Utils.DefineTypeIValue(value);
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СтрокаДанных") и (КлассАнгл = "DataItem") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""СтрокаДанных"", ""DataRow"")]
+				|        public TfDataRow DataRow
+				|        {
+				|            get { return ((DataRow)Utils.RevertEqualsObj(Base_obj.M_DataRow)).dll_obj; }
+				|            set { Base_obj.DataRow = value.Base_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ЗначениеПоУмолчанию") и (КлассАнгл = "DataColumn") Тогда
+				Стр = Стр +
+				"        private IValue defaultValue;
+				|        [ContextProperty(""ЗначениеПоУмолчанию"", ""DefaultValue"")]
+				|        public IValue DefaultValue
+				|        {
+				|            get { return defaultValue; }
+				|            set
+				|            {
+				|                defaultValue = value;
+				|                if (value.GetType().ToString().Contains(""ostgui.""))
+				|                {
+				|                    Base_obj.DefaultValue = value;
+				|                }
+				|                else if (Utils.IsString(value))
+				|                {
+				|                    Base_obj.DefaultValue = value.AsString();
+				|                }
+				|                else if (Utils.IsBoolean(value))
+				|                {
+				|                    Base_obj.DefaultValue = value.AsBoolean();
+				|                }
+				|                else if (Utils.IsDateTime(value))
+				|                {
+				|                    Base_obj.DefaultValue = new System.DateTime(
+				|                        value.AsDate().Year,
+				|                        value.AsDate().Month,
+				|                        value.AsDate().Day,
+				|                        value.AsDate().Hour,
+				|                        value.AsDate().Minute,
+				|                        value.AsDate().Second
+				|                        );
+				|                }
+				|                else if (Utils.IsNumber(value))
+				|                {
+				|                    Base_obj.DefaultValue = value.AsNumber();
+				|                }
+				|                else
+				|                {
+				|                    Base_obj.DefaultValue = value;
+				|                }
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Таблица") и (КлассАнгл = "DataColumn") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Таблица"", ""Table"")]
+				|        public TfDataTable Table
+				|        {
+				|            get { return Base_obj.Table.dll_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ТипДанных") и (КлассАнгл = "DataColumn") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ТипДанных"", ""DataType"")]
+				|        public new IValue DataType
+				|        {
+				|            get
+				|            {
+				|                if (Base_obj.DataType == typeof(System.String))
+				|                {
+				|                    return ValueFactory.Create(0);
+				|                }
+				|                if (Base_obj.DataType == typeof(System.Decimal))
+				|                {
+				|                    return ValueFactory.Create(1);
+				|                }
+				|                if (Base_obj.DataType == typeof(System.Boolean))
+				|                {
+				|                    return ValueFactory.Create(2);
+				|                }
+				|                if (Base_obj.DataType == typeof(System.DateTime))
+				|                {
+				|                    return ValueFactory.Create(3);
+				|                }
+				|                if (Base_obj.DataType == typeof(System.Object))
+				|                {
+				|                    return ValueFactory.Create(4);
+				|                }
+				|                return null;
+				|            }
+				|            set
+				|            {
+				|                Base_obj.DataType = typeof(ScriptEngine.Machine.Values.StringValue);
+				|                int type1 = Utils.ToInt32(value);
+				|                if (type1 == 0)
+				|                {
+				|                    Base_obj.DataType = typeof(System.String);
+				|                }
+				|                else if (type1 == 1)
+				|                {
+				|                    Base_obj.DataType = typeof(System.Decimal);
+				|                }
+				|                else if (type1 == 2)
+				|                {
+				|                    Base_obj.DataType = typeof(System.Boolean);
+				|                }
+				|                else if (type1 == 3)
+				|                {
+				|                    Base_obj.DataType = typeof(System.DateTime);
+				|                }
+				|                else if (type1 == 4)
+				|                {
+				|                    Base_obj.DataType = typeof(System.Object);
+				|                }
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Ширина") и (КлассАнгл = "MessageBox") Тогда
+				Стр = Стр +
+				"        private int width = 50;
+				|        [ContextProperty(""Ширина"", ""Width"")]
+				|        public int Width
+				|        {
+				|            get { return width; }
+				|            set { width = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "АвтоРазмер") и (КлассАнгл = "Balloons") Тогда
+				Стр = Стр +
+				"        private bool autoSize = true;
+				|        [ContextProperty(""АвтоРазмер"", ""AutoSize"")]
+				|        public bool AutoSize
+				|        {
+				|            get { return autoSize; }
+				|            set { autoSize = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Высота") и (КлассАнгл = "Balloons") Тогда
+				Стр = Стр +
+				"        private int height = 4;
+				|        [ContextProperty(""Высота"", ""Height"")]
+				|        public int Height
+				|        {
+				|            get { return height; }
+				|            set { height = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Заголовок") и (КлассАнгл = "Balloons") Тогда
+				Стр = Стр +
+				"        private string title = ""Уведомление"";
+				|        [ContextProperty(""Заголовок"", ""Title"")]
+				|        public string Title
+				|        {
+				|            get { return title; }
+				|            set { title = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Игрек") и (КлассАнгл = "Balloons") Тогда
+				Стр = Стр +
+				"        private TfPos y = new TfPos(new Pos(Terminal.Gui.Pos.Center()));
+				|        [ContextProperty(""Игрек"", ""Y"")]
+				|        public TfPos Y
+				|        {
+				|            get { return y; }
+				|            set { y = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Икс") и (КлассАнгл = "Balloons") Тогда
+				Стр = Стр +
+				"        private TfPos x = new TfPos(new Pos(Terminal.Gui.Pos.Center()));
+				|        [ContextProperty(""Икс"", ""X"")]
+				|        public TfPos X
+				|        {
+				|            get { return x; }
+				|            set { x = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Интервал") и (КлассАнгл = "Balloons") Тогда
+				Стр = Стр +
+				"        private int interval = 3000;
+				|        [ContextProperty(""Интервал"", ""Interval"")]
+				|        public int Interval
+				|        {
+				|            get { return interval; }
+				|            set { interval = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Сообщение") и (КлассАнгл = "Balloons") Тогда
+				Стр = Стр +
+				"        private string message = DateTime.Now.ToString();
+				|        [ContextProperty(""Сообщение"", ""Message"")]
+				|        public string Message
+				|        {
+				|            get { return message; }
+				|            set { message = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Ширина") и (КлассАнгл = "Balloons") Тогда
+				Стр = Стр +
+				"        private int width = 50;
+				|        [ContextProperty(""Ширина"", ""Width"")]
+				|        public int Width
+				|        {
+				|            get { return width; }
+				|            set { width = value; }
 				|        }
 				|
 				|";
@@ -1059,12 +2925,30 @@
 				|        }
 				|
 				|";
-			ИначеЕсли (СвойствоРус = "Подэлементы") Тогда
+			ИначеЕсли (СвойствоРус = "Подэлементы") и (КлассАнгл = "Dialog") Тогда
 				Стр = Стр +
 				"        [ContextProperty(""Подэлементы"", ""Subviews"")]
 				|        public TfSubviewCollection Subviews
 				|        {
-				|            get { return new TfSubviewCollection(Base_obj.M_" + КлассАнгл + ".Subviews); }
+				|            get { return new TfSubviewCollection(Base_obj.M_Dialog.Subviews[0].Subviews); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Подэлементы") и (КлассАнгл = "FrameView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Подэлементы"", ""Subviews"")]
+				|        public TfSubviewCollection Subviews
+				|        {
+				|            get { return new TfSubviewCollection((dynamic)Base_obj.M_FrameView.Subviews[0].Subviews); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Подэлементы") и (КлассАнгл = "ScrollView") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Подэлементы"", ""Subviews"")]
+				|        public TfSubviewCollection Subviews
+				|        {
+				|            get { return new TfSubviewCollection(Base_obj.M_ScrollView.Subviews[0].Subviews); }
 				|        }
 				|
 				|";
@@ -1077,31 +2961,12 @@
 				|        }
 				|
 				|";
-			ИначеЕсли (СвойствоРус = "ОсновнойЦвет") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""ОсновнойЦвет"", ""Foreground"")]
-				|        public int Foreground
-				|        {
-				|            get { return Base_obj.Foreground; }
-				|        }
-				|
-				|";
 			ИначеЕсли (СвойствоРус = "ЦветФона") и (КлассАнгл = "Attribute") Тогда
 				Стр = Стр +
 				"        [ContextProperty(""ЦветФона"", ""Background"")]
 				|        public int Background
 				|        {
 				|            get { return Base_obj.Background; }
-				|        }
-				|
-				|";
-			ИначеЕсли (СвойствоРус = "ЦветФона") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""ЦветФона"", ""Background"")]
-				|        public int Background
-				|        {
-				|            get { return Base_obj.Background; }
-				|            set { Base_obj.Background = value; }
 				|        }
 				|
 				|";
@@ -1131,13 +2996,13 @@
 				|        [ContextProperty(""Игрек"", ""Y"")]
 				|        public int Y
 				|        {
-				|            get { return Convert.ToInt32(y.AsNumber()); }
+				|            get { return Utils.ToInt32(y); }
 				|        }
 				|
 				|";
-			ИначеЕсли (СвойствоРус = "Игрек") и (
-				(КлассАнгл = "Point") или 
-				(КлассАнгл = "Rect")) Тогда
+			ИначеЕсли (СвойствоРус = "Игрек") и ((КлассАнгл = "Point") 
+				или (КлассАнгл = "Rect")) 
+				Тогда
 				Стр = Стр +
 				"        [ContextProperty(""Игрек"", ""Y"")]
 				|        public int Y
@@ -1153,13 +3018,13 @@
 				|        [ContextProperty(""Икс"", ""X"")]
 				|        public int X
 				|        {
-				|            get { return Convert.ToInt32(x.AsNumber()); }
+				|            get { return Utils.ToInt32(x); }
 				|        }
 				|
 				|";
-			ИначеЕсли (СвойствоРус = "Икс") и (
-				(КлассАнгл = "Point") или 
-				(КлассАнгл = "Rect")) Тогда
+			ИначеЕсли (СвойствоРус = "Икс") и ((КлассАнгл = "Point") 
+				или (КлассАнгл = "Rect")) 
+				Тогда
 				Стр = Стр +
 				"        [ContextProperty(""Икс"", ""X"")]
 				|        public int X
@@ -1169,23 +3034,13 @@
 				|        }
 				|
 				|";
-			ИначеЕсли (СвойствоРус = "Икс") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""Икс"", ""X"")]
-				|        public TfPos X
-				|        {
-				|            get { return new TfPos(Base_obj.X); }
-				|            set { Base_obj.X = value.Base_obj; }
-				|        }
-				|
-				|";
 			ИначеЕсли (СвойствоРус = "Клавиша") и (КлассАнгл = "EventArgs") Тогда
 				Стр = Стр +
 				"        public IValue keyValue = null;
 				|        [ContextProperty(""Клавиша"", ""KeyValue"")]
 				|        public int KeyValue
 				|        {
-				|            get { return Convert.ToInt32(keyValue.AsNumber()); }
+				|            get { return Utils.ToInt32(keyValue); }
 				|        }
 				|
 				|";
@@ -1265,7 +3120,7 @@
 				|        [ContextProperty(""ФлагиМыши"", ""Flags"")]
 				|        public int Flags
 				|        {
-				|            get { return Convert.ToInt32(flags.AsNumber()); }
+				|            get { return Utils.ToInt32(flags); }
 				|        }
 				|
 				|";
@@ -1430,6 +3285,17 @@
 				|        }
 				|
 				|";
+			ИначеЕсли (СвойствоРус = "СтарыйСтатус") и (КлассАнгл = "EventArgs") Тогда
+				Стр = Стр +
+				"        public IValue oldToggled = null;
+				|        [ContextProperty(""СтарыйСтатус"", ""OldToggled"")]
+				|        public bool OldToggled
+				|        {
+				|            get { return oldToggled.AsBoolean(); }
+				|            set { oldToggled = ValueFactory.Create(value); }
+				|        }
+				|
+				|";
 			ИначеЕсли (СвойствоРус = "Граница") и (КлассАнгл = "EventArgs") Тогда
 				Стр = Стр +
 				"        public TfBorder border = null;
@@ -1437,16 +3303,6 @@
 				|        public TfBorder Border
 				|        {
 				|            get { return border; }
-				|        }
-				|
-				|";
-			ИначеЕсли (СвойствоРус = "Граница") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""Граница"", ""Border"")]
-				|        public TfBorder Border
-				|        {
-				|            get { return Base_obj.Border.dll_obj; }
-				|            set { Base_obj.Border = value.Base_obj; }
 				|        }
 				|
 				|";
@@ -1643,6 +3499,15 @@
 				|        }
 				|
 				|";
+			ИначеЕсли (СвойствоРус = "Количество") и (КлассАнгл = "RadioGroupItems") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Количество"", ""Count"")]
+				|        public int Count
+				|        {
+				|            get { return M_Object.Length; }
+				|        }
+				|
+				|";
 			ИначеЕсли (СвойствоРус = "Родитель") и (КлассАнгл = "MenuBarItem") Тогда
 				Стр = Стр +
 				"        [ContextProperty(""Родитель"", ""Parent"")]
@@ -1658,34 +3523,6 @@
 				|        public IValue Parent
 				|        {
 				|            get { return Base_obj.Parent; }
-				|        }
-				|
-				|";
-			ИначеЕсли (СвойствоРус = "Родитель") и (КлассАнгл = "Window") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""Родитель"", ""SuperView"")]
-				|        public IValue SuperView
-				|        {
-				|            get
-				|            {
-				|                try
-				|                {
-				|                    return OneScriptTerminalGui.RevertEqualsObj(Base_obj.M_Window.Subviews[0].SuperView.SuperView.SuperView).dll_obj;
-				|                }
-				|                catch (Exception)
-				|                {
-				|                    return OneScriptTerminalGui.RevertEqualsObj(Base_obj.M_Window.Subviews[0].SuperView.SuperView).dll_obj;
-				|                }
-				|            }
-				|        }
-				|
-				|";
-			ИначеЕсли (СвойствоРус = "Родитель") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""Родитель"", ""SuperView"")]
-				|        public IValue SuperView
-				|        {
-				|            get { return OneScriptTerminalGui.RevertEqualsObj(Base_obj.SuperView.M_View).dll_obj; }
 				|        }
 				|
 				|";
@@ -1809,16 +3646,6 @@
 				|        }
 				|
 				|";
-			ИначеЕсли (СвойствоРус = "Высота") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""Высота"", ""Height"")]
-				|        public TfDim Height
-				|        {
-				|            get { return Base_obj.Height.dll_obj; }
-				|            set { Base_obj.Height = value.Base_obj; }
-				|        }
-				|
-				|";
 			ИначеЕсли (СвойствоРус = "Верх") и (КлассАнгл = "Thickness") Тогда
 				Стр = Стр +
 				"        [ContextProperty(""Верх"", ""Top"")]
@@ -1895,132 +3722,6 @@
 				|        }
 				|
 				|";
-			ИначеЕсли (СвойствоРус = "Верх") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""Верх"", ""Top"")]
-				|        public TfPos Top
-				|        {
-				|            get { return new TfPos(Base_obj.Top); }
-				|        }
-				|
-				|";
-			ИначеЕсли (СвойствоРус = "Низ") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""Низ"", ""Bottom"")]
-				|        public TfPos Bottom
-				|        {
-				|            get { return new TfPos(Base_obj.Bottom); }
-				|        }
-				|
-				|";
-			ИначеЕсли (СвойствоРус = "Лево") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""Лево"", ""Left"")]
-				|        public TfPos Left
-				|        {
-				|            get { return new TfPos(Base_obj.Left); }
-				|        }
-				|
-				|";
-			ИначеЕсли (СвойствоРус = "Право") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""Право"", ""Right"")]
-				|        public TfPos Right
-				|        {
-				|            get { return new TfPos(Base_obj.Right); }
-				|        }
-				|
-				|";
-			ИначеЕсли (СвойствоРус = "Игрек") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""Игрек"", ""Y"")]
-				|        public TfPos Y
-				|        {
-				|            get { return new TfPos(Base_obj.Y); }
-				|            set { Base_obj.Y = value.Base_obj; }
-				|        }
-				|
-				|";
-			ИначеЕсли (СвойствоРус = "Ширина") и (КлассАнгл = "MessageBox") Тогда
-				Стр = Стр +
-				"        private int width = 50;
-				|        [ContextProperty(""Ширина"", ""Width"")]
-				|        public int Width
-				|        {
-				|            get { return width; }
-				|            set { width = value; }
-				|        }
-				|
-				|";
-			ИначеЕсли (СвойствоРус = "Ширина") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""Ширина"", ""Width"")]
-				|        public TfDim Width
-				|        {
-				|            get { return Base_obj.Width.dll_obj; }
-				|            set { Base_obj.Width = value.Base_obj; }
-				|        }
-				|
-				|";
-			ИначеЕсли (СвойствоРус = "Границы") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""Границы"", ""Bounds"")]
-				|        public TfRect Bounds
-				|        {
-				|            get { return new TfRect(Base_obj.Frame.M_Rect.X, Base_obj.Frame.M_Rect.Y, Base_obj.Bounds.M_Rect.Width, Base_obj.Bounds.M_Rect.Height); }
-				|        }
-				|
-				|";
-			ИначеЕсли (СвойствоРус = "Кадр") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""Кадр"", ""Frame"")]
-				|        public TfRect Frame
-				|        {
-				|            get { return new TfRect(Base_obj.Frame.M_Rect.X, Base_obj.Frame.M_Rect.Y, Base_obj.Frame.M_Rect.Width, Base_obj.Frame.M_Rect.Height); }
-				|            set { Base_obj.Frame = value.Base_obj; }
-				|        }
-				|
-				|";
-			ИначеЕсли (СвойствоРус = "ЦветоваяСхема") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""ЦветоваяСхема"", ""ColorScheme"")]
-				|        public TfColorScheme ColorScheme
-				|        {
-				|            get { return Base_obj.ColorScheme.dll_obj; }
-				|            set { Base_obj.ColorScheme = value.Base_obj; }
-				|        }
-				|
-				|";
-			ИначеЕсли (СвойствоРус = "СимволКлавишиВызова") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""СимволКлавишиВызова"", ""HotKeySpecifier"")]
-				|        public IValue HotKeySpecifier
-				|        {
-				|            get
-				|            {
-				|                if (Base_obj.HotKeySpecifier == (Rune)0xFFFF)
-				|                {
-				|                    return ValueFactory.CreateNullValue();
-				|                }
-				|                else
-				|                {
-				|                    return ValueFactory.Create(Base_obj.HotKeySpecifier.ToString());
-				|                }
-				|            }
-				|            set
-				|            {
-				|                if (value.SystemType.Name == ""Неопределено"")
-				|                {
-				|                    Base_obj.HotKeySpecifier = (Rune)0xFFFF;
-				|                }
-				|                else
-				|                {
-				|                    Base_obj.HotKeySpecifier = value.AsString().ToCharArray()[0];
-				|                }
-				|            }
-				|        }
-				|
-				|";
 			ИначеЕсли (СвойствоРус = "ВертикальноеВыравниваниеТекста") и (КлассАнгл = "Window") Тогда
 				Стр = Стр +
 				"        [ContextProperty(""ВертикальноеВыравниваниеТекста"", ""VerticalTextAlignment"")]
@@ -2040,7 +3741,7 @@
 				|            {
 				|                if (Base_obj.M_Window.Subviews[0].Focused != null)
 				|                {
-				|                    return OneScriptTerminalGui.RevertEqualsObj(Base_obj.M_Window.Subviews[0].Focused).dll_obj;
+				|                    return Utils.RevertEqualsObj(Base_obj.M_Window.Subviews[0].Focused).dll_obj;
 				|                }
 				|                return null;
 				|            }
@@ -2082,27 +3783,8 @@
 				"        [ContextProperty(""ОформительТекста"", ""TextFormatter"")]
 				|        public TfTextFormatter TextFormatter
 				|        {
-				|            get { return OneScriptTerminalGui.RevertEqualsObj(Base_obj.M_Window.Subviews[0].TextFormatter).dll_obj; }
+				|            get { return Utils.RevertEqualsObj(Base_obj.M_Window.Subviews[0].TextFormatter).dll_obj; }
 				|            set { Base_obj.M_Window.Subviews[0].TextFormatter = value.Base_obj.M_TextFormatter; }
-				|        }
-				|
-				|";
-			ИначеЕсли (СвойствоРус = "ОформительТекста") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""ОформительТекста"", ""TextFormatter"")]
-				|        public TfTextFormatter TextFormatter
-				|        {
-				|            get { return Base_obj.TextFormatter.dll_obj; }
-				|            set { Base_obj.TextFormatter = value.Base_obj; }
-				|        }
-				|
-				|";
-			ИначеЕсли (СвойствоРус = "Линии") Тогда
-				Стр = Стр +
-				"        [ContextProperty(""Линии"", ""Lines"")]
-				|        public ArrayImpl Lines
-				|        {
-				|            get { return Base_obj.Lines; }
 				|        }
 				|
 				|";
@@ -2268,19 +3950,6 @@
 				|        }
 				|
 				|";
-			ИначеЕсли (СвойствоРус = "КлавишаВызова") и (
-				(КлассАнгл = "MenuItem") 
-				или (КлассАнгл = "MenuBarItem") 
-				) 
-				Тогда
-				Стр = Стр +
-				"        [ContextProperty(""КлавишаВызова"", ""HotKey"")]
-				|        public string HotKey
-				|        {
-				|            get { return Base_obj.HotKey; }
-				|        }
-				|
-				|";
 			ИначеЕсли (СвойствоРус = "ОтключитьКлавишуВызова") Тогда
 				Стр = Стр +
 				"        private bool disableHotKey = false;
@@ -2314,10 +3983,375 @@
 				|        }
 				|
 				|";
-
-
-
-
+			ИначеЕсли (СвойствоРус = "СтильИндикатора") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""СтильИндикатора"", ""ProgressBarStyle"")]
+				|        public int ProgressBarStyle
+				|        {
+				|            get { return Base_obj.ProgressBarStyle; }
+				|            set { Base_obj.ProgressBarStyle = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ФорматИндикатора") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ФорматИндикатора"", ""ProgressBarFormat"")]
+				|        public int ProgressBarFormat
+				|        {
+				|            get { return Base_obj.ProgressBarFormat; }
+				|            set { Base_obj.ProgressBarFormat = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "МакетПереключателя") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""МакетПереключателя"", ""DisplayMode"")]
+				|        public int DisplayMode
+				|        {
+				|            get { return Base_obj.DisplayMode; }
+				|            set { Base_obj.DisplayMode = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Метки") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Метки"", ""RadioLabels"")]
+				|        public TfRadioGroupItems RadioLabels
+				|        {
+				|            get { return radioGroupItems; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ВыравниваниеКнопок") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ВыравниваниеКнопок"", ""ButtonAlignment"")]
+				|        public int ButtonAlignment
+				|        {
+				|            get { return Base_obj.ButtonAlignment; }
+				|            set { Base_obj.ButtonAlignment = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ДопустимыеФайлы") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ДопустимыеФайлы"", ""AllowedFileTypes"")]
+				|        public ArrayImpl AllowedFileTypes
+				|        {
+				|            get { return Base_obj.AllowedFileTypes; }
+				|            set { Base_obj.AllowedFileTypes = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Файлы") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Файлы"", ""FilePaths"")]
+				|        public ArrayImpl FilePaths
+				|        {
+				|            get { return Base_obj.FilePaths; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Икс") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Икс"", ""X"")]
+				|        public IValue X
+				|        {
+				|            get { return new TfPos(Base_obj.X); }
+				|            set
+				|            {
+				|                if (Utils.IsType<TfPos>(value))
+				|                {
+				|                    Base_obj.M_" + КлассАнгл + ".X = ((TfPos)value).Base_obj.M_Pos;
+				|                }
+				|                else if (Utils.IsNumber(value))
+				|                {
+				|                    Base_obj.M_" + КлассАнгл + ".X = Terminal.Gui.Pos.At(Utils.ToInt32(value));
+				|                }
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ОформительТекста") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ОформительТекста"", ""TextFormatter"")]
+				|        public TfTextFormatter TextFormatter
+				|        {
+				|            get { return Base_obj.TextFormatter.dll_obj; }
+				|            set { Base_obj.TextFormatter = value.Base_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Линии") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Линии"", ""Lines"")]
+				|        public ArrayImpl Lines
+				|        {
+				|            get { return Base_obj.Lines; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Верх") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Верх"", ""Top"")]
+				|        public TfPos Top
+				|        {
+				|            get { return new TfPos(Base_obj.Top); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Низ") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Низ"", ""Bottom"")]
+				|        public TfPos Bottom
+				|        {
+				|            get { return new TfPos(Base_obj.Bottom); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Лево") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Лево"", ""Left"")]
+				|        public TfPos Left
+				|        {
+				|            get { return new TfPos(Base_obj.Left); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Право") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Право"", ""Right"")]
+				|        public TfPos Right
+				|        {
+				|            get { return new TfPos(Base_obj.Right); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Игрек") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Игрек"", ""Y"")]
+				|        public IValue Y
+				|        {
+				|            get { return new TfPos(Base_obj.Y); }
+				|            set
+				|            {
+				|                if (Utils.IsType<TfPos>(value))
+				|                {
+				|                    Base_obj.M_" + КлассАнгл + ".Y = ((TfPos)value).Base_obj.M_Pos;
+				|                }
+				|                else if (Utils.IsNumber(value))
+				|                {
+				|                    Base_obj.M_" + КлассАнгл + ".Y = Terminal.Gui.Pos.At(Utils.ToInt32(value));
+				|                }
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Ширина") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Ширина"", ""Width"")]
+				|        public IValue Width
+				|        {
+				|            get { return new TfDim().Width(this); }
+				|            set
+				|            {
+				|                if (Utils.IsType<TfDim>(value))
+				|                {
+				|                    Base_obj.M_View.Width = ((TfDim)value).Base_obj.M_Dim;
+				|                }
+				|                else if (Utils.IsNumber(value))
+				|                {
+				|                    Base_obj.M_View.Width = Terminal.Gui.Dim.Sized(Utils.ToInt32(value));
+				|                }
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Границы") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Границы"", ""Bounds"")]
+				|        public TfRect Bounds
+				|        {
+				|            get
+				|            {
+				|                Terminal.Gui.Rect bounds = Base_obj.Bounds.M_Rect;
+				|                return new TfRect(bounds.X, bounds.Y, bounds.Width, bounds.Height);
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Кадр") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Кадр"", ""Frame"")]
+				|        public TfRect Frame
+				|        {
+				|            get
+				|            {
+				|                Terminal.Gui.Rect frame = Base_obj.Frame.M_Rect;
+				|                return new TfRect(frame.X, frame.Y, frame.Width, frame.Height);
+				|            }
+				|            set { Base_obj.Frame = value.Base_obj; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ЦветоваяСхема") Тогда
+				Стр = Стр +
+				"        private TfColorScheme colorScheme;
+				|        [ContextProperty(""ЦветоваяСхема"", ""ColorScheme"")]
+				|        public TfColorScheme ColorScheme
+				|        {
+				|            get { return colorScheme; }
+				|            set
+				|            {
+				|                colorScheme = new TfColorScheme();
+				|                Terminal.Gui.ColorScheme _colorScheme = value.Base_obj.M_ColorScheme;
+				|                colorScheme.Base_obj.M_ColorScheme.Disabled = _colorScheme.Disabled;
+				|                colorScheme.Base_obj.M_ColorScheme.Focus = _colorScheme.Focus;
+				|                colorScheme.Base_obj.M_ColorScheme.HotFocus = _colorScheme.HotFocus;
+				|                colorScheme.Base_obj.M_ColorScheme.HotNormal = _colorScheme.HotNormal;
+				|                colorScheme.Base_obj.M_ColorScheme.Normal = _colorScheme.Normal;
+				|                Base_obj.ColorScheme = colorScheme.Base_obj;
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "СимволКлавишиВызова") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""СимволКлавишиВызова"", ""HotKeySpecifier"")]
+				|        public IValue HotKeySpecifier
+				|        {
+				|            get
+				|            {
+				|                if (Base_obj.HotKeySpecifier == (Rune)0xFFFF)
+				|                {
+				|                    return ValueFactory.CreateNullValue();
+				|                }
+				|                else
+				|                {
+				|                    return ValueFactory.Create(Base_obj.HotKeySpecifier.ToString());
+				|                }
+				|            }
+				|            set
+				|            {
+				|                if (value.SystemType.Name == ""Неопределено"")
+				|                {
+				|                    Base_obj.HotKeySpecifier = (Rune)0xFFFF;
+				|                }
+				|                else
+				|                {
+				|                    Base_obj.HotKeySpecifier = value.AsString().ToCharArray()[0];
+				|                }
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Высота") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Высота"", ""Height"")]
+				|        public IValue Height
+				|        {
+				|            get { return new TfDim().Height(this); }
+				|            set
+				|            {
+				|                if (Utils.IsType<TfDim>(value))
+				|                {
+				|                    Base_obj.M_View.Height = ((TfDim)value).Base_obj.M_Dim;
+				|                }
+				|                else if (Utils.IsNumber(value))
+				|                {
+				|                    Base_obj.M_View.Height = Terminal.Gui.Dim.Sized(Utils.ToInt32(value));
+				|                }
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Родитель") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Родитель"", ""SuperView"")]
+				|        public IValue SuperView
+				|        {
+				|            get
+				|            {
+				|                if (Base_obj.M_" + КлассАнгл + ".SuperView.GetType().ToString().Contains(""+ContentView""))
+				|                {
+				|                    return Utils.RevertEqualsObj(Base_obj.M_" + КлассАнгл + ".SuperView.SuperView).dll_obj;
+				|                }
+				|                return Utils.RevertEqualsObj(Base_obj.M_" + КлассАнгл + ".SuperView).dll_obj;
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Граница") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Граница"", ""Border"")]
+				|        public TfBorder Border
+				|        {
+				|            get { return Base_obj.Border.dll_obj; }
+				|            set
+				|            {
+				|                TfBorder border = new TfBorder();
+				|                Terminal.Gui.Border _border = value.Base_obj.M_Border;
+				|                border.Base_obj.M_Border.Background = _border.Background;
+				|                border.Base_obj.M_Border.BorderBrush = _border.BorderBrush;
+				|                border.Base_obj.M_Border.BorderStyle = _border.BorderStyle;
+				|                border.Base_obj.M_Border.BorderThickness = _border.BorderThickness;
+				|                border.Base_obj.M_Border.Effect3D = _border.Effect3D;
+				|                border.Base_obj.M_Border.Effect3DBrush = _border.Effect3DBrush;
+				|                border.Base_obj.M_Border.Effect3DOffset = _border.Effect3DOffset;
+				|                border.Base_obj.M_Border.Padding = _border.Padding;
+				|                border.Base_obj.M_Border.Title = _border.Title;
+				|                Base_obj.Border = border.Base_obj;
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ЦветФона") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ЦветФона"", ""Background"")]
+				|        public int Background
+				|        {
+				|            get { return Base_obj.Background; }
+				|            set { Base_obj.Background = value; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ОсновнойЦвет") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ОсновнойЦвет"", ""Foreground"")]
+				|        public int Foreground
+				|        {
+				|            get { return Base_obj.Foreground; }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "Подэлементы") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""Подэлементы"", ""Subviews"")]
+				|        public TfSubviewCollection Subviews
+				|        {
+				|            get { return new TfSubviewCollection(Base_obj.M_" + КлассАнгл + ".Subviews); }
+				|        }
+				|
+				|";
+			ИначеЕсли (СвойствоРус = "ВФокусе") Тогда
+				Стр = Стр +
+				"        [ContextProperty(""ВФокусе"", ""Focused"")]
+				|        public IValue Focused
+				|        {
+				|            get
+				|            {
+				|                if (Base_obj.M_" + КлассАнгл + ".Focused.GetType().ToString().Contains(""+ContentView""))
+				|                {
+				|                    return Utils.RevertEqualsObj(Base_obj.M_" + КлассАнгл + ".Focused.Focused).dll_obj;
+				|                }
+				|                return Utils.RevertEqualsObj(Base_obj.M_" + КлассАнгл + ".Focused).dll_obj;
+				|            }
+				|        }
+				|
+				|";
+				
+				
+				
+				
 				
 				
 				
@@ -2376,21 +4410,21 @@
 	КонецЕсли;
 	ТекстДокСобытия.Прочитать(ФайлСобытий);
 	СтрТекстДокСобытия = ТекстДокСобытия.ПолучитьТекст();
-	М505 = СтрНайтиМежду(СтрТекстДокСобытия, "<TBODY>", "</TABLE>", Ложь, );
+	М505 = СтрНайтиМежду(СтрТекстДокСобытия, "<tbody>", "</table>", Ложь, );
 	Если Не (М505.Количество() > 1) Тогда
 		Возврат "";
 	КонецЕсли;
 	СтрТаблицаСобытий = М505[1];
-	Массив1 = СтрНайтиМежду(СтрТаблицаСобытий, "<TR vAlign=top>", "</TR>", Ложь, );
+	Массив1 = СтрНайтиМежду(СтрТаблицаСобытий, "<tr vAlign=top>", "</tr>", Ложь, );
 	// Сообщить("Массив1.Количество()=" + Массив1.Количество());
 	Если Массив1.Количество() > 0 Тогда
 		Стр = "";
 		Для А = 0 По Массив1.ВГраница() Цикл
 			//найдем первую ячейку строки таблицы
-			М07 = СтрНайтиМежду(Массив1[А], "<TD width=""50%"">", "</TD>", Ложь, );
+			М07 = СтрНайтиМежду(Массив1[А], "<td width=""50%"">", "</td>", Ложь, );
 			СтрХ = М07[0];
 			СтрХ = СтрЗаменить(СтрХ, "&nbsp;", " ");
-			ИмяФайлаСобытия = КаталогСправки + "\" + СтрНайтиМежду(СтрХ, "<A href=""", """>", , )[0];
+			ИмяФайлаСобытия = КаталогСправки + "\" + СтрНайтиМежду(СтрХ, "<a href=""", """>", , )[0];
 			// Сообщить("ИмяФайлаСобытия = " + ИмяФайлаСобытия);
 			
 			КаталогНаДиске = Новый Файл(ИмяФайлаСобытия);
@@ -2401,8 +4435,8 @@
 			ТекстДокСобытия = Новый ТекстовыйДокумент;
 			ТекстДокСобытия.Прочитать(ИмяФайлаСобытия);
 			СтрТекстДокСобытия = ТекстДокСобытия.ПолучитьТекст();
-			// <H1 class=dtH1>Кнопка.Нажатие&nbsp;(Button.Clicked)&nbsp;Событие</H1>
-			М506 = СтрНайтиМежду(СтрТекстДокСобытия, "<H1 class=dtH1>", "Событие</H1>", , );
+			// <h1 class=dtH1>Кнопка.Нажатие&nbsp;(Button.Clicked)&nbsp;Событие</h1>
+			М506 = СтрНайтиМежду(СтрТекстДокСобытия, "<h1 class=dtH1>", "Событие</h1>", , );
 			Если М506.Количество() > 0 Тогда
 				Стр506 = М506[0];
 				Стр506 = СтрЗаменить(Стр506, "&nbsp;", ".");
@@ -2470,21 +4504,21 @@
 	КонецЕсли;
 	ТекстДокМетоды.Прочитать(ФайлМетодов);
 	СтрТекстДокМетоды = ТекстДокМетоды.ПолучитьТекст();
-	М505 = СтрНайтиМежду(СтрТекстДокМетоды, "<TBODY>", "</TABLE>", Ложь, );
+	М505 = СтрНайтиМежду(СтрТекстДокМетоды, "<tbody>", "</table>", Ложь, );
 	Если Не (М505.Количество() > 1) Тогда
 		Возврат "";
 	КонецЕсли;
 	СтрТаблицаСвойств = М505[1];
-	Массив1 = СтрНайтиМежду(СтрТаблицаСвойств, "<TR vAlign=top>", "</TR>", Ложь, );
+	Массив1 = СтрНайтиМежду(СтрТаблицаСвойств, "<tr vAlign=top>", "</tr>", Ложь, );
 	// Сообщить("Массив1.Количество()=" + Массив1.Количество());
 	Если Массив1.Количество() > 0 Тогда
 		Стр = "";
 		Для А = 0 По Массив1.ВГраница() Цикл
-			М07 = СтрНайтиМежду(Массив1[А], "<TD width=""50%"">", "</TD>", Ложь, );
+			М07 = СтрНайтиМежду(Массив1[А], "<td width=""50%"">", "</td>", Ложь, );
 			СтрХ = М07[0];
 			СтрХ = СтрЗаменить(СтрХ, "&nbsp;", " ");
 			
-			ИмяФайлаМетода = КаталогСправки + "\" + СтрНайтиМежду(СтрХ, "<A href=""", """>", , )[0];
+			ИмяФайлаМетода = КаталогСправки + "\" + СтрНайтиМежду(СтрХ, "<a href=""", """>", , )[0];
 			
 			КаталогНаДиске = Новый Файл(ИмяФайлаМетода);
 			Если Не КаталогНаДиске.Существует() Тогда
@@ -2494,8 +4528,8 @@
 			ТекстДокСвойства = Новый ТекстовыйДокумент;
 			ТекстДокСвойства.Прочитать(ИмяФайлаМетода);
 			СтрТекстДокМетода = ТекстДокСвойства.ПолучитьТекст();
-			// <H1 class=dtH1>Верхний.Добавить (Toplevel.Add)&nbsp;Метод</H1>
-			М506 = СтрНайтиМежду(СтрТекстДокМетода, "<H1 class=dtH1>", "Метод</H1>", , );
+			// <h1 class=dtH1>Верхний.Добавить (Toplevel.Add)&nbsp;Метод</h1>
+			М506 = СтрНайтиМежду(СтрТекстДокМетода, "<h1 class=dtH1>", "Метод</h1>", , );
 			Если М506.Количество() > 0 Тогда
 				Стр506 = М506[0];
 				Стр506 = СтрЗаменить(Стр506, "&nbsp;", "");
@@ -2525,6 +4559,447 @@
 				|        }
 				|
 				|";
+			ИначеЕсли (МетодРус = "ПереместитьВыбор") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПереместитьВыбор"", ""AdjustSelection"")]
+				|        public void AdjustSelection(int p1, bool p2 = false)
+				|        {
+				|            Base_obj.AdjustSelection(p1, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ЦветЯчеек") и (КлассАнгл = "ColumnStyle") Тогда
+				Стр = Стр +
+				"        public void SetCellColor(int rowIndex, int index, object[,] array, ref Terminal.Gui.ColorScheme colorScheme)
+				|        {
+				|            if (rowIndex == (int)array[index, 0])
+				|            {
+				|                colorScheme = (TfColorScheme)array[index, 1] != null ? ((TfColorScheme)array[index, 1]).Base_obj.M_ColorScheme : null;
+				|            }
+				|            else
+				|            {
+				|                index++;
+				|                if (index <= ((array.Length / 2) - 1))
+				|                {
+				|                    SetCellColor(rowIndex, index, array, ref colorScheme);
+				|                }
+				|            }
+				|        }
+				|
+				|        [ContextMethod(""ЦветЯчеек"", ""CellsColor"")]
+				|        public void CellsColor(MapImpl p1)
+				|        {
+				|            object[,] array1 = new object[p1.Count(), 2];
+				|            int num = 0;
+				|            foreach (var item in p1)
+				|            {
+				|                array1[num, 0] = Utils.ToInt32(item.Key);
+				|                array1[num, 1] = (TfColorScheme)item.Value;
+				|                num++;
+				|            }
+				|            Base_obj.M_ColumnStyle.ColorGetter = (a) =>
+				|            {
+				|                Terminal.Gui.ColorScheme colorScheme = null;
+				|                SetCellColor(a.RowIndex, 0, array1, ref colorScheme);
+				|                return colorScheme;
+				|            };
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Абсолютное") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Абсолютное"", ""Abs"")]
+				|        public decimal Abs(decimal p1)
+				|        {
+				|            return System.Math.Abs(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "АКосинус") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""АКосинус"", ""Acos"")]
+				|        public double Acos(double p1)
+				|        {
+				|            return System.Math.Acos(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "АСинус") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""АСинус"", ""Asin"")]
+				|        public double Asin(double p1)
+				|        {
+				|            return System.Math.Asin(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "АТангенс") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""АТангенс"", ""Atan"")]
+				|        public double Atan(double p1)
+				|        {
+				|            return System.Math.Atan(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "АТангенс2") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""АТангенс2"", ""Atan2"")]
+				|        public double Atan2(double p1, double p2)
+				|        {
+				|            return System.Math.Atan2(p1, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Большее") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Большее"", ""Max"")]
+				|        public decimal Max(decimal p1, decimal p2)
+				|        {
+				|            return System.Math.Max(p1, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ГКосинус") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ГКосинус"", ""Cosh"")]
+				|        public double Cosh(double p1)
+				|        {
+				|            return System.Math.Cosh(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ГСинус") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ГСинус"", ""Sinh"")]
+				|        public double Sinh(double p1)
+				|        {
+				|            return System.Math.Sinh(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ГТангенс") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ГТангенс"", ""Tanh"")]
+				|        public double Tanh(double p1)
+				|        {
+				|            return System.Math.Tanh(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Знак") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Знак"", ""Sign"")]
+				|        public int Sign(decimal p1)
+				|        {
+				|            return System.Math.Sign(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ККорень") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ККорень"", ""Sqrt"")]
+				|        public double Sqrt(double p1)
+				|        {
+				|            return System.Math.Sqrt(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Косинус") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Косинус"", ""Cos"")]
+				|        public double Cos(double p1)
+				|        {
+				|            return System.Math.Cos(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Логарифм") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Логарифм"", ""Log"")]
+				|        public double Log(double p1)
+				|        {
+				|            return System.Math.Log(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Логарифм10") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Логарифм10"", ""Log10"")]
+				|        public double Log10(double p1)
+				|        {
+				|            return System.Math.Log10(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Меньшее") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Меньшее"", ""Min"")]
+				|        public decimal Min(decimal p1, decimal p2)
+				|        {
+				|            return System.Math.Min(p1, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "НаибольшееЦелое") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""НаибольшееЦелое"", ""Floor"")]
+				|        public double Floor(double p1)
+				|        {
+				|            return System.Math.Floor(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "НаименьшееЦелое") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""НаименьшееЦелое"", ""Ceiling"")]
+				|        public double Ceiling(double p1)
+				|        {
+				|            return System.Math.Ceiling(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Окр") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Окр"", ""Round"")]
+				|        public double Round(double p1, int p2)
+				|        {
+				|            return System.Math.Round(p1, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ОстатокДеления") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ОстатокДеления"", ""DivRem"")]
+				|        public decimal DivRem(decimal p1, decimal p2)
+				|        {
+				|            return p1 % p2;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Синус") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Синус"", ""Sin"")]
+				|        public double Sin(double p1)
+				|        {
+				|            return System.Math.Sin(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Случайное") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Случайное"", ""Random"")]
+				|        public double Random()
+				|        {
+				|            return new System.Random().NextDouble();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Степень") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Степень"", ""Pow"")]
+				|        public double Pow(double p1, double p2)
+				|        {
+				|            return System.Math.Pow(p1, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Тангенс") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Тангенс"", ""Tan"")]
+				|        public double Tan(double p1)
+				|        {
+				|            return System.Math.Tan(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Целое") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Целое"", ""Truncate"")]
+				|        public decimal Truncate(decimal p1)
+				|        {
+				|            return System.Math.Truncate(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Четное") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Четное"", ""Even"")]
+				|        public IValue Even(IValue p1)
+				|        {
+				|            if (p1.AsNumber() - (System.Math.Floor(p1.AsNumber())) > 0)
+				|            {
+				|                return null;
+				|            }
+				|            return ValueFactory.Create((p1.AsNumber() % 2) == 0);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Экспонента") и (КлассАнгл = "Math") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Экспонента"", ""Exp"")]
+				|        public double Exp(double p1)
+				|        {
+				|            return System.Math.Exp(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "КнопкаОткрыть") и (КлассАнгл = "OpenDialog") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""КнопкаОткрыть"", ""OpenButton"")]
+				|        public TfButton OpenButton()
+				|        {
+				|            return new TfButton((Terminal.Gui.Button)Base_obj.M_OpenDialog.Subviews[0].Subviews[8]);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "КнопкаОтмена") и (КлассАнгл = "OpenDialog") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""КнопкаОтмена"", ""CancelButton"")]
+				|        public TfButton CancelButton()
+				|        {
+				|            return new TfButton((Terminal.Gui.Button)Base_obj.M_OpenDialog.Subviews[0].Subviews[7]);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "КнопкаСохранить") и (КлассАнгл = "SaveDialog") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""КнопкаСохранить"", ""SaveButton"")]
+				|        public TfButton SaveButton()
+				|        {
+				|            return new TfButton((Terminal.Gui.Button)Base_obj.M_SaveDialog.Subviews[0].Subviews[8]);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "КнопкаОтмена") и (КлассАнгл = "SaveDialog") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""КнопкаОтмена"", ""CancelButton"")]
+				|        public TfButton CancelButton()
+				|        {
+				|            return new TfButton((Terminal.Gui.Button)Base_obj.M_SaveDialog.Subviews[0].Subviews[7]);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Показать") и (КлассАнгл = "Balloons") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Показать"", ""Show"")]
+				|        public void Show(string p1 = null, int p2 = 3000, string p3 = ""Уведомление"", TfPos p4 = null, TfPos p5 = null)
+				|        {
+				|            int _interval = this.Interval;
+				|            string _text = this.Message;
+				|            string _title = this.Title;
+				|            TfPos _x = this.X;
+				|            TfPos _y = this.Y;
+				|            if (p1 != null)
+				|            {
+				|                _text = p1;
+				|            }
+				|            if (p2 != 3000)
+				|            {
+				|                _interval = p2;
+				|            }
+				|            if (p3 != ""Уведомление"")
+				|            {
+				|                _title = p3;
+				|            }
+				|            if (p4 != null)
+				|            {
+				|                _x = p4;
+				|            }
+				|            if (p5 != null)
+				|            {
+				|                _y = p5;
+				|            }
+				|
+				|            ArrayImpl buttons = new ArrayImpl();
+				|            buttons.Add(ValueFactory.Create(""OK""));
+				|
+				|            int maxLengthButtons = 0;
+				|            NStack.ustring[] _buttons = new NStack.ustring[buttons.Count()];
+				|            for (int i = 0; i < buttons.Count(); i++)
+				|            {
+				|                string str = buttons.Get(i).AsString();
+				|                maxLengthButtons = maxLengthButtons + str.Length + 8;
+				|                _buttons[i] = str;
+				|            }
+				|
+				|            TfTextFormatter TfTextFormatter1 = new TfTextFormatter();
+				|            TfTextFormatter1.Text = _text;
+				|            TfSize TfSize1 = TfTextFormatter1.GetAutoSize();
+				|            int _height = TfSize1.Height + 1;
+				|            int _widthMessage = TfSize1.Width;
+				|            int _widthTitle = Title.Length + 5;
+				|            int _widthTerminal = Application.Driver.Cols - 8;
+				|            int _width = Math.Max(_widthMessage, Math.Max(_widthTitle, maxLengthButtons)) + 3;
+				|            if (_width >= _widthTerminal)
+				|            {
+				|                _width = _widthTerminal;
+				|            }
+				|            int _heightTerminal = Application.Driver.Rows - 8;
+				|            if (_height >= _heightTerminal)
+				|            {
+				|                _height = _heightTerminal;
+				|            }
+				|            if (!AutoSize)
+				|            {
+				|                _width = Width;
+				|                _height = Height;
+				|            }
+				|
+				|            var dialog = new Terminal.Gui.Dialog()
+				|            {
+				|                X = _x.Base_obj.M_Pos,
+				|                Y = _y.Base_obj.M_Pos,
+				|                Width = _width,
+				|                Height = _height + 3,
+				|                Title = _title,
+				|            };
+				|
+				|            Terminal.Gui.Rect rect = new Terminal.Gui.Rect(0, 0, dialog.Frame.Width - 2, dialog.Frame.Height - 3);
+				|            Terminal.Gui.ScrollView scrollView = new Terminal.Gui.ScrollView(rect);
+				|            scrollView.ColorScheme = dialog.ColorScheme;
+				|            scrollView.ContentSize = new Terminal.Gui.Size(scrollView.Frame.Width - 1, dialog.Frame.Height);
+				|            scrollView.ContentOffset = new Terminal.Gui.Point(0, 0);
+				|            scrollView.ShowVerticalScrollIndicator = true;
+				|            scrollView.ShowHorizontalScrollIndicator = false;
+				|
+				|            // нужно рассчитать myHeight наверное через TextFormatter
+				|            int myHeight = scrollView.Frame.Height + 5;
+				|
+				|            Terminal.Gui.Rect rect2 = new Terminal.Gui.Rect(0, 0, scrollView.Frame.Width, myHeight);
+				|            Terminal.Gui.TextView textView = new Terminal.Gui.TextView(rect2);
+				|            textView.Text = _text;
+				|            textView.WordWrap = true;
+				|            textView.ColorScheme = dialog.ColorScheme;
+				|            textView.ReadOnly = true;
+				|            scrollView.Add(textView);
+				|
+				|            dialog.Add(scrollView);
+				|
+				|            Application.Top.Add(dialog);
+				|            var defaultButton = new Terminal.Gui.Button(""OK"")
+				|            {
+				|                IsDefault = true,
+				|            };
+				|            defaultButton.Clicked += () => Application.Top.Remove(dialog);
+				|            dialog.AddButton(defaultButton);
+				|
+				|            defaultButton.SetFocus();
+				|
+				|            TimeSpan timeSpan = TimeSpan.FromMilliseconds(p2);
+				|            if (p2 == -1)
+				|            {
+				|                // Установим 20 лет.
+				|                timeSpan = TimeSpan.FromDays(7300);
+				|            }
+				|            object token = Application.MainLoop.AddTimeout(timeSpan, (m) =>
+				|            {
+				|                Application.Top.Remove(dialog);
+				|                return false;
+				|            });
+				|        }
+				|
+				|";
 			ИначеЕсли (МетодРус = "Добавить") и (КлассАнгл = "Point") Тогда
 				Стр = Стр +
 				"        [ContextMethod(""Добавить"", ""Add"")]
@@ -2548,42 +5023,45 @@
 			ИначеЕсли (МетодРус = "Добавить") и (КлассАнгл = "Toplevel") Тогда
 				Стр = Стр +
 				"        [ContextMethod(""Добавить"", ""Add"")]
-				|        public void Add(IValue p1)
+				|        public IValue Add(IValue p1)
 				|        {
 				|            Base_obj.Add(((dynamic)p1).Base_obj);
+				|            return p1;
 				|        }
 				|
 				|";
 			ИначеЕсли (МетодРус = "Добавить") и (КлассАнгл = "MenusCollection") Тогда
 				Стр = Стр +
 				"        [ContextMethod(""Добавить"", ""Add"")]
-				|        public void Add(TfMenuBarItem p1)
+				|        public TfMenuBarItem Add(TfMenuBarItem p1)
 				|        {
 				|            Terminal.Gui.MenuBarItem[] MenuBarItem2 = new Terminal.Gui.MenuBarItem[M_Object.Length + 1];
 				|            M_Object.CopyTo(MenuBarItem2, 0);
 				|            MenuBarItem2[M_Object.Length] = p1.Base_obj.M_MenuBarItem;
 				|            M_Object = MenuBarItem2;
 				|            p1.M_MenuBar = M_MenuBar;
+				|            return p1;
 				|        }
 				|
 				|";
 			ИначеЕсли (МетодРус = "Добавить") и (КлассАнгл = "StatusBarItems") Тогда
 				Стр = Стр +
 				"        [ContextMethod(""Добавить"", ""Add"")]
-				|        public void Add(TfStatusItem p1)
+				|        public TfStatusItem Add(TfStatusItem p1)
 				|        {
 				|            Terminal.Gui.StatusItem[] StatusItem2 = new Terminal.Gui.StatusItem[M_Object.Length + 1];
 				|            M_Object.CopyTo(StatusItem2, 0);
 				|            StatusItem2[M_Object.Length] = p1.Base_obj.M_StatusItem;
 				|            M_Object = StatusItem2;
 				|            p1.M_StatusBar = M_StatusBar;
+				|            return p1;
 				|        }
 				|
 				|";
 			ИначеЕсли (МетодРус = "Добавить") и (КлассАнгл = "MenuBarItemChildren") Тогда
 				Стр = Стр +
 				"        [ContextMethod(""Добавить"", ""Add"")]
-				|        public void Add(IValue p1 = null)
+				|        public IValue Add(IValue p1 = null)
 				|        {
 				|            if (p1 == null)
 				|            {
@@ -2599,24 +5077,83 @@
 				|                MenuItem2[M_Object.Length] = (Terminal.Gui.MenuItem)((dynamic)p1).Base_obj.M_MenuItem;
 				|                M_Object = MenuItem2;
 				|            }
+				|            return p1;
 				|        }
 				|
 				|";
-			ИначеЕсли (МетодРус = "Добавить") Тогда
+			ИначеЕсли (МетодРус = "Добавить") и (КлассАнгл = "RadioGroupItems") Тогда
 				Стр = Стр +
 				"        [ContextMethod(""Добавить"", ""Add"")]
-				|        public void Add(IValue p1)
+				|        public void Add(string p1)
 				|        {
-				|            Base_obj.Add(((dynamic)p1).Base_obj);
+				|            ustring[] ustring2 = new ustring[M_Object.Length + 1];
+				|            M_Object.CopyTo(ustring2, 0);
+				|            ustring2[M_Object.Length] = p1;
+				|            M_Object = ustring2;
 				|        }
 				|
 				|";
-			ИначеЕсли (МетодРус = "ВСтроку") Тогда
+			ИначеЕсли (МетодРус = "Добавить") и (КлассАнгл = "TabsCollection") Тогда
 				Стр = Стр +
-				"        [ContextMethod(""ВСтроку"", ""ToString"")]
-				|        public new string ToString()
+				"        [ContextMethod(""Добавить"", ""Add"")]
+				|        public void Add(TfTabPage p1, bool p2)
 				|        {
-				|            return Base_obj.ToString();
+				|            M_TabView.AddTab(p1.Base_obj.M_TabPage, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Добавить") и (КлассАнгл = "TreeNode") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Добавить"", ""Add"")]
+				|        public TfTreeNode Add(TfTreeNode p1)
+				|        {
+				|            Base_obj.Add(p1.Base_obj);
+				|            return p1;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Добавить") и (КлассАнгл = "DataRowCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Добавить"", ""Add"")]
+				|        public TfDataRow Add(TfDataRow p1)
+				|        {
+				|            return new TfDataRow(Base_obj.Add(p1.Base_obj));
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Добавить") и (КлассАнгл = "DataColumnCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Добавить"", ""Add"")]
+				|        public TfDataColumn Add(TfDataColumn p1)
+				|        {
+				|            return new TfDataColumn(Base_obj.Add(p1.Base_obj));
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Добавить") и (КлассАнгл = "ColumnStyles") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Добавить"", ""Add"")]
+				|        public void Add(TfDataColumn key, TfColumnStyle item)
+				|        {
+				|            Base_obj.Add(key.Base_obj.M_DataColumn, item.Base_obj.M_ColumnStyle);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Удалить") и (КлассАнгл = "ColumnStyles") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Удалить"", ""Remove"")]
+				|        public void Remove(TfDataColumn p1)
+				|        {
+				|            Base_obj.Remove(p1.Base_obj.M_DataColumn);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Получить") и (КлассАнгл = "SubviewCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Получить"", ""Get"")]
+				|        public IValue Get(int p1)
+				|        {
+				|            return Utils.RevertEqualsObj(Base_obj.M_SubviewCollection[p1]).dll_obj;
 				|        }
 				|
 				|";
@@ -2642,9 +5179,9 @@
 				|            {
 				|                return ValueFactory.Create(Base_obj.Contains(((TfPoint)p1).Base_obj.M_Point));
 				|            }
-				|            else if (p1.SystemType.Name == ""Число"" && p2 != null)
+				|            else if (Utils.IsNumber(p1) && p2 != null)
 				|            {
-				|                return ValueFactory.Create(Base_obj.Contains(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber())));
+				|                return ValueFactory.Create(Base_obj.Contains(Utils.ToInt32(p1), Utils.ToInt32(p2)));
 				|            }
 				|            else
 				|            {
@@ -2678,21 +5215,12 @@
 				|        {
 				|            try
 				|            {
-				|                return OneScriptTerminalGui.RevertEqualsObj(Base_obj.M_Window.Subviews[0].SuperView.SuperView.SuperView.GetTopSuperView()).dll_obj;
+				|                return Utils.RevertEqualsObj(Base_obj.M_Window.Subviews[0].SuperView.SuperView.SuperView.GetTopSuperView()).dll_obj;
 				|            }
 				|            catch (Exception)
 				|            {
-				|                return OneScriptTerminalGui.RevertEqualsObj(Base_obj.M_Window.Subviews[0].SuperView.SuperView.GetTopSuperView()).dll_obj;
+				|                return Utils.RevertEqualsObj(Base_obj.M_Window.Subviews[0].SuperView.SuperView.GetTopSuperView()).dll_obj;
 				|            }
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "ВерхнийРодитель") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""ВерхнийРодитель"", ""GetTopSuperView"")]
-				|        public IValue GetTopSuperView()
-				|        {
-				|            return Base_obj.GetTopSuperView().dll_obj;
 				|        }
 				|
 				|";
@@ -2705,24 +5233,6 @@
 				|        }
 				|
 				|";
-			ИначеЕсли (МетодРус = "НаШагВперед") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""НаШагВперед"", ""BringSubviewForward"")]
-				|        public void BringSubviewForward(IValue p1)
-				|        {
-				|            Base_obj.BringSubviewForward(((dynamic)p1).Base_obj);
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "Обновить") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""Обновить"", ""SetNeedsDisplay"")]
-				|        public void SetNeedsDisplay(TfRect p1 = null)
-				|        {
-				|            Base_obj.SetNeedsDisplay(p1.Base_obj);
-				|        }
-				|
-				|";
 			ИначеЕсли (МетодРус = "НаЗаднийПлан") и (КлассАнгл = "Window") Тогда
 				Стр = Стр +
 				"        [ContextMethod(""НаЗаднийПлан"", ""SendSubviewToBack"")]
@@ -2732,30 +5242,12 @@
 				|        }
 				|
 				|";
-			ИначеЕсли (МетодРус = "НаЗаднийПлан") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""НаЗаднийПлан"", ""SendSubviewToBack"")]
-				|        public void SendSubviewToBack(IValue p1)
-				|        {
-				|            Base_obj.SendSubviewToBack(((dynamic)p1).Base_obj);
-				|        }
-				|
-				|";
 			ИначеЕсли (МетодРус = "НаШагНазад") и (КлассАнгл = "Window") Тогда
 				Стр = Стр +
 				"        [ContextMethod(""НаШагНазад"", ""SendSubviewBackwards"")]
 				|        public void SendSubviewBackwards(IValue p1)
 				|        {
 				|            Base_obj.M_Window.Subviews[0].SendSubviewBackwards(((dynamic)p1).Base_obj.M_View);
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "НаШагНазад") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""НаШагНазад"", ""SendSubviewBackwards"")]
-				|        public void SendSubviewBackwards(IValue p1)
-				|        {
-				|            Base_obj.SendSubviewBackwards(((dynamic)p1).Base_obj);
 				|        }
 				|
 				|";
@@ -2835,35 +5327,6 @@
 				|        }
 				|
 				|";
-			ИначеЕсли (МетодРус = "Перерисовать") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""Перерисовать"", ""Redraw"")]
-				|        public void Redraw(TfRect p1)
-				|        {
-				|            Base_obj.Redraw(p1.Base_obj);
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "ПерерисоватьДочерние") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""ПерерисоватьДочерние"", ""SetChildNeedsDisplay"")]
-				|        public void SetChildNeedsDisplay()
-				|        {
-				|            Base_obj.SetChildNeedsDisplay();
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "УстановитьАвтоРазмер") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""УстановитьАвтоРазмер"", ""SetAutoSize"")]
-				|        public void SetAutoSize()
-				|        {
-				|            TfSize TfSize1 = GetAutoSize();
-				|            Width = new TfDim().Sized(TfSize1.Width);
-				|            Height = new TfDim().Sized(TfSize1.Height);
-				|        }
-				|
-				|";
 			ИначеЕсли (МетодРус = "ПолучитьАвтоРазмер") и (
 				КлассАнгл = "Button" 
 				или КлассАнгл = "Toplevel") 
@@ -2909,50 +5372,6 @@
 				|        }
 				|
 				|";
-			ИначеЕсли (МетодРус = "ПолучитьАвтоРазмер") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""ПолучитьАвтоРазмер"", ""GetAutoSize"")]
-				|        public TfSize GetAutoSize()
-				|        {
-				|            int offsetWidth = 0;
-				|            int offsetHeight = 0;
-				|            try
-				|            {
-				|                offsetWidth = Border.BorderThickness.Left + Border.BorderThickness.Right;
-				|                offsetHeight = Border.BorderThickness.Top + Border.BorderThickness.Bottom;
-				|            }
-				|            catch { }
-				|            int MaxWidthLine = Terminal.Gui.TextFormatter.MaxWidthLine(Text);
-				|            int MaxLines = Terminal.Gui.TextFormatter.MaxLines(Text, MaxWidthLine);
-				|            try
-				|            {
-				|                return new TfSize(MaxWidthLine + 2 + offsetWidth, MaxLines + 2 + offsetHeight);
-				|            }
-				|            catch
-				|            {
-				|                return null;
-				|            }
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "РазместитьПодэлементы") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""РазместитьПодэлементы"", ""LayoutSubviews"")]
-				|        public void LayoutSubviews()
-				|        {
-				|            Base_obj.LayoutSubviews();
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "ТочкаНаЭлементе") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""ТочкаНаЭлементе"", ""ScreenToView"")]
-				|        public TfPoint ScreenToView(int p1, int p2)
-				|        {
-				|            return new TfPoint(Base_obj.ScreenToView(p1, p2));
-				|        }
-				|
-				|";
 			ИначеЕсли (МетодРус = "Удалить") и (КлассАнгл = "StatusBarItems") Тогда
 				Стр = Стр +
 				"        [ContextMethod(""Удалить"", ""Remove"")]
@@ -2979,6 +5398,71 @@
 				|        public void Remove(TfMenuBarItem p1)
 				|        {
 				|            Menus.Remove(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Удалить") и (КлассАнгл = "RadioGroupItems") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Удалить"", ""Remove"")]
+				|        public void Remove(string p1)
+				|        {
+				|            ustring[] ustring2 = new ustring[M_Object.Length - 1];
+				|            int index = 0;
+				|            for (int i = 0; i < M_Object.Length; i++)
+				|            {
+				|                ustring ustring1 = M_Object[i];
+				|                if (ustring1 != p1)
+				|                {
+				|                    ustring2[index] = ustring1;
+				|                    index++;
+				|                }
+				|            }
+				|            M_Object = ustring2;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Удалить") и (КлассАнгл = "TabsCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Удалить"", ""Remove"")]
+				|        public void Remove(TfTabPage p1)
+				|        {
+				|            M_TabView.RemoveTab(p1.Base_obj.M_TabPage);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Удалить") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Удалить"", ""Remove"")]
+				|        public void Remove(TfTreeNode p1)
+				|        {
+				|            Base_obj.Remove(p1.Base_obj);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Удалить") и (КлассАнгл = "DataRowCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Удалить"", ""Remove"")]
+				|        public void Remove(TfDataRow p1)
+				|        {
+				|            Base_obj.Remove(p1.Base_obj);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Удалить") и (КлассАнгл = "DataRow") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Удалить"", ""Delete"")]
+				|        public void Delete()
+				|        {
+				|            Base_obj.Delete();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Удалить") и (КлассАнгл = "DataColumnCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Удалить"", ""Remove"")]
+				|        public void Remove(TfDataColumn p1)
+				|        {
+				|            Base_obj.Remove(p1.Base_obj);
 				|        }
 				|
 				|";
@@ -3010,51 +5494,6 @@
 				|        }
 				|
 				|";
-			ИначеЕсли (МетодРус = "УдалитьВсе") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""УдалитьВсе"", ""RemoveAll"")]
-				|        public void RemoveAll()
-				|        {
-				|            Base_obj.RemoveAll();
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "УстановитьФокус") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""УстановитьФокус"", ""SetFocus"")]
-				|        public void SetFocus()
-				|        {
-				|            Base_obj.SetFocus();
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "ЦветВыделенного") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""ЦветВыделенного"", ""GetHotNormalColor"")]
-				|        public TfAttribute GetHotNormalColor()
-				|        {
-				|            return new TfAttribute(Base_obj.GetHotNormalColor());
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "ЦветОбычного") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""ЦветОбычного"", ""GetNormalColor"")]
-				|        public TfAttribute GetNormalColor()
-				|        {
-				|            return new TfAttribute(Base_obj.GetNormalColor());
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "ЦветФокуса") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""ЦветФокуса"", ""GetFocusColor"")]
-				|        public TfAttribute GetFocusColor()
-				|        {
-				|            return new TfAttribute(Base_obj.GetFocusColor());
-				|        }
-				|
-				|";
 			ИначеЕсли (МетодРус = "Вычесть") и (КлассАнгл = "Point") Тогда
 				Стр = Стр +
 				"        [ContextMethod(""Вычесть"", ""Subtract"")]
@@ -3082,65 +5521,12 @@
 				|        }
 				|
 				|";
-			ИначеЕсли (МетодРус = "Вычесть") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""Вычесть"", ""Subtract"")]
-				|        public TfSize Subtract(TfSize p1, TfSize p2)
-				|        {
-				|            return new TfSize(Base_obj.Subtract(p1.Base_obj, p2.Base_obj));
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "ИзГраниц") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""ИзГраниц"", ""FromLTRB"")]
-				|        public TfRect FromLTRB(int p1, int p2, int p3, int p4)
-				|        {
-				|            return new TfRect(Base_obj.FromLTRB(p1, p2, p3, p4));
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "Образовать") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""Образовать"", ""Inflate"")]
-				|        public TfRect Inflate(IValue p1, IValue p2 = null, IValue p3 = null)
-				|        {
-				|            if (p1.GetType() == typeof(TfSize))
-				|            {
-				|                Base_obj.Inflate(((TfSize)p1).Base_obj.M_Size);
-				|                return this;
-				|            }
-				|            else if (p1.SystemType.Name == ""Число"" && p2.SystemType.Name == ""Число"")
-				|            {
-				|                Base_obj.Inflate(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()));
-				|                return this;
-				|            }
-				|            else if (p1.GetType() == typeof(TfRect) && p2.SystemType.Name == ""Число"" && p3.SystemType.Name == ""Число"")
-				|            {
-				|                return new TfRect(Base_obj.Inflate(((TfRect)p1).Base_obj, Convert.ToInt32(p2.AsNumber()), Convert.ToInt32(p3.AsNumber())));
-				|            }
-				|            else
-				|            {
-				|                return null;
-				|            }
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "Сместить") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""Сместить"", ""Offset"")]
-				|        public void Offset(int p1, int p2)
-				|        {
-				|            Base_obj.Offset(p1, p2);
-				|        }
-				|
-				|";
 			ИначеЕсли (МетодРус = "Элемент") и (КлассАнгл = "SubviewCollection") Тогда
 				Стр = Стр +
 				"        [ContextMethod(""Элемент"", ""Item"")]
 				|        public IValue Item(int p1)
 				|        {
-				|            return OneScriptTerminalGui.RevertEqualsObj(Base_obj.M_SubviewCollection[p1]).dll_obj;
+				|            return Utils.RevertEqualsObj(Base_obj.M_SubviewCollection[p1]).dll_obj;
 				|        }
 				|
 				|";
@@ -3255,7 +5641,7 @@
 				"        [ContextMethod(""ПунктМеню"", ""MenuBarItem"")]
 				|        public TfMenuBarItem MenuBarItem(int p1)
 				|        {
-				|            return OneScriptTerminalGui.RevertEqualsObj(M_Object[p1]).dll_obj;
+				|            return Utils.RevertEqualsObj(M_Object[p1]).dll_obj;
 				|        }
 				|
 				|";
@@ -3309,7 +5695,7 @@
 				"        [ContextMethod(""ЭлементСтрокиСостояния"", ""StatusItem"")]
 				|        public TfStatusItem StatusItem(int p1)
 				|        {
-				|            return OneScriptTerminalGui.RevertEqualsObj(M_Object[p1]).dll_obj;
+				|            return Utils.RevertEqualsObj(M_Object[p1]).dll_obj;
 				|        }
 				|
 				|";
@@ -3322,12 +5708,12 @@
 				|        }
 				|
 				|";
-			ИначеЕсли (МетодРус = "ЭлементПунктаМеню") и (КлассАнгл = "MenuBarItemChildren") Тогда
+			ИначеЕсли (МетодРус = "Получить") и (КлассАнгл = "MenuBarItemChildren") Тогда
 				Стр = Стр +
-				"        [ContextMethod(""ЭлементПунктаМеню"", ""ItemMenuBarItem"")]
-				|        public TfMenuItem ItemMenuBarItem(int p1)
+				"        [ContextMethod(""Получить"", ""Get"")]
+				|        public TfMenuItem Get(int p1)
 				|        {
-				|            return OneScriptTerminalGui.RevertEqualsObj(M_Object[p1]).dll_obj;
+				|            return Utils.RevertEqualsObj(M_Object[p1]).dll_obj;
 				|        }
 				|
 				|";
@@ -3346,47 +5732,6 @@
 				|        public TfDim Fill(int p1 = 0)
 				|        {
 				|            return new TfDim(Base_obj.Fill(p1));
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "Выше") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""Выше"", ""PlaceTop"")]
-				|        public void PlaceTop(IValue p1, int p2)
-				|        {
-				|            Base_obj.PlaceTop(((dynamic)p1.AsObject()).Base_obj, p2);
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "Левее") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""Левее"", ""PlaceLeft"")]
-				|        public void PlaceLeft(IValue p1, int p2)
-				|        {
-				|            Base_obj.PlaceLeft(((dynamic)p1.AsObject()).Base_obj, p2);
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "Ниже") Тогда
-				Если КлассАнгл = "Window" Тогда
-					Величина1 = "p2 - 1";
-				Иначе
-					Величина1 = "p2";
-				КонецЕсли;
-				Стр = Стр +
-				"        [ContextMethod(""Ниже"", ""PlaceBottom"")]
-				|        public void PlaceBottom(IValue p1, int p2)
-				|        {
-				|            Base_obj.PlaceBottom(((dynamic)p1.AsObject()).Base_obj, " + Величина1 + ");
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "Правее") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""Правее"", ""PlaceRight"")]
-				|        public void PlaceRight(IValue p1, int p2)
-				|        {
-				|            Base_obj.PlaceRight(((dynamic)p1.AsObject()).Base_obj, p2);
 				|        }
 				|
 				|";
@@ -3474,9 +5819,9 @@
 			ИначеЕсли (МетодРус = "Процент") и (КлассАнгл = "Pos") Тогда
 				Стр = Стр +
 				"        [ContextMethod(""Процент"", ""Percent"")]
-				|        public TfPos Percent(IValue p1)
+				|        public TfPos Percent(decimal p1)
 				|        {
-				|            return new TfPos(Base_obj.Percent(Convert.ToSingle(p1.AsNumber())));
+				|            return new TfPos(Base_obj.Percent(Utils.ToFloat(p1)));
 				|        }
 				|
 				|";
@@ -3485,7 +5830,7 @@
 				"        [ContextMethod(""Процент"", ""Percent"")]
 				|        public TfDim Percent(IValue p1, bool p2 = false)
 				|        {
-				|            return new TfDim(Base_obj.Percent(Convert.ToSingle(p1.AsNumber()), p2));
+				|            return new TfDim(Base_obj.Percent(Utils.ToFloat(p1), p2));
 				|        }
 				|
 				|";
@@ -3495,6 +5840,1929 @@
 				|        public TfDim Summation(TfDim p1, TfDim p2)
 				|        {
 				|            return new TfDim(Base_obj.Summation(p1.Base_obj, p2.Base_obj));
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Индекс") и (КлассАнгл = "SubviewCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Индекс"", ""IndexOf"")]
+				|        public int IndexOf(IValue p1)
+				|        {
+				|            int index1 = -1;
+				|            for (int i = 0; i < Base_obj.M_SubviewCollection.Count; i++)
+				|            {
+				|                if (Base_obj.M_SubviewCollection[i] == ((dynamic)p1).Base_obj.M_View)
+				|                {
+				|                    index1 = i;
+				|                    break;
+				|                }
+				|            }
+				|            return index1;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "НаПереднийПлан") и (КлассАнгл = "Window") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""НаПереднийПлан"", ""BringSubviewToFront"")]
+				|        public void BringSubviewToFront(IValue p1)
+				|        {
+				|            Base_obj.M_Window.Subviews[0].BringSubviewToFront(((dynamic)p1).Base_obj.M_View);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Показать") и (КлассАнгл = "MessageBox") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Показать"", ""Show"")]
+				|        public int Show(string p1 = null)
+				|        {
+				|            if (p1 != null)
+				|            {
+				|                Message = p1;
+				|            }
+				|
+				|            // Уберем на время появления модального окна события мыши.
+				|            dynamic actRootMouseEvent = Application.RootMouseEvent;
+				|            Application.RootMouseEvent = null;
+				|
+				|            int maxLengthButtons = 0;
+				|            NStack.ustring[] _buttons = new NStack.ustring[Buttons.Count()];
+				|            for (int i = 0; i < Buttons.Count(); i++)
+				|            {
+				|                string str = Buttons.Get(i).AsString();
+				|                maxLengthButtons = maxLengthButtons + str.Length + 8;
+				|                _buttons[i] = str;
+				|            }
+				|
+				|            TfTextFormatter TfTextFormatter1 = new TfTextFormatter();
+				|            TfTextFormatter1.Text = Message;
+				|            TfSize TfSize1 = TfTextFormatter1.GetAutoSize();
+				|            int _height = TfSize1.Height + 1;
+				|            int _widthMessage = TfSize1.Width;
+				|            int _widthTitle = Title.Length + 5;
+				|            int _widthTerminal = Application.Driver.Cols - 8;
+				|            int _width = Math.Max(_widthMessage, Math.Max(_widthTitle, maxLengthButtons)) + 3;
+				|            if (_width >= _widthTerminal)
+				|            {
+				|                _width = _widthTerminal;
+				|            }
+				|            int _heightTerminal = Application.Driver.Rows - 8;
+				|            if (_height >= _heightTerminal)
+				|            {
+				|                _height = _heightTerminal;
+				|            }
+				|            if (!AutoSize)
+				|            {
+				|                _width = Width;
+				|                _height = Height;
+				|            }
+				|
+				|            Clicked = Terminal.Gui.MessageBox.Query(_width, _height, Title, Message, DefaultButtonIndex, _buttons);
+				|            Application.MainLoop.RemoveTimeout(token);
+				|            // Вернем события мыши.
+				|            Application.RootMouseEvent = actRootMouseEvent;
+				|            return Clicked;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Начать") и (КлассАнгл = "Timer") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Начать"", ""Start"")]
+				|        public void Start()
+				|        {
+				|            stop = false;
+				|            token = Application.MainLoop.AddTimeout(TimeSpan.FromMilliseconds(Interval), (m) =>
+				|            {
+				|                if (Tick != null)
+				|                {
+				|                    TfEventArgs TfEventArgs1 = new TfEventArgs();
+				|                    TfEventArgs1.sender = this;
+				|                    TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Tick);
+				|                    OneScriptTerminalGui.Event = TfEventArgs1;
+				|                    OneScriptTerminalGui.ExecuteEvent(Tick);
+				|                }
+				|                if (stop)
+				|                {
+				|                    return false;
+				|                }
+				|                return true;
+				|            });
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Остановить") и (КлассАнгл = "Timer") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Остановить"", ""Stop"")]
+				|        public void Stop()
+				|        {
+				|            stop = true;
+				|            // token для остановки не срабатывает, поэтому добавлено поле stop.
+				|            Application.MainLoop.RemoveTimeout(token);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Шаг") и (КлассАнгл = "ProgressBar") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Шаг"", ""Pulse"")]
+				|        public void Pulse()
+				|        {
+				|            Base_obj.Pulse();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Очистить") и (КлассАнгл = "RadioGroupItems") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Очистить"", ""Clear"")]
+				|        public void Clear()
+				|        {
+				|            M_Object = new ustring[0];
+				|        }
+				|
+				|";
+				ИначеЕсли (МетодРус = "Метка") и (КлассАнгл = "RadioGroupItems") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Метка"", ""Label"")]
+				|        public string Label(int p1)
+				|        {
+				|            return M_Object[p1].ToString();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Развернуть") и (КлассАнгл = "ComboBox") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Развернуть"", ""Expand"")]
+				|        public void Expand()
+				|        {
+				|            Base_obj.Expand();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Свернуть") и (КлассАнгл = "ComboBox") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Свернуть"", ""Collapse"")]
+				|        public void Collapse()
+				|        {
+				|            Base_obj.Collapse();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УстановитьИсточник") и (КлассАнгл = "ComboBox") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УстановитьИсточник"", ""SetSource"")]
+				|        public void SetSource(IValue p1)
+				|        {
+				|            Base_obj.SetSource(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ОбеспечитьОтображение") и (КлассАнгл = "ListView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ОбеспечитьОтображение"", ""EnsureSelectedItemVisible"")]
+				|        public void EnsureSelectedItemVisible()
+				|        {
+				|            Base_obj.EnsureSelectedItemVisible();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПерейтиВверх") и (КлассАнгл = "ListView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПерейтиВверх"", ""MoveUp"")]
+				|        public bool MoveUp()
+				|        {
+				|            return Base_obj.MoveUp();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПерейтиВверхСтраницы") и (КлассАнгл = "ListView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПерейтиВверхСтраницы"", ""MovePageUp"")]
+				|        public bool MovePageUp()
+				|        {
+				|            return Base_obj.MovePageUp();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПерейтиВКонец") и (КлассАнгл = "ListView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПерейтиВКонец"", ""MoveEnd"")]
+				|        public bool MoveEnd()
+				|        {
+				|            return Base_obj.MoveEnd();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПерейтиВНачало") и (КлассАнгл = "ListView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПерейтиВНачало"", ""MoveHome"")]
+				|        public bool MoveHome()
+				|        {
+				|            return Base_obj.MoveHome();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПерейтиВниз") и (КлассАнгл = "ListView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПерейтиВниз"", ""MoveDown"")]
+				|        public bool MoveDown()
+				|        {
+				|            return Base_obj.MoveDown();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПерейтиВнизСтраницы") и (КлассАнгл = "ListView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПерейтиВнизСтраницы"", ""MovePageDown"")]
+				|        public bool MovePageDown()
+				|        {
+				|            return Base_obj.MovePageDown();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Пометить") и (КлассАнгл = "ListView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Пометить"", ""MarkUnmarkRow"")]
+				|        public void MarkUnmarkRow(int p1, bool p2 = true)
+				|        {
+				|            Base_obj.MarkUnmarkRow(p1, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Помечен") и (КлассАнгл = "ListView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Помечен"", ""Checked"")]
+				|        public bool Checked(int p1)
+				|        {
+				|            return Base_obj.Checked(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПрокрутитьВверх") и (КлассАнгл = "ListView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПрокрутитьВверх"", ""ScrollUp"")]
+				|        public bool ScrollUp(int p1)
+				|        {
+				|            return Base_obj.ScrollUp(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПрокрутитьВлево") и (КлассАнгл = "ListView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПрокрутитьВлево"", ""ScrollLeft"")]
+				|        public bool ScrollLeft(int p1)
+				|        {
+				|            return Base_obj.ScrollLeft(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПрокрутитьВниз") и (КлассАнгл = "ListView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПрокрутитьВниз"", ""ScrollDown"")]
+				|        public bool ScrollDown(int p1)
+				|        {
+				|            return Base_obj.ScrollDown(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПрокрутитьВправо") и (КлассАнгл = "ListView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПрокрутитьВправо"", ""ScrollRight"")]
+				|        public bool ScrollRight(int p1)
+				|        {
+				|            return Base_obj.ScrollRight(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "СнятьДляВсех") и (КлассАнгл = "ListView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""СнятьДляВсех"", ""AllowsAll"")]
+				|        public void AllowsAll()
+				|        {
+				|            Base_obj.AllowsAll();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПрокрутитьВверх") и (КлассАнгл = "ScrollView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПрокрутитьВверх"", ""ScrollUp"")]
+				|        public bool ScrollUp(int p1)
+				|        {
+				|            return Base_obj.ScrollUp(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПрокрутитьВлево") и (КлассАнгл = "ScrollView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПрокрутитьВлево"", ""ScrollLeft"")]
+				|        public bool ScrollLeft(int p1)
+				|        {
+				|            return Base_obj.ScrollLeft(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПрокрутитьВниз") и (КлассАнгл = "ScrollView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПрокрутитьВниз"", ""ScrollDown"")]
+				|        public bool ScrollDown(int p1)
+				|        {
+				|            return Base_obj.ScrollDown(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПрокрутитьВправо") и (КлассАнгл = "ScrollView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПрокрутитьВправо"", ""ScrollRight"")]
+				|        public bool ScrollRight(int p1)
+				|        {
+				|            return Base_obj.ScrollRight(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Выделена") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Выделена"", ""IsSelected"")]
+				|        public bool IsSelected(int p1, int p2)
+				|        {
+				|            return Base_obj.IsSelected(p1, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ВыделитьВсе") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ВыделитьВсе"", ""SelectAll"")]
+				|        public void SelectAll()
+				|        {
+				|            Base_obj.SelectAll();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ИзменитьВыделенное") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ИзменитьВыделенное"", ""ChangeSelectionByOffset"")]
+				|        public void ChangeSelectionByOffset(int p1, int p2, bool p3)
+				|        {
+				|            Base_obj.ChangeSelectionByOffset(p1, p2, p3);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ИзменитьВыделенноеДоКонцаСтроки") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ИзменитьВыделенноеДоКонцаСтроки"", ""ChangeSelectionToEndOfRow"")]
+				|        public void ChangeSelectionToEndOfRow(bool p1)
+				|        {
+				|            Base_obj.ChangeSelectionToEndOfRow(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ИзменитьВыделенноеДоКонцаТаблицы") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ИзменитьВыделенноеДоКонцаТаблицы"", ""ChangeSelectionToEndOfTable"")]
+				|        public void ChangeSelectionToEndOfTable(bool p1)
+				|        {
+				|            Base_obj.ChangeSelectionToEndOfTable(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ИзменитьВыделенноеДоНачалаСтроки") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ИзменитьВыделенноеДоНачалаСтроки"", ""ChangeSelectionToStartOfRow"")]
+				|        public void ChangeSelectionToStartOfRow(bool p1)
+				|        {
+				|            Base_obj.ChangeSelectionToStartOfRow(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ИзменитьВыделенноеДоНачалаТаблицы") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ИзменитьВыделенноеДоНачалаТаблицы"", ""ChangeSelectionToStartOfTable"")]
+				|        public void ChangeSelectionToStartOfTable(bool p1)
+				|        {
+				|            Base_obj.ChangeSelectionToStartOfTable(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ОбеспечитьОтображениеВыбранной") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ОбеспечитьОтображениеВыбранной"", ""EnsureSelectedCellIsVisible"")]
+				|        public void EnsureSelectedCellIsVisible()
+				|        {
+				|            Base_obj.EnsureSelectedCellIsVisible();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПолучитьВсеВыбранныеЯчейки") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПолучитьВсеВыбранныеЯчейки"", ""GetAllSelectedCells"")]
+				|        public ArrayImpl GetAllSelectedCells()
+				|        {
+				|            return Base_obj.GetAllSelectedCells();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "СтраницаВверх") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""СтраницаВверх"", ""PageUp"")]
+				|        public void PageUp(bool p1)
+				|        {
+				|            Base_obj.PageUp(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "СтраницаВниз") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""СтраницаВниз"", ""PageDown"")]
+				|        public void PageDown(bool p1)
+				|        {
+				|            Base_obj.PageDown(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ТочкаНаЯчейке") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ТочкаНаЯчейке"", ""CellToScreen"")]
+				|        public TfPoint CellToScreen(int p1, int p2)
+				|        {
+				|            try
+				|            {
+				|                return new TfPoint(Base_obj.CellToScreen(p1, p2));
+				|            }
+				|            catch
+				|            {
+				|                return null;
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УстановитьВыделение") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УстановитьВыделение"", ""SetSelection"")]
+				|        public void SetSelection(int p1, int p2, bool p3)
+				|        {
+				|            Base_obj.SetSelection(p1, p2, p3);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ЯчейкаНаТочке") и (КлассАнгл = "TableView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ЯчейкаНаТочке"", ""ScreenToCell"")]
+				|        public TfPoint ScreenToCell(int p1, int p2)
+				|        {
+				|            try
+				|            {
+				|                return new TfPoint(Base_obj.ScreenToCell(p1, p2));
+				|            }
+				|            catch
+				|            {
+				|                return null;
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ВыбратьВсе") и (КлассАнгл = "TextField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ВыбратьВсе"", ""SelectAll"")]
+				|        public void SelectAll()
+				|        {
+				|            Base_obj.SelectAll();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Вырезать") и (КлассАнгл = "TextField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Вырезать"", ""Cut"")]
+				|        public void Cut()
+				|        {
+				|            Base_obj.Cut();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Копировать") и (КлассАнгл = "TextField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Копировать"", ""Copy"")]
+				|        public void Copy()
+				|        {
+				|            Base_obj.Copy();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "СнятьВыделение") и (КлассАнгл = "TextField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""СнятьВыделение"", ""ClearAllSelection"")]
+				|        public void ClearAllSelection()
+				|        {
+				|            Base_obj.ClearAllSelection();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ОчиститьИсторию") и (КлассАнгл = "TextField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ОчиститьИсторию"", ""ClearHistoryChanges"")]
+				|        public void ClearHistoryChanges()
+				|        {
+				|            Base_obj.ClearHistoryChanges();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УдалитьТекст") и (КлассАнгл = "TextField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УдалитьТекст"", ""RemoveAllText"")]
+				|        public void RemoveAllText()
+				|        {
+				|            Base_obj.RemoveAllText();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УдалитьПредыдущееСлово") и (КлассАнгл = "TextField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УдалитьПредыдущееСлово"", ""KillWordBackwards"")]
+				|        public void KillWordBackwards()
+				|        {
+				|            Base_obj.KillWordBackwards();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УдалитьСимволСлева") и (КлассАнгл = "TextField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УдалитьСимволСлева"", ""DeleteCharLeft"")]
+				|        public void DeleteCharLeft()
+				|        {
+				|            Base_obj.DeleteCharLeft();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УдалитьСимволСправа") и (КлассАнгл = "TextField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УдалитьСимволСправа"", ""DeleteCharRight"")]
+				|        public void DeleteCharRight()
+				|        {
+				|            Base_obj.DeleteCharRight();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УдалитьСледующееСлово") и (КлассАнгл = "TextField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УдалитьСледующееСлово"", ""KillWordForwards"")]
+				|        public void KillWordForwards()
+				|        {
+				|            Base_obj.KillWordForwards();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ВставитьТекст") и (КлассАнгл = "TextField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ВставитьТекст"", ""InsertText"")]
+				|        public void InsertText(string p1, bool p2 = true)
+				|        {
+				|            Base_obj.InsertText(p1, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Вставить") и (КлассАнгл = "TextField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Вставить"", ""Paste"")]
+				|        public void Paste()
+				|        {
+				|            Base_obj.Paste();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ВставитьТекст") и (КлассАнгл = "TimeField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ВставитьТекст"", ""InsertText"")]
+				|        public void InsertText(string p1, bool p2 = true)
+				|        {
+				|            Base_obj.InsertText(p1, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Вставить") и (КлассАнгл = "TimeField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Вставить"", ""Paste"")]
+				|        public void Paste()
+				|        {
+				|            Base_obj.Paste();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ВыбратьВсе") и (КлассАнгл = "TimeField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ВыбратьВсе"", ""SelectAll"")]
+				|        public void SelectAll()
+				|        {
+				|            Base_obj.SelectAll();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Копировать") и (КлассАнгл = "TimeField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Копировать"", ""Copy"")]
+				|        public void Copy()
+				|        {
+				|            Base_obj.Copy();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ВыбратьВсе") и (КлассАнгл = "DateField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ВыбратьВсе"", ""SelectAll"")]
+				|        public void SelectAll()
+				|        {
+				|            Base_obj.SelectAll();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Копировать") и (КлассАнгл = "DateField") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Копировать"", ""Copy"")]
+				|        public void Copy()
+				|        {
+				|            Base_obj.Copy();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Вставить") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Вставить"", ""Paste"")]
+				|        public void Paste()
+				|        {
+				|            Base_obj.Paste();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ВставитьТекст") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ВставитьТекст"", ""InsertText"")]
+				|        public void InsertText(string p1)
+				|        {
+				|            Base_obj.InsertText(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ВыбратьВсе") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ВыбратьВсе"", ""SelectAll"")]
+				|        public void SelectAll()
+				|        {
+				|            Base_obj.SelectAll();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Вырезать") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Вырезать"", ""Cut"")]
+				|        public void Cut()
+				|        {
+				|            Base_obj.Cut();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Копировать") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Копировать"", ""Copy"")]
+				|        public void Copy()
+				|        {
+				|            Base_obj.Copy();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ОчиститьИсторию") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ОчиститьИсторию"", ""ClearHistoryChanges"")]
+				|        public void ClearHistoryChanges()
+				|        {
+				|            Base_obj.ClearHistoryChanges();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПереместитьВКонец") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПереместитьВКонец"", ""MoveEnd"")]
+				|        public void MoveEnd()
+				|        {
+				|            Base_obj.MoveEnd();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПереместитьВНачало") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПереместитьВНачало"", ""MoveHome"")]
+				|        public void MoveHome()
+				|        {
+				|            Base_obj.MoveHome();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПрокрутитьДо") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПрокрутитьДо"", ""ScrollTo"")]
+				|        public void ScrollTo(int p1, bool p2 = true)
+				|        {
+				|            Base_obj.ScrollTo(p1, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ТекстТекущейСтроки") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ТекстТекущейСтроки"", ""GetCurrentLine"")]
+				|        public string GetCurrentLine()
+				|        {
+				|            return Base_obj.GetCurrentLine();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УдалитьСимволСлева") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УдалитьСимволСлева"", ""DeleteCharLeft"")]
+				|        public void DeleteCharLeft()
+				|        {
+				|            Base_obj.DeleteCharLeft();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УдалитьСимволСправа") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УдалитьСимволСправа"", ""DeleteCharRight"")]
+				|        public void DeleteCharRight()
+				|        {
+				|            Base_obj.DeleteCharRight();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УдалитьТекст") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УдалитьТекст"", ""RemoveAllText"")]
+				|        public void RemoveAllText()
+				|        {
+				|            Base_obj.RemoveAllText();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ЗагрузитьИзПотока") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ЗагрузитьИзПотока"", ""LoadStream"")]
+				|        public void LoadStream(System.IO.Stream p1)
+				|        {
+				|            Base_obj.LoadStream(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ЗагрузитьФайл") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ЗагрузитьФайл"", ""LoadFile"")]
+				|        public bool LoadFile(string p1)
+				|        {
+				|            return Base_obj.LoadFile(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ЗакрытьФайл") и (КлассАнгл = "TextView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ЗакрытьФайл"", ""CloseFile"")]
+				|        public bool CloseFile()
+				|        {
+				|            return Base_obj.CloseFile();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ВыбратьВсе") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ВыбратьВсе"", ""SelectAll"")]
+				|        public void SelectAll()
+				|        {
+				|            Base_obj.SelectAll();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ВыбратьПервый") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ВыбратьПервый"", ""AdjustSelectionToBranchStart"")]
+				|        public void AdjustSelectionToBranchStart()
+				|        {
+				|            Base_obj.AdjustSelectionToBranchStart();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ВыбратьПоследний") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ВыбратьПоследний"", ""AdjustSelectionToBranchEnd"")]
+				|        public void AdjustSelectionToBranchEnd()
+				|        {
+				|            Base_obj.AdjustSelectionToBranchEnd();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПерейтиВКонец") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПерейтиВКонец"", ""GoToEnd"")]
+				|        public void GoToEnd()
+				|        {
+				|            Base_obj.GoToEnd();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПерейтиВНачало") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПерейтиВНачало"", ""GoToFirst"")]
+				|        public void GoToFirst()
+				|        {
+				|            Base_obj.GoToFirst();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Переместить") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Переместить"", ""AdjustSelection"")]
+				|        public void AdjustSelection(int p1, bool p2 = false)
+				|        {
+				|            Base_obj.AdjustSelection(p1, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПолучитьВсеВыбранные") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПолучитьВсеВыбранные"", ""GetAllSelectedObjects"")]
+				|        public ArrayImpl GetAllSelectedObjects()
+				|        {
+				|            return Utils.TreeViewObjectsToArray(Base_obj.M_TreeView.GetAllSelectedObjects());
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПолучитьШиринуСодержимого") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПолучитьШиринуСодержимого"", ""GetContentWidth"")]
+				|        public int GetContentWidth(bool p1)
+				|        {
+				|            return Base_obj.GetContentWidth(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПрокрутитьВверх") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПрокрутитьВверх"", ""ScrollUp"")]
+				|        public void ScrollUp()
+				|        {
+				|            Base_obj.ScrollUp();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПрокрутитьВниз") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПрокрутитьВниз"", ""ScrollDown"")]
+				|        public void ScrollDown()
+				|        {
+				|            Base_obj.ScrollDown();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Развернуть") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Развернуть"", ""Expand"")]
+				|        public void Expand()
+				|        {
+				|            Base_obj.Expand();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "РазвернутьВсе") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""РазвернутьВсе"", ""ExpandAll"")]
+				|        public void ExpandAll()
+				|        {
+				|            Base_obj.ExpandAll();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Свернуть") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Свернуть"", ""Collapse"")]
+				|        public void Collapse()
+				|        {
+				|            Base_obj.Collapse();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "СвернутьВсе") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""СвернутьВсе"", ""CollapseAll"")]
+				|        public void CollapseAll()
+				|        {
+				|            Base_obj.CollapseAll();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "СтрелкаВлево") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        //////[ContextMethod(""СтрелкаВлево"", ""CursorLeft"")]
+				|        //////public ййййй CursorLeft(bool p1)
+				|        //////{
+				|        //////    return Base_obj.CursorLeft(p1);
+				|        //////}
+				|
+				|";
+			ИначеЕсли (МетодРус = "УдалитьВсеУзлы") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УдалитьВсеУзлы"", ""ClearObjects"")]
+				|        public void ClearObjects()
+				|        {
+				|            Base_obj.ClearObjects();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Показать") и (КлассАнгл = "ContextMenu") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Показать"", ""Show"")]
+				|        public void Show()
+				|        {
+				|            Base_obj.Show();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Скрыть") и (КлассАнгл = "ContextMenu") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Скрыть"", ""Hide"")]
+				|        public void Hide()
+				|        {
+				|            Base_obj.Hide();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ЦветСтрок") и (КлассАнгл = "TableStyle") Тогда
+				Стр = Стр +
+				"        public void SetRowColor(int rowIndex, int index, object[,] array, ref Terminal.Gui.ColorScheme colorScheme)
+				|        {
+				|            if (rowIndex == (int)array[index, 0])
+				|            {
+				|                colorScheme = (TfColorScheme)array[index, 1] != null ? ((TfColorScheme)array[index, 1]).Base_obj.M_ColorScheme : null;
+				|            }
+				|            else
+				|            {
+				|                index++;
+				|                if (index <= ((array.Length / 2) - 1))
+				|                {
+				|                    SetRowColor(rowIndex, index, array, ref colorScheme);
+				|                }
+				|            }
+				|        }
+				|
+				|        [ContextMethod(""ЦветСтрок"", ""RowsColor"")]
+				|        public void RowsColor(MapImpl p1)
+				|        {
+				|            object[,] array1 = new object[p1.Count(), 2];
+				|            int num = 0;
+				|            foreach (var item in p1)
+				|            {
+				|                array1[num, 0] = Utils.ToInt32(item.Key);
+				|                array1[num, 1] = (TfColorScheme)item.Value;
+				|                num++;
+				|            }
+				|            Base_obj.M_TableStyle.RowColorGetter = (a) =>
+				|            {
+				|                Terminal.Gui.ColorScheme colorScheme = null;
+				|                SetRowColor(a.RowIndex, 0, array1, ref colorScheme);
+				|                return colorScheme;
+				|            };
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ЦветДесяткаСтрок") и (КлассАнгл = "TableStyle") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ЦветДесяткаСтрок"", ""RowColorByDecimal"")]
+				|        public void RowColorByDecimal(
+				|            TfColorScheme p0 = null,
+				|            TfColorScheme p1 = null,
+				|            TfColorScheme p2 = null,
+				|            TfColorScheme p3 = null,
+				|            TfColorScheme p4 = null,
+				|            TfColorScheme p5 = null,
+				|            TfColorScheme p6 = null,
+				|            TfColorScheme p7 = null,
+				|            TfColorScheme p8 = null,
+				|            TfColorScheme p9 = null)
+				|        {
+				|            Base_obj.M_TableStyle.RowColorGetter = (a) =>
+				|            {
+				|                Terminal.Gui.ColorScheme colorScheme = null;
+				|                if (a.RowIndex % 10 == 0)
+				|                {
+				|                    colorScheme = p0 != null ? p0.Base_obj.M_ColorScheme : null;
+				|                }
+				|                else
+				|                {
+				|                    if (a.RowIndex % 10 == 1)
+				|                    {
+				|                        colorScheme = p1 != null ? p1.Base_obj.M_ColorScheme : null;
+				|                    }
+				|                    else
+				|                    {
+				|                        if (a.RowIndex % 10 == 2)
+				|                        {
+				|                            colorScheme = p2 != null ? p2.Base_obj.M_ColorScheme : null;
+				|                        }
+				|                        else
+				|                        {
+				|                            if (a.RowIndex % 10 == 3)
+				|                            {
+				|                                colorScheme = p3 != null ? p3.Base_obj.M_ColorScheme : null;
+				|                            }
+				|                            else
+				|                            {
+				|                                if (a.RowIndex % 10 == 4)
+				|                                {
+				|                                    colorScheme = p4 != null ? p4.Base_obj.M_ColorScheme : null;
+				|                                }
+				|                                else
+				|                                {
+				|                                    if (a.RowIndex % 10 == 5)
+				|                                    {
+				|                                        colorScheme = p5 != null ? p5.Base_obj.M_ColorScheme : null;
+				|                                    }
+				|                                    else
+				|                                    {
+				|                                        if (a.RowIndex % 10 == 6)
+				|                                        {
+				|                                            colorScheme = p6 != null ? p6.Base_obj.M_ColorScheme : null;
+				|                                        }
+				|                                        else
+				|                                        {
+				|                                            if (a.RowIndex % 10 == 7)
+				|                                            {
+				|                                                colorScheme = p7 != null ? p7.Base_obj.M_ColorScheme : null;
+				|                                            }
+				|                                            else
+				|                                            {
+				|                                                if (a.RowIndex % 10 == 8)
+				|                                                {
+				|                                                    colorScheme = p8 != null ? p8.Base_obj.M_ColorScheme : null;
+				|                                                }
+				|                                                else
+				|                                                {
+				|                                                    if (a.RowIndex % 10 == 9)
+				|                                                    {
+				|                                                        colorScheme = p9 != null ? p9.Base_obj.M_ColorScheme : null;
+				|                                                    }
+				|                                                }
+				|                                            }
+				|                                        }
+				|                                    }
+				|                                }
+				|                            }
+				|                        }
+				|                    }
+				|                }
+				|                return colorScheme;
+				|            };
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ЧерезСтрочныйЦветСтрок") и (КлассАнгл = "TableStyle") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ЧерезСтрочныйЦветСтрок"", ""RowColorThroughLine"")]
+				|        public void RowColorGetter(int p1, TfColorScheme p2)
+				|        {
+				|            if (p1 > 0)
+				|            {
+				|                Base_obj.M_TableStyle.RowColorGetter = (a) => { return a.RowIndex % p1 == 0 ? p2.Base_obj.M_ColorScheme : null; };
+				|            }
+				|            else
+				|            {
+				|                new TfBalloons().Show(""Ошибка в методе 'ЧерезСтрочныйЦветСтрок': Первый параметр должен быть больше ноля."", -1);
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПолучитьСтильКолонки") и (КлассАнгл = "TableStyle") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПолучитьСтильКолонки"", ""GetColumnStyleIfAny"")]
+				|        public TfColumnStyle GetColumnStyleIfAny(TfDataColumn p1)
+				|        {
+				|            try
+				|            {
+				|                return Utils.RevertEqualsObj(this.ColumnStyles.Base_obj[p1.Base_obj.M_DataColumn]).dll_obj;
+				|            }
+				|            catch
+				|            {
+				|                return null;
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ДобавитьВкладку") и (КлассАнгл = "TabView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ДобавитьВкладку"", ""AddTab"")]
+				|        public void AddTab(TfTabPage p1, bool p2)
+				|        {
+				|            Base_obj.AddTab(p1.Base_obj, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УдалитьВкладку") и (КлассАнгл = "TabView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УдалитьВкладку"", ""RemoveTab"")]
+				|        public void RemoveTab(TfTabPage p1)
+				|        {
+				|            Base_obj.RemoveTab(p1.Base_obj);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Очистить") и (КлассАнгл = "TabsCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Очистить"", ""Clear"")]
+				|        public void Clear()
+				|        {
+				|            M_Object = Utils.IReadOnlyCollectionToArray(M_TabView.Tabs);
+				|            for (int i = 0; i < M_Object.Length; i++)
+				|            {
+				|                M_TabView.RemoveTab(M_Object[i]);
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Получить") и (КлассАнгл = "TabsCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Получить"", ""Get"")]
+				|        public TfTabPage Get(int p1)
+				|        {
+				|            M_Object = Utils.IReadOnlyCollectionToArray(M_TabView.Tabs);
+				|            return Utils.RevertEqualsObj(M_Object[p1]).dll_obj;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПоказатьДиалог") и (КлассАнгл = "OpenDialog") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПоказатьДиалог"", ""ShowDialog"")]
+				|        public void ShowDialog()
+				|        {
+				|            this.Visible = true;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПоказатьДиалог") и (КлассАнгл = "SaveDialog") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПоказатьДиалог"", ""ShowDialog"")]
+				|        public void ShowDialog()
+				|        {
+				|            this.Visible = true;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Получить") и (КлассАнгл = "StatusBarItems") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Получить"", ""Get"")]
+				|        public TfStatusItem Get(int p1)
+				|        {
+				|            return Utils.RevertEqualsObj(M_Object[p1]).dll_obj;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ДобавитьУзел") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ДобавитьУзел"", ""AddObject"")]
+				|        public TfTreeNode AddObject(TfTreeNode p1)
+				|        {
+				|            Base_obj.AddObject(p1.Base_obj);
+				|            return p1;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ДобавитьУзлы") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ДобавитьУзлы"", ""AddObjects"")]
+				|        public void AddObjects(ArrayImpl p1)
+				|        {
+				|            Base_obj.AddObjects(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Выбран") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Выбран"", ""IsSelected"")]
+				|        public bool IsSelected(TfTreeNode p1)
+				|        {
+				|            return Base_obj.IsSelected(p1.Base_obj);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "МожноРазвернуть") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""МожноРазвернуть"", ""CanExpand"")]
+				|        public bool CanExpand(TfTreeNode p1)
+				|        {
+				|            return Base_obj.CanExpand(p1.Base_obj);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ОбеспечитьОтображение") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ОбеспечитьОтображение"", ""EnsureVisible"")]
+				|        public void EnsureVisible(TfTreeNode p1)
+				|        {
+				|            Base_obj.EnsureVisible(p1.Base_obj);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Перейти") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Перейти"", ""GoTo"")]
+				|        public void GoTo(TfTreeNode p1)
+				|        {
+				|            Base_obj.GoTo(p1.Base_obj);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПолучитьИндексУзла") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПолучитьИндексУзла"", ""GetObjectRow"")]
+				|        public IValue GetObjectRow(TfTreeNode p1)
+				|        {
+				|            return Base_obj.GetObjectRow(p1.Base_obj);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПолучитьПоИндексу") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПолучитьПоИндексу"", ""GetObjectOnRow"")]
+				|        public TfTreeNode GetObjectOnRow(int p1)
+				|        {
+				|            try
+				|            {
+				|                return Base_obj.GetObjectOnRow(p1).dll_obj;
+				|            }
+				|            catch
+				|            {
+				|                return null;
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПолучитьРазвернутые") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПолучитьРазвернутые"", ""GetExpandChildren"")]
+				|        public ArrayImpl GetExpandChildren(TfTreeNode p1)
+				|        {
+				|            return Utils.TreeViewObjectsToArray(Base_obj.M_TreeView.GetChildren(p1.Base_obj.M_TreeNode));
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПолучитьРодителя") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПолучитьРодителя"", ""GetParent"")]
+				|        public TfTreeNode GetParent(TfTreeNode p1)
+				|        {
+				|            try
+				|            {
+				|                return Base_obj.GetParent(p1.Base_obj).dll_obj;
+				|            }
+				|            catch
+				|            {
+				|                return null;
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Развернут") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Развернут"", ""IsExpanded"")]
+				|        public bool IsExpanded(TfTreeNode p1)
+				|        {
+				|            return Base_obj.IsExpanded(p1.Base_obj);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "СтраницаВверх") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""СтраницаВверх"", ""MovePageUp"")]
+				|        public void MovePageUp(bool p1 = false)
+				|        {
+				|            Base_obj.MovePageUp(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "СтраницаВниз") и (КлассАнгл = "TreeView") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""СтраницаВниз"", ""MovePageDown"")]
+				|        public void MovePageDown(bool p1 = false)
+				|        {
+				|            Base_obj.MovePageDown(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Получить") и (КлассАнгл = "RadioGroupItems") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Получить"", ""Get"")]
+				|        public string Get(int p1)
+				|        {
+				|            return M_Object[p1].ToString();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Получить") и (КлассАнгл = "MenusCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Получить"", ""Get"")]
+				|        public TfMenuBarItem Get(int p1)
+				|        {
+				|            return Utils.RevertEqualsObj(M_Object[p1]).dll_obj;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Выбрать") и (КлассАнгл = "DataTable") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Выбрать"", ""Select"")]
+				|        public ArrayImpl Select(string p1)
+				|        {
+				|            ArrayImpl ArrayImpl1 = new ArrayImpl();
+				|            try
+				|            {
+				|                object[] objects = Base_obj.Select(p1);
+				|                for (int i = 0; i < objects.Length; i++)
+				|                {
+				|                    ArrayImpl1.Add(new TfDataRow((ostgui.DataRow)objects[i]));
+				|                }
+				|            }
+				|            catch
+				|            {
+				|            }
+				|            return ArrayImpl1;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ВыгрузитьКолонку") и (КлассАнгл = "DataTable") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ВыгрузитьКолонку"", ""UnloadColumn"")]
+				|        public ArrayImpl UnloadColumn(IValue p1)
+				|        {
+				|            ArrayImpl ArrayImpl1 = new ArrayImpl();
+				|            if (Utils.IsNumber(p1))
+				|            {
+				|                for (int i = 0; i < Base_obj.Rows.Count; i++)
+				|                {
+				|                    dynamic p2 = Base_obj.Rows[i].get_Item(Utils.ToInt32(p1));
+				|                    ArrayImpl1.Add(p2.Value);
+				|                }
+				|                return ArrayImpl1;
+				|            }
+				|            else if (Utils.IsString(p1))
+				|            {
+				|                for (int i = 0; i < Base_obj.Rows.Count; i++)
+				|                {
+				|                    dynamic p2 = Base_obj.Rows[i].get_Item(p1.AsString());
+				|                    ArrayImpl1.Add(p2.Value);
+				|                }
+				|                return ArrayImpl1;
+				|            }
+				|            else if (Utils.IsType<TfDataColumn>(p1))
+				|            {
+				|                for (int i = 0; i < Base_obj.Rows.Count; i++)
+				|                {
+				|                    dynamic p2 = Base_obj.Rows[i].get_Item(((TfDataColumn)p1.AsObject()).Base_obj.ColumnName);
+				|                    ArrayImpl1.Add(p2.Value);
+				|                }
+				|                return ArrayImpl1;
+				|            }
+				|            return null;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ЗагрузитьКолонку") и (КлассАнгл = "DataTable") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ЗагрузитьКолонку"", ""LoadColumn"")]
+				|        public void LoadColumn(ArrayImpl p1, IValue p2)
+				|        {
+				|            dynamic p3 = null;
+				|            if (Utils.IsNumber(p2))
+				|            {
+				|                p3 = Utils.ToInt32(p2);
+				|            }
+				|            else if (Utils.IsString(p2))
+				|            {
+				|                p3 = p2.AsString();
+				|            }
+				|            else if (Utils.IsType<TfDataColumn>(p2))
+				|            {
+				|                p3 = ((TfDataColumn)p2.AsObject()).Base_obj.ColumnName;
+				|            }
+				|
+				|            for (int i = 0; i < p1.Count(); i++)
+				|            {
+				|                Base_obj.Rows[i].SetItem(p3, Utils.DefineTypeIValue(p1.Get(i)));
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Клонировать") и (КлассАнгл = "DataTable") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Клонировать"", ""Clone"")]
+				|        public TfDataTable Clone()
+				|        {
+				|            return new TfDataTable(Base_obj.Clone());
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Колонка") и (КлассАнгл = "DataTable") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Колонка"", ""Column"")]
+				|        public TfDataColumn Column(IValue p1)
+				|        {
+				|            if (Utils.IsNumber(p1))
+				|            {
+				|                return new TfDataColumn(Base_obj.get_Column(Utils.ToInt32(p1)));
+				|            }
+				|            else if (Utils.IsString(p1))
+				|            {
+				|                return new TfDataColumn(Base_obj.get_Column(Utils.ToString(p1)));
+				|            }
+				|            return null;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Колонки") и (КлассАнгл = "DataTable") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Колонки"", ""Columns"")]
+				|        public TfDataColumn Columns2(IValue p1)
+				|        {
+				|            if (Utils.IsNumber(p1))
+				|            {
+				|                return ((DataColumnEx)Base_obj.M_DataTable.Columns[Utils.ToInt32(p1)]).M_Object.dll_obj;
+				|            }
+				|            if (Utils.IsString(p1))
+				|            {
+				|                return ((DataColumnEx)Base_obj.M_DataTable.Columns[p1.AsString()]).M_Object.dll_obj;
+				|            }
+				|            return null;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Копировать") и (КлассАнгл = "DataTable") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Копировать"", ""Copy"")]
+				|        public TfDataTable Copy()
+				|        {
+				|            return new TfDataTable(Base_obj.Copy());
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "НоваяСтрока") и (КлассАнгл = "DataTable") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""НоваяСтрока"", ""NewRow"")]
+				|        public TfDataRow NewRow()
+				|        {
+				|            return new TfDataRow(Base_obj.NewRow());
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ОтказИзменений") и (КлассАнгл = "DataTable") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ОтказИзменений"", ""RejectChanges"")]
+				|        public void RejectChanges()
+				|        {
+				|            Base_obj.RejectChanges();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПринятьИзменения") и (КлассАнгл = "DataTable") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПринятьИзменения"", ""AcceptChanges"")]
+				|        public void AcceptChanges()
+				|        {
+				|            Base_obj.AcceptChanges();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Строки") и (КлассАнгл = "DataTable") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Строки"", ""Rows"")]
+				|        public TfDataRow Rows2(int p1)
+				|        {
+				|            return new TfDataRow(Base_obj.Rows[p1]);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Вставить") и (КлассАнгл = "DataRowCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Вставить"", ""InsertAt"")]
+				|        public TfDataRow InsertAt(TfDataRow p1, int p2)
+				|        {
+				|            return new TfDataRow(Base_obj.InsertAt(p1.Base_obj, p2));
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Очистить") и (КлассАнгл = "DataRowCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Очистить"", ""Clear"")]
+				|        public void Clear()
+				|        {
+				|            Base_obj.Clear();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УдалитьПоИндексу") и (КлассАнгл = "DataRowCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УдалитьПоИндексу"", ""RemoveAt"")]
+				|        public void RemoveAt(int p1)
+				|        {
+				|            Base_obj.RemoveAt(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Элемент") и (КлассАнгл = "DataRowCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Элемент"", ""Item"")]
+				|        public TfDataRow Item(int p1, TfDataRow p2 = null)
+				|        {
+				|            if (p2 != null)
+				|            {
+				|                Base_obj.RemoveAt(p1);
+				|                Base_obj.InsertAt(p2.Base_obj, p1);
+				|                return new TfDataRow(Base_obj[p1]);
+				|            }
+				|            else
+				|            {
+				|                return new TfDataRow(Base_obj[p1]);
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Получить") и (КлассАнгл = "DataRowCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Получить"", ""Get"")]
+				|        public TfDataRow Get(int p1)
+				|        {
+				|            return new TfDataRow(Base_obj[p1]);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УстановитьЭлемент") и (КлассАнгл = "DataRow") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УстановитьЭлемент"", ""SetItem"")]
+				|        public void SetItem(IValue p1, IValue p2)
+				|        {
+				|            dynamic p3 = p1;
+				|            if (Utils.IsString(p1))
+				|            {
+				|                p3 = p1.AsString();
+				|            }
+				|            else if (Utils.IsNumber(p1))
+				|            {
+				|                p3 = Utils.ToInt32(p1);
+				|            }
+				|
+				|            if (p2.GetType().ToString().Contains(""ostgui.""))
+				|            {
+				|                Base_obj.SetItem(p3, Utils.RevertObj(p2));
+				|            }
+				|            else if (Utils.IsString(p2))
+				|            {
+				|                Base_obj.SetItem(p3, p2.AsString());
+				|            }
+				|            else if (Utils.IsBoolean(p2))
+				|            {
+				|                Base_obj.SetItem(p3, p2.AsBoolean());
+				|            }
+				|            else if (Utils.IsDateTime(p2))
+				|            {
+				|                Base_obj.SetItem(p3, new System.DateTime(
+				|                    p2.AsDate().Year,
+				|                    p2.AsDate().Month,
+				|                    p2.AsDate().Day,
+				|                    p2.AsDate().Hour,
+				|                    p2.AsDate().Minute,
+				|                    p2.AsDate().Second
+				|                    ));
+				|            }
+				|            else if (Utils.IsNumber(p2))
+				|            {
+				|                Base_obj.SetItem(p3, p2.AsNumber());
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Получить") и (КлассАнгл = "DataRow") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Получить"", ""Get"")]
+				|        public TfDataItem Get(IValue p1)
+				|        {
+				|            if (p1.SystemType.Name == ""Строка"")
+				|            {
+				|                return new TfDataItem((DataItem)Base_obj.get_Item(Utils.ToString(p1)));
+				|            }
+				|            return new TfDataItem((DataItem)Base_obj.get_Item(Utils.ToInt32(p1)));
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ДобавитьЭлемент") и (КлассАнгл = "DataColumnCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ДобавитьЭлемент"", ""AddItem"")]
+				|        public TfDataColumn AddItem(string p1)
+				|        {
+				|            return new TfDataColumn(Base_obj.AddItem(p1));
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Очистить") и (КлассАнгл = "DataColumnCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Очистить"", ""Clear"")]
+				|        public void Clear()
+				|        {
+				|            Base_obj.Clear();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УдалитьПоИндексу") и (КлассАнгл = "DataColumnCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УдалитьПоИндексу"", ""RemoveAt"")]
+				|        public void RemoveAt(int p1)
+				|        {
+				|            Base_obj.RemoveAt(p1);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Получить") и (КлассАнгл = "DataColumnCollection") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Получить"", ""Get"")]
+				|        public TfDataColumn Get(IValue p1)
+				|        {
+				|            if (p1.SystemType.Name == ""Число"")
+				|            {
+				|                return new TfDataColumn(Base_obj[Convert.ToInt32(p1.AsNumber())]);
+				|            }
+				|            if (p1.SystemType.Name == ""Строка"")
+				|            {
+				|                return new TfDataColumn(Base_obj[p1.AsString()]);
+				|            }
+				|            return null;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Добавить") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Добавить"", ""Add"")]
+				|        public IValue Add(IValue p1)
+				|        {
+				|            Base_obj.Add(((dynamic)p1).Base_obj);
+				|            return p1;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ВСтроку") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ВСтроку"", ""ToString"")]
+				|        public new string ToString()
+				|        {
+				|            return Base_obj.ToString();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ВерхнийРодитель") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ВерхнийРодитель"", ""GetTopSuperView"")]
+				|        public IValue GetTopSuperView()
+				|        {
+				|            return Base_obj.GetTopSuperView().dll_obj;
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "НаШагВперед") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""НаШагВперед"", ""BringSubviewForward"")]
+				|        public void BringSubviewForward(IValue p1)
+				|        {
+				|            Base_obj.BringSubviewForward(((dynamic)p1).Base_obj);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Обновить") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Обновить"", ""SetNeedsDisplay"")]
+				|        public void SetNeedsDisplay(TfRect p1 = null)
+				|        {
+				|            Base_obj.SetNeedsDisplay(p1.Base_obj);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "НаЗаднийПлан") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""НаЗаднийПлан"", ""SendSubviewToBack"")]
+				|        public void SendSubviewToBack(IValue p1)
+				|        {
+				|            Base_obj.SendSubviewToBack(((dynamic)p1).Base_obj);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "НаШагНазад") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""НаШагНазад"", ""SendSubviewBackwards"")]
+				|        public void SendSubviewBackwards(IValue p1)
+				|        {
+				|            Base_obj.SendSubviewBackwards(((dynamic)p1).Base_obj);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Перерисовать") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Перерисовать"", ""Redraw"")]
+				|        public void Redraw(TfRect p1)
+				|        {
+				|            Base_obj.Redraw(p1.Base_obj);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПерерисоватьДочерние") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПерерисоватьДочерние"", ""SetChildNeedsDisplay"")]
+				|        public void SetChildNeedsDisplay()
+				|        {
+				|            Base_obj.SetChildNeedsDisplay();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УстановитьАвтоРазмер") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УстановитьАвтоРазмер"", ""SetAutoSize"")]
+				|        public void SetAutoSize()
+				|        {
+				|            TfSize TfSize1 = GetAutoSize();
+				|            Width = new TfDim().Sized(TfSize1.Width);
+				|            Height = new TfDim().Sized(TfSize1.Height);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПолучитьАвтоРазмер") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПолучитьАвтоРазмер"", ""GetAutoSize"")]
+				|        public TfSize GetAutoSize()
+				|        {
+				|            int offsetWidth = 0;
+				|            int offsetHeight = 0;
+				|            try
+				|            {
+				|                offsetWidth = Border.BorderThickness.Left + Border.BorderThickness.Right;
+				|                offsetHeight = Border.BorderThickness.Top + Border.BorderThickness.Bottom;
+				|            }
+				|            catch { }
+				|            int MaxWidthLine = Terminal.Gui.TextFormatter.MaxWidthLine(Text);
+				|            int MaxLines = Terminal.Gui.TextFormatter.MaxLines(Text, MaxWidthLine);
+				|            try
+				|            {
+				|                return new TfSize(MaxWidthLine + 2 + offsetWidth, MaxLines + 2 + offsetHeight);
+				|            }
+				|            catch
+				|            {
+				|                return null;
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "РазместитьПодэлементы") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""РазместитьПодэлементы"", ""LayoutSubviews"")]
+				|        public void LayoutSubviews()
+				|        {
+				|            Base_obj.LayoutSubviews();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ТочкаНаЭлементе") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ТочкаНаЭлементе"", ""ScreenToView"")]
+				|        public TfPoint ScreenToView(int p1, int p2)
+				|        {
+				|            return new TfPoint(Base_obj.ScreenToView(p1, p2));
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УдалитьВсе") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УдалитьВсе"", ""RemoveAll"")]
+				|        public void RemoveAll()
+				|        {
+				|            Base_obj.RemoveAll();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "УстановитьФокус") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""УстановитьФокус"", ""SetFocus"")]
+				|        public void SetFocus()
+				|        {
+				|            Base_obj.SetFocus();
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ЦветВыделенного") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ЦветВыделенного"", ""GetHotNormalColor"")]
+				|        public TfAttribute GetHotNormalColor()
+				|        {
+				|            return new TfAttribute(Base_obj.GetHotNormalColor());
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ЦветОбычного") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ЦветОбычного"", ""GetNormalColor"")]
+				|        public TfAttribute GetNormalColor()
+				|        {
+				|            return new TfAttribute(Base_obj.GetNormalColor());
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ЦветФокуса") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ЦветФокуса"", ""GetFocusColor"")]
+				|        public TfAttribute GetFocusColor()
+				|        {
+				|            return new TfAttribute(Base_obj.GetFocusColor());
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Вычесть") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Вычесть"", ""Subtract"")]
+				|        public TfSize Subtract(TfSize p1, TfSize p2)
+				|        {
+				|            return new TfSize(Base_obj.Subtract(p1.Base_obj, p2.Base_obj));
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ИзГраниц") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ИзГраниц"", ""FromLTRB"")]
+				|        public TfRect FromLTRB(int p1, int p2, int p3, int p4)
+				|        {
+				|            return new TfRect(Base_obj.FromLTRB(p1, p2, p3, p4));
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Образовать") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Образовать"", ""Inflate"")]
+				|        public TfRect Inflate(IValue p1, IValue p2 = null, IValue p3 = null)
+				|        {
+				|            if (p1.GetType() == typeof(TfSize))
+				|            {
+				|                Base_obj.Inflate(((TfSize)p1).Base_obj.M_Size);
+				|                return this;
+				|            }
+				|            else if (p1.SystemType.Name == ""Число"" && p2.SystemType.Name == ""Число"")
+				|            {
+				|                Base_obj.Inflate(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()));
+				|                return this;
+				|            }
+				|            else if (p1.GetType() == typeof(TfRect) && p2.SystemType.Name == ""Число"" && p3.SystemType.Name == ""Число"")
+				|            {
+				|                return new TfRect(Base_obj.Inflate(((TfRect)p1).Base_obj, Convert.ToInt32(p2.AsNumber()), Convert.ToInt32(p3.AsNumber())));
+				|            }
+				|            else
+				|            {
+				|                return null;
+				|            }
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Сместить") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Сместить"", ""Offset"")]
+				|        public void Offset(int p1, int p2)
+				|        {
+				|            Base_obj.Offset(p1, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Выше") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Выше"", ""PlaceTop"")]
+				|        public void PlaceTop(IValue p1, int p2)
+				|        {
+				|            Base_obj.PlaceTop(((dynamic)p1.AsObject()).Base_obj, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Левее") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Левее"", ""PlaceLeft"")]
+				|        public void PlaceLeft(IValue p1, int p2)
+				|        {
+				|            Base_obj.PlaceLeft(((dynamic)p1.AsObject()).Base_obj, p2);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Ниже") Тогда
+				Если КлассАнгл = "Window" Тогда
+					Величина1 = "p2 - 1";
+				Иначе
+					Величина1 = "p2";
+				КонецЕсли;
+				Стр = Стр +
+				"        [ContextMethod(""Ниже"", ""PlaceBottom"")]
+				|        public void PlaceBottom(IValue p1, int p2)
+				|        {
+				|            Base_obj.PlaceBottom(((dynamic)p1.AsObject()).Base_obj, " + Величина1 + ");
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "Правее") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""Правее"", ""PlaceRight"")]
+				|        public void PlaceRight(IValue p1, int p2)
+				|        {
+				|            Base_obj.PlaceRight(((dynamic)p1.AsObject()).Base_obj, p2);
 				|        }
 				|
 				|";
@@ -3570,24 +7838,6 @@
 				|        }
 				|
 				|";
-			ИначеЕсли (МетодРус = "Индекс") и (КлассАнгл = "SubviewCollection") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""Индекс"", ""IndexOf"")]
-				|        public int IndexOf(IValue p1)
-				|        {
-				|            int index1 = -1;
-				|            for (int i = 0; i < Base_obj.M_SubviewCollection.Count; i++)
-				|            {
-				|                if (Base_obj.M_SubviewCollection[i] == ((dynamic)p1).Base_obj.M_View)
-				|                {
-				|                    index1 = i;
-				|                    break;
-				|                }
-				|            }
-				|            return index1;
-				|        }
-				|
-				|";
 			ИначеЕсли (МетодРус = "Центр") Тогда
 				Стр = Стр +
 				"        [ContextMethod(""Центр"", ""Center"")]
@@ -3606,15 +7856,6 @@
 				|        }
 				|
 				|";
-			ИначеЕсли (МетодРус = "НаПереднийПлан") и (КлассАнгл = "Window") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""НаПереднийПлан"", ""BringSubviewToFront"")]
-				|        public void BringSubviewToFront(IValue p1)
-				|        {
-				|            Base_obj.M_Window.Subviews[0].BringSubviewToFront(((dynamic)p1).Base_obj.M_View);
-				|        }
-				|
-				|";
 			ИначеЕсли (МетодРус = "НаПереднийПлан") Тогда
 				Стр = Стр +
 				"        [ContextMethod(""НаПереднийПлан"", ""BringSubviewToFront"")]
@@ -3624,97 +7865,12 @@
 				|        }
 				|
 				|";
-			ИначеЕсли (МетодРус = "Запрос") и (КлассАнгл = "MessageBox") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""Запрос"", ""Query"")]
-				|        public int Query()
-				|        {
-				|            // Уберем на время появления модального окна события мыши.
-				|            dynamic actRootMouseEvent = Application.RootMouseEvent;
-				|            Application.RootMouseEvent = null;
-				|
-				|            int maxLengthButtons = 0;
-				|            NStack.ustring[] _buttons = new NStack.ustring[Buttons.Count()];
-				|            for (int i = 0; i < Buttons.Count(); i++)
-				|            {
-				|                string str = Buttons.Get(i).AsString();
-				|                maxLengthButtons = maxLengthButtons + str.Length + 8;
-				|                _buttons[i] = str;
-				|            }
-				|
-				|            TfTextFormatter TfTextFormatter1 = new TfTextFormatter();
-				|            TfTextFormatter1.Text = Message;
-				|            TfSize TfSize1 = TfTextFormatter1.GetAutoSize();
-				|            int _height = TfSize1.Height + 1;
-				|            int _widthMessage = TfSize1.Width;
-				|            int _widthTitle = Title.Length + 5;
-				|            int _widthTerminal = Application.Driver.Cols - 8;
-				|            int _width = Math.Max(_widthMessage, Math.Max(_widthTitle, maxLengthButtons));
-				|            if (_width >= _widthTerminal)
-				|            {
-				|                _width = _widthTerminal;
-				|            }
-				|            int _heightTerminal = Application.Driver.Rows - 8;
-				|            if (_height >= _heightTerminal)
-				|            {
-				|                _height = _heightTerminal;
-				|            }
-				|            if (!AutoSize)
-				|            {
-				|                _width = Width;
-				|                _height = Height;
-				|            }
-				|
-				|            Clicked = Terminal.Gui.MessageBox.Query(_width, _height, Title, Message, DefaultButtonIndex, _buttons);
-				|            Application.MainLoop.RemoveTimeout(token);
-				|            // Вернем события мыши.
-				|            Application.RootMouseEvent = actRootMouseEvent;
-				|            return Clicked;
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "Начать") и (КлассАнгл = "Timer") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""Начать"", ""Start"")]
-				|        public void Start()
-				|        {
-				|            stop = false;
-				|            token = Application.MainLoop.AddTimeout(TimeSpan.FromMilliseconds(Interval), (m) =>
-				|            {
-				|                if (Tick != null)
-				|                {
-				|                    TfEventArgs TfEventArgs1 = new TfEventArgs();
-				|                    TfEventArgs1.sender = this;
-				|                    TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Tick);
-				|                    OneScriptTerminalGui.Event = TfEventArgs1;
-				|                    OneScriptTerminalGui.ExecuteEvent(Tick);
-				|                }
-				|                if (stop)
-				|                {
-				|                    return false;
-				|                }
-				|                return true;
-				|            });
-				|        }
-				|
-				|";
-			ИначеЕсли (МетодРус = "Остановить") и (КлассАнгл = "Timer") Тогда
-				Стр = Стр +
-				"        [ContextMethod(""Остановить"", ""Stop"")]
-				|        public void Stop()
-				|        {
-				|            stop = true;
-				|            // token для остановки не срабатывает, поэтому добавлено поле stop.
-				|            Application.MainLoop.RemoveTimeout(token);
-				|        }
-				|
-				|";
 			ИначеЕсли (МетодРус = "ДобавитьСочетаниеКлавиш") Тогда
 				Стр = Стр +
 				"        [ContextMethod(""ДобавитьСочетаниеКлавиш"", ""AddShortcut"")]
 				|        public void AddShortcut(decimal p1)
 				|        {
-				|            OneScriptTerminalGui.AddToShortcutDictionary(p1, this);
+				|            Utils.AddToShortcutDictionary(p1, this);
 				|        }
 				|
 				|";
@@ -3724,11 +7880,11 @@
 				|        public ValueListImpl GetShortcut()
 				|        {
 				|            ValueListImpl ValueListImpl1 = new ValueListImpl();
-				|            ArrayList ArrayList1 = OneScriptTerminalGui.GetFromShortcutDictionary(this);
+				|            ArrayList ArrayList1 = Utils.GetFromShortcutDictionary(this);
 				|            for (int i = 0; i < ArrayList1.Count; i++)
 				|            {
 				|                decimal shortcut = (decimal)ArrayList1[i];
-				|                ValueListImpl1.Add(ValueFactory.Create(shortcut), OneScriptTerminalGui.instance.Keys.ToStringRu(shortcut));
+				|                ValueListImpl1.Add(ValueFactory.Create(shortcut), OneScriptTerminalGui.instance.Keys.NameEn(shortcut));
 				|            }
 				|            if (ValueListImpl1.Count() > 0)
 				|            {
@@ -3743,22 +7899,35 @@
 				"        [ContextMethod(""УдалитьСочетаниеКлавиш"", ""RemoveShortcut"")]
 				|        public void RemoveShortcut(decimal p1)
 				|        {
-				|            OneScriptTerminalGui.RemoveFromShortcutDictionary(p1, this);
+				|            Utils.RemoveFromShortcutDictionary(p1, this);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ДобавитьКнопку") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ДобавитьКнопку"", ""AddButton"")]
+				|        public void AddButton(TfButton p1)
+				|        {
+				|            Base_obj.AddButton(p1.Base_obj);
+				|        }
+				|
+				|";
+			ИначеЕсли (МетодРус = "ПрименитьСтиль") Тогда
+				Стр = Стр +
+				"        [ContextMethod(""ПрименитьСтиль"", ""ApplyStyleChanges"")]
+				|        public void ApplyStyleChanges()
+				|        {
+				|            Base_obj.ApplyStyleChanges();
 				|        }
 				|
 				|";
 				
 				
+				
+				
+				
+				
 
-				
-				
-				
-				
-				
-				
-				
-				
-				
 				
 				
 				
@@ -3810,6 +7979,8 @@
 	СоздатьФайлТФ("OneScriptTerminalGui");
 	СоздатьФайлТФ("Action");
 	СоздатьФайлТФ("Responder");
+	СоздатьФайлТФ("ValueList");
+	СоздатьФайлТФ("Utils");
 	
 	// Соберем и запишем файлы перечислений.
 	ЗаписатьПеречисления();
@@ -3837,7 +8008,7 @@
 		// Сообщить("" + Стр);
 		// Сообщить("=====================================================================================================");
 		
-		СтрЗаголовка = СтрНайтиМежду(Стр, "<H1 class=dtH1", "/H1>", , )[0];
+		СтрЗаголовка = СтрНайтиМежду(Стр, "<h1 class=dtH1", "/h1>", , )[0];
 		М01 = СтрНайтиМежду(СтрЗаголовка, "(", ")", , );
 		Стр33 = СтрЗаголовка;
 		Стр33 = СтрЗаменить(Стр33, "&nbsp;", " ");
@@ -3903,7 +8074,7 @@
 		// Сообщить("" + Стр);
 		// Сообщить("=====================================================================================================");
 		
-		СтрЗаголовка= СтрНайтиМежду(Стр, "<H1 class=dtH1", "/H1>", , )[0];
+		СтрЗаголовка= СтрНайтиМежду(Стр, "<h1 class=dtH1", "/h1>", , )[0];
 		М01 = СтрНайтиМежду(СтрЗаголовка, "(", ")", , );
 		СтрЗаголовка = СтрЗаменить(СтрЗаголовка, "&nbsp;", " ");
 		Стр33 = СтрНайтиМежду(СтрЗаголовка, ">", " Перечисление<", , )[0];
@@ -3918,8 +8089,8 @@
 		// Сообщить("=====================================================================================================");
 		
 		//находим текст таблицы
-		СтрТаблица = СтрНайтиМежду(Стр, "<TBODY>", "</TABLE>", Ложь, );
-		СтрТаблицыПеречисления = СтрНайтиМежду(СтрТаблица[1], "<TR vAlign=top>", "</TR>", Ложь, );
+		СтрТаблица = СтрНайтиМежду(Стр, "<tbody>", "</table>", Ложь, );
+		СтрТаблицыПеречисления = СтрНайтиМежду(СтрТаблица[1], "<tr vAlign=top>", "</tr>", Ложь, );
 		СтрРазделОбъявленияПеременныхДляПеречисления = "";
 		СтрСвойстваДляПеречисления = "";
 		
@@ -3949,42 +8120,49 @@
 		|                yield return (item as IValue);
 		|            }
 		|        }
+		|
+		|        [ContextProperty(""Количество"", ""Count"")]
+		|        public int CountProp
+		|        {
+		|            get { return _list.Count; }
+		|        }
+		|
+		|        [ContextMethod(""Получить"", ""Get"")]
+		|        public IValue Get(int index)
+		|        {
+		|            return _list[index];
+		|        }
+		|
+		|        [ContextMethod(""Имя"")]
+		|        public string NameRu(decimal p1)
+		|        {
+		|            return namesRu.TryGetValue(p1, out string name) ? name : p1.ToString();
+		|        }
+		|
+		|        [ContextMethod(""Name"")]
+		|        public string NameEn(decimal p1)
+		|        {
+		|            return namesEn.TryGetValue(p1, out string name) ? name : p1.ToString();
+		|        }
 		|";
 		
 		СтрКонструктораДляПеречисления = 
 		"        public Tf" + КлассАнгл + "()
 		|        {
-		|            _list = new List<IValue>();";
-		
-		СтрМетодаВСтрокуДляПеречисленияНачало = "
-		|        [ContextMethod(""ВСтроку"", ""ВСтроку"")]
-		|        public string ToStringRu(decimal p1)
-		|        {
-		|            string str = p1.ToString();
-		|            switch (p1)
+		|            _list = new List<decimal>
 		|            {";
 		
-		СтрМетодаВСтрокуДляПеречисленияКонец = 
-		"            }
-		|            return str;
-		|        }";
+		СтрСловаряДляПеречисленияРу = "
+		|        private static readonly Dictionary<decimal, string> namesRu = new Dictionary<decimal, string>
+		|        {";
 		
-		СтрМетодаToStringДляПеречисленияНачало = "
-		|        [ContextMethod(""ToString"", ""ToString"")]
-		|        public string ToStringEn(decimal p1)
-		|        {
-		|            string str = p1.ToString();
-		|            switch (p1)
-		|            {";
-		
-		СтрМетодаToStringДляПеречисленияКонец = 
-		"            }
-		|            return str;
-		|        }";
+		СтрСловаряДляПеречисленияАнгл = "
+		|        private static readonly Dictionary<decimal, string> namesEn = new Dictionary<decimal, string>
+		|        {";
 		
 		Для А02 = 1 По СтрТаблицыПеречисления.ВГраница() Цикл
-			М12 = СтрНайтиМежду(СтрТаблицыПеречисления[А02], "<TD>", "</TD>", , );
-			М14 = СтрНайтиМежду(М12[0], "<B>", "</B>", , );
+			М12 = СтрНайтиМежду(СтрТаблицыПеречисления[А02], "<td>", "</td>", , );
+			М14 = СтрНайтиМежду(М12[0], "<b>", "</b>", , );
 			М13 = РазобратьСтроку(СтрЗаменить(М14[0], "&nbsp;", " "), " ");
 			ИмяПеречАнгл = М01[0];
 			ИмяПеречРус = М08[0];
@@ -4012,30 +8190,31 @@
 			// Сообщить("ОписаниеЧлена = " + ОписаниеЧлена);
 			// Сообщить("ЗначениеЧлена = " + ЗначениеЧлена);
 			
-			СтрСвойстваДляПеречисления = СтрСвойстваДляПеречисления + Символы.ПС + 
-			"        [ContextProperty(""" + ИмяЧленаРус + """, """ + ИмяЧленаАнгл + """)]
-			|        public int " + ИмяЧленаАнгл + "
-			|        {
-			|            get { return " + ЗначениеЧлена + "; }
-			|        }" + ?(А02 = СтрТаблицыПеречисления.ВГраница(), "", Символы.ПС);
+			        // public decimal BoxFix => 33685860;
+			СтрСвойстваДляПеречисления = СтрСвойстваДляПеречисления + Символы.ПС + "
+			|        [ContextProperty(""" + ИмяЧленаРус + """, """ + ИмяЧленаАнгл + """)]
+			|        public decimal " + ИмяЧленаАнгл + " => " + ЗначениеЧлена + ";";
 			
 			СтрКонструктораДляПеречисления = СтрКонструктораДляПеречисления + "
-			|            _list.Add(ValueFactory.Create(" + ИмяЧленаАнгл + "));";
+			|                " + ИмяЧленаАнгл + ",";
 			
-			СтрМетодаВСтрокуДляПеречисленияНачало = СтрМетодаВСтрокуДляПеречисленияНачало + "
-			|                case " + ЗначениеЧлена + ":
-			|                    str = """ + ИмяЧленаРус + """;
-			|                    break;";
+			СтрСловаряДляПеречисленияРу = СтрСловаряДляПеречисленияРу + "
+			|            {" + ЗначениеЧлена + ", """ + ИмяЧленаРус + """},";
 			
-			СтрМетодаToStringДляПеречисленияНачало = СтрМетодаToStringДляПеречисленияНачало + "
-			|                case " + ЗначениеЧлена + ":
-			|                    str = """ + ИмяЧленаАнгл + """;
-			|                    break;";
+			СтрСловаряДляПеречисленияАнгл = СтрСловаряДляПеречисленияАнгл + "
+			|            {" + ЗначениеЧлена + ", """ + ИмяЧленаАнгл + """},";
 			
 		КонецЦикла;
 		
 		СтрКонструктораДляПеречисления = СтрКонструктораДляПеречисления + "
+		|            }.Select(ValueFactory.Create).ToList();
 		|        }";
+		
+		СтрСловаряДляПеречисленияРу = СтрСловаряДляПеречисленияРу + "
+		|        };";
+		
+		СтрСловаряДляПеречисленияАнгл = СтрСловаряДляПеречисленияАнгл + "
+		|        };";
 		
 		СтрВыгрузкиПеречисленийШапка = Директивы(КлассАнгл);
 		СтрВыгрузкиПеречислений = СтрВыгрузкиПеречисленийШапка + 
@@ -4047,11 +8226,9 @@
 		|    {";
 		СтрВыгрузкиПеречислений = СтрВыгрузкиПеречислений + СтрРазделОбъявленияПеременныхДляПеречисления + Символы.ПС;
 		СтрВыгрузкиПеречислений = СтрВыгрузкиПеречислений + СтрКонструктораДляПеречисления + Символы.ПС;
+		СтрВыгрузкиПеречислений = СтрВыгрузкиПеречислений + СтрСловаряДляПеречисленияРу + Символы.ПС;
+		СтрВыгрузкиПеречислений = СтрВыгрузкиПеречислений + СтрСловаряДляПеречисленияАнгл;
 		СтрВыгрузкиПеречислений = СтрВыгрузкиПеречислений + СтрСвойстваДляПеречисления + Символы.ПС;
-		СтрВыгрузкиПеречислений = СтрВыгрузкиПеречислений + СтрМетодаВСтрокуДляПеречисленияНачало + Символы.ПС;
-		СтрВыгрузкиПеречислений = СтрВыгрузкиПеречислений + СтрМетодаВСтрокуДляПеречисленияКонец + Символы.ПС;
-		СтрВыгрузкиПеречислений = СтрВыгрузкиПеречислений + СтрМетодаToStringДляПеречисленияНачало + Символы.ПС;
-		СтрВыгрузкиПеречислений = СтрВыгрузкиПеречислений + СтрМетодаToStringДляПеречисленияКонец + Символы.ПС;
 		СтрВыгрузкиПеречислений = СтрВыгрузкиПеречислений + 
 		"    }" + Символы.ПС + 
 		"}";
@@ -4084,6 +8261,3824 @@
 		
 		
 		
+	ИначеЕсли ИмяФайлаТФ = "Math" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|";
+	ИначеЕсли ИмяФайлаТФ = "Balloons" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|";
+	ИначеЕсли ИмяФайлаТФ = "ColumnStyles" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class ColumnStyles : Dictionary<System.Data.DataColumn, Terminal.Gui.TableView.ColumnStyle>
+		|    {
+		|        public TfColumnStyles dll_obj;
+		|        public Dictionary<System.Data.DataColumn, Terminal.Gui.TableView.ColumnStyle> M_ColumnStyles;
+		|
+		|        public ColumnStyles()
+		|        {
+		|            M_ColumnStyles = new Dictionary<System.Data.DataColumn, Terminal.Gui.TableView.ColumnStyle>();
+		|            Utils.AddToHashtable(M_ColumnStyles, this);
+		|        }
+		|
+		|        public ColumnStyles(Dictionary<System.Data.DataColumn, Terminal.Gui.TableView.ColumnStyle> p1)
+		|        {
+		|            M_ColumnStyles = p1;
+		|        }
+		|
+		|        public ColumnStyles(ostgui.ColumnStyles p1)
+		|        {
+		|            M_ColumnStyles = p1.M_ColumnStyles;
+		|        }
+		|
+		|        public new int Count
+		|        {
+		|            get
+		|            {
+		|                int count = 0;
+		|                foreach (KeyValuePair<System.Data.DataColumn, Terminal.Gui.TableView.ColumnStyle> DictionaryEntry in M_ColumnStyles)
+		|                {
+		|                    count = count + 1;
+		|                }
+		|                return count;
+		|            }
+		|        }
+		|
+		|        public new object this[System.Data.DataColumn index]
+		|        {
+		|            get { return M_ColumnStyles[index]; }
+		|        }
+		|
+		|        public new System.Collections.IEnumerator GetEnumerator()
+		|        {
+		|            return M_ColumnStyles.GetEnumerator();
+		|        }
+		|
+		|        public new void Add(System.Data.DataColumn key, Terminal.Gui.TableView.ColumnStyle item)
+		|        {
+		|            M_ColumnStyles.Add(key, item);
+		|        }
+		|
+		|        public new void Remove(System.Data.DataColumn index)
+		|        {
+		|            M_ColumnStyles.Remove(index);
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "DataColumn" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class DataColumnEx : System.Data.DataColumn
+		|    {
+		|        public ostgui.DataColumn M_Object;
+		|
+		|        public DataColumnEx()
+		|        {
+		|        }
+		|
+		|        public DataColumnEx(string p1) : base(p1)
+		|        {
+		|        }
+		|
+		|        public DataColumnEx(string p1, System.Type p2) : base(p1, p2)
+		|        {
+		|        }
+		|    }
+		|
+		|    public class DataColumn
+		|    {
+		|        public TfDataColumn dll_obj;
+		|        public DataColumnEx M_DataColumn;
+		|
+		|        public DataColumn()
+		|        {
+		|            M_DataColumn = new DataColumnEx();
+		|            M_DataColumn.M_Object = this;
+		|        }
+		|
+		|        public DataColumn(ostgui.DataColumn p1)
+		|        {
+		|            M_DataColumn = p1.M_DataColumn;
+		|            M_DataColumn.M_Object = this;
+		|        }
+		|
+		|        public DataColumn(string p1)
+		|        {
+		|            M_DataColumn = new DataColumnEx(p1);
+		|            M_DataColumn.M_Object = this;
+		|        }
+		|
+		|        public DataColumn(string p1, System.Type p2)
+		|        {
+		|            M_DataColumn = new DataColumnEx(p1, p2);
+		|            M_DataColumn.M_Object = this;
+		|        }
+		|
+		|        public DataColumn(System.Data.DataColumn p1)
+		|        {
+		|            M_DataColumn = (DataColumnEx)p1;
+		|            M_DataColumn.M_Object = this;
+		|        }
+		|
+		|        public bool AutoIncrement
+		|        {
+		|            get { return M_DataColumn.AutoIncrement; }
+		|            set { M_DataColumn.AutoIncrement = value; }
+		|        }
+		|
+		|        public int AutoIncrementSeed
+		|        {
+		|            get { return Utils.ToInt32(M_DataColumn.AutoIncrementSeed); }
+		|            set { M_DataColumn.AutoIncrementSeed = value; }
+		|        }
+		|
+		|        public int AutoIncrementStep
+		|        {
+		|            get { return Utils.ToInt32(M_DataColumn.AutoIncrementStep); }
+		|            set { M_DataColumn.AutoIncrementStep = value; }
+		|        }
+		|
+		|        public string Caption
+		|        {
+		|            get { return M_DataColumn.Caption; }
+		|            set { M_DataColumn.Caption = value; }
+		|        }
+		|
+		|        public string ColumnName
+		|        {
+		|            get { return M_DataColumn.ColumnName; }
+		|            set { M_DataColumn.ColumnName = value; }
+		|        }
+		|
+		|        public System.Type DataType
+		|        {
+		|            get { return M_DataColumn.DataType; }
+		|            set { M_DataColumn.DataType = value; }
+		|        }
+		|
+		|        public object DefaultValue
+		|        {
+		|            get { return M_DataColumn.DefaultValue; }
+		|            set { M_DataColumn.DefaultValue = value; }
+		|        }
+		|
+		|        public int Ordinal
+		|        {
+		|            get { return M_DataColumn.Ordinal; }
+		|        }
+		|
+		|        public bool ReadOnly
+		|        {
+		|            get { return M_DataColumn.ReadOnly; }
+		|            set { M_DataColumn.ReadOnly = value; }
+		|        }
+		|
+		|        public ostgui.DataTable Table
+		|        {
+		|            get { return (DataTable)((DataTableEx)M_DataColumn.Table).M_Object; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "DataColumnCollection" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class DataColumnCollection : ICollection, IEnumerable, IEnumerator
+		|    {
+		|        public TfDataColumnCollection dll_obj;
+		|        public System.Collections.IEnumerator Enumerator;
+		|        public System.Data.DataColumnCollection M_DataColumnCollection;
+		|
+		|        public DataColumnCollection(System.Data.DataColumnCollection p1)
+		|        {
+		|            M_DataColumnCollection = p1;
+		|        }
+		|
+		|        public int Count
+		|        {
+		|            get { return M_DataColumnCollection.Count; }
+		|        }
+		|
+		|        public object Current
+		|        {
+		|            get { return (object)((DataColumnEx)((System.Data.DataColumn)Enumerator.Current)).M_Object; }
+		|        }
+		|
+		|        public bool IsSynchronized
+		|        {
+		|            get { return M_DataColumnCollection.IsSynchronized; }
+		|        }
+		|
+		|        public void Reset()
+		|        {
+		|            Enumerator.Reset();
+		|        }
+		|
+		|        public object SyncRoot
+		|        {
+		|            get { return M_DataColumnCollection.SyncRoot; }
+		|        }
+		|
+		|        public ostgui.DataColumn this[object index]
+		|        {
+		|            get
+		|            {
+		|                if (index is string)
+		|                {
+		|                    return new ostgui.DataColumn(M_DataColumnCollection[Utils.ToString(index)]);
+		|                }
+		|                return new ostgui.DataColumn(M_DataColumnCollection[Utils.ToInt32(index)]);
+		|            }
+		|            set
+		|            {
+		|            }
+		|        }
+		|
+		|        public ostgui.DataColumn Add(ostgui.DataColumn p1)
+		|        {
+		|            M_DataColumnCollection.Add(p1.M_DataColumn);
+		|            //System.Windows.Forms.Application.DoEvents();
+		|            return p1;
+		|        }
+		|
+		|        public ostgui.DataColumn AddItem(string p1)
+		|        {
+		|            DataColumn DataColumn1 = new DataColumn(p1);
+		|            M_DataColumnCollection.Add(DataColumn1.M_DataColumn);
+		|            //System.Windows.Forms.Application.DoEvents();
+		|            return DataColumn1;
+		|        }
+		|
+		|        public void Clear()
+		|        {
+		|            M_DataColumnCollection.Clear();
+		|        }
+		|
+		|        public void CopyTo(Array array, int index)
+		|        {
+		|        }
+		|
+		|        public System.Collections.IEnumerator GetEnumerator()
+		|        {
+		|            Enumerator = M_DataColumnCollection.GetEnumerator();
+		|            return (IEnumerator)this;
+		|        }
+		|
+		|        public bool MoveNext()
+		|        {
+		|            return Enumerator.MoveNext();
+		|        }
+		|
+		|        public void Remove(ostgui.DataColumn p1)
+		|        {
+		|            M_DataColumnCollection.Remove(p1.M_DataColumn);
+		|        }
+		|
+		|        public void RemoveAt(int index)
+		|        {
+		|            M_DataColumnCollection.RemoveAt(index);
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "DataItem" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class DataItem
+		|    {
+		|        public TfDataItem dll_obj;
+		|        public object Index;
+		|        public System.Data.DataRow M_DataRow;
+		|
+		|        public DataItem()
+		|        {
+		|        }
+		|
+		|        public DataItem(ostgui.DataItem p1)
+		|        {
+		|            M_DataRow = p1.M_DataRow;
+		|            Index = p1.Index;
+		|        }
+		|
+		|        public DataItem(System.Data.DataRow p1, object p2)
+		|        {
+		|            M_DataRow = p1;
+		|            Index = p2;
+		|        }
+		|
+		|        public ostgui.DataRow DataRow
+		|        {
+		|            get { return new DataRow(M_DataRow); }
+		|            set { M_DataRow = value.M_DataRow; }
+		|        }
+		|
+		|        public object Value
+		|        {
+		|            get
+		|            {
+		|                if (Index != null)
+		|                {
+		|                    if (Index.GetType() == typeof(int))
+		|                    {
+		|                        return M_DataRow[Utils.ToInt32(Index)];
+		|                    }
+		|                    if (Index.GetType() == typeof(string))
+		|                    {
+		|                        return M_DataRow[Utils.ToString(Index)];
+		|                    }
+		|                }
+		|                return null;
+		|            }
+		|            set
+		|            {
+		|                if (Index is string)
+		|                {
+		|                    M_DataRow[(string)Index] = value;
+		|                }
+		|                else
+		|                {
+		|                    M_DataRow[(int)Index] = value;
+		|                }
+		|            }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "DataRow" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class DataRow
+		|    {
+		|        public TfDataRow dll_obj;
+		|        public System.Data.DataRow M_DataRow;
+		|
+		|        public DataRow(ostgui.DataRow p1)
+		|        {
+		|            M_DataRow = p1.M_DataRow;
+		|            Utils.AddToHashtable(M_DataRow, this);
+		|        }
+		|
+		|        public DataRow(System.Data.DataRow p1)
+		|        {
+		|            M_DataRow = p1;
+		|            Utils.AddToHashtable(M_DataRow, this);
+		|        }
+		|
+		|        public object get_Item(object index)
+		|        {
+		|            return (object)new DataItem(M_DataRow, index);
+		|        }
+		|
+		|        public int RowState
+		|        {
+		|            get { return (int)M_DataRow.RowState; }
+		|        }
+		|
+		|        public ostgui.DataTable Table
+		|        {
+		|            get { return ((ostgui.DataTableEx)M_DataRow.Table).M_Object; }
+		|        }
+		|
+		|        public void AcceptChanges()
+		|        {
+		|            M_DataRow.AcceptChanges();
+		|        }
+		|
+		|        public void BeginEdit()
+		|        {
+		|            M_DataRow.BeginEdit();
+		|        }
+		|
+		|        public void CancelEdit()
+		|        {
+		|            M_DataRow.CancelEdit();
+		|        }
+		|
+		|        public void Delete()
+		|        {
+		|            M_DataRow.Delete();
+		|        }
+		|
+		|        public void EndEdit()
+		|        {
+		|            M_DataRow.EndEdit();
+		|        }
+		|
+		|        public void RejectChanges()
+		|        {
+		|            M_DataRow.RejectChanges();
+		|        }
+		|
+		|        public void SetItem(object index, object item)
+		|        {
+		|            if (index is string)
+		|            {
+		|                M_DataRow[(string)index] = item;
+		|            }
+		|            else
+		|            {
+		|                M_DataRow[(int)index] = item;
+		|            }
+		|            //System.Windows.Forms.Application.DoEvents();
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "DataRowCollection" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class DataRowCollection : ICollection, IEnumerable, IEnumerator
+		|    {
+		|        public TfDataRowCollection dll_obj;
+		|        private System.Collections.IEnumerator Enumerator;
+		|        public System.Data.DataRowCollection M_DataRowCollection;
+		|
+		|        public DataRowCollection(System.Data.DataRowCollection p1)
+		|        {
+		|            M_DataRowCollection = p1;
+		|        }
+		|
+		|        public int Count
+		|        {
+		|            get { return M_DataRowCollection.Count; }
+		|        }
+		|
+		|        public object Current
+		|        {
+		|            get { return new DataRow((System.Data.DataRow)Enumerator.Current); }
+		|        }
+		|
+		|        public bool IsSynchronized
+		|        {
+		|            get { return M_DataRowCollection.IsSynchronized; }
+		|        }
+		|
+		|        public void Reset()
+		|        {
+		|            Enumerator.Reset();
+		|        }
+		|
+		|        public object SyncRoot
+		|        {
+		|            get { return M_DataRowCollection.SyncRoot; }
+		|        }
+		|
+		|        public ostgui.DataRow this[int index]
+		|        {
+		|            get { return new DataRow(M_DataRowCollection[index]); }
+		|            set
+		|            {
+		|            }
+		|        }
+		|
+		|        public ostgui.DataRow Add(DataRow p1)
+		|        {
+		|            M_DataRowCollection.Add(p1.M_DataRow);
+		|            return p1;
+		|        }
+		|
+		|        public void Clear()
+		|        {
+		|            M_DataRowCollection.Clear();
+		|        }
+		|
+		|        public void CopyTo(Array array, int index)
+		|        {
+		|        }
+		|
+		|        public System.Collections.IEnumerator GetEnumerator()
+		|        {
+		|            Enumerator = M_DataRowCollection.GetEnumerator();
+		|            return (IEnumerator)this;
+		|        }
+		|
+		|        public ostgui.DataRow InsertAt(ostgui.DataRow p1, int index)
+		|        {
+		|            M_DataRowCollection.InsertAt(p1.M_DataRow, index);
+		|            return p1;
+		|        }
+		|
+		|        public bool MoveNext()
+		|        {
+		|            return Enumerator.MoveNext();
+		|        }
+		|
+		|        public void Remove(DataRow p1)
+		|        {
+		|            M_DataRowCollection.Remove(p1.M_DataRow);
+		|        }
+		|
+		|        public void RemoveAt(int p1)
+		|        {
+		|            M_DataRowCollection.RemoveAt(p1);
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "DataTable" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class DataTableEx : System.Data.DataTable
+		|    {
+		|        public ostgui.DataTable M_Object;
+		|    }
+		|
+		|    public class DataTable
+		|    {
+		|        public TfDataTable dll_obj;
+		|        public DataTableEx M_DataTable;
+		|
+		|        public DataTable()
+		|        {
+		|            M_DataTable = new DataTableEx();
+		|            M_DataTable.M_Object = this;
+		|            Utils.AddToHashtable(M_DataTable, this);
+		|        }
+		|
+		|        public DataTable(ostgui.DataTable p1)
+		|        {
+		|            M_DataTable = p1.M_DataTable;
+		|            M_DataTable.M_Object = this;
+		|            Utils.AddToHashtable(M_DataTable, this);
+		|        }
+		|
+		|        public DataTable(string p1)
+		|        {
+		|            M_DataTable = new DataTableEx();
+		|            M_DataTable.M_Object = this;
+		|            M_DataTable.TableName = p1;
+		|            Utils.AddToHashtable(M_DataTable, this);
+		|        }
+		|
+		|        public DataTable(System.Data.DataTable p1)
+		|        {
+		|            M_DataTable = (DataTableEx)p1;
+		|            M_DataTable.M_Object = this;
+		|            Utils.AddToHashtable(M_DataTable, this);
+		|        }
+		|
+		|        public ostgui.DataColumnCollection Columns
+		|        {
+		|            get { return new DataColumnCollection(M_DataTable.Columns); }
+		|        }
+		|
+		|        public ostgui.DataColumn get_Column(object p1)
+		|        {
+		|            if (p1 is int)
+		|            {
+		|                return ((DataColumnEx)(M_DataTable.Columns[Utils.ToInt32(p1)])).M_Object;
+		|            }
+		|            else
+		|            {
+		|                return ((DataColumnEx)(M_DataTable.Columns[Utils.ToString(p1)])).M_Object;
+		|            }
+		|        }
+		|
+		|        public ostgui.DataRowCollection Rows
+		|        {
+		|            get { return new DataRowCollection(M_DataTable.Rows); }
+		|        }
+		|
+		|        public string TableName
+		|        {
+		|            get { return M_DataTable.TableName; }
+		|            set { M_DataTable.TableName = value; }
+		|        }
+		|
+		|        public void AcceptChanges()
+		|        {
+		|            M_DataTable.AcceptChanges();
+		|        }
+		|
+		|        public ostgui.DataTable Clone()
+		|        {
+		|            return new DataTable(M_DataTable.Clone());
+		|        }
+		|
+		|        public ostgui.DataTable Copy()
+		|        {
+		|            return new DataTable(M_DataTable.Copy());
+		|        }
+		|
+		|        public ostgui.DataRow NewRow()
+		|        {
+		|            return new DataRow(M_DataTable.NewRow());
+		|        }
+		|
+		|        public void RejectChanges()
+		|        {
+		|            M_DataTable.RejectChanges();
+		|        }
+		|
+		|        public object[] Select(string filter)
+		|        {
+		|            System.Data.DataRow[] dataRowArray = M_DataTable.Select(filter);
+		|            int num1 = dataRowArray.Length;
+		|            object[] objArray = new object[num1];
+		|            for (int i = 0; i < dataRowArray.Length; i++)
+		|            {
+		|                objArray[i] = (object)new DataRow(dataRowArray[i]);
+		|            }
+		|            return objArray;
+		|        }
+		|
+		|        public void Sort(string expression)
+		|        {
+		|            if (M_DataTable.Rows.Count > 0)
+		|            {
+		|                System.Data.DataTable DataTable1 = M_DataTable.Copy();
+		|                M_DataTable.Clear();
+		|                System.Data.DataRow[] DataRowArray1 = DataTable1.Select((string)null, expression);
+		|                for (int i = 0; i < DataRowArray1.Length; i++)
+		|                {
+		|                    M_DataTable.ImportRow(DataRowArray1[i]);
+		|                }
+		|            }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "TreeNode" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class TreeNode
+		|    {
+		|        public TfTreeNode dll_obj;
+		|        public Terminal.Gui.Trees.TreeNode M_TreeNode;
+		|
+		|        public TreeNode()
+		|        {
+		|            M_TreeNode = new Terminal.Gui.Trees.TreeNode();
+		|            Utils.AddToHashtable(M_TreeNode, this);
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_TreeNode.ToString();
+		|        }
+		|
+		|        public IValue Tag
+		|        {
+		|            get { return M_TreeNode.TagProp; }
+		|            set { M_TreeNode.TagProp = value; }
+		|        }
+		|
+		|        public string Text
+		|        {
+		|            get { return M_TreeNode.Text; }
+		|            set { M_TreeNode.Text = value; }
+		|        }
+		|
+		|        public IList<Terminal.Gui.Trees.ITreeNode> Children
+		|        {
+		|            get { return M_TreeNode.Children; }
+		|            set { M_TreeNode.Children = value; }
+		|        }
+		|
+		|        public void Add(TreeNode p1)
+		|        {
+		|            M_TreeNode.Children.Add(p1.M_TreeNode);
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "TreeStyle" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class TreeStyle
+		|    {
+		|        public TfTreeStyle dll_obj;
+		|        public Terminal.Gui.Trees.TreeStyle M_TreeStyle;
+		|
+		|        public TreeStyle()
+		|        {
+		|            M_TreeStyle = new Terminal.Gui.Trees.TreeStyle();
+		|            Utils.AddToHashtable(M_TreeStyle, this);
+		|        }
+		|
+		|        public bool HighlightModelTextOnly
+		|        {
+		|            get { return M_TreeStyle.HighlightModelTextOnly; }
+		|            set { M_TreeStyle.HighlightModelTextOnly = value; }
+		|        }
+		|
+		|        public bool InvertExpandSymbolColors
+		|        {
+		|            get { return M_TreeStyle.InvertExpandSymbolColors; }
+		|            set { M_TreeStyle.InvertExpandSymbolColors = value; }
+		|        }
+		|
+		|        public bool ShowBranchLines
+		|        {
+		|            get { return M_TreeStyle.ShowBranchLines; }
+		|            set { M_TreeStyle.ShowBranchLines = value; }
+		|        }
+		|
+		|        public bool LeaveLastRow
+		|        {
+		|            get { return M_TreeStyle.LeaveLastRow; }
+		|            set { M_TreeStyle.LeaveLastRow = value; }
+		|        }
+		|
+		|        public string ExpandableSymbol
+		|        {
+		|            get { return M_TreeStyle.ExpandableSymbol.ToString(); }
+		|            set { M_TreeStyle.ExpandableSymbol = new Rune(value.ToCharArray()[0]); }
+		|        }
+		|
+		|        public string CollapseableSymbol
+		|        {
+		|            get { return M_TreeStyle.CollapseableSymbol.ToString(); }
+		|            set { M_TreeStyle.CollapseableSymbol = new Rune(value.ToCharArray()[0]); }
+		|        }
+		|
+		|        public bool ColorExpandSymbol
+		|        {
+		|            get { return M_TreeStyle.ColorExpandSymbol; }
+		|            set { M_TreeStyle.ColorExpandSymbol = value; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "TabsCollection" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|";
+	ИначеЕсли ИмяФайлаТФ = "TabStyle" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class TabStyle
+		|    {
+		|        public TfTabStyle dll_obj;
+		|        public Terminal.Gui.TabView.TabStyle M_TabStyle;
+		|
+		|        public TabStyle()
+		|        {
+		|            M_TabStyle = new Terminal.Gui.TabView.TabStyle();
+		|            Utils.AddToHashtable(M_TabStyle, this);
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_TabStyle.ToString();
+		|        }
+		|
+		|        public bool TabsOnBottom
+		|        {
+		|            get { return M_TabStyle.TabsOnBottom; }
+		|            set { M_TabStyle.TabsOnBottom = value; }
+		|        }
+		|
+		|        public bool ShowTopLine
+		|        {
+		|            get { return M_TabStyle.ShowTopLine; }
+		|            set { M_TabStyle.ShowTopLine = value; }
+		|        }
+		|
+		|        public bool ShowBorder
+		|        {
+		|            get { return M_TabStyle.ShowBorder; }
+		|            set { M_TabStyle.ShowBorder = value; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "TabPage" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class TabPage
+		|    {
+		|        public TfTabPage dll_obj;
+		|        public Terminal.Gui.TabView.Tab M_TabPage;
+		|
+		|        public TabPage()
+		|        {
+		|            M_TabPage = new Terminal.Gui.TabView.Tab();
+		|            Utils.AddToHashtable(M_TabPage, this);
+		|        }
+		|
+		|        public TabPage(string p1, View p2)
+		|        {
+		|            M_TabPage = new Terminal.Gui.TabView.Tab(p1, p2.M_View);
+		|            Utils.AddToHashtable(M_TabPage, this);
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_TabPage.ToString();
+		|        }
+		|
+		|        public string Text
+		|        {
+		|            get { return M_TabPage.Text.ToString(); }
+		|            set { M_TabPage.Text = value; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "TabView" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class TabView : View
+		|    {
+		|        public new TfTabView dll_obj;
+		|        public Terminal.Gui.TabView M_TabView;
+		|
+		|        public TabView()
+		|        {
+		|            M_TabView = new Terminal.Gui.TabView();
+		|            base.M_View = M_TabView;
+		|            Utils.AddToHashtable(M_TabView, this);
+		|            M_TabView.SelectedTabChanged += M_TabView_SelectedTabChanged;
+		|            M_TabView.TabClicked += M_TabView_TabClicked;
+		|        }
+		|
+		|        private void M_TabView_TabClicked(object sender, Terminal.Gui.TabView.TabMouseEventArgs e)
+		|        {
+		|            if (dll_obj.TabClicked != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.TabClicked);
+		|                TfEventArgs1.tab = Utils.RevertEqualsObj(e.Tab).dll_obj;
+		|                TfEventArgs1.flags = ValueFactory.Create((int)e.MouseEvent.Flags);
+		|                TfEventArgs1.x = ValueFactory.Create(e.MouseEvent.X);
+		|                TfEventArgs1.y = ValueFactory.Create(e.MouseEvent.Y);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.TabClicked);
+		|            }
+		|        }
+		|
+		|        private void M_TabView_SelectedTabChanged(object sender, Terminal.Gui.TabView.TabChangedEventArgs e)
+		|        {
+		|            if (dll_obj.SelectedTabChanged != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.SelectedTabChanged);
+		|                TfEventArgs1.newTab = Utils.RevertEqualsObj(e.NewTab).dll_obj;
+		|                TfEventArgs1.oldTab = Utils.RevertEqualsObj(e.OldTab).dll_obj;
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.SelectedTabChanged);
+		|            }
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_TabView.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_TabView.GetTopSuperView());
+		|        }
+		|
+		|        public int MaxTabTextWidth
+		|        {
+		|            get { return Utils.ToInt32(M_TabView.MaxTabTextWidth); }
+		|            set { M_TabView.MaxTabTextWidth = Utils.ToUInt32(value); }
+		|        }
+		|
+		|        public int TabScrollOffset
+		|        {
+		|            get { return M_TabView.TabScrollOffset; }
+		|            set { M_TabView.TabScrollOffset = value; }
+		|        }
+		|
+		|        public void AddTab(ostgui.TabPage p1, bool p2)
+		|        {
+		|            M_TabView.AddTab(p1.M_TabPage, p2);
+		|        }
+		|
+		|        public void RemoveTab(ostgui.TabPage p1)
+		|        {
+		|            M_TabView.RemoveTab(p1.M_TabPage);
+		|        }
+		|
+		|        public ostgui.TabStyle Style
+		|        {
+		|            get { return Utils.RevertEqualsObj(M_TabView.Style); }
+		|            set { M_TabView.Style = value.M_TabStyle; }
+		|        }
+		|
+		|        public ostgui.TabPage TabPage
+		|        {
+		|            get { return Utils.RevertEqualsObj(M_TabView.SelectedTab); }
+		|            set { M_TabView.SelectedTab = value.M_TabPage; }
+		|        }
+		|
+		|        public void ApplyStyleChanges()
+		|        {
+		|            M_TabView.ApplyStyleChanges();
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "DataColumn" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class DataColumn
+		|    {
+		|        public TfDataColumn dll_obj;
+		|        public System.Data.DataColumn M_DataColumn;
+		|
+		|        public DataColumn()
+		|        {
+		|            M_DataColumn = new System.Data.DataColumn();
+		|            Utils.AddToHashtable(M_DataColumn, this);
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_DataColumn.ToString();
+		|        }
+		|
+		|        public string Caption
+		|        {
+		|            get { return M_DataColumn.Caption; }
+		|            set { M_DataColumn.Caption = value; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "ColumnStyle" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class ColumnStyle
+		|    {
+		|        public TfColumnStyle dll_obj;
+		|        public Terminal.Gui.TableView.ColumnStyle M_ColumnStyle;
+		|
+		|        public ColumnStyle()
+		|        {
+		|            M_ColumnStyle = new Terminal.Gui.TableView.ColumnStyle();
+		|            Utils.AddToHashtable(M_ColumnStyle, this);
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_ColumnStyle.ToString();
+		|        }
+		|
+		|        public int TextAlignment
+		|        {
+		|            get { return (int)M_ColumnStyle.Alignment; }
+		|            set { M_ColumnStyle.Alignment = (Terminal.Gui.TextAlignment)value; }
+		|        }
+		|
+		|        public int MaxWidth
+		|        {
+		|            get { return M_ColumnStyle.MaxWidth; }
+		|            set { M_ColumnStyle.MaxWidth = value; }
+		|        }
+		|
+		|        public int MinWidth
+		|        {
+		|            get { return M_ColumnStyle.MinWidth; }
+		|            set { M_ColumnStyle.MinWidth = value; }
+		|        }
+		|
+		|        public int MinAcceptableWidth
+		|        {
+		|            get { return M_ColumnStyle.MinAcceptableWidth; }
+		|            set { M_ColumnStyle.MinAcceptableWidth = value; }
+		|        }
+		|
+		|        public bool Visible
+		|        {
+		|            get { return M_ColumnStyle.Visible; }
+		|            set { M_ColumnStyle.Visible = value; }
+		|        }
+		|
+		|        public string Format
+		|        {
+		|            get { return M_ColumnStyle.Format; }
+		|            set { M_ColumnStyle.Format = value; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "TableStyle" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class TableStyle
+		|    {
+		|        public TfTableStyle dll_obj;
+		|        public Terminal.Gui.TableView.TableStyle M_TableStyle;
+		|
+		|        public TableStyle()
+		|        {
+		|            M_TableStyle = new Terminal.Gui.TableView.TableStyle();
+		|            Utils.AddToHashtable(M_TableStyle, this);
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_TableStyle.ToString();
+		|        }
+		|
+		|        public bool ShowHorizontalScrollIndicators
+		|        {
+		|            get { return M_TableStyle.ShowHorizontalScrollIndicators; }
+		|            set { M_TableStyle.ShowHorizontalScrollIndicators = value; }
+		|        }
+		|
+		|        public bool InvertSelectedCellFirstCharacter
+		|        {
+		|            get { return M_TableStyle.InvertSelectedCellFirstCharacter; }
+		|            set { M_TableStyle.InvertSelectedCellFirstCharacter = value; }
+		|        }
+		|
+		|        public bool ShowVerticalHeaderLines
+		|        {
+		|            get { return M_TableStyle.ShowVerticalHeaderLines; }
+		|            set { M_TableStyle.ShowVerticalHeaderLines = value; }
+		|        }
+		|
+		|        public bool ShowVerticalCellLines
+		|        {
+		|            get { return M_TableStyle.ShowVerticalCellLines; }
+		|            set { M_TableStyle.ShowVerticalCellLines = value; }
+		|        }
+		|
+		|        public bool ShowHorizontalHeaderOverline
+		|        {
+		|            get { return M_TableStyle.ShowHorizontalHeaderOverline; }
+		|            set { M_TableStyle.ShowHorizontalHeaderOverline = value; }
+		|        }
+		|
+		|        public bool ShowHorizontalHeaderUnderline
+		|        {
+		|            get { return M_TableStyle.ShowHorizontalHeaderUnderline; }
+		|            set { M_TableStyle.ShowHorizontalHeaderUnderline = value; }
+		|        }
+		|
+		|        public bool SmoothHorizontalScrolling
+		|        {
+		|            get { return M_TableStyle.SmoothHorizontalScrolling; }
+		|            set { M_TableStyle.SmoothHorizontalScrolling = value; }
+		|        }
+		|
+		|        public bool ExpandLastColumn
+		|        {
+		|            get { return M_TableStyle.ExpandLastColumn; }
+		|            set { M_TableStyle.ExpandLastColumn = value; }
+		|        }
+		|
+		|        public bool AlwaysShowHeaders
+		|        {
+		|            get { return M_TableStyle.AlwaysShowHeaders; }
+		|            set { M_TableStyle.AlwaysShowHeaders = value; }
+		|        }
+		|
+		|        public ColumnStyles ColumnStyles
+		|        {
+		|            get { return Utils.RevertEqualsObj(M_TableStyle.ColumnStyles); }
+		|            set { M_TableStyle.ColumnStyles = value.M_ColumnStyles; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "ContextMenu" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class ContextMenu
+		|    {
+		|        public TfContextMenu dll_obj;
+		|        public Terminal.Gui.ContextMenu M_ContextMenu;
+		|
+		|        public ContextMenu()
+		|        {
+		|            M_ContextMenu = new Terminal.Gui.ContextMenu();
+		|            Utils.AddToHashtable(M_ContextMenu, this);
+		|        }
+		|
+		|        public ContextMenu(Terminal.Gui.ContextMenu p1)
+		|        {
+		|            M_ContextMenu = p1;
+		|            Utils.AddToHashtable(M_ContextMenu, this);
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_ContextMenu.ToString();
+		|        }
+		|
+		|        public int Key
+		|        {
+		|            get { return (int)M_ContextMenu.Key; }
+		|            set { M_ContextMenu.Key = (Terminal.Gui.Key)value; }
+		|        }
+		|
+		|        public int MouseFlags
+		|        {
+		|            get { return (int)M_ContextMenu.MouseFlags; }
+		|        }
+		|
+		|        public bool UseSubMenusSingleFrame
+		|        {
+		|            get { return M_ContextMenu.UseSubMenusSingleFrame; }
+		|            set { M_ContextMenu.UseSubMenusSingleFrame = value; }
+		|        }
+		|
+		|        public ostgui.MenuBar MenuBar
+		|        {
+		|            get { return Utils.RevertEqualsObj(M_ContextMenu.MenuBar); }
+		|        }
+		|
+		|        public ostgui.Point Position
+		|        {
+		|            get { return new Point(M_ContextMenu.Position); }
+		|            set { M_ContextMenu.Position = value.M_Point; }
+		|        }
+		|
+		|        public bool ForceMinimumPosToZero
+		|        {
+		|            get { return M_ContextMenu.ForceMinimumPosToZero; }
+		|            set { M_ContextMenu.ForceMinimumPosToZero = value; }
+		|        }
+		|
+		|        public void Show()
+		|        {
+		|            if (M_ContextMenu.UseSubMenusSingleFrame)
+		|            {
+		|                if (M_ContextMenu.MenuItems.Children.Length == 1)
+		|                {
+		|                    if (M_ContextMenu.MenuItems.Children[0].GetType() == typeof(Terminal.Gui.MenuBarItem))
+		|                    {
+		|                        Terminal.Gui.MenuBarItem menuBarItem = (Terminal.Gui.MenuBarItem)M_ContextMenu.MenuItems.Children[0];
+		|                        if (menuBarItem.Children.Length > 0)
+		|                        {
+		|                            M_ContextMenu.Show();
+		|                        }
+		|                    }
+		|                }
+		|                else
+		|                {
+		|                    new TfBalloons().Show(""Не правильное использование свойства КонтекстноеМеню.ОдинФреймДляПодменю (ContextMenu.UseSubMenusSingleFrame)"", -1);
+		|                }
+		|            }
+		|            else
+		|            {
+		|                M_ContextMenu.Show();
+		|            }
+		|        }
+		|
+		|        public void Hide()
+		|        {
+		|            M_ContextMenu.Hide();
+		|        }
+		|
+		|        public ostgui.MenuBarItem MenuItems
+		|        {
+		|            get { return Utils.RevertEqualsObj(M_ContextMenu.MenuItems); }
+		|            set { M_ContextMenu.MenuItems = value.M_MenuBarItem; }
+		|        }
+		|
+		|        public bool IsShow
+		|        {
+		|            get { return Terminal.Gui.ContextMenu.IsShow; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "TreeView" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class TreeView : View
+		|    {
+		|        public new TfTreeView dll_obj;
+		|        public Terminal.Gui.TreeView M_TreeView;
+		|
+		|        public TreeView()
+		|        {
+		|            M_TreeView = new Terminal.Gui.TreeView();
+		|            base.M_View = M_TreeView;
+		|            Utils.AddToHashtable(M_TreeView, this);
+		|
+		|            M_TreeView.ObjectActivated += M_TreeView_ObjectActivated;
+		|            M_TreeView.SelectionChanged += M_TreeView_SelectionChanged;
+		|        }
+		|
+		|        private void M_TreeView_SelectionChanged(object sender, Terminal.Gui.Trees.SelectionChangedEventArgs<Terminal.Gui.Trees.ITreeNode> e)
+		|        {
+		|            if (dll_obj.SelectionChanged != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.SelectionChanged);
+		|
+		|                Terminal.Gui.Trees.TreeNode nodeOld = null;
+		|                try
+		|                {
+		|                    nodeOld = (Terminal.Gui.Trees.TreeNode)e.OldValue;
+		|                }
+		|                catch { }
+		|                if (nodeOld != null)
+		|                {
+		|                    TfEventArgs1.oldNode = Utils.RevertEqualsObj(nodeOld).dll_obj;
+		|                }
+		|
+		|                TfEventArgs1.newNode = Utils.RevertEqualsObj(e.NewValue).dll_obj;
+		|                TfEventArgs1.treeView = Utils.RevertEqualsObj(e.Tree).dll_obj;
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.SelectionChanged);
+		|            }
+		|        }
+		|
+		|        private void M_TreeView_ObjectActivated(Terminal.Gui.Trees.ObjectActivatedEventArgs<Terminal.Gui.Trees.ITreeNode> obj)
+		|        {
+		|            if (dll_obj.ObjectActivated != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.ObjectActivated);
+		|                TfEventArgs1.treeNode = Utils.RevertEqualsObj(obj.ActivatedObject).dll_obj;
+		|                TfEventArgs1.treeView = Utils.RevertEqualsObj(obj.Tree).dll_obj;
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.ObjectActivated);
+		|            }
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_TreeView.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_TreeView.GetTopSuperView());
+		|        }
+		|
+		|        public int ContentHeight
+		|        {
+		|            get { return M_TreeView.ContentHeight; }
+		|        }
+		|
+		|        public int MaxDepth
+		|        {
+		|            get { return M_TreeView.MaxDepth; }
+		|            set { M_TreeView.MaxDepth = value; }
+		|        }
+		|
+		|        public int ObjectActivationKey
+		|        {
+		|            get { return (int)M_TreeView.ObjectActivationKey; }
+		|            set { M_TreeView.ObjectActivationKey = (Terminal.Gui.Key)value; }
+		|        }
+		|
+		|        public int ObjectActivationButton
+		|        {
+		|            get { return (int)M_TreeView.ObjectActivationButton; }
+		|            set { M_TreeView.ObjectActivationButton = (Terminal.Gui.MouseFlags)value; }
+		|        }
+		|
+		|        public decimal DesiredCursorVisibility
+		|        {
+		|            get { return (decimal)M_TreeView.DesiredCursorVisibility; }
+		|            set { M_TreeView.DesiredCursorVisibility = (Terminal.Gui.CursorVisibility)value; }
+		|        }
+		|
+		|        public bool MultiSelect
+		|        {
+		|            get { return M_TreeView.MultiSelect; }
+		|            set { M_TreeView.MultiSelect = value; }
+		|        }
+		|
+		|        public bool AllowLetterBasedNavigation
+		|        {
+		|            get { return M_TreeView.AllowLetterBasedNavigation; }
+		|            set { M_TreeView.AllowLetterBasedNavigation = value; }
+		|        }
+		|
+		|        public int ScrollOffsetVertical
+		|        {
+		|            get { return M_TreeView.ScrollOffsetVertical; }
+		|            set { M_TreeView.ScrollOffsetVertical = value; }
+		|        }
+		|
+		|        public int ScrollOffsetHorizontal
+		|        {
+		|            get { return M_TreeView.ScrollOffsetHorizontal; }
+		|            set { M_TreeView.ScrollOffsetHorizontal = value; }
+		|        }
+		|
+		|        public void SelectAll()
+		|        {
+		|            M_TreeView.SelectAll();
+		|        }
+		|
+		|        public void AdjustSelectionToBranchStart()
+		|        {
+		|            try
+		|            {
+		|                Terminal.Gui.Trees.ITreeNode parent = M_TreeView.GetParent(M_TreeView.SelectedObject);
+		|                if (parent.Children.Count > 0)
+		|                {
+		|                    M_TreeView.SelectedObject = parent.Children[0];
+		|                }
+		|            }
+		|            catch
+		|            {
+		|                Terminal.Gui.Trees.ITreeNode[] treeNodeArray = M_TreeView.Objects.ToArray();
+		|                if (treeNodeArray.Contains(M_TreeView.SelectedObject))
+		|                {
+		|                    M_TreeView.SelectedObject = treeNodeArray[0];
+		|                }
+		|            }
+		|        }
+		|
+		|        public void AdjustSelectionToBranchEnd()
+		|        {
+		|            try
+		|            {
+		|                Terminal.Gui.Trees.ITreeNode parent = M_TreeView.GetParent(M_TreeView.SelectedObject);
+		|                if (parent.Children.Count > 0)
+		|                {
+		|                    M_TreeView.SelectedObject = parent.Children[parent.Children.Count - 1];
+		|                }
+		|            }
+		|            catch
+		|            {
+		|                Terminal.Gui.Trees.ITreeNode[] treeNodeArray = M_TreeView.Objects.ToArray();
+		|                if (treeNodeArray.Contains(M_TreeView.SelectedObject))
+		|                {
+		|                    M_TreeView.SelectedObject = treeNodeArray[treeNodeArray.Length - 1];
+		|                }
+		|            }
+		|        }
+		|
+		|        public void GoToEnd()
+		|        {
+		|            M_TreeView.GoToEnd();
+		|        }
+		|
+		|        public void GoToFirst()
+		|        {
+		|            M_TreeView.GoToFirst();
+		|        }
+		|
+		|        public void AdjustSelection(int p1, bool p2 = false)
+		|        {
+		|            M_TreeView.AdjustSelection(p1, p2);
+		|        }
+		|
+		|        public int GetContentWidth(bool p1)
+		|        {
+		|            return M_TreeView.GetContentWidth(p1);
+		|        }
+		|
+		|        public void ScrollUp()
+		|        {
+		|            M_TreeView.ScrollUp();
+		|        }
+		|
+		|        public void ScrollDown()
+		|        {
+		|            M_TreeView.ScrollDown();
+		|        }
+		|
+		|        public void Expand()
+		|        {
+		|            M_TreeView.Expand();
+		|        }
+		|
+		|        public void ExpandAll()
+		|        {
+		|            M_TreeView.ExpandAll();
+		|        }
+		|
+		|        public void Collapse()
+		|        {
+		|            M_TreeView.Collapse();
+		|        }
+		|
+		|        public void CollapseAll()
+		|        {
+		|            M_TreeView.CollapseAll();
+		|        }
+		|
+		|        public void ClearObjects()
+		|        {
+		|            M_TreeView.ClearObjects();
+		|        }
+		|
+		|        public void AddObject(TreeNode p1)
+		|        {
+		|            M_TreeView.AddObject(p1.M_TreeNode);
+		|        }
+		|
+		|        public bool IsSelected(TreeNode p1)
+		|        {
+		|            return M_TreeView.IsSelected(p1.M_TreeNode);
+		|        }
+		|
+		|        public void AddObjects(ArrayImpl p1)
+		|        {
+		|            M_TreeView.AddObjects(Utils.ArrayToTreeNode(p1));
+		|        }
+		|
+		|        public bool CanExpand(TreeNode p1)
+		|        {
+		|            return M_TreeView.CanExpand(p1.M_TreeNode);
+		|        }
+		|
+		|        public void EnsureVisible(TreeNode p1)
+		|        {
+		|            M_TreeView.EnsureVisible(p1.M_TreeNode);
+		|        }
+		|
+		|        public void GoTo(TreeNode p1)
+		|        {
+		|            M_TreeView.GoTo(p1.M_TreeNode);
+		|        }
+		|
+		|        public IValue GetObjectRow(TreeNode p1)
+		|        {
+		|            var res = M_TreeView.GetObjectRow(p1.M_TreeNode);
+		|            if (res.GetType() == typeof(int))
+		|            {
+		|                return ValueFactory.Create(Convert.ToInt32(res));
+		|            }
+		|            return ValueFactory.Create(Convert.ToBoolean(res));
+		|        }
+		|
+		|        public TreeNode GetObjectOnRow(int p1)
+		|        {
+		|            return Utils.RevertEqualsObj(M_TreeView.GetObjectOnRow(p1));
+		|        }
+		|
+		|        //public ййййй GetExpandChildren()
+		|        //{
+		|        //    return Base_obj.GetExpandChildren();
+		|        //}
+		|
+		|        public TreeNode GetParent(TreeNode p1)
+		|        {
+		|            return Utils.RevertEqualsObj(M_TreeView.GetParent(p1.M_TreeNode));
+		|        }
+		|
+		|        public bool IsExpanded(TreeNode p1)
+		|        {
+		|            return M_TreeView.IsExpanded(p1.M_TreeNode);
+		|        }
+		|
+		|        public void MovePageUp(bool p1 = false)
+		|        {
+		|            M_TreeView.MovePageUp(p1);
+		|        }
+		|
+		|        public void MovePageDown(bool p1 = false)
+		|        {
+		|            M_TreeView.MovePageDown(p1);
+		|        }
+		|
+		|        public void Remove(TreeNode p1)
+		|        {
+		|            M_TreeView.Remove(p1.M_TreeNode);
+		|        }
+		|
+		|        public TreeStyle Style
+		|        {
+		|            get { return Utils.RevertEqualsObj(M_TreeView.Style); }
+		|            set { M_TreeView.Style = value.M_TreeStyle; }
+		|        }
+		|
+		|        public TreeNode SelectedObject
+		|        {
+		|            get { return Utils.RevertEqualsObj(M_TreeView.SelectedObject); }
+		|            set { M_TreeView.SelectedObject = value.M_TreeNode; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "TextView" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class TextView : View
+		|    {
+		|        public new TfTextView dll_obj;
+		|        public Terminal.Gui.TextView M_TextView;
+		|
+		|        public TextView()
+		|        {
+		|            M_TextView = new Terminal.Gui.TextView();
+		|            base.M_View = M_TextView;
+		|            Utils.AddToHashtable(M_TextView, this);
+		|
+		|            M_TextView.ContentsChanged += M_TextView_ContentsChanged;
+		|            M_TextView.TextChanged += M_TextView_TextChanged;
+		|        }
+		|
+		|        private void M_TextView_TextChanged()
+		|        {
+		|            if (dll_obj.TextChanged != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.TextChanged);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.TextChanged);
+		|            }
+		|        }
+		|
+		|        private void M_TextView_ContentsChanged(Terminal.Gui.TextView.ContentsChangedEventArgs obj)
+		|        {
+		|            if (dll_obj.ContentsChanged != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.ContentsChanged);
+		|                TfEventArgs1.columnIndex = ValueFactory.Create(obj.Col);
+		|                TfEventArgs1.rowIndex = ValueFactory.Create(obj.Row);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.ContentsChanged);
+		|            }
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_TextView.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_TextView.GetTopSuperView());
+		|        }
+		|
+		|        public int TopRow
+		|        {
+		|            get { return M_TextView.TopRow; }
+		|            set { M_TextView.TopRow = value; }
+		|        }
+		|
+		|        public bool Selecting
+		|        {
+		|            get { return M_TextView.Selecting; }
+		|            set { M_TextView.Selecting = value; }
+		|        }
+		|
+		|        public string SelectedText
+		|        {
+		|            get { return M_TextView.SelectedText.ToString(); }
+		|        }
+		|
+		|        public int SelectedLength
+		|        {
+		|            get { return M_TextView.SelectedLength; }
+		|        }
+		|
+		|        public bool Used
+		|        {
+		|            get { return M_TextView.Used; }
+		|            set { M_TextView.Used = value; }
+		|        }
+		|
+		|        public bool IsDirty
+		|        {
+		|            get { return M_TextView.IsDirty; }
+		|        }
+		|
+		|        public bool HasHistoryChanges
+		|        {
+		|            get { return M_TextView.HasHistoryChanges; }
+		|        }
+		|
+		|        public int Lines
+		|        {
+		|            get { return M_TextView.Lines; }
+		|        }
+		|
+		|        public int SelectionStartColumn
+		|        {
+		|            get { return M_TextView.SelectionStartColumn; }
+		|            set { M_TextView.SelectionStartColumn = value; }
+		|        }
+		|
+		|        public decimal DesiredCursorVisibility
+		|        {
+		|            get { return (decimal)M_TextView.DesiredCursorVisibility; }
+		|            set { M_TextView.DesiredCursorVisibility = (Terminal.Gui.CursorVisibility)value; }
+		|        }
+		|
+		|        public int LeftColumn
+		|        {
+		|            get { return M_TextView.LeftColumn; }
+		|            set { M_TextView.LeftColumn = value; }
+		|        }
+		|
+		|        public int Maxlength
+		|        {
+		|            get { return M_TextView.Maxlength; }
+		|        }
+		|
+		|        public bool Multiline
+		|        {
+		|            get { return M_TextView.Multiline; }
+		|            set { M_TextView.Multiline = value; }
+		|        }
+		|
+		|        public bool WordWrap
+		|        {
+		|            get { return M_TextView.WordWrap; }
+		|            set { M_TextView.WordWrap = value; }
+		|        }
+		|
+		|        public bool AllowsReturn
+		|        {
+		|            get { return M_TextView.AllowsReturn; }
+		|            set { M_TextView.AllowsReturn = value; }
+		|        }
+		|
+		|        public bool AllowsTab
+		|        {
+		|            get { return M_TextView.AllowsTab; }
+		|            set { M_TextView.AllowsTab = value; }
+		|        }
+		|
+		|        public int BottomOffset
+		|        {
+		|            get { return M_TextView.BottomOffset; }
+		|            set { M_TextView.BottomOffset = value; }
+		|        }
+		|
+		|        public int SelectionStartRow
+		|        {
+		|            get { return M_TextView.SelectionStartRow; }
+		|            set { M_TextView.SelectionStartRow = value; }
+		|        }
+		|
+		|        public int CurrentColumn
+		|        {
+		|            get { return M_TextView.CurrentColumn; }
+		|        }
+		|
+		|        public int CurrentRow
+		|        {
+		|            get { return M_TextView.CurrentRow; }
+		|        }
+		|
+		|        public bool ReadOnly
+		|        {
+		|            get { return M_TextView.ReadOnly; }
+		|            set { M_TextView.ReadOnly = value; }
+		|        }
+		|
+		|        public int TabWidth
+		|        {
+		|            get { return M_TextView.TabWidth; }
+		|            set { M_TextView.TabWidth = value; }
+		|        }
+		|
+		|        public void Paste()
+		|        {
+		|            M_TextView.Paste();
+		|        }
+		|
+		|        public void InsertText(string p1)
+		|        {
+		|            M_TextView.InsertText(p1);
+		|        }
+		|
+		|        public void SelectAll()
+		|        {
+		|            M_TextView.SelectAll();
+		|        }
+		|
+		|        public void Cut()
+		|        {
+		|            M_TextView.Cut();
+		|        }
+		|
+		|        public void LoadStream(System.IO.Stream p1)
+		|        {
+		|            M_TextView.LoadStream(p1);
+		|        }
+		|
+		|        public bool CloseFile()
+		|        {
+		|            return M_TextView.CloseFile();
+		|        }
+		|
+		|        public void Copy()
+		|        {
+		|            M_TextView.Copy();
+		|        }
+		|
+		|        public void ClearHistoryChanges()
+		|        {
+		|            M_TextView.ClearHistoryChanges();
+		|        }
+		|
+		|        public void MoveEnd()
+		|        {
+		|            M_TextView.MoveEnd();
+		|        }
+		|
+		|        public void MoveHome()
+		|        {
+		|            M_TextView.MoveHome();
+		|        }
+		|
+		|        public void ScrollTo(int p1, bool p2 = true)
+		|        {
+		|            M_TextView.ScrollTo(p1, p2);
+		|        }
+		|
+		|        public string GetCurrentLine()
+		|        {
+		|            List<Rune> list = M_TextView.GetCurrentLine();
+		|            string str = """";
+		|            for (int i = 0; i < list.Count; i++)
+		|            {
+		|                str += list[i].ToString();
+		|            }
+		|            return str;
+		|        }
+		|
+		|        public void DeleteCharLeft()
+		|        {
+		|            M_TextView.DeleteCharLeft();
+		|        }
+		|
+		|        public void DeleteCharRight()
+		|        {
+		|            M_TextView.DeleteCharRight();
+		|        }
+		|
+		|        public void RemoveAllText()
+		|        {
+		|            M_TextView.DeleteAll();
+		|        }
+		|
+		|        public Point CursorPosition
+		|        {
+		|            get { return new Point(M_TextView.CursorPosition); }
+		|            set { M_TextView.CursorPosition = new Terminal.Gui.Point(value.X, value.Y); }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "DateField" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class DateField : TextField
+		|    {
+		|        public new TfDateField dll_obj;
+		|        public Terminal.Gui.DateField M_DateField;
+		|
+		|        public DateField()
+		|        {
+		|            M_DateField = new Terminal.Gui.DateField();
+		|            base.M_TextField = M_DateField;
+		|            Utils.AddToHashtable(M_DateField, this);
+		|
+		|            M_DateField.DateChanged += M_DateField_DateChanged;
+		|        }
+		|
+		|        private void M_DateField_DateChanged(Terminal.Gui.DateTimeEventArgs<DateTime> obj)
+		|        {
+		|            if (dll_obj.DateChanged != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.DateChanged);
+		|                TfEventArgs1.newTicks = ValueFactory.Create(obj.NewValue.Ticks / 10000);
+		|                TfEventArgs1.oldTicks = ValueFactory.Create(obj.OldValue.Ticks / 10000);
+		|                TfEventArgs1.newYear = ValueFactory.Create(obj.NewValue.Year);
+		|                dll_obj.Year = obj.NewValue.Year;
+		|                TfEventArgs1.oldYear = ValueFactory.Create(obj.OldValue.Year);
+		|                TfEventArgs1.newMonth = ValueFactory.Create(obj.NewValue.Month);
+		|                dll_obj.Month = obj.NewValue.Month;
+		|                TfEventArgs1.oldMonth = ValueFactory.Create(obj.OldValue.Month);
+		|                TfEventArgs1.newDay = ValueFactory.Create(obj.NewValue.Day);
+		|                dll_obj.Day = obj.NewValue.Day;
+		|                TfEventArgs1.oldDay = ValueFactory.Create(obj.OldValue.Day);
+		|                TfEventArgs1.dateFormat = ValueFactory.Create(obj.Format);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.DateChanged);
+		|            }
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_DateField.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_DateField.GetTopSuperView());
+		|        }
+		|
+		|        public bool IsShortFormat
+		|        {
+		|            get { return M_DateField.IsShortFormat; }
+		|            set { M_DateField.IsShortFormat = value; }
+		|        }
+		|
+		|        public DateTime Date
+		|        {
+		|            get { return M_DateField.Date; }
+		|            set { M_DateField.Date = value; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "TimeField" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class TimeField : TextField
+		|    {
+		|        public new TfTimeField dll_obj;
+		|        public Terminal.Gui.TimeField M_TimeField;
+		|
+		|        public TimeField()
+		|        {
+		|            M_TimeField = new Terminal.Gui.TimeField();
+		|            base.M_TextField = M_TimeField;
+		|            Utils.AddToHashtable(M_TimeField, this);
+		|
+		|            M_TimeField.TimeChanged += M_TimeField_TimeChanged;
+		|        }
+		|
+		|        private void M_TimeField_TimeChanged(Terminal.Gui.DateTimeEventArgs<TimeSpan> obj)
+		|        {
+		|            if (dll_obj.TimeChanged != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.TimeChanged);
+		|                TfEventArgs1.newTicks = ValueFactory.Create(obj.NewValue.Ticks / 10000);
+		|                TfEventArgs1.oldTicks = ValueFactory.Create(obj.OldValue.Ticks / 10000);
+		|                TfEventArgs1.newHours = ValueFactory.Create(obj.NewValue.Hours);
+		|                dll_obj.Hours = obj.NewValue.Hours;
+		|                TfEventArgs1.oldHours = ValueFactory.Create(obj.OldValue.Hours);
+		|                TfEventArgs1.newMinutes = ValueFactory.Create(obj.NewValue.Minutes);
+		|                dll_obj.Minutes = obj.NewValue.Minutes;
+		|                TfEventArgs1.oldMinutes = ValueFactory.Create(obj.OldValue.Minutes);
+		|                TfEventArgs1.newSeconds = ValueFactory.Create(obj.NewValue.Seconds);
+		|                dll_obj.Seconds = obj.NewValue.Seconds;
+		|                TfEventArgs1.oldSeconds = ValueFactory.Create(obj.OldValue.Seconds);
+		|                TfEventArgs1.timeFormat = ValueFactory.Create(obj.Format);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.TimeChanged);
+		|            }
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_TimeField.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_TimeField.GetTopSuperView());
+		|        }
+		|
+		|        public bool IsShortFormat
+		|        {
+		|            get { return M_TimeField.IsShortFormat; }
+		|            set { M_TimeField.IsShortFormat = value; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "TextField" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class TextField : View
+		|    {
+		|        public new TfTextField dll_obj;
+		|        public Terminal.Gui.TextField m_TextField;
+		|
+		|        public Terminal.Gui.TextField M_TextField
+		|        {
+		|            get { return m_TextField; }
+		|            set
+		|            {
+		|                m_TextField = value;
+		|                base.M_View = m_TextField;
+		|            }
+		|        }
+		|
+		|        public TextField()
+		|        {
+		|            M_TextField = new Terminal.Gui.TextField();
+		|            base.M_View = M_TextField;
+		|            Utils.AddToHashtable(M_TextField, this);
+		|
+		|            M_TextField.TextChanged += M_TextField_TextChanged;
+		|            M_TextField.TextChanging += M_TextField_TextChanging;
+		|        }
+		|
+		|        private void M_TextField_TextChanging(Terminal.Gui.TextChangingEventArgs obj)
+		|        {
+		|            if (dll_obj.TextChanging != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.TextChanging);
+		|                TfEventArgs1.cancel = ValueFactory.Create(obj.Cancel);
+		|                TfEventArgs1.newText = ValueFactory.Create(obj.NewText.ToString());
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.TextChanging);
+		|                obj.Cancel = TfEventArgs1.Cancel;
+		|            }
+		|        }
+		|
+		|        private void M_TextField_TextChanged(NStack.ustring obj)
+		|        {
+		|            if (dll_obj.TextChanged != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.TextChanged);
+		|                TfEventArgs1.oldText = ValueFactory.Create(obj.ToString());
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.TextChanged);
+		|            }
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_TextField.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_TextField.GetTopSuperView());
+		|        }
+		|
+		|        public string SelectedText
+		|        {
+		|            get
+		|            {
+		|                try
+		|                {
+		|                    return M_TextField.SelectedText.ToString();
+		|                }
+		|                catch { }
+		|                return """";
+		|            }
+		|        }
+		|
+		|        public int SelectedLength
+		|        {
+		|            get { return M_TextField.SelectedLength; }
+		|        }
+		|
+		|        public bool Used
+		|        {
+		|            get { return M_TextField.Used; }
+		|            set { M_TextField.Used = value; }
+		|        }
+		|
+		|        public bool IsDirty
+		|        {
+		|            get { return M_TextField.IsDirty; }
+		|        }
+		|
+		|        public bool HasHistoryChanges
+		|        {
+		|            get { return M_TextField.HasHistoryChanges; }
+		|        }
+		|
+		|        public decimal DesiredCursorVisibility
+		|        {
+		|            get { return (decimal)M_TextField.DesiredCursorVisibility; }
+		|            set { M_TextField.DesiredCursorVisibility = (Terminal.Gui.CursorVisibility)value; }
+		|        }
+		|
+		|        public int SelectedStart
+		|        {
+		|            get { return M_TextField.SelectedStart; }
+		|            set { M_TextField.SelectedStart = value; }
+		|        }
+		|
+		|        public bool Secret
+		|        {
+		|            get { return M_TextField.Secret; }
+		|            set { M_TextField.Secret = value; }
+		|        }
+		|
+		|        public int ScrollOffset
+		|        {
+		|            get { return M_TextField.ScrollOffset; }
+		|        }
+		|
+		|        public bool ReadOnly
+		|        {
+		|            get { return M_TextField.ReadOnly; }
+		|            set { M_TextField.ReadOnly = value; }
+		|        }
+		|
+		|        public void InsertText(string p1, bool p2 = true)
+		|        {
+		|            M_TextField.InsertText(p1, p2);
+		|        }
+		|
+		|        public void Paste()
+		|        {
+		|            M_TextField.Paste();
+		|        }
+		|
+		|        public void SelectAll()
+		|        {
+		|            M_TextField.SelectAll();
+		|        }
+		|
+		|        public void Cut()
+		|        {
+		|            M_TextField.Cut();
+		|        }
+		|
+		|        public void Copy()
+		|        {
+		|            M_TextField.Copy();
+		|        }
+		|
+		|        public void ClearAllSelection()
+		|        {
+		|            M_TextField.ClearAllSelection();
+		|        }
+		|
+		|        public void ClearHistoryChanges()
+		|        {
+		|            M_TextField.ClearHistoryChanges();
+		|        }
+		|
+		|        public void RemoveAllText()
+		|        {
+		|            M_TextField.DeleteAll();
+		|        }
+		|
+		|        public void KillWordBackwards()
+		|        {
+		|            M_TextField.KillWordBackwards();
+		|        }
+		|
+		|        public void DeleteCharLeft()
+		|        {
+		|            M_TextField.DeleteCharLeft(false);
+		|        }
+		|
+		|        public void DeleteCharRight()
+		|        {
+		|            M_TextField.DeleteCharRight();
+		|        }
+		|
+		|        public void KillWordForwards()
+		|        {
+		|            M_TextField.KillWordForwards();
+		|        }
+		|
+		|        public new string Text
+		|        {
+		|            get { return M_TextField.Text.ToString(); }
+		|            set { M_TextField.Text = value; }
+		|        }
+		|
+		|        public int CursorPosition
+		|        {
+		|            get { return M_TextField.CursorPosition; }
+		|            set { M_TextField.CursorPosition = value; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "TableView" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class TableView : View
+		|    {
+		|        public new TfTableView dll_obj;
+		|        public Terminal.Gui.TableView M_TableView;
+		|
+		|        public TableView()
+		|        {
+		|            M_TableView = new Terminal.Gui.TableView();
+		|            base.M_View = M_TableView;
+		|            Utils.AddToHashtable(M_TableView, this);
+		|
+		|            M_TableView.CellActivated += M_TableView_CellActivated;
+		|            M_TableView.SelectedCellChanged += M_TableView_SelectedCellChanged;
+		|        }
+		|
+		|        private void M_TableView_SelectedCellChanged(Terminal.Gui.TableView.SelectedCellChangedEventArgs obj)
+		|        {
+		|            if (dll_obj.SelectedCellChanged != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.SelectedCellChanged);
+		|                TfEventArgs1.newCol = ValueFactory.Create(obj.NewCol);
+		|                TfEventArgs1.newRow = ValueFactory.Create(obj.NewRow);
+		|                TfEventArgs1.oldCol = ValueFactory.Create(obj.OldCol);
+		|                TfEventArgs1.oldRow = ValueFactory.Create(obj.OldRow);
+		|                TfEventArgs1.dataTable = ((DataTable)((DataTableEx)M_TableView.Table).M_Object).dll_obj;
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.SelectedCellChanged);
+		|            }
+		|        }
+		|
+		|        private void M_TableView_CellActivated(Terminal.Gui.TableView.CellActivatedEventArgs obj)
+		|        {
+		|            if (dll_obj.NativeCellActivated)
+		|            {
+		|                EditCurrentCell(obj);
+		|            }
+		|            else
+		|            {
+		|                if (dll_obj.CellActivated != null)
+		|                {
+		|                    TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                    TfEventArgs1.sender = dll_obj;
+		|                    TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.CellActivated);
+		|                    TfEventArgs1.columnIndex = ValueFactory.Create(obj.Col);
+		|                    TfEventArgs1.rowIndex = ValueFactory.Create(obj.Row);
+		|                    TfEventArgs1.dataTable = ((DataTable)((DataTableEx)M_TableView.Table).M_Object).dll_obj;
+		|                    OneScriptTerminalGui.Event = TfEventArgs1;
+		|                    OneScriptTerminalGui.ExecuteEvent(dll_obj.CellActivated);
+		|                }
+		|            }
+		|        }
+		|
+		|        private void EditCurrentCell(Terminal.Gui.TableView.CellActivatedEventArgs e)
+		|        {
+		|            if (e.Table == null)
+		|                return;
+		|            var o = e.Table.Rows[e.Row][e.Col];
+		|
+		|            var title = o is uint u ? GetUnicodeCategory(u) + $""(0x{o:X4})"" : ""Введите новое значение"";
+		|
+		|            var oldValue = e.Table.Rows[e.Row][e.Col].ToString();
+		|            bool okPressed = false;
+		|
+		|            var ok = new Terminal.Gui.Button(""ОК"", is_default: true);
+		|            ok.Clicked += () => { okPressed = true; Application.RequestStop(); };
+		|            var cancel = new Terminal.Gui.Button(""Отмена"");
+		|            cancel.Clicked += () => { Application.RequestStop(); };
+		|            var d = new Terminal.Gui.Dialog(title, 60, 20, ok, cancel);
+		|
+		|            var lbl = new Terminal.Gui.Label()
+		|            {
+		|                X = 0,
+		|                Y = 1,
+		|                Text = e.Table.Columns[e.Col].ColumnName
+		|            };
+		|
+		|            var tf = new Terminal.Gui.TextField()
+		|            {
+		|                Text = oldValue,
+		|                X = 0,
+		|                Y = 2,
+		|                Width = Terminal.Gui.Dim.Fill()
+		|            };
+		|
+		|            d.Add(lbl, tf);
+		|            tf.SetFocus();
+		|
+		|            Application.Run(d);
+		|
+		|            if (okPressed)
+		|            {
+		|                try
+		|                {
+		|                    e.Table.Rows[e.Row][e.Col] = string.IsNullOrWhiteSpace(tf.Text.ToString()) ? DBNull.Value : (object)tf.Text;
+		|                }
+		|                catch (Exception ex)
+		|                {
+		|                    Terminal.Gui.MessageBox.ErrorQuery(60, 20, ""Не удалось установить текст"", ex.Message, ""ОК"");
+		|                }
+		|                M_TableView.Update();
+		|            }
+		|        }
+		|
+		|        private string GetUnicodeCategory(uint u)
+		|        {
+		|            return Ranges.FirstOrDefault(r => u >= r.Start && u <= r.End)?.Category ?? ""Неизвестный"";
+		|        }
+		|
+		|        class UnicodeRange
+		|        {
+		|            public uint Start;
+		|            public uint End;
+		|            public string Category;
+		|            public UnicodeRange(uint start, uint end, string category)
+		|            {
+		|                this.Start = start;
+		|                this.End = end;
+		|                this.Category = category;
+		|            }
+		|        }
+		|
+		|        public static uint MaxCodePointVal => 0x10FFFF;
+		|
+		|        List<UnicodeRange> Ranges = new List<UnicodeRange> {
+		|            new UnicodeRange (0x0000, 0x001F, ""ASCII Control Characters""),
+		|            new UnicodeRange (0x0080, 0x009F, ""C0 Control Characters""),
+		|            new UnicodeRange(0x1100, 0x11ff,""Hangul Jamo""), // Здесь обычно начинаются широкие символы
+		|            new UnicodeRange(0x20A0, 0x20CF,""Currency Symbols""),
+		|            new UnicodeRange(0x2100, 0x214F,""Letterlike Symbols""),
+		|            new UnicodeRange(0x2190, 0x21ff,""Arrows"" ),
+		|            new UnicodeRange(0x2200, 0x22ff,""Mathematical symbols""),
+		|            new UnicodeRange(0x2300, 0x23ff,""Miscellaneous Technical""),
+		|            new UnicodeRange(0x2500, 0x25ff,""Box Drawing & Geometric Shapes""),
+		|            new UnicodeRange(0x2600, 0x26ff,""Miscellaneous Symbols""),
+		|            new UnicodeRange(0x2700, 0x27ff,""Dingbats""),
+		|            new UnicodeRange(0x2800, 0x28ff,""Braille""),
+		|            new UnicodeRange(0x2b00, 0x2bff,""Miscellaneous Symbols and Arrows""),
+		|            new UnicodeRange(0xFB00, 0xFb4f,""Alphabetic Presentation Forms""),
+		|            new UnicodeRange(0x12400, 0x1240f,""Cuneiform Numbers and Punctuation""),
+		|            new UnicodeRange(0x1FA00, 0x1FA0f,""Chess Symbols""),
+		|            new UnicodeRange((uint)(MaxCodePointVal - 16), (uint)MaxCodePointVal,""End""),
+		|            new UnicodeRange (0x0020 ,0x007F ,""Basic Latin""),
+		|            new UnicodeRange (0x00A0 ,0x00FF ,""Latin-1 Supplement""),
+		|            new UnicodeRange (0x0100 ,0x017F ,""Latin Extended-A""),
+		|            new UnicodeRange (0x0180 ,0x024F ,""Latin Extended-B""),
+		|            new UnicodeRange (0x0250 ,0x02AF ,""IPA Extensions""),
+		|            new UnicodeRange (0x02B0 ,0x02FF ,""Spacing Modifier Letters""),
+		|            new UnicodeRange (0x0300 ,0x036F ,""Combining Diacritical Marks""),
+		|            new UnicodeRange (0x0370 ,0x03FF ,""Greek and Coptic""),
+		|            new UnicodeRange (0x0400 ,0x04FF ,""Cyrillic""),
+		|            new UnicodeRange (0x0500 ,0x052F ,""Cyrillic Supplementary""),
+		|            new UnicodeRange (0x0530 ,0x058F ,""Armenian""),
+		|            new UnicodeRange (0x0590 ,0x05FF ,""Hebrew""),
+		|            new UnicodeRange (0x0600 ,0x06FF ,""Arabic""),
+		|            new UnicodeRange (0x0700 ,0x074F ,""Syriac""),
+		|            new UnicodeRange (0x0780 ,0x07BF ,""Thaana""),
+		|            new UnicodeRange (0x0900 ,0x097F ,""Devanagari""),
+		|            new UnicodeRange (0x0980 ,0x09FF ,""Bengali""),
+		|            new UnicodeRange (0x0A00 ,0x0A7F ,""Gurmukhi""),
+		|            new UnicodeRange (0x0A80 ,0x0AFF ,""Gujarati""),
+		|            new UnicodeRange (0x0B00 ,0x0B7F ,""Oriya""),
+		|            new UnicodeRange (0x0B80 ,0x0BFF ,""Tamil""),
+		|            new UnicodeRange (0x0C00 ,0x0C7F ,""Telugu""),
+		|            new UnicodeRange (0x0C80 ,0x0CFF ,""Kannada""),
+		|            new UnicodeRange (0x0D00 ,0x0D7F ,""Malayalam""),
+		|            new UnicodeRange (0x0D80 ,0x0DFF ,""Sinhala""),
+		|            new UnicodeRange (0x0E00 ,0x0E7F ,""Thai""),
+		|            new UnicodeRange (0x0E80 ,0x0EFF ,""Lao""),
+		|            new UnicodeRange (0x0F00 ,0x0FFF ,""Tibetan""),
+		|            new UnicodeRange (0x1000 ,0x109F ,""Myanmar""),
+		|            new UnicodeRange (0x10A0 ,0x10FF ,""Georgian""),
+		|            new UnicodeRange (0x1100 ,0x11FF ,""Hangul Jamo""),
+		|            new UnicodeRange (0x1200 ,0x137F ,""Ethiopic""),
+		|            new UnicodeRange (0x13A0 ,0x13FF ,""Cherokee""),
+		|            new UnicodeRange (0x1400 ,0x167F ,""Unified Canadian Aboriginal Syllabics""),
+		|            new UnicodeRange (0x1680 ,0x169F ,""Ogham""),
+		|            new UnicodeRange (0x16A0 ,0x16FF ,""Runic""),
+		|            new UnicodeRange (0x1700 ,0x171F ,""Tagalog""),
+		|            new UnicodeRange (0x1720 ,0x173F ,""Hanunoo""),
+		|            new UnicodeRange (0x1740 ,0x175F ,""Buhid""),
+		|            new UnicodeRange (0x1760 ,0x177F ,""Tagbanwa""),
+		|            new UnicodeRange (0x1780 ,0x17FF ,""Khmer""),
+		|            new UnicodeRange (0x1800 ,0x18AF ,""Mongolian""),
+		|            new UnicodeRange (0x1900 ,0x194F ,""Limbu""),
+		|            new UnicodeRange (0x1950 ,0x197F ,""Tai Le""),
+		|            new UnicodeRange (0x19E0 ,0x19FF ,""Khmer Symbols""),
+		|            new UnicodeRange (0x1D00 ,0x1D7F ,""Phonetic Extensions""),
+		|            new UnicodeRange (0x1E00 ,0x1EFF ,""Latin Extended Additional""),
+		|            new UnicodeRange (0x1F00 ,0x1FFF ,""Greek Extended""),
+		|            new UnicodeRange (0x2000 ,0x206F ,""General Punctuation""),
+		|            new UnicodeRange (0x2070 ,0x209F ,""Superscripts and Subscripts""),
+		|            new UnicodeRange (0x20A0 ,0x20CF ,""Currency Symbols""),
+		|            new UnicodeRange (0x20D0 ,0x20FF ,""Combining Diacritical Marks for Symbols""),
+		|            new UnicodeRange (0x2100 ,0x214F ,""Letterlike Symbols""),
+		|            new UnicodeRange (0x2150 ,0x218F ,""Number Forms""),
+		|            new UnicodeRange (0x2190 ,0x21FF ,""Arrows""),
+		|            new UnicodeRange (0x2200 ,0x22FF ,""Mathematical Operators""),
+		|            new UnicodeRange (0x2300 ,0x23FF ,""Miscellaneous Technical""),
+		|            new UnicodeRange (0x2400 ,0x243F ,""Control Pictures""),
+		|            new UnicodeRange (0x2440 ,0x245F ,""Optical Character Recognition""),
+		|            new UnicodeRange (0x2460 ,0x24FF ,""Enclosed Alphanumerics""),
+		|            new UnicodeRange (0x2500 ,0x257F ,""Box Drawing""),
+		|            new UnicodeRange (0x2580 ,0x259F ,""Block Elements""),
+		|            new UnicodeRange (0x25A0 ,0x25FF ,""Geometric Shapes""),
+		|            new UnicodeRange (0x2600 ,0x26FF ,""Miscellaneous Symbols""),
+		|            new UnicodeRange (0x2700 ,0x27BF ,""Dingbats""),
+		|            new UnicodeRange (0x27C0 ,0x27EF ,""Miscellaneous Mathematical Symbols-A""),
+		|            new UnicodeRange (0x27F0 ,0x27FF ,""Supplemental Arrows-A""),
+		|            new UnicodeRange (0x2800 ,0x28FF ,""Braille Patterns""),
+		|            new UnicodeRange (0x2900 ,0x297F ,""Supplemental Arrows-B""),
+		|            new UnicodeRange (0x2980 ,0x29FF ,""Miscellaneous Mathematical Symbols-B""),
+		|            new UnicodeRange (0x2A00 ,0x2AFF ,""Supplemental Mathematical Operators""),
+		|            new UnicodeRange (0x2B00 ,0x2BFF ,""Miscellaneous Symbols and Arrows""),
+		|            new UnicodeRange (0x2E80 ,0x2EFF ,""CJK Radicals Supplement""),
+		|            new UnicodeRange (0x2F00 ,0x2FDF ,""Kangxi Radicals""),
+		|            new UnicodeRange (0x2FF0 ,0x2FFF ,""Ideographic Description Characters""),
+		|            new UnicodeRange (0x3000 ,0x303F ,""CJK Symbols and Punctuation""),
+		|            new UnicodeRange (0x3040 ,0x309F ,""Hiragana""),
+		|            new UnicodeRange (0x30A0 ,0x30FF ,""Katakana""),
+		|            new UnicodeRange (0x3100 ,0x312F ,""Bopomofo""),
+		|            new UnicodeRange (0x3130 ,0x318F ,""Hangul Compatibility Jamo""),
+		|            new UnicodeRange (0x3190 ,0x319F ,""Kanbun""),
+		|            new UnicodeRange (0x31A0 ,0x31BF ,""Bopomofo Extended""),
+		|            new UnicodeRange (0x31F0 ,0x31FF ,""Katakana Phonetic Extensions""),
+		|            new UnicodeRange (0x3200 ,0x32FF ,""Enclosed CJK Letters and Months""),
+		|            new UnicodeRange (0x3300 ,0x33FF ,""CJK Compatibility""),
+		|            new UnicodeRange (0x3400 ,0x4DBF ,""CJK Unified Ideographs Extension A""),
+		|            new UnicodeRange (0x4DC0 ,0x4DFF ,""Yijing Hexagram Symbols""),
+		|            new UnicodeRange (0x4E00 ,0x9FFF ,""CJK Unified Ideographs""),
+		|            new UnicodeRange (0xA000 ,0xA48F ,""Yi Syllables""),
+		|            new UnicodeRange (0xA490 ,0xA4CF ,""Yi Radicals""),
+		|            new UnicodeRange (0xAC00 ,0xD7AF ,""Hangul Syllables""),
+		|            new UnicodeRange (0xD800 ,0xDB7F ,""High Surrogates""),
+		|            new UnicodeRange (0xDB80 ,0xDBFF ,""High Private Use Surrogates""),
+		|            new UnicodeRange (0xDC00 ,0xDFFF ,""Low Surrogates""),
+		|            new UnicodeRange (0xE000 ,0xF8FF ,""Private Use Area""),
+		|            new UnicodeRange (0xF900 ,0xFAFF ,""CJK Compatibility Ideographs""),
+		|            new UnicodeRange (0xFB00 ,0xFB4F ,""Alphabetic Presentation Forms""),
+		|            new UnicodeRange (0xFB50 ,0xFDFF ,""Arabic Presentation Forms-A""),
+		|            new UnicodeRange (0xFE00 ,0xFE0F ,""Variation Selectors""),
+		|            new UnicodeRange (0xFE20 ,0xFE2F ,""Combining Half Marks""),
+		|            new UnicodeRange (0xFE30 ,0xFE4F ,""CJK Compatibility Forms""),
+		|            new UnicodeRange (0xFE50 ,0xFE6F ,""Small Form Variants""),
+		|            new UnicodeRange (0xFE70 ,0xFEFF ,""Arabic Presentation Forms-B""),
+		|            new UnicodeRange (0xFF00 ,0xFFEF ,""Halfwidth and Fullwidth Forms""),
+		|            new UnicodeRange (0xFFF0 ,0xFFFF ,""Specials""),
+		|            new UnicodeRange (0x10000, 0x1007F ,""Linear B Syllabary""),
+		|            new UnicodeRange (0x10080, 0x100FF ,""Linear B Ideograms""),
+		|            new UnicodeRange (0x10100, 0x1013F ,""Aegean Numbers""),
+		|            new UnicodeRange (0x10300, 0x1032F ,""Old Italic""),
+		|            new UnicodeRange (0x10330, 0x1034F ,""Gothic""),
+		|            new UnicodeRange (0x10380, 0x1039F ,""Ugaritic""),
+		|            new UnicodeRange (0x10400, 0x1044F ,""Deseret""),
+		|            new UnicodeRange (0x10450, 0x1047F ,""Shavian""),
+		|            new UnicodeRange (0x10480, 0x104AF ,""Osmanya""),
+		|            new UnicodeRange (0x10800, 0x1083F ,""Cypriot Syllabary""),
+		|            new UnicodeRange (0x1D000, 0x1D0FF ,""Byzantine Musical Symbols""),
+		|            new UnicodeRange (0x1D100, 0x1D1FF ,""Musical Symbols""),
+		|            new UnicodeRange (0x1D300, 0x1D35F ,""Tai Xuan Jing Symbols""),
+		|            new UnicodeRange (0x1D400, 0x1D7FF ,""Mathematical Alphanumeric Symbols""),
+		|            new UnicodeRange (0x1F600, 0x1F532 ,""Emojis Symbols""),
+		|            new UnicodeRange (0x20000, 0x2A6DF ,""CJK Unified Ideographs Extension B""),
+		|            new UnicodeRange (0x2F800, 0x2FA1F ,""CJK Compatibility Ideographs Supplement""),
+		|            new UnicodeRange (0xE0000, 0xE007F ,""Tags""),
+		|        };
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_TableView.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_TableView.GetTopSuperView());
+		|        }
+		|
+		|        public int SelectedColumn
+		|        {
+		|            get { return M_TableView.SelectedColumn; }
+		|            set { M_TableView.SelectedColumn = value; }
+		|        }
+		|
+		|        public int SelectedRow
+		|        {
+		|            get { return M_TableView.SelectedRow; }
+		|            set { M_TableView.SelectedRow = value; }
+		|        }
+		|
+		|        public bool FullRowSelect
+		|        {
+		|            get { return M_TableView.FullRowSelect; }
+		|            set { M_TableView.FullRowSelect = value; }
+		|        }
+		|
+		|        public int CellActivationKey
+		|        {
+		|            get { return (int)M_TableView.CellActivationKey; }
+		|            set { M_TableView.CellActivationKey = (Terminal.Gui.Key)value; }
+		|        }
+		|
+		|        public int MaxCellWidth
+		|        {
+		|            get { return M_TableView.MaxCellWidth; }
+		|            set { M_TableView.MaxCellWidth = value; }
+		|        }
+		|
+		|        public bool MultiSelect
+		|        {
+		|            get { return M_TableView.MultiSelect; }
+		|            set { M_TableView.MultiSelect = value; }
+		|        }
+		|
+		|        public string SeparatorSymbol
+		|        {
+		|            get { return M_TableView.SeparatorSymbol.ToString(); }
+		|            set { M_TableView.SeparatorSymbol = value.ToCharArray()[0]; }
+		|        }
+		|
+		|        public string NullSymbol
+		|        {
+		|            get { return M_TableView.NullSymbol; }
+		|            set { M_TableView.NullSymbol = value; }
+		|        }
+		|
+		|        public int ColumnOffset
+		|        {
+		|            get { return M_TableView.ColumnOffset; }
+		|            set { M_TableView.ColumnOffset = value; }
+		|        }
+		|
+		|        public int RowOffset
+		|        {
+		|            get { return M_TableView.RowOffset; }
+		|            set { M_TableView.RowOffset = value; }
+		|        }
+		|
+		|        public void SelectAll()
+		|        {
+		|            M_TableView.SelectAll();
+		|        }
+		|
+		|        public void ChangeSelectionByOffset(int p1, int p2, bool p3)
+		|        {
+		|            M_TableView.ChangeSelectionByOffset(p1, p2, p3);
+		|        }
+		|
+		|        public void ChangeSelectionToEndOfRow(bool p1)
+		|        {
+		|            M_TableView.ChangeSelectionToEndOfRow(p1);
+		|        }
+		|
+		|        public void ChangeSelectionToEndOfTable(bool p1)
+		|        {
+		|            M_TableView.ChangeSelectionToEndOfTable(p1);
+		|        }
+		|
+		|        public void ChangeSelectionToStartOfRow(bool p1)
+		|        {
+		|            M_TableView.ChangeSelectionToStartOfRow(p1);
+		|        }
+		|
+		|        public void ChangeSelectionToStartOfTable(bool p1)
+		|        {
+		|            M_TableView.ChangeSelectionToStartOfTable(p1);
+		|        }
+		|
+		|        public void EnsureValidSelection()
+		|        {
+		|            M_TableView.EnsureValidSelection();
+		|        }
+		|
+		|        [ContextMethod(""ОбеспечитьДопустимыеСмещенияПрокрутки"", ""EnsureValidScrollOffsets"")]
+		|        public void EnsureValidScrollOffsets()
+		|        {
+		|            M_TableView.EnsureValidScrollOffsets();
+		|        }
+		|
+		|        [ContextMethod(""ОбеспечитьОтображениеВыбранной"", ""EnsureSelectedCellIsVisible"")]
+		|        public void EnsureSelectedCellIsVisible()
+		|        {
+		|            M_TableView.EnsureSelectedCellIsVisible();
+		|        }
+		|
+		|        public ArrayImpl GetAllSelectedCells()
+		|        {
+		|            return Utils.GetAllSelectedCells(M_TableView.GetAllSelectedCells());
+		|        }
+		|
+		|        public void PageUp(bool p1)
+		|        {
+		|            M_TableView.PageUp(p1);
+		|        }
+		|
+		|        public void PageDown(bool p1)
+		|        {
+		|            M_TableView.PageDown(p1);
+		|        }
+		|
+		|        public ostgui.Point CellToScreen(int p1, int p2)
+		|        {
+		|            try
+		|            {
+		|                return new Point((Terminal.Gui.Point)M_TableView.CellToScreen(p1, p2));
+		|            }
+		|            catch
+		|            {
+		|                return null;
+		|            }
+		|        }
+		|
+		|        public void SetSelection(int p1, int p2, bool p3)
+		|        {
+		|            M_TableView.SetSelection(p1, p2, p3);
+		|        }
+		|
+		|        public TableStyle Style
+		|        {
+		|            get { return Utils.RevertEqualsObj(M_TableView.Style); }
+		|            set { M_TableView.Style = value.M_TableStyle; }
+		|        }
+		|
+		|        public DataTable Table
+		|        {
+		|            get { return Utils.RevertEqualsObj(M_TableView.Table); }
+		|            set { M_TableView.Table = value.M_DataTable; }
+		|        }
+		|
+		|        public Point ScreenToCell(int p1, int p2)
+		|        {
+		|            try
+		|            {
+		|                dynamic point = M_TableView.ScreenToCell(p1, p2);
+		|                return new Point(point.X, point.Y);
+		|            }
+		|            catch
+		|            {
+		|                return null;
+		|            }
+		|        }
+		|
+		|        public bool IsSelected(int p1, int p2)
+		|        {
+		|            return M_TableView.IsSelected(p1, p2);
+		|        }
+		|
+		|        public ArrayImpl MultiSelectedRegions
+		|        {
+		|            get { return Utils.MultiSelectedRegions(M_TableView.MultiSelectedRegions); }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "ScrollBarView" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class ScrollBarView : View
+		|    {
+		|        public new TfScrollBarView dll_obj;
+		|        public Terminal.Gui.ScrollBarView M_ScrollBarView;
+		|
+		|        public ScrollBarView()
+		|        {
+		|            M_ScrollBarView = new Terminal.Gui.ScrollBarView();
+		|            base.M_View = M_ScrollBarView;
+		|            Utils.AddToHashtable(M_ScrollBarView, this);
+		|        }
+		|
+		|        public ScrollBarView(View host, bool isVertical, bool showBothScrollIndicator = true)
+		|        {
+		|            M_ScrollBarView = new Terminal.Gui.ScrollBarView(host.M_View, isVertical, showBothScrollIndicator);
+		|            base.M_View = M_ScrollBarView;
+		|            Utils.AddToHashtable(M_ScrollBarView, this);
+		|            SetActions(M_ScrollBarView, host);
+		|        }
+		|
+		|        private void SetActions(Terminal.Gui.ScrollBarView scrollBarView, View host)
+		|        {
+		|            if (host.GetType() == typeof(ListView))
+		|            {
+		|                Terminal.Gui.ListView listView = (Terminal.Gui.ListView)host.M_View;
+		|
+		|                scrollBarView.ChangedPosition += () =>
+		|                {
+		|                    listView.TopItem = M_ScrollBarView.Position;
+		|                    if (listView.TopItem != M_ScrollBarView.Position)
+		|                    {
+		|                        M_ScrollBarView.Position = listView.TopItem;
+		|                    }
+		|                    listView.SetNeedsDisplay();
+		|                };
+		|
+		|                scrollBarView.OtherScrollBarView.ChangedPosition += () =>
+		|                {
+		|                    listView.LeftItem = M_ScrollBarView.OtherScrollBarView.Position;
+		|                    if (listView.LeftItem != M_ScrollBarView.OtherScrollBarView.Position)
+		|                    {
+		|                        M_ScrollBarView.OtherScrollBarView.Position = listView.LeftItem;
+		|                    }
+		|                    listView.SetNeedsDisplay();
+		|                };
+		|
+		|                listView.DrawContent += (e) =>
+		|                {
+		|                    M_ScrollBarView.Size = listView.Source.Count;
+		|                    M_ScrollBarView.Position = listView.TopItem;
+		|                    M_ScrollBarView.OtherScrollBarView.Size = listView.Maxlength + 10;
+		|                    M_ScrollBarView.OtherScrollBarView.Position = listView.LeftItem;
+		|                    M_ScrollBarView.OtherScrollBarView.ColorScheme = M_ScrollBarView.ColorScheme;
+		|                    M_ScrollBarView.Refresh();
+		|                };
+		|            }
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_ScrollBarView.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_ScrollBarView.GetTopSuperView());
+		|        }
+		|
+		|        public bool AutoHideScrollBars
+		|        {
+		|            get { return M_ScrollBarView.AutoHideScrollBars; }
+		|            set { M_ScrollBarView.AutoHideScrollBars = value; }
+		|        }
+		|
+		|        public bool IsVertical
+		|        {
+		|            get { return M_ScrollBarView.IsVertical; }
+		|            set { M_ScrollBarView.IsVertical = value; }
+		|        }
+		|
+		|        public IValue Host
+		|        {
+		|            get { return Utils.RevertEqualsObj(M_ScrollBarView.Host).dll_obj; }
+		|        }
+		|
+		|        public int Position
+		|        {
+		|            get { return M_ScrollBarView.Position; }
+		|            set { M_ScrollBarView.Position = value; }
+		|        }
+		|
+		|        public int Size
+		|        {
+		|            get { return M_ScrollBarView.Size; }
+		|        }
+		|
+		|        public bool KeepContentAlwaysInViewport
+		|        {
+		|            get { return M_ScrollBarView.KeepContentAlwaysInViewport; }
+		|            set { M_ScrollBarView.KeepContentAlwaysInViewport = value; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "ScrollView" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class ScrollView : View
+		|    {
+		|        public new TfScrollView dll_obj;
+		|        public Terminal.Gui.ScrollView M_ScrollView;
+		|
+		|        public ScrollView()
+		|        {
+		|            M_ScrollView = new Terminal.Gui.ScrollView();
+		|            base.M_View = M_ScrollView;
+		|            Utils.AddToHashtable(M_ScrollView, this);
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_ScrollView.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_ScrollView.GetTopSuperView());
+		|        }
+		|
+		|        public bool AutoHideScrollBars
+		|        {
+		|            get { return M_ScrollView.AutoHideScrollBars; }
+		|            set { M_ScrollView.AutoHideScrollBars = value; }
+		|        }
+		|
+		|        public bool ShowVerticalScrollIndicator
+		|        {
+		|            get { return M_ScrollView.ShowVerticalScrollIndicator; }
+		|            set { M_ScrollView.ShowVerticalScrollIndicator = value; }
+		|        }
+		|
+		|        public bool ShowHorizontalScrollIndicator
+		|        {
+		|            get { return M_ScrollView.ShowHorizontalScrollIndicator; }
+		|            set { M_ScrollView.ShowHorizontalScrollIndicator = value; }
+		|        }
+		|
+		|        public ostgui.Size ContentSize
+		|        {
+		|            get { return new Size(M_ScrollView.ContentSize); }
+		|            set { M_ScrollView.ContentSize = value.M_Size; }
+		|        }
+		|
+		|        public ostgui.Point ContentOffset
+		|        {
+		|            get { return new Point(M_ScrollView.ContentOffset); }
+		|            set
+		|            {
+		|                M_ScrollView.ContentOffset = value.M_Point;
+		|                M_ScrollView.SetNeedsDisplay();
+		|            }
+		|        }
+		|
+		|        public bool KeepContentAlwaysInViewport
+		|        {
+		|            get { return M_ScrollView.KeepContentAlwaysInViewport; }
+		|            set { M_ScrollView.KeepContentAlwaysInViewport = value; }
+		|        }
+		|
+		|        public bool ScrollUp(int p1)
+		|        {
+		|            return M_ScrollView.ScrollUp(p1);
+		|        }
+		|
+		|        public bool ScrollLeft(int p1)
+		|        {
+		|            return M_ScrollView.ScrollLeft(p1);
+		|        }
+		|
+		|        public bool ScrollDown(int p1)
+		|        {
+		|            return M_ScrollView.ScrollDown(p1);
+		|        }
+		|
+		|        public bool ScrollRight(int p1)
+		|        {
+		|            return M_ScrollView.ScrollRight(p1);
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "FrameView" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class FrameView : View
+		|    {
+		|        public new TfFrameView dll_obj;
+		|        public Terminal.Gui.FrameView M_FrameView;
+		|
+		|        public FrameView()
+		|        {
+		|            M_FrameView = new Terminal.Gui.FrameView();
+		|            base.M_View = M_FrameView;
+		|            Utils.AddToHashtable(M_FrameView, this);
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_FrameView.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_FrameView.GetTopSuperView());
+		|        }
+		|
+		|        public string Title
+		|        {
+		|            get { return M_FrameView.Title.ToString(); }
+		|            set { M_FrameView.Title = value; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "ColorPicker" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class ColorPicker : View
+		|    {
+		|        public new TfColorPicker dll_obj;
+		|        public Terminal.Gui.ColorPicker M_ColorPicker;
+		|
+		|        public ColorPicker()
+		|        {
+		|            M_ColorPicker = new Terminal.Gui.ColorPicker();
+		|            base.M_View = M_ColorPicker;
+		|            Utils.AddToHashtable(M_ColorPicker, this);
+		|            M_ColorPicker.ColorChanged += M_ColorPicker_ColorChanged;
+		|        }
+		|
+		|        private void M_ColorPicker_ColorChanged()
+		|        {
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = dll_obj.ColorChanged;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(action);
+		|            }
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_ColorPicker.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_ColorPicker.GetTopSuperView());
+		|        }
+		|
+		|        public int SelectedColor
+		|        {
+		|            get { return (int)M_ColorPicker.SelectedColor; }
+		|            set { M_ColorPicker.SelectedColor = (Terminal.Gui.Color)value; }
+		|        }
+		|
+		|        public Point Cursor
+		|        {
+		|            get { return new Point(M_ColorPicker.Cursor); }
+		|            set { M_ColorPicker.Cursor = new Terminal.Gui.Point(value.X, value.Y); }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "ListView" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class ListView : View
+		|    {
+		|        public new TfListView dll_obj;
+		|        public Terminal.Gui.ListView M_ListView;
+		|
+		|        public ListView()
+		|        {
+		|            M_ListView = new Terminal.Gui.ListView();
+		|            base.M_View = M_ListView;
+		|            Utils.AddToHashtable(M_ListView, this);
+		|            SetActions(M_ListView);
+		|        }
+		|
+		|        private void SetActions(Terminal.Gui.ListView listView)
+		|        {
+		|            listView.Enter += ListView_Enter;
+		|            listView.Leave += ListView_Leave;
+		|            listView.SelectedItemChanged += ListView_SelectedItemChanged;
+		|            listView.OpenSelectedItem += ListView_OpenSelectedItem;
+		|
+		|        }
+		|
+		|        private void ListView_OpenSelectedItem(Terminal.Gui.ListViewItemEventArgs obj)
+		|        {
+		|            if (dll_obj.OpenSelectedItem != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.OpenSelectedItem);
+		|                TfEventArgs1.selectedItem = ValueFactory.Create(obj.Item);
+		|                TfValueList _source = dll_obj.Source;
+		|                ValueListItem _sourceItem = _source.Base_obj.M_ValueList.GetValue(ValueFactory.Create(obj.Item));
+		|                TfEventArgs1.valueProp = _sourceItem;
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.OpenSelectedItem);
+		|            }
+		|        }
+		|
+		|        private void ListView_SelectedItemChanged(Terminal.Gui.ListViewItemEventArgs obj)
+		|        {
+		|            if (dll_obj.SelectedItemChanged != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.SelectedItemChanged);
+		|                TfEventArgs1.selectedItem = ValueFactory.Create(obj.Item);
+		|                TfValueList _source = dll_obj.Source;
+		|                ValueListItem _sourceItem = _source.Base_obj.M_ValueList.GetValue(ValueFactory.Create(obj.Item));
+		|                TfEventArgs1.valueProp = _sourceItem;
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.SelectedItemChanged);
+		|            }
+		|        }
+		|
+		|        private void ListView_Leave(Terminal.Gui.View.FocusEventArgs obj)
+		|        {
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).Leave;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(action);
+		|            }
+		|        }
+		|
+		|        private void ListView_Enter(Terminal.Gui.View.FocusEventArgs obj)
+		|        {
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).Enter;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(action);
+		|            }
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_ListView.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_ListView.GetTopSuperView());
+		|        }
+		|
+		|        public int TopItemIndex
+		|        {
+		|            get { return M_ListView.TopItem; }
+		|            set { M_ListView.TopItem = value; }
+		|        }
+		|
+		|        public int SelectedItemIndex
+		|        {
+		|            get { return M_ListView.SelectedItem; }
+		|            set { M_ListView.SelectedItem = value; }
+		|        }
+		|
+		|        public int LeftItemIndex
+		|        {
+		|            get { return M_ListView.LeftItem; }
+		|            set { M_ListView.LeftItem = value; }
+		|        }
+		|
+		|        public int Maxlength
+		|        {
+		|            get { return M_ListView.Maxlength; }
+		|        }
+		|
+		|        public bool AllowsMultipleSelection
+		|        {
+		|            get { return M_ListView.AllowsMultipleSelection; }
+		|            set { M_ListView.AllowsMultipleSelection = value; }
+		|        }
+		|
+		|        public bool AllowsMarking
+		|        {
+		|            get { return M_ListView.AllowsMarking; }
+		|            set { M_ListView.AllowsMarking = value; }
+		|        }
+		|
+		|        public void EnsureSelectedItemVisible()
+		|        {
+		|            M_ListView.EnsureSelectedItemVisible();
+		|        }
+		|
+		|        public bool MoveUp()
+		|        {
+		|            return M_ListView.MoveUp();
+		|        }
+		|
+		|        public bool MovePageUp()
+		|        {
+		|            return M_ListView.MovePageUp();
+		|        }
+		|
+		|        public bool MoveEnd()
+		|        {
+		|            return M_ListView.MoveEnd();
+		|        }
+		|
+		|        public bool MoveHome()
+		|        {
+		|            return M_ListView.MoveHome();
+		|        }
+		|
+		|        public bool MoveDown()
+		|        {
+		|            return M_ListView.MoveDown();
+		|        }
+		|
+		|        public bool MovePageDown()
+		|        {
+		|            return M_ListView.MovePageDown();
+		|        }
+		|
+		|        public void MarkUnmarkRow(int p1, bool p2)
+		|        {
+		|            M_ListView.Source.SetMark(p1, p2);
+		|        }
+		|
+		|        public bool ScrollUp(int p1)
+		|        {
+		|            return M_ListView.ScrollUp(p1);
+		|        }
+		|
+		|        public bool ScrollLeft(int p1)
+		|        {
+		|            return M_ListView.ScrollLeft(p1);
+		|        }
+		|
+		|        public bool ScrollDown(int p1)
+		|        {
+		|            return M_ListView.ScrollDown(p1);
+		|        }
+		|
+		|        public bool ScrollRight(int p1)
+		|        {
+		|            return M_ListView.ScrollRight(p1);
+		|        }
+		|
+		|        public void AllowsAll()
+		|        {
+		|            int num = M_ListView.SelectedItem;
+		|            for (int i = 0; i < M_ListView.Source.Count; i++)
+		|            {
+		|                M_ListView.SelectedItem = i;
+		|                if (num != i)
+		|                {
+		|                    if (M_ListView.Source.IsMarked(M_ListView.SelectedItem))
+		|                    {
+		|                        M_ListView.MarkUnmarkRow();
+		|                    }
+		|                }
+		|            }
+		|            M_ListView.SelectedItem = num;
+		|            //bool _bool = M_ListView.AllowsAll(); // Это не работает, поэтому обработал по своему.
+		|        }
+		|
+		|        public bool Checked(int p1)
+		|        {
+		|            return M_ListView.Source.IsMarked(p1);
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "ComboBox" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class ComboBox : View
+		|    {
+		|        public new TfComboBox dll_obj;
+		|        public Terminal.Gui.ComboBox M_ComboBox;
+		|
+		|        public ComboBox()
+		|        {
+		|            M_ComboBox = new Terminal.Gui.ComboBox();
+		|            base.M_View = M_ComboBox;
+		|            Utils.AddToHashtable(M_ComboBox, this);
+		|            Width = new Dim().Sized(10);
+		|
+		|            M_ComboBox.Collapsed += M_ComboBox_Collapsed;
+		|            M_ComboBox.Expanded += M_ComboBox_Expanded;
+		|            M_ComboBox.SelectedItemChanged += M_ComboBox_SelectedItemChanged;
+		|            M_ComboBox.OpenSelectedItem += M_ComboBox_OpenSelectedItem;
+		|        }
+		|
+		|        private void M_ComboBox_OpenSelectedItem(Terminal.Gui.ListViewItemEventArgs obj)
+		|        {
+		|            if (dll_obj.OpenSelectedItem != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.OpenSelectedItem);
+		|                TfEventArgs1.selectedItem = ValueFactory.Create(obj.Item);
+		|                TfValueList _source = dll_obj.Source;
+		|                ValueListItem _sourceItem = _source.Base_obj.M_ValueList.GetValue(ValueFactory.Create(obj.Item));
+		|                TfEventArgs1.valueProp = _sourceItem;
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.OpenSelectedItem);
+		|            }
+		|        }
+		|
+		|        private void M_ComboBox_SelectedItemChanged(Terminal.Gui.ListViewItemEventArgs obj)
+		|        {
+		|            if (dll_obj.SelectedItemChanged != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.SelectedItemChanged);
+		|                TfEventArgs1.selectedItem = ValueFactory.Create(obj.Item);
+		|                TfValueList _source = dll_obj.Source;
+		|                ValueListItem _sourceItem = _source.Base_obj.M_ValueList.GetValue(ValueFactory.Create(obj.Item));
+		|                TfEventArgs1.valueProp = _sourceItem;
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.SelectedItemChanged);
+		|            }
+		|        }
+		|
+		|        private void M_ComboBox_Expanded()
+		|        {
+		|            if (dll_obj.Expanded != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.Expanded);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.Expanded);
+		|            }
+		|        }
+		|
+		|        private void M_ComboBox_Collapsed()
+		|        {
+		|            if (dll_obj.Collapsed != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.Collapsed);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.Collapsed);
+		|            }
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_ComboBox.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_ComboBox.GetTopSuperView());
+		|        }
+		|
+		|        public int SelectedItemIndex
+		|        {
+		|            get { return M_ComboBox.SelectedItem; }
+		|            set { M_ComboBox.SelectedItem = value; }
+		|        }
+		|
+		|        public bool IsShow
+		|        {
+		|            get { return M_ComboBox.IsShow; }
+		|        }
+		|
+		|        public bool HideDropdownListOnClick
+		|        {
+		|            get { return M_ComboBox.HideDropdownListOnClick; }
+		|            set { M_ComboBox.HideDropdownListOnClick = value; }
+		|        }
+		|
+		|        public string SelectedText
+		|        {
+		|            get { return M_ComboBox.Text.ToString(); }
+		|            set { M_ComboBox.Text = value; }
+		|        }
+		|
+		|        public string SearchText
+		|        {
+		|            get { return M_ComboBox.SearchText.ToString(); }
+		|            set { M_ComboBox.SearchText = value; }
+		|        }
+		|
+		|        public bool ReadOnly
+		|        {
+		|            get { return M_ComboBox.ReadOnly; }
+		|            set { M_ComboBox.ReadOnly = value; }
+		|        }
+		|
+		|        public void Expand()
+		|        {
+		|            M_ComboBox.Expand();
+		|        }
+		|
+		|        public void Collapse()
+		|        {
+		|            M_ComboBox.Collapse();
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "OpenDialog" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class OpenDialog : FileDialog
+		|    {
+		|        public new TfOpenDialog dll_obj;
+		|        public Terminal.Gui.OpenDialog M_OpenDialog;
+		|
+		|        public OpenDialog()
+		|        {
+		|            M_OpenDialog = new Terminal.Gui.OpenDialog();
+		|            base.M_FileDialog = M_OpenDialog;
+		|            Utils.AddToHashtable(M_OpenDialog, this);
+		|            M_OpenDialog.Subviews[0].Leave += OpenDialog_Leave;
+		|        }
+		|
+		|        private void OpenDialog_Leave(Terminal.Gui.View.FocusEventArgs obj)
+		|        {
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).Leave;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(action);
+		|            }
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_OpenDialog.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_OpenDialog.GetTopSuperView());
+		|        }
+		|
+		|        public bool CanChooseDirectories
+		|        {
+		|            get { return M_OpenDialog.CanChooseDirectories; }
+		|            set { M_OpenDialog.CanChooseDirectories = value; }
+		|        }
+		|
+		|        public bool CanChooseFiles
+		|        {
+		|            get { return M_OpenDialog.CanChooseFiles; }
+		|            set { M_OpenDialog.CanChooseFiles = value; }
+		|        }
+		|
+		|        public bool AllowsMultipleSelection
+		|        {
+		|            get { return M_OpenDialog.AllowsMultipleSelection; }
+		|            set { M_OpenDialog.AllowsMultipleSelection = value; }
+		|        }
+		|
+		|        public ArrayImpl FilePaths
+		|        {
+		|            get
+		|            {
+		|                ArrayImpl ArrayImpl1 = new ArrayImpl();
+		|                foreach (var file in M_OpenDialog.FilePaths)
+		|                {
+		|                    ArrayImpl1.Add(ValueFactory.Create(file));
+		|                }
+		|                return ArrayImpl1;
+		|            }
+		|        }
+		|
+		|        public int LabelLanguage
+		|        {
+		|            get { return M_OpenDialog.LabelLanguage; }
+		|            set { M_OpenDialog.LabelLanguage = value; }
+		|        }
+		|
+		|        public new string Title
+		|        {
+		|            get { return M_OpenDialog.Title.ToString(); }
+		|            set { M_OpenDialog.Title = value; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "SaveDialog" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class SaveDialog : FileDialog
+		|    {
+		|        public new TfSaveDialog dll_obj;
+		|        public Terminal.Gui.SaveDialog M_SaveDialog;
+		|
+		|        public SaveDialog()
+		|        {
+		|            M_SaveDialog = new Terminal.Gui.SaveDialog();
+		|            base.M_FileDialog = M_SaveDialog;
+		|            Utils.AddToHashtable(M_SaveDialog, this);
+		|            M_SaveDialog.Subviews[0].Leave += SaveDialog_Leave;
+		|        }
+		|
+		|        private void SaveDialog_Leave(Terminal.Gui.View.FocusEventArgs obj)
+		|        {
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).Leave;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(action);
+		|            }
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_SaveDialog.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_SaveDialog.GetTopSuperView());
+		|        }
+		|
+		|        public int LabelLanguage
+		|        {
+		|            get { return M_SaveDialog.LabelLanguage; }
+		|            set { M_SaveDialog.LabelLanguage = value; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "FileDialog" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class FileDialog : Dialog
+		|    {
+		|        public new TfFileDialog dll_obj;
+		|        public Terminal.Gui.FileDialog m_FileDialog;
+		|
+		|        public Terminal.Gui.FileDialog M_FileDialog
+		|        {
+		|            get { return m_FileDialog; }
+		|            set
+		|            {
+		|                m_FileDialog = value;
+		|                base.M_Dialog = m_FileDialog;
+		|                m_FileDialog.DialogClosed += this.M_FileDialog_DialogClosed;
+		|            }
+		|        }
+		|
+		|        private void M_FileDialog_DialogClosed(object sender, DialogEventArgs e)
+		|        {
+		|            dynamic Sender = Utils.RevertEqualsObj(M_FileDialog).dll_obj;
+		|            if (Sender.DialogClosed != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = Sender;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.DialogClosed);
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(e.Dialog).dll_obj;
+		|                TfEventArgs1.dialogResult = ValueFactory.Create(e.DialogResult);
+		|                TfEventArgs1.directoryPath = ValueFactory.Create(e.DirectoryPath);
+		|                TfEventArgs1.filePath = ValueFactory.Create(e.FilePath);
+		|                ArrayImpl filePaths = null;
+		|                try
+		|                {
+		|                    filePaths = e.FilePaths;
+		|                }
+		|                catch { }
+		|                TfEventArgs1.filePaths = filePaths;
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(Sender.DialogClosed);
+		|            }
+		|        }
+		|
+		|        public FileDialog()
+		|        {
+		|            M_FileDialog = new Terminal.Gui.FileDialog();
+		|            base.M_Dialog = M_FileDialog;
+		|            Utils.AddToHashtable(M_FileDialog, this);
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_FileDialog.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_Dialog.GetTopSuperView());
+		|        }
+		|
+		|        public bool AllowsOtherFileTypes
+		|        {
+		|            get { return M_FileDialog.AllowsOtherFileTypes; }
+		|            set { M_FileDialog.AllowsOtherFileTypes = value; }
+		|        }
+		|
+		|        private ArrayImpl allowedFileTypes = null;
+		|        public ArrayImpl AllowedFileTypes
+		|        {
+		|            get { return allowedFileTypes; }
+		|            set
+		|            {
+		|                allowedFileTypes = value;
+		|                if (value == null)
+		|                {
+		|                    M_FileDialog.AllowedFileTypes = null;
+		|                }
+		|                else
+		|                {
+		|                    ArrayImpl value1;
+		|                    if (M_FileDialog.GetType() == typeof(Terminal.Gui.SaveDialog))
+		|                    {
+		|                        value1 = new ArrayImpl();
+		|                        for (int i = 0; i < value.Count(); i++)
+		|                        {
+		|                            string item = value.Get(i).AsString();
+		|                            if (!item.Contains("";""))
+		|                            {
+		|                                if (!item.Contains(""*""))
+		|                                {
+		|                                    value1.Add(value.Get(i));
+		|                                }
+		|                            }
+		|                        }
+		|                    }
+		|                    else
+		|                    {
+		|                        value1 = value;
+		|                    }
+		|
+		|                    string[] arr = new string[value1.Count()];
+		|                    for (int i = 0; i < value1.Count(); i++)
+		|                    {
+		|                        arr[i] = value1.Get(i).ToString();
+		|                    }
+		|                    M_FileDialog.AllowedFileTypes = arr;
+		|                }
+		|            }
+		|        }
+		|
+		|        public bool Canceled
+		|        {
+		|            get { return M_FileDialog.Canceled; }
+		|        }
+		|
+		|        public string Prompt
+		|        {
+		|            get { return M_FileDialog.Prompt.ToString(); }
+		|            set { M_FileDialog.Prompt = value; }
+		|        }
+		|
+		|        public string DirectoryPath
+		|        {
+		|            get { return M_FileDialog.DirectoryPath.ToString(); }
+		|            set { M_FileDialog.DirectoryPath = value; }
+		|        }
+		|
+		|        public string FilePath
+		|        {
+		|            get { return M_FileDialog.FilePath.ToString(); }
+		|            set { M_FileDialog.FilePath = value; }
+		|        }
+		|
+		|        public bool IsExtensionHidden
+		|        {
+		|            get { return M_FileDialog.IsExtensionHidden; }
+		|            set { M_FileDialog.IsExtensionHidden = value; }
+		|        }
+		|
+		|        public bool CanCreateDirectories
+		|        {
+		|            get { return M_FileDialog.CanCreateDirectories; }
+		|            set { M_FileDialog.CanCreateDirectories = value; }
+		|        }
+		|
+		|        public string Message
+		|        {
+		|            get { return M_FileDialog.Message.ToString(); }
+		|            set { M_FileDialog.Message = value; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "Dialog" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class Dialog : Window
+		|    {
+		|        public new TfDialog dll_obj;
+		|        public Terminal.Gui.Dialog m_Dialog;
+		|
+		|        public Terminal.Gui.Dialog M_Dialog
+		|        {
+		|            get { return m_Dialog; }
+		|            set
+		|            {
+		|                m_Dialog = value;
+		|                base.M_Window = m_Dialog;
+		|            }
+		|        }
+		|
+		|        public Dialog()
+		|        {
+		|            M_Dialog = new Terminal.Gui.Dialog();
+		|            base.M_Window = M_Dialog;
+		|            Utils.AddToHashtable(M_Dialog, this);
+		|            SetActions(M_Dialog);
+		|        }
+		|
+		|        private void SetActions(Terminal.Gui.Dialog dialog)
+		|        {
+		|            dialog.Subviews[0].Leave += Dialog_Leave;
+		|            dialog.Subviews[0].MouseClick += Dialog_MouseClick;
+		|        }
+		|
+		|        private void Dialog_MouseClick(Terminal.Gui.View.MouseEventArgs obj)
+		|        {
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).MouseClick;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(obj.MouseEvent.View).dll_obj;
+		|                TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
+		|                TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(action);
+		|            }
+		|        }
+		|
+		|        private void Dialog_Leave(Terminal.Gui.View.FocusEventArgs obj)
+		|        {
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).Leave;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(action);
+		|            }
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_Dialog.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_Dialog.GetTopSuperView());
+		|        }
+		|
+		|        public int ButtonAlignment
+		|        {
+		|            get { return (int)M_Dialog.ButtonAlignment; }
+		|            set { M_Dialog.ButtonAlignment = (Terminal.Gui.Dialog.ButtonAlignments)value; }
+		|        }
+		|
+		|        public void AddButton(ostgui.Button p1)
+		|        {
+		|            M_Dialog.AddButton(p1.M_Button);
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "RadioGroup" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class RadioGroup : View
+		|    {
+		|        public new TfRadioGroup dll_obj;
+		|        public Terminal.Gui.RadioGroup M_RadioGroup;
+		|
+		|        public RadioGroup()
+		|        {
+		|            M_RadioGroup = new Terminal.Gui.RadioGroup();
+		|            base.M_View = M_RadioGroup;
+		|            Utils.AddToHashtable(M_RadioGroup, this);
+		|            M_RadioGroup.SelectedItemChanged += M_RadioGroup_SelectedItemChanged;
+		|
+		|        }
+		|
+		|        private void M_RadioGroup_SelectedItemChanged(Terminal.Gui.SelectedItemChangedArgs obj)
+		|        {
+		|            if (dll_obj.SelectedItemChanged != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.SelectedItemChanged);
+		|                TfEventArgs1.selectedItem = ValueFactory.Create(obj.SelectedItem);
+		|                TfEventArgs1.previousSelectedItem = ValueFactory.Create(obj.PreviousSelectedItem);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.SelectedItemChanged);
+		|            }
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_RadioGroup.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_RadioGroup.GetTopSuperView());
+		|        }
+		|
+		|        public int HorizontalSpace
+		|        {
+		|            get { return M_RadioGroup.HorizontalSpace; }
+		|            set { M_RadioGroup.HorizontalSpace = value; }
+		|        }
+		|
+		|        public int SelectedIndex
+		|        {
+		|            get { return M_RadioGroup.SelectedItem; }
+		|            set { M_RadioGroup.SelectedItem = value; }
+		|        }
+		|
+		|        public int DisplayMode
+		|        {
+		|            get { return (int)M_RadioGroup.DisplayMode; }
+		|            set { M_RadioGroup.DisplayMode = (Terminal.Gui.DisplayModeLayout)value; }
+		|        }
+		|
+		|        public new Dim Width
+		|        {
+		|            get { return Utils.RevertEqualsObj(M_RadioGroup.Width); }
+		|            set { M_RadioGroup.Width = value.M_Dim; }
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "ProgressBar" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class ProgressBar : View
+		|    {
+		|        public new TfProgressBar dll_obj;
+		|        public Terminal.Gui.ProgressBar M_ProgressBar;
+		|
+		|        public ProgressBar()
+		|        {
+		|            M_ProgressBar = new Terminal.Gui.ProgressBar();
+		|            base.M_View = M_ProgressBar;
+		|            Utils.AddToHashtable(M_ProgressBar, this);
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_ProgressBar.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_ProgressBar.GetTopSuperView());
+		|        }
+		|
+		|        public string SegmentCharacter
+		|        {
+		|            get { return M_ProgressBar.SegmentCharacter.ToString(); }
+		|            set { M_ProgressBar.SegmentCharacter = new Rune(value.ToCharArray()[0]); }
+		|        }
+		|
+		|        public bool BidirectionalMarquee
+		|        {
+		|            get { return M_ProgressBar.BidirectionalMarquee; }
+		|            set { M_ProgressBar.BidirectionalMarquee = value; }
+		|        }
+		|
+		|        public decimal Fraction
+		|        {
+		|            get { return Utils.ToDecimal(M_ProgressBar.Fraction); }
+		|            set { M_ProgressBar.Fraction = Utils.ToFloat(value); }
+		|        }
+		|
+		|        public int ProgressBarStyle
+		|        {
+		|            get { return (int)M_ProgressBar.ProgressBarStyle; }
+		|            set { M_ProgressBar.ProgressBarStyle = (Terminal.Gui.ProgressBarStyle)value; }
+		|        }
+		|
+		|        public int ProgressBarFormat
+		|        {
+		|            get { return (int)M_ProgressBar.ProgressBarFormat; }
+		|            set { M_ProgressBar.ProgressBarFormat = (Terminal.Gui.ProgressBarFormat)value; }
+		|        }
+		|
+		|        public void Pulse()
+		|        {
+		|            M_ProgressBar.Pulse();
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "Label" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class Label : View
+		|    {
+		|        public new TfLabel dll_obj;
+		|        public Terminal.Gui.Label M_Label;
+		|
+		|        public Label()
+		|        {
+		|            M_Label = new Terminal.Gui.Label();
+		|            base.M_View = M_Label;
+		|            Utils.AddToHashtable(M_Label, this);
+		|            M_Label.Clicked += M_Label_Clicked;
+		|        }
+		|
+		|        private void M_Label_Clicked()
+		|        {
+		|            if (dll_obj.Clicked != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.Clicked);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.Clicked);
+		|            }
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_Label.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_Label.GetTopSuperView());
+		|        }
+		|    }
+		|";
+	ИначеЕсли ИмяФайлаТФ = "CheckBox" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|    public class CheckBox : View
+		|    {
+		|        public new TfCheckBox dll_obj;
+		|        public Terminal.Gui.CheckBox M_CheckBox;
+		|
+		|        public CheckBox()
+		|        {
+		|            M_CheckBox = new Terminal.Gui.CheckBox();
+		|            base.M_View = M_CheckBox;
+		|            Utils.AddToHashtable(M_CheckBox, this);
+		|
+		|            M_CheckBox.Toggled += M_CheckBox_Toggled;
+		|            M_CheckBox.HotKeySpecifier = (Rune)0xFFFF;
+		|        }
+		|
+		|        private void M_CheckBox_Toggled(bool obj)
+		|        {
+		|            if (dll_obj.Toggled != null)
+		|            {
+		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                TfEventArgs1.sender = dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.Toggled);
+		|                TfEventArgs1.oldToggled = ValueFactory.Create(obj);
+		|                OneScriptTerminalGui.Event = TfEventArgs1;
+		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.Toggled);
+		|            }
+		|        }
+		|
+		|        public new string ToString()
+		|        {
+		|            return M_CheckBox.ToString();
+		|        }
+		|
+		|        public new Toplevel GetTopSuperView()
+		|        {
+		|            return Utils.RevertEqualsObj(M_CheckBox.GetTopSuperView());
+		|        }
+		|
+		|        public bool Checked
+		|        {
+		|            get { return M_CheckBox.Checked; }
+		|            set { M_CheckBox.Checked = value; }
+		|        }
+		|    }
+		|";
 	ИначеЕсли ИмяФайлаТФ = "Timer" Тогда
 		Стр = Стр + 
 		"namespace ostgui
@@ -4106,13 +12101,13 @@
 		|        public Dim()
 		|        {
 		|            M_Dim = new Terminal.Gui.Dim();
-		|            OneScriptTerminalGui.AddToHashtable(M_Dim, this);
+		|            Utils.AddToHashtable(M_Dim, this);
 		|        }
 		|
 		|        public Dim(Terminal.Gui.Dim p1)
 		|        {
 		|            M_Dim = p1;
-		|            OneScriptTerminalGui.AddToHashtable(M_Dim, this);
+		|            Utils.AddToHashtable(M_Dim, this);
 		|        }
 		|
 		|        public Dim Percent(float p1, bool p2 = false)
@@ -4232,7 +12227,7 @@
 		|
 		|            M_MenuItem = new Terminal.Gui.MenuItem();
 		|            M_MenuItem.Action = Clicked;
-		|            OneScriptTerminalGui.AddToHashtable(M_MenuItem, this);
+		|            Utils.AddToHashtable(M_MenuItem, this);
 		|        }
 		|
 		|        public Terminal.Gui.MenuItem M_MenuItem
@@ -4285,7 +12280,7 @@
 		|
 		|        public IValue Parent
 		|        {
-		|            get { return OneScriptTerminalGui.RevertEqualsObj(M_MenuItem.Parent).dll_obj; }
+		|            get { return Utils.RevertEqualsObj(M_MenuItem.Parent).dll_obj; }
 		|        }
 		|
 		|        public string ShortcutTag
@@ -4306,6 +12301,11 @@
 		|    }
 		|";
 	ИначеЕсли ИмяФайлаТФ = "StatusBarItems" Тогда
+		Стр = Стр + 
+		"namespace ostgui
+		|{
+		|";
+	ИначеЕсли ИмяФайлаТФ = "RadioGroupItems" Тогда
 		Стр = Стр + 
 		"namespace ostgui
 		|{
@@ -4335,7 +12335,7 @@
 		|            };
 		|
 		|            M_StatusItem = new Terminal.Gui.StatusItem(p1, p2, Clicked);
-		|            OneScriptTerminalGui.AddToHashtable(M_StatusItem, this);
+		|            Utils.AddToHashtable(M_StatusItem, this);
 		|        }
 		|
 		|        public IValue Tag
@@ -4380,13 +12380,13 @@
 		|        public Pos()
 		|        {
 		|            M_Pos = new Terminal.Gui.Pos();
-		|            OneScriptTerminalGui.AddToHashtable(M_Pos, this);
+		|            Utils.AddToHashtable(M_Pos, this);
 		|        }
 		|
 		|        public Pos(Terminal.Gui.Pos p1)
 		|        {
 		|            M_Pos = p1;
-		|            OneScriptTerminalGui.AddToHashtable(M_Pos, this);
+		|            Utils.AddToHashtable(M_Pos, this);
 		|        }
 		|
 		|        public Pos At(int p1)
@@ -4477,7 +12477,7 @@
 		|            M_MenuBarItem = new Terminal.Gui.MenuBarItem();
 		|            base.M_MenuItem = M_MenuBarItem;
 		|            M_MenuBarItem.Action = Clicked;
-		|            OneScriptTerminalGui.AddToHashtable(M_MenuBarItem, this);
+		|            Utils.AddToHashtable(M_MenuBarItem, this);
 		|        }
 		|
 		|        public Terminal.Gui.MenuItem[] Children
@@ -4558,7 +12558,7 @@
 		|        {
 		|            M_StatusBar = new Terminal.Gui.StatusBar();
 		|            base.M_View = M_StatusBar;
-		|            OneScriptTerminalGui.AddToHashtable(M_StatusBar, this);
+		|            Utils.AddToHashtable(M_StatusBar, this);
 		|        }
 		|
 		|        public string ShortcutDelimiter
@@ -4585,7 +12585,7 @@
 		|
 		|        public new Toplevel GetTopSuperView()
 		|        {
-		|            return OneScriptTerminalGui.RevertEqualsObj(M_StatusBar.GetTopSuperView());
+		|            return Utils.RevertEqualsObj(M_StatusBar.GetTopSuperView());
 		|        }
 		|    }
 		|";
@@ -4602,7 +12602,7 @@
 		|        {
 		|            M_MenuBar = new Terminal.Gui.MenuBar();
 		|            base.M_View = M_MenuBar;
-		|            OneScriptTerminalGui.AddToHashtable(M_MenuBar, this);
+		|            Utils.AddToHashtable(M_MenuBar, this);
 		|
 		|            M_MenuBar.MenuAllClosed += M_MenuBar_MenuAllClosed;
 		|            M_MenuBar.MenuOpened += M_MenuBar_MenuOpened;
@@ -4618,7 +12618,7 @@
 		|                TfEventArgs1.sender = dll_obj;
 		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MouseLeave);
 		|                TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
-		|                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(M_MenuBar).dll_obj;
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(M_MenuBar).dll_obj;
 		|                TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
 		|                TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
@@ -4636,8 +12636,8 @@
 		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MenuOpening);
 		|                TfEventArgs1.cancel = ValueFactory.Create(false);
 		|                TfEventArgs1.cancel = ValueFactory.Create(obj.Cancel);
-		|                TfEventArgs1.currentMenu = OneScriptTerminalGui.RevertEqualsObj(obj.CurrentMenu).dll_obj;
-		|                TfEventArgs1.newMenuBarItem = OneScriptTerminalGui.RevertEqualsObj(obj.NewMenuBarItem).dll_obj;
+		|                TfEventArgs1.currentMenu = Utils.RevertEqualsObj(obj.CurrentMenu).dll_obj;
+		|                TfEventArgs1.newMenuBarItem = Utils.RevertEqualsObj(obj.NewMenuBarItem).dll_obj;
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
 		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.MenuOpening);
 		|
@@ -4657,7 +12657,7 @@
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = dll_obj;
 		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MenuOpened);
-		|                TfEventArgs1.menuItem = OneScriptTerminalGui.RevertEqualsObj(obj).dll_obj;
+		|                TfEventArgs1.menuItem = Utils.RevertEqualsObj(obj).dll_obj;
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
 		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.MenuOpened);
 		|            }
@@ -4723,7 +12723,7 @@
 		|
 		|        public ostgui.View LastFocused
 		|        {
-		|            get { return OneScriptTerminalGui.RevertEqualsObj(M_MenuBar.LastFocused); }
+		|            get { return Utils.RevertEqualsObj(M_MenuBar.LastFocused); }
 		|        }
 		|
 		|        public string ShortcutDelimiter
@@ -4739,7 +12739,7 @@
 		|
 		|        public new Toplevel GetTopSuperView()
 		|        {
-		|            return OneScriptTerminalGui.RevertEqualsObj(M_MenuBar.GetTopSuperView());
+		|            return Utils.RevertEqualsObj(M_MenuBar.GetTopSuperView());
 		|        }
 		|
 		|        public int OpenIndex
@@ -4766,31 +12766,25 @@
 		|        public Attribute()
 		|        {
 		|            M_Attribute = new Terminal.Gui.Attribute();
-		|            OneScriptTerminalGui.AddToHashtable(M_Attribute, this);
+		|            Utils.AddToHashtable(M_Attribute, this);
 		|        }
 		|
 		|        public Attribute(int p1)
 		|        {
 		|            M_Attribute = new Terminal.Gui.Attribute((Terminal.Gui.Color)p1);
-		|            OneScriptTerminalGui.AddToHashtable(M_Attribute, this);
+		|            Utils.AddToHashtable(M_Attribute, this);
 		|        }
 		|
 		|        public Attribute(int p1, int p2)
 		|        {
 		|            M_Attribute = new Terminal.Gui.Attribute((Terminal.Gui.Color)p1, (Terminal.Gui.Color)p2);
-		|            OneScriptTerminalGui.AddToHashtable(M_Attribute, this);
-		|        }
-		|
-		|        public Attribute(int p1, int p2, int p3)
-		|        {
-		|            M_Attribute = new Terminal.Gui.Attribute(p1, (Terminal.Gui.Color)p2, (Terminal.Gui.Color)p3);
-		|            OneScriptTerminalGui.AddToHashtable(M_Attribute, this);
+		|            Utils.AddToHashtable(M_Attribute, this);
 		|        }
 		|
 		|        public Attribute(Terminal.Gui.Attribute p1)
 		|        {
 		|            M_Attribute = p1;
-		|            OneScriptTerminalGui.AddToHashtable(M_Attribute, this);
+		|            Utils.AddToHashtable(M_Attribute, this);
 		|        }
 		|
 		|        public bool Initialized
@@ -4873,56 +12867,33 @@
 		|    public class Window : Toplevel
 		|    {
 		|        public new TfWindow dll_obj;
-		|        public Terminal.Gui.Window M_Window;
+		|        public Terminal.Gui.Window m_Window;
+		|
+		|        public Terminal.Gui.Window M_Window
+		|        {
+		|            get { return m_Window; }
+		|            set
+		|            {
+		|                m_Window = value;
+		|                base.M_View = m_Window;
+		|            }
+		|        }
 		|
 		|        public Window()
 		|        {
 		|            M_Window = new Terminal.Gui.Window();
 		|            base.M_Toplevel = M_Window;
-		|            OneScriptTerminalGui.AddToHashtable(M_Window, this);
-		|            SetActions(M_Window);
-		|        }
-		|
-		|        public Window(string p1)
-		|        {
-		|            M_Window = new Terminal.Gui.Window(p1);
-		|            base.M_Toplevel = M_Window;
-		|            OneScriptTerminalGui.AddToHashtable(M_Window, this);
-		|            SetActions(M_Window);
-		|        }
-		|
-		|        public Window(Rect p1, string p2)
-		|        {
-		|            M_Window = new Terminal.Gui.Window(p1.M_Rect, p2);
-		|            base.M_Toplevel = M_Window;
-		|            OneScriptTerminalGui.AddToHashtable(M_Window, this);
-		|            SetActions(M_Window);
-		|        }
-		|
-		|        public Window(string p1, int p2, Border p3)
-		|        {
-		|            M_Window = new Terminal.Gui.Window(p1, p2, p3.M_Border);
-		|            base.M_Toplevel = M_Window;
-		|            OneScriptTerminalGui.AddToHashtable(M_Window, this);
-		|            SetActions(M_Window);
-		|        }
-		|
-		|        public Window(Rect p1, string p2, int p3, Border p4)
-		|        {
-		|            M_Window = new Terminal.Gui.Window(p1.M_Rect, p2, p3, p4.M_Border);
-		|            base.M_Toplevel = M_Window;
-		|            OneScriptTerminalGui.AddToHashtable(M_Window, this);
+		|            Utils.AddToHashtable(M_Window, this);
 		|            SetActions(M_Window);
 		|        }
 		|
 		|        private void SetActions(Terminal.Gui.Window window)
 		|        {
-		|            window.TitleChanged += Window_TitleChanged;
-		|            M_Window.Subviews[0].MouseEnter += Window_MouseEnter;
-		|            M_Window.Subviews[0].MouseLeave += Window_MouseLeave;
-		|            M_Window.MouseClick += Window_MouseClick;
-		|            M_Window.Subviews[0].Leave += M_Window_Leave;
-		|            M_Window.KeyPress += M_Window_KeyPress;
+		|            window.Subviews[0].MouseEnter += Window_MouseEnter;
+		|            window.Subviews[0].MouseLeave += Window_MouseLeave;
+		|            window.MouseClick += Window_MouseClick;
+		|            window.Subviews[0].Leave += M_Window_Leave;
+		|            window.KeyPress += M_Window_KeyPress;
 		|        }
 		|
 		|        private void M_Window_KeyPress(Terminal.Gui.View.KeyEventEventArgs obj)
@@ -4965,7 +12936,7 @@
 		|                TfEventArgs1.sender = dll_obj;
 		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MouseClick);
 		|                TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
-		|                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(M_Window).dll_obj;
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(M_Window).dll_obj;
 		|                TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
 		|                TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
@@ -4981,7 +12952,7 @@
 		|                TfEventArgs1.sender = dll_obj;
 		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MouseLeave);
 		|                TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
-		|                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj.MouseEvent.View).dll_obj;
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(obj.MouseEvent.View).dll_obj;
 		|                TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
 		|                TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
@@ -4997,33 +12968,11 @@
 		|                TfEventArgs1.sender = dll_obj;
 		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.MouseEnter);
 		|                TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
-		|                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(M_Window).dll_obj;
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(M_Window).dll_obj;
 		|                TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
 		|                TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
 		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.MouseEnter);
-		|            }
-		|        }
-		|
-		|        private void Window_TitleChanged(Terminal.Gui.Window.TitleEventArgs obj)
-		|        {
-		|            if (dll_obj.TitleChanged != null)
-		|            {
-		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
-		|                TfEventArgs1.sender = dll_obj;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.TitleChanged);
-		|                TfEventArgs1.cancel = ValueFactory.Create(obj.Cancel);
-		|                TfEventArgs1.newTitle = ValueFactory.Create(obj.NewTitle.ToString());
-		|                TfEventArgs1.oldTitle = ValueFactory.Create(obj.OldTitle.ToString());
-		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.TitleChanged);
-		|
-		|                if (TfEventArgs1.Cancel)
-		|                {
-		|                    M_Window.TitleChanged -= Window_TitleChanged;
-		|                    dll_obj.Title = TfEventArgs1.OldTitle;
-		|                    M_Window.TitleChanged += Window_TitleChanged;
-		|                }
 		|            }
 		|        }
 		|
@@ -5038,9 +12987,9 @@
 		|            return M_Window.ToString();
 		|        }
 		|
-		|        public new Window GetTopSuperView()
+		|        public new Toplevel GetTopSuperView()
 		|        {
-		|            return OneScriptTerminalGui.RevertEqualsObj(M_Window.GetTopSuperView());
+		|            return Utils.RevertEqualsObj(M_Window.GetTopSuperView());
 		|        }
 		|    }
 		|";
@@ -5056,28 +13005,13 @@
 		|        public Border()
 		|        {
 		|            M_Border = new Terminal.Gui.Border();
-		|            OneScriptTerminalGui.AddToHashtable(M_Border, this);
-		|            M_Border.BorderChanged += M_Border_BorderChanged;
+		|            Utils.AddToHashtable(M_Border, this);
 		|        }
 		|
 		|        public Border(Terminal.Gui.Border p1)
 		|        {
 		|            M_Border = p1;
-		|            OneScriptTerminalGui.AddToHashtable(M_Border, this);
-		|            M_Border.BorderChanged += M_Border_BorderChanged;
-		|        }
-		|
-		|        private void M_Border_BorderChanged(Terminal.Gui.Border obj)
-		|        {
-		|            if (dll_obj.BorderChanged != null)
-		|            {
-		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
-		|                TfEventArgs1.sender = dll_obj;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.BorderChanged);
-		|                TfEventArgs1.border = OneScriptTerminalGui.RevertEqualsObj(obj).dll_obj;
-		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.BorderChanged);
-		|            }
+		|            Utils.AddToHashtable(M_Border, this);
 		|        }
 		|
 		|        public int ActualHeight
@@ -5104,7 +13038,7 @@
 		|
 		|        public IValue Parent
 		|        {
-		|            get { return OneScriptTerminalGui.RevertEqualsObj(M_Border.Parent).dll_obj; }
+		|            get { return Utils.RevertEqualsObj(M_Border.Parent).dll_obj; }
 		|        }
 		|
 		|        public Point Effect3DOffset
@@ -5195,33 +13129,33 @@
 		|            if (view != null)
 		|            {
 		|                M_View = view;
-		|                OneScriptTerminalGui.AddToHashtable(M_View, this);
+		|                Utils.AddToHashtable(M_View, this);
 		|            }
 		|            else
 		|            {
 		|                M_View = new Terminal.Gui.View();
-		|                OneScriptTerminalGui.AddToHashtable(M_View, this);
+		|                Utils.AddToHashtable(M_View, this);
 		|            }
 		|        }
 		|        public View(Terminal.Gui.Rect p1)
 		|        {
 		|            M_View = new Terminal.Gui.View(p1);
-		|            OneScriptTerminalGui.AddToHashtable(M_View, this);
+		|            Utils.AddToHashtable(M_View, this);
 		|        }
 		|        public View(int p1, int p2, string p3)
 		|        {
 		|            M_View = new Terminal.Gui.View(p1, p2, p3);
-		|            OneScriptTerminalGui.AddToHashtable(M_View, this);
+		|            Utils.AddToHashtable(M_View, this);
 		|        }
 		|        public View(Terminal.Gui.Rect p1, string p2, Terminal.Gui.Border p3)
 		|        {
 		|            M_View = new Terminal.Gui.View(p1, p2, p3);
-		|            OneScriptTerminalGui.AddToHashtable(M_View, this);
+		|            Utils.AddToHashtable(M_View, this);
 		|        }
 		|        public View(string p1, int p2, Terminal.Gui.Border p3)
 		|        {
 		|            M_View = new Terminal.Gui.View(p1, (Terminal.Gui.TextDirection)p2, p3);
-		|            OneScriptTerminalGui.AddToHashtable(M_View, this);
+		|            Utils.AddToHashtable(M_View, this);
 		|        }
 		|
 		|        public Terminal.Gui.View M_View
@@ -5233,8 +13167,6 @@
 		|                base.M_Responder = m_View;
 		|                m_View.Added += M_View_Added;
 		|                m_View.CanFocusChanged += M_View_CanFocusChanged;
-		|                //m_View.DrawContent += M_View_DrawContent;
-		|                //m_View.DrawContentComplete += M_View_DrawContentComplete;
 		|                m_View.EnabledChanged += M_View_EnabledChanged;
 		|                m_View.Enter += M_View_Enter;
 		|                m_View.HotKeyChanged += M_View_HotKeyChanged;
@@ -5242,31 +13174,47 @@
 		|                //m_View.KeyDown += M_View_KeyDown;
 		|                m_View.KeyPress += M_View_KeyPress;
 		|                //m_View.KeyUp += M_View_KeyUp;
-		|                //m_View.LayoutComplete += M_View_LayoutComplete;
-		|                //m_View.LayoutStarted += M_View_LayoutStarted;
 		|                m_View.Leave += M_View_Leave;
 		|                m_View.MouseClick += M_View_MouseClick;
 		|                m_View.MouseEnter += M_View_MouseEnter;
 		|                m_View.MouseLeave += M_View_MouseLeave;
 		|                m_View.Removed += M_View_Removed;
-		|                m_View.VisibleChanged += M_View_VisibleChanged;
 		|
 		|                System.Action OnShortcutAction = delegate ()
 		|                {
-		|                    if (OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj.ShortcutAction != null)
+		|                    dynamic Sender = Utils.RevertEqualsObj(M_View).dll_obj;
+		|                    TfAction action;
+		|                    try
+		|                    {
+		|                        action = Sender.ShortcutAction;
+		|                    }
+		|                    catch
+		|                    {
+		|                        return;
+		|                    }
+		|                    if (action != null)
 		|                    {
 		|                        TfEventArgs TfEventArgs1 = new TfEventArgs();
-		|                        TfEventArgs1.sender = dll_obj;
-		|                        TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj.ShortcutAction);
+		|                        TfEventArgs1.sender = Sender;
+		|                        TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                        OneScriptTerminalGui.Event = TfEventArgs1;
-		|                        OneScriptTerminalGui.ExecuteEvent(OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj.ShortcutAction);
+		|                        OneScriptTerminalGui.ExecuteEvent(action);
 		|                    }
 		|                };
-		|                m_View.ShortcutAction = OnShortcutAction;
+		|                try
+		|                {
+		|                    m_View.ShortcutAction = OnShortcutAction;
+		|                }
+		|                catch { }
 		|
 		|                // Обеспечим данными событие мыши MouseEnter.
 		|                Application.RootMouseEvent += delegate (MouseEvent me)
 		|                {
+		|                    if (Utils.noMouseEvent)
+		|                    {
+		|                        return;
+		|                    }
+		|
 		|                    Terminal.Gui.View host1 = me.View;
 		|                    MouseEvent myme = new MouseEvent();
 		|                    myme.Flags = me.Flags;
@@ -5274,14 +13222,22 @@
 		|                    myme.View = me.View;
 		|                    int meX = me.X;
 		|                    int meY = me.Y;
-		|                    Terminal.Gui.Point point = host1.ScreenToView(me.X, me.Y);
+		|                    Terminal.Gui.Point point;
+		|                    try
+		|                    {
+		|                        point = host1.ScreenToView(me.X, me.Y);
+		|                    }
+		|                    catch
+		|                    {
+		|                        return;
+		|                    }
 		|                    int frameX = host1.Frame.X;
 		|                    int frameY = host1.Frame.Y;
 		|                    int frameWidth = host1.Frame.Width;
 		|                    int frameHeight = host1.Frame.Height;
 		|                    int x = point.X;
 		|                    int y = point.Y;
-		|                    if (me.View.GetType().ToString() == ""Terminal.Gui.Window+ContentView"")
+		|                    if (me.View.GetType().ToString().Contains(""+ContentView""))
 		|                    {
 		|                        if (meX >= (frameX + 1))
 		|                        {
@@ -5293,11 +13249,11 @@
 		|                                    {
 		|                                        myme.X = x;
 		|                                        myme.Y = y;
-		|                                        if (OneScriptTerminalGui.lastMeX != x || OneScriptTerminalGui.lastMeY != y)
+		|                                        if (Utils.lastMeX != x || Utils.lastMeY != y)
 		|                                        {
 		|                                            host1.OnMouseEnter(myme);
-		|                                            OneScriptTerminalGui.lastMeX = x;
-		|                                            OneScriptTerminalGui.lastMeY = y;
+		|                                            Utils.lastMeX = x;
+		|                                            Utils.lastMeY = y;
 		|                                        }
 		|                                    }
 		|                                }
@@ -5320,11 +13276,11 @@
 		|                                    {
 		|                                        myme.X = x;
 		|                                        myme.Y = y;
-		|                                        if (OneScriptTerminalGui.lastMeX != x || OneScriptTerminalGui.lastMeY != y)
+		|                                        if (Utils.lastMeX != x || Utils.lastMeY != y)
 		|                                        {
 		|                                            host1.OnMouseEnter(myme);
-		|                                            OneScriptTerminalGui.lastMeX = x;
-		|                                            OneScriptTerminalGui.lastMeY = y;
+		|                                            Utils.lastMeX = x;
+		|                                            Utils.lastMeY = y;
 		|                                        }
 		|                                    }
 		|                                }
@@ -5335,36 +13291,32 @@
 		|            }
 		|        }
 		|
-		|        private void M_View_VisibleChanged()
-		|        {
-		|            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-		|            if (Sender.VisibleChanged != null)
-		|            {
-		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
-		|                TfEventArgs1.sender = Sender;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.VisibleChanged);
-		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(Sender.VisibleChanged);
-		|            }
-		|        }
-		|
 		|        private void M_View_Removed(Terminal.Gui.View obj)
 		|        {
-		|            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-		|            if (Sender.Removed != null)
+		|            dynamic Sender = Utils.RevertEqualsObj(M_View).dll_obj;
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = Sender.Removed;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = Sender;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.Removed);
-		|                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj).dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(obj).dll_obj;
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(Sender.Removed);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_View_MouseLeave(Terminal.Gui.View.MouseEventArgs obj)
 		|        {
-		|            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
+		|            dynamic Sender = Utils.RevertEqualsObj(M_View).dll_obj;
 		|            if (Sender.GetType() == typeof(TfWindow))
 		|            {
 		|                return;
@@ -5373,115 +13325,155 @@
 		|            {
 		|                return;
 		|            }
-		|            if (Sender.MouseLeave != null)
+		|            if (Sender.GetType() == typeof(TfListView))
+		|            {
+		|                return;
+		|            }
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = Sender.MouseLeave;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = Sender;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.MouseLeave);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
-		|                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj.MouseEvent.View).dll_obj;
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(obj.MouseEvent.View).dll_obj;
 		|                TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
 		|                TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(Sender.MouseLeave);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_View_MouseEnter(Terminal.Gui.View.MouseEventArgs obj)
 		|        {
-		|            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
+		|            dynamic Sender = Utils.RevertEqualsObj(M_View).dll_obj;
 		|            if (Sender.GetType() == typeof(TfWindow))
 		|            {
 		|                return;
 		|            }
-		|            if (Sender.MouseEnter != null)
+		|            if (Sender.GetType() == typeof(TfListView))
+		|            {
+		|                return;
+		|            }
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = Sender.MouseEnter;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = Sender;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.MouseEnter);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
-		|                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj.MouseEvent.View).dll_obj;
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(obj.MouseEvent.View).dll_obj;
 		|                TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
 		|                TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(Sender.MouseEnter);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_View_MouseClick(Terminal.Gui.View.MouseEventArgs obj)
 		|        {
-		|            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
+		|            dynamic Sender = Utils.RevertEqualsObj(M_View).dll_obj;
 		|            if (Sender.GetType() == typeof(TfWindow))
 		|            {
 		|                return;
 		|            }
-		|            if (Sender.MouseClick != null)
+		|            if (Sender.GetType() == typeof(TfListView))
+		|            {
+		|                return;
+		|            }
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = Sender.MouseClick;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = Sender;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.MouseClick);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                TfEventArgs1.flags = ValueFactory.Create((int)obj.MouseEvent.Flags);
-		|                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj.MouseEvent.View).dll_obj;
+		|                if (obj.MouseEvent.View.GetType().ToString().Contains(""+ContentView""))
+		|                {
+		|                    TfEventArgs1.view = Sender;
+		|                }
+		|                else
+		|                {
+		|                    TfEventArgs1.view = Utils.RevertEqualsObj(obj.MouseEvent.View).dll_obj;
+		|                }
 		|                TfEventArgs1.x = ValueFactory.Create(obj.MouseEvent.X);
 		|                TfEventArgs1.y = ValueFactory.Create(obj.MouseEvent.Y);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(Sender.MouseClick);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_View_Leave(Terminal.Gui.View.FocusEventArgs obj)
 		|        {
-		|            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
+		|            dynamic Sender = Utils.RevertEqualsObj(M_View).dll_obj;
 		|            if (Sender.GetType() == typeof(TfWindow))
 		|            {
 		|                return;
 		|            }
-		|            if (Sender.Leave != null)
+		|            if (Sender.GetType() == typeof(TfListView))
+		|            {
+		|                return;
+		|            }
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = Sender.Leave;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = Sender;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.Leave);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(Sender.Leave);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
-		|        //private void M_View_LayoutStarted(Terminal.Gui.View.LayoutEventArgs obj)
-		|        //{
-		|        //    dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-		|        //    if (Sender.LayoutStarted != null)
-		|        //    {
-		|        //        TfEventArgs TfEventArgs1 = new TfEventArgs();
-		|        //        TfEventArgs1.sender = Sender;
-		|        //        TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.LayoutStarted);
-		|        //        TfEventArgs1.oldBounds = new TfRect(obj.OldBounds.X, obj.OldBounds.Y, obj.OldBounds.Width, obj.OldBounds.Height);
-		|        //        OneScriptTerminalGui.Event = TfEventArgs1;
-		|        //        OneScriptTerminalGui.ExecuteEvent(Sender.LayoutStarted);
-		|        //    }
-		|        //}
-		|
-		|        //private void M_View_LayoutComplete(Terminal.Gui.View.LayoutEventArgs obj)
-		|        //{
-		|        //    dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-		|        //    if (Sender.LayoutComplete != null)
-		|        //    {
-		|        //        TfEventArgs TfEventArgs1 = new TfEventArgs();
-		|        //        TfEventArgs1.sender = Sender;
-		|        //        TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.LayoutComplete);
-		|        //        TfEventArgs1.oldBounds = new TfRect(obj.OldBounds.X, obj.OldBounds.Y, obj.OldBounds.Width, obj.OldBounds.Height);
-		|        //        OneScriptTerminalGui.Event = TfEventArgs1;
-		|        //        OneScriptTerminalGui.ExecuteEvent(Sender.LayoutComplete);
-		|        //    }
-		|        //}
-		|
 		|        private void M_View_KeyUp(Terminal.Gui.View.KeyEventEventArgs obj)
 		|        {
-		|            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-		|            if (Sender.KeyUp != null)
+		|            dynamic Sender = Utils.RevertEqualsObj(M_View).dll_obj;
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = Sender.KeyUp;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = Sender;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.KeyUp);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                TfEventArgs1.isAlt = ValueFactory.Create(obj.KeyEvent.IsAlt);
 		|                TfEventArgs1.isCapslock = ValueFactory.Create(obj.KeyEvent.IsCapslock);
 		|                TfEventArgs1.isCtrl = ValueFactory.Create(obj.KeyEvent.IsCtrl);
@@ -5491,20 +13483,24 @@
 		|                TfEventArgs1.keyValue = ValueFactory.Create(obj.KeyEvent.KeyValue);
 		|                TfEventArgs1.keyToString = ValueFactory.Create(obj.KeyEvent.Key.ToString());
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(Sender.KeyUp);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_View_KeyPress(Terminal.Gui.View.KeyEventEventArgs obj)
 		|        {
 		|            // Обработаем клавишу выхода для приложения.
-		|            if (OneScriptTerminalGui.instance.QuitKey == Convert.ToDecimal(obj.KeyEvent.KeyValue))
+		|            if (OneScriptTerminalGui.instance.QuitKey == Utils.ToDecimal(obj.KeyEvent.KeyValue))
 		|            {
 		|                Application.RequestStop(OneScriptTerminalGui.instance.Top.Base_obj.M_Toplevel);
 		|                return;
 		|            }
 		|
-		|            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
+		|            dynamic Sender = Utils.RevertEqualsObj(M_View).dll_obj;
+		|            if (Sender.GetType() == typeof(TfListView))
+		|            {
+		|                return;
+		|            }
 		|            // Обработаем клавиши вызова для панели меню.
 		|            if (Sender.GetType() == typeof(TfToplevel))
 		|            {
@@ -5522,10 +13518,10 @@
 		|                        Terminal.Gui.MenuBar m_menuBar = menuBar.Base_obj.M_MenuBar;
 		|                        for (int i = 0; i < menuBar.Menus.Count; i++)
 		|                        {
-		|                            TfMenuBarItem TfMenuBarItem1 = menuBar.Menus.MenuBarItem(i);
+		|                            TfMenuBarItem TfMenuBarItem1 = menuBar.Menus.Get(i);
 		|                            string hotKey = TfMenuBarItem1.HotKey.ToLower();
 		|                            System.Char char1 = Convert.ToChar(hotKey.Substring(0, 1));
-		|                            int num = Convert.ToInt32(char1);
+		|                            int num = Utils.ToInt32(char1);
 		|                            if (num == (int)obj.KeyEvent.Key)
 		|                            {
 		|                                m_menuBar.CloseMenu(true);
@@ -5544,7 +13540,7 @@
 		|            ArrayList ShortcutDictionaryValue = null;
 		|            try
 		|            {
-		|                ShortcutDictionaryValue = OneScriptTerminalGui.RevertShortcut(Convert.ToDecimal((int)obj.KeyEvent.Key));
+		|                ShortcutDictionaryValue = Utils.RevertShortcut(Utils.ToDecimal((int)obj.KeyEvent.Key));
 		|            }
 		|            catch { }
 		|            if (ShortcutDictionaryValue != null)
@@ -5558,24 +13554,21 @@
 		|                        Terminal.Gui.MenuBar menuBar = ((TfMenuBarItem)shortcutObj).M_MenuBar;
 		|                        if (menuBar.Visible && menuBar.Enabled)
 		|                        {
-		|                            //public static object lastEventObj = null;
-		|                            //public static object lastEventValue = null;
-		|                            //public static long lastEventTime = TimeSpan.TicksPerMillisecond;
 		|                            // Предотвратим повторы события, если клавиша не отпущена.
 		|                            long nowEventTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
-		|                            if ((nowEventTime - OneScriptTerminalGui.lastEventTime) > 90)
+		|                            if ((nowEventTime - Utils.lastEventTime) > 190)
 		|                            {
 		|                                if (shortcutObj.ShortcutAction != null)
 		|                                {
 		|                                    TfEventArgs TfEventArgs1 = new TfEventArgs();
-		|                                    TfEventArgs1.sender = dll_obj;
+		|                                    TfEventArgs1.sender = shortcutObj;
 		|                                    TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(shortcutObj.ShortcutAction);
 		|                                    OneScriptTerminalGui.Event = TfEventArgs1;
 		|                                    OneScriptTerminalGui.ExecuteEvent(shortcutObj.ShortcutAction);
 		|                                }
 		|                            }
 		|                            else { }
-		|                            OneScriptTerminalGui.lastEventTime = nowEventTime;
+		|                            Utils.lastEventTime = nowEventTime;
 		|                        }
 		|                    }
 		|                    else if (shortcutObj.GetType() == typeof(TfStatusItem))
@@ -5583,72 +13576,106 @@
 		|                        Terminal.Gui.StatusBar statusBar = ((TfStatusItem)shortcutObj).M_StatusBar;
 		|                        if (statusBar.Visible && statusBar.Enabled)
 		|                        {
-		|                            //public static object lastEventObj = null;
-		|                            //public static object lastEventValue = null;
-		|                            //public static long lastEventTime = TimeSpan.TicksPerMillisecond;
 		|                            // Предотвратим повторы события, если клавиша не отпущена.
 		|                            long nowEventTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
-		|                            if ((nowEventTime - OneScriptTerminalGui.lastEventTime) > 90)
+		|                            if ((nowEventTime - Utils.lastEventTime) > 190)
 		|                            {
 		|                                if (shortcutObj.ShortcutAction != null)
 		|                                {
 		|                                    TfEventArgs TfEventArgs1 = new TfEventArgs();
-		|                                    TfEventArgs1.sender = dll_obj;
+		|                                    TfEventArgs1.sender = shortcutObj;
 		|                                    TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(shortcutObj.ShortcutAction);
 		|                                    OneScriptTerminalGui.Event = TfEventArgs1;
 		|                                    OneScriptTerminalGui.ExecuteEvent(shortcutObj.ShortcutAction);
 		|                                }
 		|                            }
 		|                            else { }
-		|                            OneScriptTerminalGui.lastEventTime = nowEventTime;
+		|                            Utils.lastEventTime = nowEventTime;
 		|                        }
+		|                    }
+		|                    else if (shortcutObj.GetType() == typeof(TfContextMenu))
+		|                    {
+		|                        // Предотвратим повторы события, если клавиша не отпущена.
+		|                        long nowEventTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
+		|                        if ((nowEventTime - Utils.lastEventTime) > 400)
+		|                        {
+		|                            if (shortcutObj.ShortcutAction != null)
+		|                            {
+		|                                TfContextMenu contextMenu = (TfContextMenu)shortcutObj;
+		|                                TfAction act = contextMenu.ShortcutAction;
+		|                                OneScriptTerminalGui.instance.TimerStartAndStop(act.Script, act.MethodName, 100);
+		|                            }
+		|                        }
+		|                        else { }
+		|                        Utils.lastEventTime = nowEventTime;
 		|                    }
 		|                    else
 		|                    {
 		|                        // Предотвратим повторы события, если клавиша не отпущена.
 		|                        long nowEventTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
-		|                        if ((nowEventTime - OneScriptTerminalGui.lastEventTime) > 90)
+		|                        if ((nowEventTime - Utils.lastEventTime) > 400)
 		|                        {
 		|                            if (shortcutObj.ShortcutAction != null)
 		|                            {
 		|                                TfEventArgs TfEventArgs1 = new TfEventArgs();
-		|                                TfEventArgs1.sender = dll_obj;
+		|                                TfEventArgs1.sender = shortcutObj;
 		|                                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(shortcutObj.ShortcutAction);
 		|                                OneScriptTerminalGui.Event = TfEventArgs1;
 		|                                OneScriptTerminalGui.ExecuteEvent(shortcutObj.ShortcutAction);
 		|                            }
 		|                        }
 		|                        else { }
-		|                        OneScriptTerminalGui.lastEventTime = nowEventTime;
+		|                        Utils.lastEventTime = nowEventTime;
 		|                    }
 		|                }
 		|            }
-		|            if (Sender.KeyPress != null)
+		|            TfAction action;
+		|            try
 		|            {
-		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
-		|                TfEventArgs1.sender = Sender;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.KeyPress);
-		|                TfEventArgs1.isAlt = ValueFactory.Create(obj.KeyEvent.IsAlt);
-		|                TfEventArgs1.isCapslock = ValueFactory.Create(obj.KeyEvent.IsCapslock);
-		|                TfEventArgs1.isCtrl = ValueFactory.Create(obj.KeyEvent.IsCtrl);
-		|                TfEventArgs1.isNumlock = ValueFactory.Create(obj.KeyEvent.IsNumlock);
-		|                TfEventArgs1.isScrolllock = ValueFactory.Create(obj.KeyEvent.IsScrolllock);
-		|                TfEventArgs1.isShift = ValueFactory.Create(obj.KeyEvent.IsShift);
-		|                TfEventArgs1.keyValue = ValueFactory.Create(obj.KeyEvent.KeyValue);
-		|                TfEventArgs1.keyToString = ValueFactory.Create(obj.KeyEvent.Key.ToString());
-		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(Sender.KeyPress);
+		|                action = Sender.KeyPress;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
+		|            {
+		|                if (Sender.HasFocus)
+		|                {
+		|                    TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                    TfEventArgs1.sender = Sender;
+		|                    TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                    TfEventArgs1.isAlt = ValueFactory.Create(obj.KeyEvent.IsAlt);
+		|                    TfEventArgs1.isCapslock = ValueFactory.Create(obj.KeyEvent.IsCapslock);
+		|                    TfEventArgs1.isCtrl = ValueFactory.Create(obj.KeyEvent.IsCtrl);
+		|                    TfEventArgs1.isNumlock = ValueFactory.Create(obj.KeyEvent.IsNumlock);
+		|                    TfEventArgs1.isScrolllock = ValueFactory.Create(obj.KeyEvent.IsScrolllock);
+		|                    TfEventArgs1.isShift = ValueFactory.Create(obj.KeyEvent.IsShift);
+		|                    TfEventArgs1.keyValue = ValueFactory.Create(obj.KeyEvent.KeyValue);
+		|                    TfEventArgs1.keyToString = ValueFactory.Create(obj.KeyEvent.Key.ToString());
+		|                    OneScriptTerminalGui.Event = TfEventArgs1;
+		|                    OneScriptTerminalGui.ExecuteEvent(action);
+		|                }
 		|            }
 		|        }
 		|
 		|        private void M_View_KeyDown(Terminal.Gui.View.KeyEventEventArgs obj)
 		|        {
-		|            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-		|            if (Sender.KeyDown != null)
+		|            dynamic Sender = Utils.RevertEqualsObj(M_View).dll_obj;
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = Sender.KeyDown;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = Sender;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.KeyDown);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                TfEventArgs1.isAlt = ValueFactory.Create(obj.KeyEvent.IsAlt);
 		|                TfEventArgs1.isCapslock = ValueFactory.Create(obj.KeyEvent.IsCapslock);
 		|                TfEventArgs1.isCtrl = ValueFactory.Create(obj.KeyEvent.IsCtrl);
@@ -5658,115 +13685,145 @@
 		|                TfEventArgs1.keyValue = ValueFactory.Create(obj.KeyEvent.KeyValue);
 		|                TfEventArgs1.keyToString = ValueFactory.Create(obj.KeyEvent.Key.ToString());
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(Sender.KeyDown);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_View_Initialized(object sender, System.EventArgs e)
 		|        {
-		|            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-		|            if (Sender.InitializedItem != null)
+		|            dynamic Sender = Utils.RevertEqualsObj(M_View).dll_obj;
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = Sender.InitializedItem;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = Sender;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.InitializedItem);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(Sender.InitializedItem);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_View_HotKeyChanged(Terminal.Gui.Key obj)
 		|        {
-		|            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-		|            if (Sender.HotKeyChanged != null)
+		|            dynamic Sender = Utils.RevertEqualsObj(M_View).dll_obj;
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = Sender.HotKeyChanged;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = Sender;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.HotKeyChanged);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                TfEventArgs1.keyValue = ValueFactory.Create((int)obj);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(Sender.HotKeyChanged);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_View_Enter(Terminal.Gui.View.FocusEventArgs obj)
 		|        {
-		|            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-		|            if (Sender.Enter != null)
+		|            dynamic Sender = Utils.RevertEqualsObj(M_View).dll_obj;
+		|            if (Sender.GetType() == typeof(TfListView))
+		|            {
+		|                return;
+		|            }
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = Sender.Enter;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = Sender;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.Enter);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(Sender.Enter);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_View_EnabledChanged()
 		|        {
-		|            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-		|            if (Sender.EnabledChanged != null)
+		|            dynamic Sender = Utils.RevertEqualsObj(M_View).dll_obj;
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = Sender.EnabledChanged;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = Sender;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.EnabledChanged);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(Sender.EnabledChanged);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
-		|        //private void M_View_DrawContentComplete(Terminal.Gui.Rect obj)
-		|        //{
-		|        //    dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-		|        //    if (Sender.DrawContentComplete != null)
-		|        //    {
-		|        //        TfEventArgs TfEventArgs1 = new TfEventArgs();
-		|        //        TfEventArgs1.sender = Sender;
-		|        //        TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.DrawContentComplete);
-		|        //        TfEventArgs1.rect = new TfRect(obj.X, obj.Y, obj.Width, obj.Height);
-		|        //        OneScriptTerminalGui.Event = TfEventArgs1;
-		|        //        OneScriptTerminalGui.ExecuteEvent(Sender.DrawContentComplete);
-		|        //    }
-		|        //}
-		|
-		|        //private void M_View_DrawContent(Terminal.Gui.Rect obj)
-		|        //{
-		|        //    dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-		|        //    if (Sender.DrawContent != null)
-		|        //    {
-		|        //        TfEventArgs TfEventArgs1 = new TfEventArgs();
-		|        //        TfEventArgs1.sender = Sender;
-		|        //        TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.DrawContent);
-		|        //        TfEventArgs1.rect = new TfRect(obj.X, obj.Y, obj.Width, obj.Height);
-		|        //        OneScriptTerminalGui.Event = TfEventArgs1;
-		|        //        OneScriptTerminalGui.ExecuteEvent(Sender.DrawContent);
-		|        //    }
-		|        //}
-		|
 		|        private void M_View_CanFocusChanged()
 		|        {
-		|            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-		|            if (Sender.CanFocusChanged != null)
+		|            dynamic Sender = Utils.RevertEqualsObj(M_View).dll_obj;
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = Sender.CanFocusChanged;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = Sender;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.CanFocusChanged);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(Sender.CanFocusChanged);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_View_Added(Terminal.Gui.View obj)
 		|        {
-		|            dynamic Sender = OneScriptTerminalGui.RevertEqualsObj(M_View).dll_obj;
-		|            if (Sender.Added != null)
+		|            dynamic Sender = Utils.RevertEqualsObj(M_View).dll_obj;
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = Sender.Added;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = Sender;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(Sender.Added);
-		|                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj).dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(obj).dll_obj;
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(Sender.Added);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
@@ -5806,13 +13863,13 @@
 		|
 		|        public ostgui.Dim Width
 		|        {
-		|            get { return OneScriptTerminalGui.RevertEqualsObj(M_View.Width); }
+		|            get { return Utils.RevertEqualsObj(M_View.Width); }
 		|            set { M_View.Width = value.M_Dim; }
 		|        }
 		|
 		|        public ostgui.Dim Height
 		|        {
-		|            get { return OneScriptTerminalGui.RevertEqualsObj(M_View.Height); }
+		|            get { return Utils.RevertEqualsObj(M_View.Height); }
 		|            set { M_View.Height = value.M_Dim; }
 		|        }
 		|
@@ -5964,7 +14021,7 @@
 		|            {
 		|                if (M_View.Focused != null)
 		|                {
-		|                    return OneScriptTerminalGui.RevertEqualsObj(M_View.Focused).dll_obj;
+		|                    return Utils.RevertEqualsObj(M_View.Focused).dll_obj;
 		|                }
 		|                return null;
 		|            }
@@ -5972,7 +14029,7 @@
 		|
 		|        public Border Border
 		|        {
-		|            get { return OneScriptTerminalGui.RevertEqualsObj(M_View.Border); }
+		|            get { return Utils.RevertEqualsObj(M_View.Border); }
 		|            set { M_View.Border = value.M_Border; }
 		|        }
 		|
@@ -5995,18 +14052,18 @@
 		|
 		|        public TextFormatter TextFormatter
 		|        {
-		|            get { return OneScriptTerminalGui.RevertEqualsObj(M_View.TextFormatter); }
+		|            get { return Utils.RevertEqualsObj(M_View.TextFormatter); }
 		|            set { M_View.TextFormatter = value.M_TextFormatter; }
 		|        }
 		|
 		|        public View SuperView
 		|        {
-		|            get { return OneScriptTerminalGui.RevertEqualsObj(M_View.SuperView); }
+		|            get { return Utils.RevertEqualsObj(M_View.SuperView); }
 		|        }
 		|
 		|        public ColorScheme ColorScheme
 		|        {
-		|            get { return OneScriptTerminalGui.RevertEqualsObj(M_View.ColorScheme); }
+		|            get { return Utils.RevertEqualsObj(M_View.ColorScheme); }
 		|            set { M_View.ColorScheme = value.M_ColorScheme; }
 		|        }
 		|
@@ -6119,7 +14176,7 @@
 		|
 		|        public View GetTopSuperView()
 		|        {
-		|            return OneScriptTerminalGui.RevertEqualsObj(M_View.GetTopSuperView());
+		|            return Utils.RevertEqualsObj(M_View.GetTopSuperView());
 		|        }
 		|
 		|        public System.Action ShortcutAction
@@ -6253,6 +14310,7 @@
 		|
 		|        public void Fill(int p1 = 0, int p2 = 0)
 		|        {
+		|            M_View.LayoutStyle = Terminal.Gui.LayoutStyle.Computed;
 		|            M_View.Width = Terminal.Gui.Dim.Fill(p1);
 		|            M_View.Height = Terminal.Gui.Dim.Fill(p2);
 		|        }
@@ -6281,15 +14339,7 @@
 		|        {
 		|            M_Toplevel = new Terminal.Gui.Toplevel();
 		|            base.M_View = M_Toplevel;
-		|            OneScriptTerminalGui.AddToHashtable(M_Toplevel, this);
-		|            SetActions(M_Toplevel);
-		|        }
-		|
-		|        public Toplevel(Terminal.Gui.Rect p1)
-		|        {
-		|            M_Toplevel = new Terminal.Gui.Toplevel(p1);
-		|            base.M_View = M_Toplevel;
-		|            OneScriptTerminalGui.AddToHashtable(M_Toplevel, this);
+		|            Utils.AddToHashtable(M_Toplevel, this);
 		|            SetActions(M_Toplevel);
 		|        }
 		|
@@ -6297,7 +14347,7 @@
 		|        {
 		|            M_Toplevel = p1;
 		|            base.M_View = M_Toplevel;
-		|            OneScriptTerminalGui.AddToHashtable(M_Toplevel, this);
+		|            Utils.AddToHashtable(M_Toplevel, this);
 		|            SetActions(M_Toplevel);
 		|        }
 		|
@@ -6321,11 +14371,20 @@
 		|
 		|        private void Toplevel_KeyPress(Terminal.Gui.View.KeyEventEventArgs obj)
 		|        {
-		|            if (dll_obj.KeyPress != null)
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).KeyPress;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = dll_obj;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.KeyPress);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                TfEventArgs1.isAlt = ValueFactory.Create(obj.KeyEvent.IsAlt);
 		|                TfEventArgs1.isCapslock = ValueFactory.Create(obj.KeyEvent.IsCapslock);
 		|                TfEventArgs1.isCtrl = ValueFactory.Create(obj.KeyEvent.IsCtrl);
@@ -6335,174 +14394,290 @@
 		|                TfEventArgs1.keyValue = ValueFactory.Create(obj.KeyEvent.KeyValue);
 		|                TfEventArgs1.keyToString = ValueFactory.Create(obj.KeyEvent.Key.ToString());
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.KeyPress);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_Toplevel_Activate(Terminal.Gui.Toplevel obj)
 		|        {
-		|            if (dll_obj.Activate != null)
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).Activate;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = dll_obj;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.Activate);
-		|                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj).dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(obj).dll_obj;
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.Activate);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_Toplevel_AllChildClosed()
 		|        {
-		|            if (dll_obj.AllChildClosed != null)
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).AllChildClosed;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = dll_obj;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.AllChildClosed);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.AllChildClosed);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_Toplevel_ChildClosed(Terminal.Gui.Toplevel obj)
 		|        {
-		|            if (dll_obj.ChildClosed != null)
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).ChildClosed;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = dll_obj;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.ChildClosed);
-		|                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj).dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(obj).dll_obj;
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.ChildClosed);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_Toplevel_ChildLoaded(Terminal.Gui.Toplevel obj)
 		|        {
-		|            if (dll_obj.ChildLoaded != null)
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).ChildLoaded;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = dll_obj;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.ChildLoaded);
-		|                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj).dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(obj).dll_obj;
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.ChildLoaded);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_Toplevel_ChildUnloaded(Terminal.Gui.Toplevel obj)
 		|        {
-		|            if (dll_obj.ChildUnloaded != null)
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).ChildUnloaded;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = dll_obj;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.ChildUnloaded);
-		|                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj).dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(obj).dll_obj;
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.ChildUnloaded);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_Toplevel_Closed(Terminal.Gui.Toplevel obj)
 		|        {
-		|            if (dll_obj.Closed != null)
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).Closed;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = dll_obj;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.Closed);
-		|                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj).dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(obj).dll_obj;
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.Closed);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_Toplevel_Closing(Terminal.Gui.ToplevelClosingEventArgs obj)
 		|        {
-		|            if (dll_obj.Closing != null)
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).Closing;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = dll_obj;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.Closing);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                TfEventArgs1.cancel = ValueFactory.Create(obj.Cancel);
-		|                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj.RequestingTop).dll_obj;
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(obj.RequestingTop).dll_obj;
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.Closing);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|                obj.Cancel = TfEventArgs1.Cancel;
 		|            }
 		|        }
 		|
 		|        private void M_Toplevel_Deactivate(Terminal.Gui.Toplevel obj)
 		|        {
-		|            if (dll_obj.Deactivate != null)
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).Deactivate;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = dll_obj;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.Deactivate);
-		|                TfEventArgs1.view = OneScriptTerminalGui.RevertEqualsObj(obj).dll_obj;
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
+		|                TfEventArgs1.view = Utils.RevertEqualsObj(obj).dll_obj;
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.Deactivate);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_Toplevel_Loaded()
 		|        {
-		|            if (dll_obj.Loaded != null)
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).Loaded;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = dll_obj;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.Loaded);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.Loaded);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_Toplevel_QuitKeyChanged(Terminal.Gui.Key obj)
 		|        {
-		|            if (dll_obj.QuitKeyChanged != null)
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).QuitKeyChanged;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = dll_obj;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.QuitKeyChanged);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                TfEventArgs1.keyValue = ValueFactory.Create((int)obj);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.QuitKeyChanged);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_Toplevel_Ready()
 		|        {
-		|            if (dll_obj.Ready != null)
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).Ready;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = dll_obj;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.Ready);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.Ready);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
 		|        private void M_Toplevel_Resized(Terminal.Gui.Size obj)
 		|        {
-		|            if (OneScriptTerminalGui.instance.Resized != null)
+		|            Utils.noMouseEvent = true;
+		|            long nowEventTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
+		|            if ((nowEventTime - Utils.lastEventTime) > 500)
 		|            {
-		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
-		|                TfEventArgs1.sender = dll_obj;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(OneScriptTerminalGui.instance.Resized);
-		|                TfEventArgs1.size = new TfSize(obj.Width, obj.Height);
-		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(OneScriptTerminalGui.instance.Resized);
+		|                if (OneScriptTerminalGui.instance.Resized != null)
+		|                {
+		|                    TfEventArgs TfEventArgs1 = new TfEventArgs();
+		|                    TfEventArgs1.sender = dll_obj;
+		|                    TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(OneScriptTerminalGui.instance.Resized);
+		|                    TfEventArgs1.size = new TfSize(obj.Width, obj.Height);
+		|                    OneScriptTerminalGui.Event = TfEventArgs1;
+		|                    OneScriptTerminalGui.ExecuteEvent(OneScriptTerminalGui.instance.Resized);
+		|                }
 		|            }
+		|            else { }
+		|            Utils.lastEventTime = nowEventTime;
+		|            Utils.noMouseEvent = false;
 		|        }
 		|
 		|        private void M_Toplevel_Unloaded()
 		|        {
-		|            if (dll_obj.Unloaded != null)
+		|            TfAction action;
+		|            try
+		|            {
+		|                action = ((dynamic)dll_obj).Unloaded;
+		|            }
+		|            catch
+		|            {
+		|                return;
+		|            }
+		|            if (action != null)
 		|            {
 		|                TfEventArgs TfEventArgs1 = new TfEventArgs();
 		|                TfEventArgs1.sender = dll_obj;
-		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(dll_obj.Unloaded);
+		|                TfEventArgs1.parameter = OneScriptTerminalGui.GetEventParameter(action);
 		|                OneScriptTerminalGui.Event = TfEventArgs1;
-		|                OneScriptTerminalGui.ExecuteEvent(dll_obj.Unloaded);
+		|                OneScriptTerminalGui.ExecuteEvent(action);
 		|            }
 		|        }
 		|
@@ -6514,13 +14689,13 @@
 		|
 		|        public ostgui.MenuBar MenuBar
 		|        {
-		|            get { return OneScriptTerminalGui.RevertEqualsObj(M_Toplevel.MenuBar); }
+		|            get { return Utils.RevertEqualsObj(M_Toplevel.MenuBar); }
 		|            set { M_Toplevel.Add(value.M_MenuBar); }
 		|        }
 		|
 		|        public StatusBar StatusBar
 		|        {
-		|            get { return OneScriptTerminalGui.RevertEqualsObj((M_Toplevel.StatusBar)); }
+		|            get { return Utils.RevertEqualsObj((M_Toplevel.StatusBar)); }
 		|            set { M_Toplevel.StatusBar = value.M_StatusBar; }
 		|        }
 		|
@@ -6531,7 +14706,7 @@
 		|
 		|        public new Toplevel GetTopSuperView()
 		|        {
-		|            return OneScriptTerminalGui.RevertEqualsObj(M_Toplevel.GetTopSuperView());
+		|            return Utils.RevertEqualsObj(M_Toplevel.GetTopSuperView());
 		|        }
 		|    }
 		|";
@@ -6547,7 +14722,7 @@
 		|        public TextFormatter()
 		|        {
 		|            M_TextFormatter = new Terminal.Gui.TextFormatter();
-		|            OneScriptTerminalGui.AddToHashtable(M_TextFormatter, this);
+		|            Utils.AddToHashtable(M_TextFormatter, this);
 		|        }
 		|
 		|        public bool AutoSize
@@ -7013,42 +15188,42 @@
 		|        public ColorScheme()
 		|        {
 		|            M_ColorScheme = new Terminal.Gui.ColorScheme();
-		|            OneScriptTerminalGui.AddToHashtable(M_ColorScheme, this);
+		|            Utils.AddToHashtable(M_ColorScheme, this);
 		|        }
 		|
 		|        public ColorScheme(Terminal.Gui.ColorScheme p1)
 		|        {
 		|            M_ColorScheme = p1;
-		|            OneScriptTerminalGui.AddToHashtable(M_ColorScheme, this);
+		|            Utils.AddToHashtable(M_ColorScheme, this);
 		|        }
 		|
 		|        public Attribute HotNormal
 		|        {
-		|            get { return OneScriptTerminalGui.RevertEqualsObj(M_ColorScheme.HotNormal); }
+		|            get { return Utils.RevertEqualsObj(M_ColorScheme.HotNormal); }
 		|            set { M_ColorScheme.HotNormal = value.M_Attribute; }
 		|        }
 		|
 		|        public Attribute HotFocus
 		|        {
-		|            get { return OneScriptTerminalGui.RevertEqualsObj(M_ColorScheme.HotFocus); }
+		|            get { return Utils.RevertEqualsObj(M_ColorScheme.HotFocus); }
 		|            set { M_ColorScheme.HotFocus = value.M_Attribute; }
 		|        }
 		|
 		|        public Attribute Normal
 		|        {
-		|            get { return OneScriptTerminalGui.RevertEqualsObj(M_ColorScheme.Normal); }
+		|            get { return Utils.RevertEqualsObj(M_ColorScheme.Normal); }
 		|            set { M_ColorScheme.Normal = value.M_Attribute; }
 		|        }
 		|
 		|        public Attribute Disabled
 		|        {
-		|            get { return OneScriptTerminalGui.RevertEqualsObj(M_ColorScheme.Disabled); }
+		|            get { return Utils.RevertEqualsObj(M_ColorScheme.Disabled); }
 		|            set { M_ColorScheme.Disabled = value.M_Attribute; }
 		|        }
 		|
 		|        public Attribute Focus
 		|        {
-		|            get { return OneScriptTerminalGui.RevertEqualsObj(M_ColorScheme.Focus); }
+		|            get { return Utils.RevertEqualsObj(M_ColorScheme.Focus); }
 		|            set { M_ColorScheme.Focus = value.M_Attribute; }
 		|        }
 		|
@@ -7071,31 +15246,15 @@
 		|        {
 		|            M_Button = new Terminal.Gui.Button();
 		|            base.M_View = M_Button;
-		|            OneScriptTerminalGui.AddToHashtable(M_Button, this);
+		|            Utils.AddToHashtable(M_Button, this);
 		|            SetActions(M_Button);
 		|        }
 		|
-		|        public Button(string p1, bool p2 = false)
+		|        public Button(Terminal.Gui.Button p1)
 		|        {
-		|            M_Button = new Terminal.Gui.Button(p1, p2);
+		|            M_Button = p1;
 		|            base.M_View = M_Button;
-		|            OneScriptTerminalGui.AddToHashtable(M_Button, this);
-		|            SetActions(M_Button);
-		|        }
-		|
-		|        public Button(int p1, int p2, string p3)
-		|        {
-		|            M_Button = new Terminal.Gui.Button(p1, p2, p3);
-		|            base.M_View = M_Button;
-		|            OneScriptTerminalGui.AddToHashtable(M_Button, this);
-		|            SetActions(M_Button);
-		|        }
-		|
-		|        public Button(int p1, int p2, string p3, bool p4)
-		|        {
-		|            M_Button = new Terminal.Gui.Button(p1, p2, p3, p4);
-		|            base.M_View = M_Button;
-		|            OneScriptTerminalGui.AddToHashtable(M_Button, this);
+		|            Utils.AddToHashtable(M_Button, this);
 		|            SetActions(M_Button);
 		|        }
 		|
@@ -7129,7 +15288,7 @@
 		|
 		|        public new Toplevel GetTopSuperView()
 		|        {
-		|            return OneScriptTerminalGui.RevertEqualsObj(M_Button.GetTopSuperView());
+		|            return Utils.RevertEqualsObj(M_Button.GetTopSuperView());
 		|        }
 		|    }
 		|";
@@ -7157,6 +15316,1102 @@
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	ИначеЕсли ИмяФайлаТФ = "ValueList" Тогда
+		СтрВыгрузки = СтрВыгрузки + 
+		"using System;
+		|using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.Machine;
+		|using ScriptEngine.HostedScript.Library;
+		|using ScriptEngine.HostedScript.Library.ValueList;
+		|using System.Collections.Generic;
+		|
+		|namespace ostgui
+		|{
+		|    // Этот модуль нужен для динамического изменения источника для элементов 
+		|    // ПолеВыбора (ComboBox) и СписокЭлементов (ListView). Как только источник 
+		|    // изменится ПолеВыбора и СписокЭлементов актуализируются.
+		|    // По сути это обертка (wrapper-класс) над классом СписокЗначений из односкрипта. 
+		|    // Вы можете использовать все методы-свойства, как если бы обращались к односкриптовому СписокЗначений.
+		|    // Можно было бы обойтись без создания класса ValueList, создав только 
+		|    // класс TfValueList и прописав всё нужное в нём. Но сделаю подробный вариант 
+		|    // для себя, чтобы был пример кодирования события. Слабонервных прошу пропускать 
+		|    // этот код.
+		|
+		|    public class ValueList
+		|    {
+		|        public TfValueList dll_obj;
+		|        public ValueListImpl M_ValueList;
+		|
+		|        public ValueList()
+		|        {
+		|            M_ValueList = new ValueListImpl();
+		|            Utils.AddToHashtable(M_ValueList, this);
+		|
+		|            this.CollectionChanged += ValueList_CollectionChanged;
+		|        }
+		|
+		|        private void ValueList_CollectionChanged(object sender, AddEventArgs e)
+		|        {
+		|            List<string> list = new List<string>();
+		|            for (int i = 0; i < M_ValueList.Count(); i++)
+		|            {
+		|                string item = M_ValueList.GetValue(ValueFactory.Create(i)).Presentation;
+		|                if (item.Length != 0)
+		|                {
+		|                    list.Add(item);
+		|                }
+		|                else
+		|                {
+		|                    list.Add(M_ValueList.GetValue(ValueFactory.Create(i)).Value.ToString());
+		|                }
+		|            }
+		|            ((dynamic)dll_obj.M_Owner).SetSource(list);
+		|        }
+		|
+		|        private event EventHandler<AddEventArgs> CollectionChanged;
+		|        public void OnCollectionChanged(ValueList obj)
+		|        {
+		|            var handler = CollectionChanged;
+		|            if (handler != null)
+		|            {
+		|                handler(this, new AddEventArgs(obj));
+		|            }
+		|        }
+		|
+		|        public ValueListItem Add(IValue value, string presentation = null, bool check = false, IValue picture = null)
+		|        {
+		|            ValueListItem ValueListItem1 = M_ValueList.Add(value, presentation, check, picture);
+		|            OnCollectionChanged(this);
+		|            return ValueListItem1;
+		|        }
+		|
+		|        public ValueListItem GetValue(IValue index)
+		|        {
+		|            return M_ValueList.GetValue(index);
+		|        }
+		|
+		|        public ValueListItem Insert(int index, IValue value, string presentation = null, bool check = false, IValue picture = null)
+		|        {
+		|            ValueListItem ValueListItem1 = M_ValueList.Insert(index, value, presentation, check, picture);
+		|            OnCollectionChanged(this);
+		|            return ValueListItem1;
+		|        }
+		|
+		|        public void Clear()
+		|        {
+		|            M_ValueList.Clear();
+		|            OnCollectionChanged(this);
+		|        }
+		|
+		|        public void FillChecks(bool check)
+		|        {
+		|            M_ValueList.FillChecks(check);
+		|        }
+		|
+		|        public int IndexOf(ValueListItem item)
+		|        {
+		|            return M_ValueList.IndexOf(item);
+		|        }
+		|
+		|        public IValue FindByValue(IValue val)
+		|        {
+		|            return M_ValueList.FindByValue(val);
+		|        }
+		|
+		|        public void Move(IValue item, int offset)
+		|        {
+		|            M_ValueList.Move(item, offset);
+		|            OnCollectionChanged(this);
+		|        }
+		|
+		|        public void SortByValue(SortDirectionEnum? direction = null)
+		|        {
+		|            M_ValueList.SortByValue(direction);
+		|            OnCollectionChanged(this);
+		|        }
+		|
+		|        public void SortByPresentation(SortDirectionEnum? direction = null)
+		|        {
+		|            M_ValueList.SortByPresentation(direction);
+		|            OnCollectionChanged(this);
+		|        }
+		|
+		|        public void Delete(IValue item)
+		|        {
+		|            M_ValueList.Delete(item);
+		|            OnCollectionChanged(this);
+		|        }
+		|
+		|        public int Count()
+		|        {
+		|            return M_ValueList.Count();
+		|        }
+		|
+		|        private class AddEventArgs : System.EventArgs
+		|        {
+		|            private ValueList valueList;
+		|
+		|            public AddEventArgs(ValueList obj)
+		|            {
+		|                valueList = obj;
+		|            }
+		|            public ValueList Obj
+		|            {
+		|                get { return valueList; }
+		|                set { valueList = value; }
+		|            }
+		|        }
+		|    }
+		|
+		|    [ContextClass(""ТфСписокЗначений"", ""TfValueList"")]
+		|    public class TfValueList : AutoContext<TfValueList>
+		|    {
+		|        public Terminal.Gui.View M_Owner;
+		|
+		|        public TfValueList()
+		|        {
+		|            ValueList ValueList1 = new ValueList();
+		|            ValueList1.dll_obj = this;
+		|            Base_obj = ValueList1;
+		|        }
+		|
+		|        public ValueList Base_obj;
+		|
+		|        [ContextMethod(""Добавить"", ""Add"")]
+		|        public ValueListItem Add(IValue value, string presentation = null, bool check = false, IValue picture = null)
+		|        {
+		|            ValueListItem ValueListItem1 = Base_obj.Add(value, presentation, check, picture);
+		|            return ValueListItem1;
+		|        }
+		|
+		|        [ContextMethod(""Количество"", ""Count"")]
+		|        public int Count()
+		|        {
+		|            return Base_obj.Count();
+		|        }
+		|
+		|        [ContextMethod(""Получить"", ""Get"")]
+		|        public ValueListItem GetValue(IValue index)
+		|        {
+		|            return Base_obj.GetValue(index);
+		|        }
+		|
+		|        [ContextMethod(""Вставить"", ""Insert"")]
+		|        public ValueListItem Insert(int index, IValue value, string presentation = null, bool check = false, IValue picture = null)
+		|        {
+		|            return Base_obj.Insert(index, value, presentation, check, picture);
+		|        }
+		|
+		|        [ContextMethod(""Очистить"", ""Clear"")]
+		|        public void Clear()
+		|        {
+		|            Base_obj.Clear();
+		|        }
+		|
+		|        [ContextMethod(""ЗаполнитьПометки"", ""FillChecks"")]
+		|        public void FillChecks(bool check)
+		|        {
+		|            Base_obj.FillChecks(check);
+		|        }
+		|
+		|        [ContextMethod(""Индекс"", ""IndexOf"")]
+		|        public int IndexOf(ValueListItem item)
+		|        {
+		|            return Base_obj.IndexOf(item);
+		|        }
+		|
+		|        [ContextMethod(""НайтиПоЗначению"", ""FindByValue"")]
+		|        public IValue FindByValue(IValue val)
+		|        {
+		|            return Base_obj.FindByValue(val);
+		|        }
+		|
+		|        [ContextMethod(""Сдвинуть"", ""Move"")]
+		|        public void Move(IValue item, int offset)
+		|        {
+		|            Base_obj.Move(item, offset);
+		|        }
+		|
+		|        [ContextMethod(""СортироватьПоЗначению"", ""SortByValue"")]
+		|        public void SortByValue(int p1 = 1)
+		|        {
+		|            if (p1 == 1)
+		|            {
+		|                Base_obj.SortByValue(SortDirectionEnum.Asc);
+		|            }
+		|            else if (p1 == 2)
+		|            {
+		|                Base_obj.SortByValue(SortDirectionEnum.Desc);
+		|            }
+		|        }
+		|
+		|        [ContextMethod(""СортироватьПоПредставлению"", ""SortByPresentation"")]
+		|        public void SortByPresentation(int p1 = 1)
+		|        {
+		|            if (p1 == 1)
+		|            {
+		|                Base_obj.SortByPresentation(SortDirectionEnum.Asc);
+		|            }
+		|            else if (p1 == 2)
+		|            {
+		|                Base_obj.SortByPresentation(SortDirectionEnum.Desc);
+		|            }
+		|        }
+		|
+		|        [ContextMethod(""Удалить"", ""Delete"")]
+		|        public void Delete(IValue item)
+		|        {
+		|            Base_obj.Delete(item);
+		|        }
+		|    }
+		|}
+		|";
+		ТекстДокХХХ = Новый ТекстовыйДокумент;
+		ТекстДокХХХ.УстановитьТекст(СтрВыгрузки);
+		ТекстДокХХХ.Записать(КаталогВыгрузки + "\" + ИмяФайлаТФ + ".cs");
+	ИначеЕсли ИмяФайлаТФ = "Utils" Тогда
+		СтрВыгрузки = СтрВыгрузки + 
+		"using System;
+		|using System.IO;
+		|using System.Text;
+		|using System.Collections;
+		|using System.Collections.Generic;
+		|using System.Linq;
+		|using ScriptEngine.Machine;
+		|using System.Reflection;
+		|using ScriptEngine.Machine.Contexts;
+		|using ScriptEngine.HostedScript.Library;
+		|using ScriptEngine.Machine.Values;
+		|using NStack;
+		|
+		|namespace ostgui
+		|{
+		|    public static class Utils
+		|    {
+		|        public static Hashtable hashtable = new Hashtable();
+		|        public static Dictionary<decimal, ArrayList> shortcutDictionary = new Dictionary<decimal, ArrayList>();
+		|        public static long lastEventTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
+		|        public static bool noMouseEvent = false;
+		|        public static int lastMeX = -1;
+		|        public static int lastMeY = -1;
+		|        public static int minCols;
+		|        public static int minRows;
+		|        public static IRuntimeContextInstance startupScript = GlobalContext().StartupScript();
+		|        public static string pathStartupScript = startupScript.GetPropValue(startupScript.FindProperty(""Path"")).AsString();
+		|        public static string pathLog = Path.Combine(Utils.pathStartupScript, ""logtui.txt"");
+		|
+		|        //ScriptEngine.Machine.Values.NullValue NullValue1;
+		|        //ScriptEngine.Machine.Values.BooleanValue BooleanValue1;
+		|        //ScriptEngine.Machine.Values.DateValue DateValue1;
+		|        //ScriptEngine.Machine.Values.NumberValue NumberValue1;
+		|        //ScriptEngine.Machine.Values.StringValue StringValue1;
+		|
+		|        //ScriptEngine.Machine.Values.GenericValue GenericValue1;
+		|        //ScriptEngine.Machine.Values.TypeTypeValue TypeTypeValue1;
+		|        //ScriptEngine.Machine.Values.UndefinedValue UndefinedValue1;
+		|        public static bool IsString(IValue value) => value?.SystemType.Name == ""Строка"";
+		|        public static bool IsNumber(IValue value) => value?.SystemType.Name == ""Число"";
+		|        public static bool IsBoolean(IValue value) => value?.SystemType.Name == ""Булево"";
+		|        public static bool IsDateTime(IValue value) => value?.SystemType.Name == ""Дата"";
+		|        public static bool IsType<T>(IValue value) => value?.GetType() == typeof(T);
+		|        public static bool IsType<T>(object value) => value?.GetType() == typeof(T);
+		|
+		|        public static ustring[] ArrayToUstring(ArrayImpl array)
+		|        {
+		|            int count = array.Count();
+		|            ustring[] result = new ustring[count];
+		|            for (int i = 0; i < count; i++)
+		|            {
+		|                ustring element = array.Get(i).AsString();
+		|                result[i] = element;
+		|            }
+		|            return result;
+		|        }
+		|
+		|        public static short[] ArrayToShort(ArrayImpl array)
+		|        {
+		|            int count = array.Count();
+		|            short[] result = new short[count];
+		|            for (int i = 0; i < count; i++)
+		|            {
+		|                // Получаем элемент массива
+		|                IValue element = array.Get(i);
+		|
+		|                // Преобразуем в число и затем в short
+		|                decimal numberValue = element.AsNumber();
+		|                result[i] = (short)numberValue;
+		|            }
+		|            return result;
+		|        }
+		|
+		|        public static ArrayImpl ShortToArray(short[] shortArray)
+		|        {
+		|            ArrayImpl array = new ArrayImpl();
+		|            foreach (short value in shortArray)
+		|            {
+		|                // Добавляем short значение в массив OneScript
+		|                array.Add(ValueFactory.Create((decimal)value));
+		|            }
+		|            return array;
+		|        }
+		|
+		|        public static string[] ArrayToString(ArrayImpl array)
+		|        {
+		|            int count = array.Count();
+		|            string[] result = new string[count];
+		|            for (int i = 0; i < count; i++)
+		|            {
+		|                string element = array.Get(i).AsString();
+		|                result[i] = element;
+		|            }
+		|            return result;
+		|        }
+		|
+		|        public static ArrayImpl StringToArray(string[] stringArray)
+		|        {
+		|            ArrayImpl array = new ArrayImpl();
+		|            foreach (string value in stringArray)
+		|            {
+		|                array.Add(ValueFactory.Create(value));
+		|            }
+		|            return array;
+		|        }
+		|
+		|        public static ArrayImpl TreeNodeToArray(IList<Terminal.Gui.Trees.ITreeNode> listTreeNode)
+		|        {
+		|            ArrayImpl array = new ArrayImpl();
+		|            Terminal.Gui.Trees.ITreeNode[] treeNodeArray = listTreeNode.ToArray();
+		|            foreach (var value in treeNodeArray)
+		|            {
+		|                array.Add(ValueFactory.Create((TfTreeNode)RevertEqualsObj(value).dll_obj));
+		|            }
+		|            return array;
+		|        }
+		|
+		|        public static ArrayImpl TreeViewObjectsToArray(IEnumerable<Terminal.Gui.Trees.ITreeNode> listTreeNode)
+		|        {
+		|            ArrayImpl array = new ArrayImpl();
+		|            Terminal.Gui.Trees.ITreeNode[] treeNodeArray = listTreeNode.ToArray();
+		|            foreach (var value in treeNodeArray)
+		|            {
+		|                array.Add(ValueFactory.Create((TfTreeNode)RevertEqualsObj(value).dll_obj));
+		|            }
+		|            return array;
+		|        }
+		|
+		|        public static Terminal.Gui.TabView.Tab[] IReadOnlyCollectionToArray(IReadOnlyCollection<Terminal.Gui.TabView.Tab> tabs)
+		|        {
+		|            Terminal.Gui.TabView.Tab[] array = new Terminal.Gui.TabView.Tab[tabs.Count];
+		|            int num = 0;
+		|            foreach (var item in tabs)
+		|            {
+		|                array[num] = item;
+		|                num++;
+		|            }
+		|            return array;
+		|        }
+		|
+		|        public static Terminal.Gui.Button[] ArrayToButton(ArrayImpl array)
+		|        {
+		|            if (array == null)
+		|            {
+		|                return null;
+		|            }
+		|            int count = array.Count();
+		|            Terminal.Gui.Button[] result = new Terminal.Gui.Button[count];
+		|            for (int i = 0; i < count; i++)
+		|            {
+		|                IValue element = array.Get(i);
+		|                result[i] = ((dynamic)element).Base_obj.M_Button;
+		|            }
+		|            return result;
+		|        }
+		|
+		|        public static Terminal.Gui.View[] ArrayToView(ArrayImpl array)
+		|        {
+		|            if (array == null)
+		|            {
+		|                return null;
+		|            }
+		|            int count = array.Count();
+		|            Terminal.Gui.View[] result = new Terminal.Gui.View[count];
+		|            for (int i = 0; i < count; i++)
+		|            {
+		|                IValue element = array.Get(i);
+		|                result[i] = ((dynamic)element).Base_obj.M_View;
+		|            }
+		|            return result;
+		|        }
+		|
+		|        public static IList<Terminal.Gui.Trees.ITreeNode> ArrayToTreeNode(ArrayImpl array)
+		|        {
+		|            int count = array.Count();
+		|            List<Terminal.Gui.Trees.ITreeNode> result = new List<Terminal.Gui.Trees.ITreeNode>();
+		|            for (int i = 0; i < count; i++)
+		|            {
+		|                Terminal.Gui.Trees.ITreeNode element = (Terminal.Gui.Trees.ITreeNode)((TfTreeNode)array.Get(i)).Base_obj.M_TreeNode;
+		|                result.Add(element);
+		|            }
+		|            return result;
+		|        }
+		|
+		|        public static ArrayImpl ListToArray(List<IValue> listValue)
+		|        {
+		|            ArrayImpl array = new ArrayImpl();
+		|            IValue[] valueArray = listValue.ToArray();
+		|            foreach (var value in valueArray)
+		|            {
+		|                array.Add(value);
+		|            }
+		|            return array;
+		|        }
+		|
+		|        public static ArrayImpl ListToArray(List<string> listString)
+		|        {
+		|            ArrayImpl array = new ArrayImpl();
+		|            string[] stringArray = listString.ToArray();
+		|            foreach (var value in stringArray)
+		|            {
+		|                array.Add(ValueFactory.Create(value));
+		|            }
+		|            return array;
+		|        }
+		|
+		|        public static List<string> ArrayToList(ArrayImpl array)
+		|        {
+		|            int count = array.Count();
+		|            List<string> result = new List<string>();
+		|            for (int i = 0; i < count; i++)
+		|            {
+		|                string element = array.Get(i).AsString();
+		|                result.Add(element);
+		|            }
+		|            return result;
+		|        }
+		|
+		|        public static int[] ArrayToInt32(ArrayImpl array)
+		|        {
+		|            int count = array.Count();
+		|            int[] result = new int[count];
+		|            for (int i = 0; i < count; i++)
+		|            {
+		|                IValue element = array.Get(i);
+		|                result[i] = ToInt32(element);
+		|            }
+		|            return result;
+		|        }
+		|
+		|        public static ArrayImpl IntToArray(int[] intArray)
+		|        {
+		|            ArrayImpl array = new ArrayImpl();
+		|            foreach (int value in intArray)
+		|            {
+		|                array.Add(ValueFactory.Create(value));
+		|            }
+		|            return array;
+		|        }
+		|
+		|        public static ArrayImpl FloatToArray(float[] floatArray)
+		|        {
+		|            ArrayImpl array = new ArrayImpl();
+		|            foreach (float value in floatArray)
+		|            {
+		|                array.Add(ValueFactory.Create(ToDecimal(value)));
+		|            }
+		|            return array;
+		|        }
+		|
+		|        public static float[] ArrayToFloat(ArrayImpl array)
+		|        {
+		|            int count = array.Count();
+		|            float[] result = new float[count];
+		|            for (int i = 0; i < count; i++)
+		|            {
+		|                IValue element = array.Get(i);
+		|                result[i] = ToFloat(element);
+		|            }
+		|            return result;
+		|        }
+		|
+		|        public static byte[] ArrayToByte(ArrayImpl array)
+		|        {
+		|            int count = array.Count();
+		|            byte[] result = new byte[count];
+		|            for (int i = 0; i < count; i++)
+		|            {
+		|                IValue element = array.Get(i);
+		|                decimal numberValue = element.AsNumber();
+		|                result[i] = (byte)numberValue;
+		|            }
+		|            return result;
+		|        }
+		|
+		|        public static ArrayImpl ByteToArray(byte[] byteArray)
+		|        {
+		|            ArrayImpl array = new ArrayImpl();
+		|            foreach (byte value in byteArray)
+		|            {
+		|                array.Add(ValueFactory.Create((decimal)value));
+		|            }
+		|            return array;
+		|        }
+		|
+		|        public static float ToFloat(object num)
+		|        {
+		|            if (IsType<NumberValue>(num))
+		|            {
+		|                return Convert.ToSingle(((NumberValue)num).AsNumber());
+		|            }
+		|            return Convert.ToSingle(num);
+		|        }
+		|
+		|        public static byte ToByte(object num)
+		|        {
+		|            if (IsType<NumberValue>(num))
+		|            {
+		|                return Convert.ToByte(((NumberValue)num).AsNumber());
+		|            }
+		|            return Convert.ToByte(num);
+		|        }
+		|
+		|        public static bool ToBoolean(object b)
+		|        {
+		|            if (IsType<BooleanValue>(b))
+		|            {
+		|                return Convert.ToBoolean(((BooleanValue)b).AsBoolean());
+		|            }
+		|            return Convert.ToBoolean(b);
+		|        }
+		|
+		|        public static string ToString(object str)
+		|        {
+		|            if (IsType<StringValue>(str))
+		|            {
+		|                return Convert.ToString(((StringValue)str).AsString());
+		|            }
+		|            return Convert.ToString(str);
+		|        }
+		|
+		|        public static int ToInt32(object num)
+		|        {
+		|            if (IsType<NumberValue>(num))
+		|            {
+		|                return Convert.ToInt32(((NumberValue)num).AsNumber());
+		|            }
+		|            return Convert.ToInt32(num);
+		|        }
+		|
+		|        public static decimal ToDecimal(object num)
+		|        {
+		|            if (IsType<NumberValue>(num))
+		|            {
+		|                return Convert.ToDecimal(((NumberValue)num).AsNumber());
+		|            }
+		|            return Convert.ToDecimal(num);
+		|        }
+		|
+		|        public static uint ToUInt32(object num)
+		|        {
+		|            if (IsType<NumberValue>(num))
+		|            {
+		|                return Convert.ToUInt32(((NumberValue)num).AsNumber());
+		|            }
+		|            return Convert.ToUInt32(num);
+		|        }
+		|
+		|        public static double ToDouble(object num)
+		|        {
+		|            if (IsType<NumberValue>(num))
+		|            {
+		|                return Convert.ToDouble(((NumberValue)num).AsNumber());
+		|            }
+		|            return Convert.ToDouble(num);
+		|        }
+		|
+		|        public static ArrayImpl NamesArray(Type _type)
+		|        {
+		|            ArrayImpl arrayImpl = new ArrayImpl();
+		|            List<string> list = new List<string>();
+		|            Type type = _type;
+		|            PropertyInfo[] myPropertyInfo = type.GetProperties();
+		|            for (int i = 0; i < myPropertyInfo.Length; i++)
+		|            {
+		|                if (myPropertyInfo[i].CustomAttributes.Count() == 1)
+		|                {
+		|                    string NameRu = myPropertyInfo[i].GetCustomAttribute<ContextPropertyAttribute>().GetName();
+		|                    string NameEn = myPropertyInfo[i].GetCustomAttribute<ContextPropertyAttribute>().GetAlias();
+		|                    try
+		|                    {
+		|                        list.Add(NameRu + "" "" + NameEn + "" "" + type.GetProperty(NameEn).GetValue(type));
+		|                    }
+		|                    catch { }
+		|                }
+		|            }
+		|            list.Sort();
+		|            for (int i = 0; i < list.Count; i++)
+		|            {
+		|                arrayImpl.Add(ValueFactory.Create(list[i]));
+		|            }
+		|            return arrayImpl;
+		|        }
+		|
+		|        public static SystemGlobalContext GlobalContext()
+		|        {
+		|            return GlobalsManager.GetGlobalContext<SystemGlobalContext>();
+		|        }
+		|
+		|        // Метод, заменяющий мне дебагер для анализа ошибок.
+		|        public static void WriteToFile(string str)
+		|        {
+		|            using (StreamWriter writer = new StreamWriter(PathLog, true, Encoding.UTF8))
+		|            {
+		|                writer.WriteLineAsync("""" + Environment.NewLine + DateTime.Now.ToString() + Environment.NewLine + str);
+		|            }
+		|        }
+		|
+		|        public static string PathLog
+		|        {
+		|            get { return pathLog; }
+		|            set { pathLog = value; }
+		|        }
+		|
+		|        public static bool AllNull(params IValue[] values)
+		|        {
+		|            foreach (var value in values)
+		|            {
+		|                if (value != null) return false;
+		|            }
+		|            return true;
+		|        }
+		|
+		|        public static bool AllNotNull(params IValue[] values)
+		|        {
+		|            foreach (var value in values)
+		|            {
+		|                if (value == null) return false;
+		|            }
+		|            return true;
+		|        }
+		|
+		|        public static bool AllNotNull(params string[] values)
+		|        {
+		|            foreach (var value in values)
+		|            {
+		|                if (value == null) return false;
+		|            }
+		|            return true;
+		|        }
+		|
+		|        public static bool AllNotNull(params object[] values)
+		|        {
+		|            foreach (var value in values)
+		|            {
+		|                if (value == null) return false;
+		|            }
+		|            return true;
+		|        }
+		|
+		|        public static ArrayList StrFindBetween(string p1, string p2 = null, string p3 = null, bool p4 = true, bool p5 = true)
+		|        {
+		|            //p1 - исходная строка
+		|            //p2 - подстрока поиска от которой ведем поиск
+		|            //p3 - подстрока поиска до которой ведем поиск
+		|            //p4 - не включать p2 и p3 в результат
+		|            //p5 - в результат не будут включены участки, содержащие другие найденные участки, удовлетворяющие переданным параметрам
+		|            //функция возвращает массив строк
+		|            string str1 = p1;
+		|            int Position1;
+		|            ArrayList ArrayList1 = new ArrayList();
+		|            if (p2 != null && p3 == null)
+		|            {
+		|                Position1 = str1.IndexOf(p2);
+		|                while (Position1 >= 0)
+		|                {
+		|                    ArrayList1.Add(ValueFactory.Create("""" + ((p4) ? str1.Substring(Position1 + p2.Length) : str1.Substring(Position1))));
+		|                    str1 = str1.Substring(Position1 + 1);
+		|                    Position1 = str1.IndexOf(p2);
+		|                }
+		|            }
+		|            else if (p2 == null && p3 != null)
+		|            {
+		|                Position1 = str1.IndexOf(p3) + 1;
+		|                int SumPosition1 = Position1;
+		|                while (Position1 > 0)
+		|                {
+		|                    ArrayList1.Add(ValueFactory.Create("""" + ((p4) ? str1.Substring(0, SumPosition1 - 1) : str1.Substring(0, SumPosition1 - 1 + p3.Length))));
+		|                    try
+		|                    {
+		|                        Position1 = str1.Substring(SumPosition1 + 1).IndexOf(p3) + 1;
+		|                        SumPosition1 = SumPosition1 + Position1 + 1;
+		|                    }
+		|                    catch
+		|                    {
+		|                        break;
+		|                    }
+		|                }
+		|            }
+		|            else if (p2 != null && p3 != null)
+		|            {
+		|                Position1 = str1.IndexOf(p2);
+		|                while (Position1 >= 0)
+		|                {
+		|                    string Стр2;
+		|                    Стр2 = (p4) ? str1.Substring(Position1 + p2.Length) : str1.Substring(Position1);
+		|                    int Position2 = Стр2.IndexOf(p3) + 1;
+		|                    int SumPosition2 = Position2;
+		|                    while (Position2 > 0)
+		|                    {
+		|                        if (p5)
+		|                        {
+		|                            if (Стр2.Substring(0, SumPosition2 - 1).IndexOf(p3) <= -1)
+		|                            {
+		|                                ArrayList1.Add(ValueFactory.Create("""" + ((p4) ? Стр2.Substring(0, SumPosition2 - 1) : Стр2.Substring(0, SumPosition2 - 1 + p3.Length))));
+		|                            }
+		|                        }
+		|                        else
+		|                        {
+		|                            ArrayList1.Add(ValueFactory.Create("""" + ((p4) ? Стр2.Substring(0, SumPosition2 - 1) : Стр2.Substring(0, SumPosition2 - 1 + p3.Length))));
+		|                        }
+		|                        try
+		|                        {
+		|                            Position2 = Стр2.Substring(SumPosition2 + 1).IndexOf(p3) + 1;
+		|                            SumPosition2 = SumPosition2 + Position2 + 1;
+		|                        }
+		|                        catch
+		|                        {
+		|                            break;
+		|                        }
+		|                    }
+		|                    str1 = str1.Substring(Position1 + 1);
+		|                    Position1 = str1.IndexOf(p2);
+		|                }
+		|            }
+		|            return ArrayList1;
+		|        }
+		|
+		|        public static dynamic DefineTypeIValue(dynamic p1)
+		|        {
+		|            if (IsType<StringValue>(p1))
+		|            {
+		|                return p1.AsString();
+		|            }
+		|            else if (IsType<NumberValue>(p1))
+		|            {
+		|                return p1.AsNumber();
+		|            }
+		|            else if (IsType<BooleanValue>(p1))
+		|            {
+		|                return p1.AsBoolean();
+		|            }
+		|            else if (IsType<DateValue>(p1))
+		|            {
+		|                return p1.AsDate();
+		|            }
+		|            else
+		|            {
+		|                return p1;
+		|            }
+		|        }
+		|
+		|        public static byte[] StreamToBytes(Stream input)
+		|        {
+		|            var capacity = input.CanSeek ? (int)input.Length : 0;
+		|            using (var output = new MemoryStream(capacity))
+		|            {
+		|                int readLength;
+		|                var buffer = new byte[4096];
+		|                do
+		|                {
+		|                    readLength = input.Read(buffer, 0, buffer.Length);
+		|                    output.Write(buffer, 0, readLength);
+		|                }
+		|                while (readLength != 0);
+		|                return output.ToArray();
+		|            }
+		|        }
+		|
+		|        public static void AddToShortcutDictionary(decimal p1, IValue p2)
+		|        {
+		|            if (!shortcutDictionary.ContainsKey(p1))
+		|            {
+		|                ArrayList ArrayList1 = new ArrayList();
+		|                ArrayList1.Add(p2);
+		|                shortcutDictionary.Add(p1, ArrayList1);
+		|            }
+		|            else
+		|            {
+		|                ArrayList ArrayList1 = shortcutDictionary[p1];
+		|                if (!ArrayList1.Contains(p2))
+		|                {
+		|                    ArrayList1.Add(p2);
+		|                }
+		|            }
+		|        }
+		|
+		|        public static void RemoveFromShortcutDictionary(decimal p1, IValue p2)
+		|        {
+		|            if (shortcutDictionary.ContainsKey(p1))
+		|            {
+		|                try
+		|                {
+		|                    shortcutDictionary[p1].Remove(p2);
+		|                }
+		|                catch { }
+		|            }
+		|        }
+		|
+		|        public static ArrayList GetFromShortcutDictionary(IValue p1)
+		|        {
+		|            ArrayList ArrayList1 = new ArrayList();
+		|            foreach (var item in shortcutDictionary)
+		|            {
+		|                for (int i = 0; i < item.Value.Count; i++)
+		|                {
+		|                    if (item.Value[i] == p1)
+		|                    {
+		|                        ArrayList1.Add(item.Key);
+		|                    }
+		|                }
+		|            }
+		|            return ArrayList1;
+		|        }
+		|
+		|        public static dynamic RevertShortcut(dynamic shortcut)
+		|        {
+		|            try
+		|            {
+		|                return shortcutDictionary[shortcut];
+		|            }
+		|            catch
+		|            {
+		|                return null;
+		|            }
+		|        }
+		|
+		|        public static void AddToHashtable(dynamic p1, dynamic p2)
+		|        {
+		|            if (!hashtable.ContainsKey(p1))
+		|            {
+		|                hashtable.Add(p1, p2);
+		|            }
+		|            else
+		|            {
+		|                if (!((object)hashtable[p1]).Equals(p2))
+		|                {
+		|                    hashtable[p1] = p2;
+		|                }
+		|            }
+		|        }
+		|
+		|        public static dynamic RevertEqualsObj(dynamic initialObject)
+		|        {
+		|            try
+		|            {
+		|                return hashtable[initialObject];
+		|            }
+		|            catch
+		|            {
+		|                return null;
+		|            }
+		|        }
+		|
+		|        public static IValue RevertObj(dynamic initialObject)
+		|        {
+		|            // Если initialObject равен null.
+		|            try
+		|            {
+		|                if (initialObject == null)
+		|                {
+		|                    return null;
+		|                }
+		|            }
+		|            catch { }
+		|            // Если initialObject равен null.
+		|            try
+		|            {
+		|                string str_initialObject = initialObject.GetType().ToString();
+		|            }
+		|            catch
+		|            {
+		|                return null;
+		|            }
+		|            // initialObject не равен null
+		|            dynamic Obj1 = null;
+		|            string str1 = initialObject.GetType().ToString();
+		|            // Если initialObject второго уровня и у него есть ссылка на третий уровень.
+		|            try
+		|            {
+		|                Obj1 = initialObject.dll_obj;
+		|            }
+		|            catch { }
+		|            if (Obj1 != null)
+		|            {
+		|                return (IValue)Obj1;
+		|            }
+		|            // Если initialObject не из пространства имен onescriptgui, то есть Уровень1 и у него есть аналог в
+		|            // пространстве имен ostgui с конструктором принимающим параметром initialObject.
+		|            try
+		|            {
+		|                if (!str1.Contains(""ostgui.""))
+		|                {
+		|                    Type TestType = Type.GetType(
+		|                        ""ostgui.Tf"" + str1.Substring(str1.LastIndexOf(""."") + 1),
+		|                        false,
+		|                        true);
+		|                    object[] args = { initialObject };
+		|                    Obj1 = Activator.CreateInstance(TestType, args);
+		|                }
+		|            }
+		|            catch { }
+		|            if (Obj1 != null)
+		|            {
+		|                return (IValue)Obj1;
+		|            }
+		|            // Если initialObject из пространства имен onescriptgui, то есть Уровень2 и у него есть аналог в
+		|            // пространстве имен ostgui с конструктором принимающим параметром initialObject.
+		|            try
+		|            {
+		|                if (str1.Contains(""ostgui.""))
+		|                {
+		|                    Type TestType = Type.GetType(
+		|                        str1.Replace(""ostgui."", ""ostgui.Tf""),
+		|                        false,
+		|                        true);
+		|                    object[] args = { initialObject };
+		|                    Obj1 = Activator.CreateInstance(TestType, args);
+		|                }
+		|            }
+		|            catch { }
+		|            if (Obj1 != null)
+		|            {
+		|                return (IValue)Obj1;
+		|            }
+		|            // Если initialObject с возможными другими типами.
+		|            string str4 = null;
+		|            try
+		|            {
+		|                str4 = initialObject.SystemType.Name;
+		|            }
+		|            catch
+		|            {
+		|                if (str1 == ""System.String"" ||
+		|                    str1 == ""System.Decimal"" ||
+		|                    str1 == ""System.Int32"" ||
+		|                    str1 == ""System.Boolean"" ||
+		|                    str1 == ""System.DateTime"")
+		|                {
+		|                    return (IValue)ValueFactory.Create(initialObject);
+		|                }
+		|                else if (str1 == ""System.Byte"")
+		|                {
+		|                    int vOut = Convert.ToInt32(initialObject);
+		|                    return ValueFactory.Create(vOut);
+		|                }
+		|                else if (str1 == ""System.DBNull"")
+		|                {
+		|                    string vOut = Convert.ToString(initialObject);
+		|                    return ValueFactory.Create(vOut);
+		|                }
+		|            }
+		|            // Если тип initialObject определяется односкриптом.
+		|            if (str4 == ""Неопределено"")
+		|            {
+		|                return null;
+		|            }
+		|            if (str4 == ""Булево"" || str4 == ""Дата"" || str4 == ""Число"" || str4 == ""Строка"")
+		|            {
+		|                return (IValue)initialObject;
+		|            }
+		|            // Если ничего не подходит.
+		|            return (IValue)initialObject;
+		|        }
+		|
+		|        // Для надписей на элементах. Язык надписей определен в ресурсах исходной библиотеки Terminal.Gui. 
+		|        // Не ломая этот алгоритм добавил выбор между английским и русским языком с помощью свойства 
+		|        // ТерминалФормыДляОдноСкрипта.ЯзыкНадписей (OneScriptTerminalGui.LabelLanguage).
+		|        public static Dictionary<string, string> labelRusEn = new Dictionary<string, string>
+		|            {
+		|                {""_Copy"", ""_Копировать"" },
+		|                {""Cu_t"", ""Выреза_ть"" },
+		|                {""_Delete All"", ""_Удалить все"" },
+		|                {""_Paste"", ""_Вставить"" },
+		|                {""_Redo"", ""_Повтор"" },
+		|                {""_Select All"", ""Вы_брать все"" },
+		|                {""_Undo"", ""_Отмена"" },
+		|                {""Directory"", ""Каталог"" },
+		|                {""File"", ""Файл"" },
+		|                {""Open"", ""Открыть"" },
+		|                {""Save"", ""Сохранить"" },
+		|                {""Save as"", ""Сохранить как"" },
+		|                {""Select folder"", ""Выбор папки"" },
+		|                {""Select Mixed"", ""Смешанный выбор"" },
+		|                {""_Back"", ""_Назад"" },
+		|                {""Fi_nish"", ""_Завершить"" },
+		|                {""_Next..."", ""_Следующий..."" },
+		|        };
+		|
+		|        public static ArrayImpl SplitString(string p1, string p2)
+		|        {
+		|            ArrayImpl array = new ArrayImpl();
+		|            string str = p1.Replace(p2, Environment.NewLine);
+		|            string[] result = str.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+		|            for (int i = 0; i < result.Length; i++)
+		|            {
+		|                array.Add(ValueFactory.Create(result[i]));
+		|            }
+		|            return array;
+		|        }
+		|
+		|        public static ArrayImpl GetAllSelectedCells(IEnumerable<Terminal.Gui.Point> pointArray)
+		|        {
+		|            ArrayImpl array = new ArrayImpl();
+		|            Terminal.Gui.Point[] treeNodeArray = pointArray.ToArray();
+		|            foreach (var value in pointArray)
+		|            {
+		|                array.Add(new TfPoint(value.X, value.Y));
+		|            }
+		|            return array;
+		|        }
+		|
+		|        public static ArrayImpl MultiSelectedRegions(Stack<Terminal.Gui.TableView.TableSelection> pointRect)
+		|        {
+		|            ArrayImpl array = new ArrayImpl();
+		|            Terminal.Gui.TableView.TableSelection[] treeNodeArray = pointRect.ToArray();
+		|            foreach (var value in pointRect)
+		|            {
+		|                array.Add(new TfRect(value.Rect.X, value.Rect.Y, value.Rect.Width, value.Rect.Height));
+		|            }
+		|            return array;
+		|        }
+		|
+		|        public static string NewLine
+		|        {
+		|            get { return Environment.NewLine; }
+		|        }
+		|    }
+		|}
+		|";
+		ТекстДокХХХ = Новый ТекстовыйДокумент;
+		ТекстДокХХХ.УстановитьТекст(СтрВыгрузки);
+		ТекстДокХХХ.Записать(КаталогВыгрузки + "\" + ИмяФайлаТФ + ".cs");
 	ИначеЕсли ИмяФайлаТФ = "Responder" Тогда
 		СтрВыгрузки = СтрВыгрузки + 
 		"namespace ostgui
@@ -7238,62 +16493,26 @@
 		СтрВыгрузки = СтрВыгрузки + 
 		"using System;
 		|using System.IO;
-		|using System.Collections;
 		|using System.Text;
 		|using ScriptEngine.Machine.Contexts;
 		|using ScriptEngine.Machine;
 		|using ScriptEngine.HostedScript.Library;
-		|using System.Collections.Generic;
 		|using Terminal.Gui;
 		|using System.Reflection;
+		|using System.Runtime.InteropServices;
+		|using System.Threading;
 		|
 		|namespace ostgui
 		|{
 		|    [ContextClass(""ТерминалФормыДляОдноСкрипта"", ""OneScriptTerminalGui"")]
 		|    public class OneScriptTerminalGui : AutoContext<OneScriptTerminalGui>
 		|    {
-		|        public static TfToplevel top;
-		|        public static System.Collections.Hashtable hashtable = new Hashtable();
+		|        public TfToplevel top;
 		|        public static OneScriptTerminalGui instance;
-		|        private static object syncRoot = new Object();
 		|        public static TfEventArgs Event = null;
 		|        public static bool handleEvents = true;
-		|        public static Dictionary<decimal, ArrayList> shortcutDictionary = new Dictionary<decimal, ArrayList>();
-		|        public static int lastMeX = -1;
-		|        public static int lastMeY = -1;
-		|        public static long lastEventTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
-		|
-		|        static byte[] StreamToBytes(Stream input)
-		|        {
-		|            var capacity = input.CanSeek ? (int)input.Length : 0;
-		|            using (var output = new MemoryStream(capacity))
-		|            {
-		|                int readLength;
-		|                var buffer = new byte[4096];
-		|                do
-		|                {
-		|                    readLength = input.Read(buffer, 0, buffer.Length);
-		|                    output.Write(buffer, 0, readLength);
-		|                }
-		|                while (readLength != 0);
-		|                return output.ToArray();
-		|            }
-		|        }
-		|
-		|        public static OneScriptTerminalGui getInstance()
-		|        {
-		|            if (instance == null)
-		|            {
-		|                lock (syncRoot)
-		|                {
-		|                    if (instance == null)
-		|                    {
-		|                        instance = new OneScriptTerminalGui();
-		|                    }
-		|                }
-		|            }
-		|            return instance;
-		|        }
+		|        private static Action OnOpen;
+		|        public static bool isWin = System.Environment.OSVersion.VersionString.Contains(""Microsoft"");
 		|
 		|        [ScriptConstructor]
 		|        public static IRuntimeContextInstance Constructor()
@@ -7307,10 +16526,9 @@
 		|                    var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourcepath);
 		|                    if (stream != null)
 		|                    {
-		|                        using (stream)
-		|                        {
-		|                            return Assembly.Load(StreamToBytes(stream));
-		|                        }
+		|                        byte[] assemblyData = Utils.StreamToBytes(stream);
+		|                        stream.Dispose();
+		|                        return Assembly.Load(assemblyData);
 		|                    }
 		|                }
 		|                return null;
@@ -7328,23 +16546,192 @@
 		|                }
 		|            };
 		|
-		|            OneScriptTerminalGui inst = getInstance();
-		|            return inst;
+		|            instance = new OneScriptTerminalGui();
+		|            instance.Init();
+		|
+		|            if (isWin)
+		|            {
+		|                IntPtr hwnd = GetConsoleWindow();
+		|                if (hwnd != IntPtr.Zero)
+		|                {
+		|                    GetWindowRect(hwnd, out RECT originalRect);
+		|                    originalLeft = originalRect.left;
+		|                    currentLeft = originalLeft;
+		|
+		|                    // Запускаем мониторинг левой границы в отдельном потоке
+		|                    Thread monitorThread = new Thread(() => MonitorWindowPosition(hwnd));
+		|                    monitorThread.IsBackground = true;
+		|                    monitorThread.Start();
+		|                    isRunning = true;
+		|                }
+		|            }
+		|
+		|            return instance;
 		|        }
 		|
-		|        static Action OnOpen;
-		|        private static void Application_NotifyNewRunState(Application.RunState obj)
+		|        [DllImport(""user32.dll"")]
+		|        private static extern bool GetWindowPlacement(IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
+		|
+		|        [DllImport(""kernel32.dll"")]
+		|        private static extern IntPtr GetConsoleWindow();
+		|
+		|        [DllImport(""user32.dll"")]
+		|        private static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+		|
+		|        [DllImport(""user32.dll"")]
+		|        private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, uint uFlags);
+		|
+		|        [StructLayout(LayoutKind.Sequential)]
+		|        public struct RECT
 		|        {
-		|            OnOpen.Invoke();
+		|            public int left, top, right, bottom;
+		|        }
+		|
+		|        [StructLayout(LayoutKind.Sequential)]
+		|        public struct WINDOWPLACEMENT
+		|        {
+		|            public int length;
+		|            public int flags;
+		|            public int showCmd;
+		|            public POINT ptMinPosition;
+		|            public POINT ptMaxPosition;
+		|            public RECT rcNormalPosition;
+		|        }
+		|
+		|        [StructLayout(LayoutKind.Sequential)]
+		|        public struct POINT
+		|        {
+		|            public int x, y;
+		|        }
+		|
+		|        private const uint SWP_NOZORDER = 0x0004;
+		|        private static bool isRunning = true;
+		|        private static int originalLeft;
+		|        private static int currentLeft;
+		|        private const int SW_MAXIMIZE = 3;
+		|
+		|        private static void MonitorWindowPosition(IntPtr hwnd)
+		|        {
+		|            int currentWidth;
+		|            int currentHeight;
+		|            WINDOWPLACEMENT placement = new WINDOWPLACEMENT();
+		|            bool isMaximizedByState = false;
+		|            while (isRunning)
+		|            {
+		|                // Проверка состояния окна
+		|                placement.length = Marshal.SizeOf(typeof(WINDOWPLACEMENT));
+		|                if (GetWindowRect(hwnd, out RECT currentRect))
+		|                {
+		|                    currentWidth = currentRect.right - currentRect.left;
+		|                    currentHeight = currentRect.bottom - currentRect.top;
+		|                    if (GetWindowPlacement(hwnd, ref placement))
+		|                    {
+		|                        isMaximizedByState = (placement.showCmd == SW_MAXIMIZE);
+		|                        if (isMaximizedByState)
+		|                        {
+		|                            SetWindowPos(hwnd, IntPtr.Zero,
+		|                                currentRect.left,
+		|                                currentRect.top,
+		|                                currentWidth,
+		|                                currentHeight,
+		|                                SWP_NOZORDER);
+		|                            currentLeft = currentRect.left;
+		|                        }
+		|                        else
+		|                        {
+		|                            // Если левая граница сдвинулась
+		|                            if (currentRect.left != currentLeft && currentLeft != 0)
+		|                            {
+		|                                SetWindowPos(hwnd, IntPtr.Zero,
+		|                                    currentRect.left,
+		|                                    currentRect.top,
+		|                                    Utils.minCols,
+		|                                    currentHeight,
+		|                                    SWP_NOZORDER);
+		|                                currentLeft = currentRect.left;
+		|                            }
+		|                        }
+		|                    }
+		|                }
+		|                Thread.Sleep(50); // Проверяем каждые 50мс
+		|            }
+		|        }
+		|
+		|        // Методы и свойства объекта OneScriptTerminalGui.
+		|
+		|        [ContextProperty(""ПлатформаWin"", ""WinPlatform"")]
+		|        public bool WinPlatform
+		|        {
+		|            get { return isWin; }
+		|        }
+		|
+		|        [ContextMethod(""ТаймерНачатьИОстановить"", ""TimerStartAndStop"")]
+		|        public void TimerStartAndStop(IRuntimeContextInstance p1, string p2, int p3 = 1000, int p4 = 1)
+		|        {
+		|            TfTimer timer = new TfTimer();
+		|            timer.Interval = p3;
+		|            timer.Iterations = p4;
+		|            TfAction action = Action(p1, p2);
+		|            timer.TimerStartAndStop(action);
+		|        }
+		|
+		|        [ContextProperty(""ЛогФайл"", ""PathLog"")]
+		|        public string PathLog
+		|        {
+		|            get { return Utils.PathLog; }
+		|            set { Utils.PathLog = value; }
+		|        }
+		|
+		|        [ContextProperty(""Величина"", ""Dim"")]
+		|        public TfDim Dim
+		|        {
+		|            get { return new TfDim(); }
+		|        }
+		|
+		|        [ContextProperty(""Позиция"", ""Pos"")]
+		|        public TfPos Pos
+		|        {
+		|            get { return new TfPos(); }
+		|        }
+		|
+		|        private int labelLanguage = 0;
+		|        public int LabelLanguage
+		|        {
+		|            get { return labelLanguage; }
+		|            set { labelLanguage = value; }
+		|        }
+		|
+		|        [ContextProperty(""Отправитель"", ""Sender"")]
+		|        public IValue Sender
+		|        {
+		|            get { return Utils.RevertEqualsObj(Event.Sender); }
+		|        }
+		|
+		|        [ContextProperty(""АргументыСобытия"", ""EventArgs"")]
+		|        public TfEventArgs EventArgs
+		|        {
+		|            get { return Event; }
+		|        }
+		|
+		|        public void Init()
+		|        {
+		|            Application.Init();
+		|            try
+		|            {
+		|                Utils.minCols = Cols;
+		|                Utils.minRows = Rows;
+		|
+		|                Application.NotifyNewRunState += Application_NotifyNewRunState;
+		|                top = new TfToplevel(Application.Top);
+		|            }
+		|            catch (Exception ex)
+		|            {
+		|                Utils.GlobalContext().Echo($""Ошибка инициализации: {ex.Message}"");
+		|            }
 		|        }
 		|
 		|        [ContextProperty(""РазмерИзменен"", ""Resized"")]
 		|        public TfAction Resized { get; set; }
-		|
-		|        public static SystemGlobalContext GlobalContext()
-		|        {
-		|            return GlobalsManager.GetGlobalContext<SystemGlobalContext>();
-		|        }
 		|
 		|        private decimal quitKey;
 		|        [ContextProperty(""КлавишаВыхода"", ""QuitKey"")]
@@ -7354,35 +16741,21 @@
 		|            set { quitKey = value; }
 		|        }
 		|
-		|        private static TfConsoleKey tf_ConsoleKey = new TfConsoleKey();
-		|        [ContextProperty(""КлавишиКонсоли"", ""ConsoleKey"")]
-		|        public TfConsoleKey ConsoleKey
-		|        {
-		|            get { return tf_ConsoleKey; }
-		|        }
-		|
-		|        private static TfCommandTUI tf_CommandTUI = new TfCommandTUI();
-		|        [ContextProperty(""КомандаTUI"", ""CommandTUI"")]
-		|        public TfCommandTUI CommandTUI
-		|        {
-		|            get { return tf_CommandTUI; }
-		|        }
-		|
 		|        [ContextMethod(""Эмодзи"", ""Emoji"")]
 		|        public string Emoji(IValue p1)
 		|        {
 		|            var sb = new StringBuilder();
-		|            if (p1.SystemType.Name == ""Число"")
+		|            if (Utils.IsNumber(p1))
 		|            {
 		|                try
 		|                {
-		|                    sb.Append(Char.ConvertFromUtf32(Convert.ToInt32(p1.AsNumber()))).ToString();
+		|                    sb.Append(Char.ConvertFromUtf32(Utils.ToInt32(p1))).ToString();
 		|                }
 		|                catch { }
 		|            }
-		|            else if (p1.SystemType.Name == ""Строка"")
+		|            else if (Utils.IsString(p1))
 		|            {
-		|                string p2 = p1.AsString();
+		|                string p2 = Utils.ToString(p1);
 		|                p2 = p2.Replace(""0x"", """").Replace(""0х"", """").Replace(""\\u"", """");
 		|                try
 		|                {
@@ -7390,13 +16763,13 @@
 		|                    {
 		|                        int num = Convert.ToInt32(p2);
 		|                        string str = Char.ConvertFromUtf32(num);
-		|                        sb.Append(str).ToString();
+		|                        sb.Append(str);
 		|                    }
 		|                    catch
 		|                    {
 		|                        int num = Convert.ToInt32(p2, 16);
 		|                        string str = Char.ConvertFromUtf32(num);
-		|                        sb.Append(str).ToString();
+		|                        sb.Append(str);
 		|                    }
 		|                }
 		|                catch { }
@@ -7414,12 +16787,6 @@
 		|        public int Cols
 		|        {
 		|            get { return Application.Driver.Cols; }
-		|        }
-		|
-		|        [ContextMethod(""КлавишаВвод"", ""ButtonEnter"")]
-		|        public void ButtonEnter()
-		|        {
-		|            Application.Driver.SendKeys(System.Char.MinValue, System.ConsoleKey.Enter, false, false, false);
 		|        }
 		|
 		|        [ContextMethod(""ПраваяКвадратная"", ""RightBracket"")]
@@ -7470,37 +16837,37 @@
 		|            return Application.Driver.LeftArrow.ToString();
 		|        }
 		|
-		|       [ContextMethod(""НижняяСтрелка"", ""ArrowDown"")]
+		|        [ContextMethod(""НижняяСтрелка"", ""ArrowDown"")]
 		|        public string ArrowDown()
 		|        {
 		|            return Application.Driver.DownArrow.ToString();
 		|        }
 		|
-		|       [ContextMethod(""ПраваяСтрелка"", ""ArrowRight"")]
+		|        [ContextMethod(""ПраваяСтрелка"", ""ArrowRight"")]
 		|        public string ArrowRight()
 		|        {
 		|            return Application.Driver.RightArrow.ToString();
 		|        }
 		|
-		|       [ContextMethod(""ВерхнийТройник"", ""TopTee"")]
+		|        [ContextMethod(""ВерхнийТройник"", ""TopTee"")]
 		|        public string TopTee()
 		|        {
 		|            return Application.Driver.TopTee.ToString();
 		|        }
 		|
-		|       [ContextMethod(""ЛевыйТройник"", ""LeftTee"")]
+		|        [ContextMethod(""ЛевыйТройник"", ""LeftTee"")]
 		|        public string LeftTee()
 		|        {
 		|            return Application.Driver.LeftTee.ToString();
 		|        }
 		|
-		|       [ContextMethod(""НижнийТройник"", ""BottomTee"")]
+		|        [ContextMethod(""НижнийТройник"", ""BottomTee"")]
 		|        public string BottomTee()
 		|        {
 		|            return Application.Driver.BottomTee.ToString();
 		|        }
 		|
-		|       [ContextMethod(""ПравыйТройник"", ""RightTee"")]
+		|        [ContextMethod(""ПравыйТройник"", ""RightTee"")]
 		|        public string RightTee()
 		|        {
 		|            return Application.Driver.RightTee.ToString();
@@ -7650,23 +17017,17 @@
 		|            return Application.Driver.VRLine.ToString();
 		|        }
 		|
-		|        [ContextMethod(""Таймер"", ""Timer"")]
-		|        public TfTimer Timer()
-		|        {
-		|            return new TfTimer();
-		|        }
-		|
-		|        [ContextMethod(""ОкноСообщений"", ""MessageBox"")]
-		|        public TfMessageBox MessageBox()
-		|        {
-		|            return new TfMessageBox();
-		|        }
-		|
 		|        [ContextMethod(""ОтправитьКлавиши"", ""SendKeys"")]
 		|        public void SendKeys(string p1, bool p3, bool p4, bool p5)
 		|        {
 		|            System.Char char1 = Convert.ToChar(p1.Substring(0, 1));
 		|            Application.Driver.SendKeys(char1, (System.ConsoleKey)0, p3, p4, p5);
+		|        }
+		|
+		|        [ContextMethod(""ОтправитьКлавишуКонсоли"", ""SendConsoleKey"")]
+		|        public void SendConsoleKey(int p1, bool p2 = false, bool p3 = false, bool p4 = false)
+		|        {
+		|            Application.Driver.SendKeys(System.Char.MinValue, (System.ConsoleKey)p1, p2, p3, p4);
 		|        }
 		|
 		|        [ContextProperty(""ТекстБуфераОбмена"", ""ClipboardText"")]
@@ -7676,17 +17037,11 @@
 		|            set { Terminal.Gui.Clipboard.Contents = value; }
 		|        }
 		|
-		|        [ContextMethod(""СтрокаСостояния"", ""StatusBar"")]
-		|        public TfStatusBar StatusBar()
-		|        {
-		|            return new TfStatusBar();
-		|        }
-		|
 		|        [ContextMethod(""Выполнить"", ""Execute"")]
 		|        public IValue Execute(TfAction p1)
 		|        {
 		|            TfEventArgs eventArgs = new TfEventArgs();
-		|            eventArgs.sender = instance;
+		|            eventArgs.sender = this;
 		|            eventArgs.parameter = OneScriptTerminalGui.GetEventParameter(p1);
 		|            Event = eventArgs;
 		|
@@ -7701,7 +17056,7 @@
 		|            }
 		|            catch (Exception ex)
 		|            {
-		|                GlobalContext().Echo(""Ошибка2: "" + ex.Message);
+		|                Utils.GlobalContext().Echo(""Ошибка2: "" + ex.Message);
 		|            }
 		|            return res;
 		|        }
@@ -7709,62 +17064,14 @@
 		|        [ContextProperty(""ПриОткрытии"", ""NotifyNewRunState"")]
 		|        public TfAction NotifyNewRunState { get; set; }
 		|
-		|        [ContextMethod(""ЭлементМеню"", ""MenuItem"")]
-		|        public TfMenuItem MenuItem()
-		|        {
-		|            return new TfMenuItem();
-		|        }
-		|
-		|        [ContextProperty(""Цвета"", ""Colors"")]
-		|        public TfColors Colors
-		|        {
-		|            get { return new TfColors(); }
-		|        }
-		|
-		|        [ContextMethod(""Толщина"", ""Thickness"")]
-		|        public TfThickness Thickness(IValue p1, IValue p2 = null, IValue p3 = null, IValue p4 = null)
-		|        {
-		|            if (p2 != null && p3 != null && p4 != null)
-		|            {
-		|                return new TfThickness(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()), Convert.ToInt32(p3.AsNumber()), Convert.ToInt32(p4.AsNumber()));
-		|            }
-		|            return new TfThickness(Convert.ToInt32(p1.AsNumber()));
-		|        }
-		|
-		|        [ContextMethod(""ЭлементСтрокиСостояния"", ""StatusItem"")]
-		|        public TfStatusItem StatusItem(int p1, string p2)
-		|        {
-		|            return new TfStatusItem(p1, p2);
-		|        }
-		|
-		|        [ContextMethod(""ПунктМеню"", ""MenuBarItem"")]
-		|        public TfMenuBarItem MenuBarItem()
-		|        {
-		|            return new TfMenuBarItem();
-		|        }
-		|
-		|        [ContextMethod(""ПанельМеню"", ""MenuBar"")]
-		|        public TfMenuBar MenuBar()
-		|        {
-		|            return new TfMenuBar();
-		|        }
-		|
 		|        [ContextMethod(""ДобавитьВесьТекст"", ""AppendAllText"")]
 		|        public void AppendAllText(string p1, string p2)
 		|        {
+		|            if (!File.Exists(p1))
+		|            {
+		|                File.Create(p1).Close();
+		|            }
 		|            File.AppendAllText(p1, p2, Encoding.UTF8);
-		|        }
-		|
-		|        [ContextProperty(""Величина"", ""Dim"")]
-		|        public TfDim Dim
-		|        {
-		|            get { return new TfDim(); }
-		|        }
-		|
-		|        [ContextProperty(""Позиция"", ""Pos"")]
-		|        public TfPos Pos
-		|        {
-		|            get { return new TfPos(); }
 		|        }
 		|
 		|        [ContextMethod(""Обновить"", ""Refresh"")]
@@ -7780,6 +17087,432 @@
 		|            Application.RequestStop(Top.Base_obj.M_Toplevel);
 		|        }
 		|
+		|        [ContextMethod(""ЗапуститьИЗавершить"", ""RunAndShutdown"")]
+		|        public void RunAndShutdown()
+		|        {
+		|            try
+		|            {
+		|                //Top.CorrectionZet(); // Конфликтует с созданием меню.
+		|                Application.Begin(top.Base_obj.M_Toplevel);
+		|            }
+		|            catch (Exception ex)
+		|            {
+		|                Utils.WriteToFile(""Error RunAndShutdown = "" + ex.StackTrace);
+		|            }
+		|        }
+		|
+		|        [ContextMethod(""Запуск"", ""Run"")]
+		|        public void Run()
+		|        {
+		|            try
+		|            {
+		|                //Top.CorrectionZet(); // Конфликтует с созданием меню.
+		|                Application.Run();
+		|            }
+		|            catch (Exception ex)
+		|            {
+		|                Utils.WriteToFile(""Error Run = "" + ex.StackTrace);
+		|            }
+		|        }
+		|
+		|        [ContextProperty(""РазрешитьСобытия"", ""AllowEvents"")]
+		|        public bool HandleEvents
+		|        {
+		|            get { return handleEvents; }
+		|            set { handleEvents = value; }
+		|        }
+		|
+		|        // Методы создания перечислений.
+		|
+		|        private TfSortOrder tf_SortOrder;
+		|        [ContextProperty(""ПорядокСортировки"", ""SortOrder"")]
+		|        public TfSortOrder SortOrder
+		|        {
+		|            get
+		|            {
+		|                if (tf_SortOrder == null)
+		|                {
+		|                    tf_SortOrder = new TfSortOrder();
+		|                }
+		|                return tf_SortOrder;
+		|            }
+		|        }
+		|
+		|        private TfConsoleKey tf_ConsoleKey;
+		|        [ContextProperty(""КлавишиКонсоли"", ""ConsoleKey"")]
+		|        public TfConsoleKey ConsoleKey
+		|        {
+		|            get
+		|            {
+		|                if (tf_ConsoleKey == null)
+		|                {
+		|                    tf_ConsoleKey = new TfConsoleKey();
+		|                }
+		|                return tf_ConsoleKey;
+		|            }
+		|        }
+		|
+		|        private static TfCommandTUI tf_CommandTUI;
+		|        [ContextProperty(""КомандаTUI"", ""CommandTUI"")]
+		|        public TfCommandTUI CommandTUI
+		|        {
+		|            get
+		|            {
+		|                if (tf_CommandTUI == null)
+		|                {
+		|                    tf_CommandTUI = new TfCommandTUI();
+		|                }
+		|                return tf_CommandTUI;
+		|            }
+		|        }
+		|
+		|        private static TfDialogResult tf_DialogResult;
+		|        [ContextProperty(""РезультатДиалога"", ""DialogResult"")]
+		|        public TfDialogResult DialogResult
+		|        {
+		|            get
+		|            {
+		|                if (tf_DialogResult == null)
+		|                {
+		|                    tf_DialogResult = new TfDialogResult();
+		|                }
+		|                return tf_DialogResult;
+		|            }
+		|        }
+		|
+		|        private static TfLanguage tf_Language;
+		|        [ContextProperty(""Язык"", ""Language"")]
+		|        public TfLanguage Language
+		|        {
+		|            get
+		|            {
+		|                if (tf_Language == null)
+		|                {
+		|                    tf_Language = new TfLanguage();
+		|                }
+		|                return tf_Language;
+		|            }
+		|        }
+		|
+		|        private static TfVerticalTextAlignment tf_VerticalTextAlignment;
+		|        [ContextProperty(""ВертикальноеВыравниваниеТекста"", ""VerticalTextAlignment"")]
+		|        public TfVerticalTextAlignment VerticalTextAlignment
+		|        {
+		|            get
+		|            {
+		|                if (tf_VerticalTextAlignment == null)
+		|                {
+		|                    tf_VerticalTextAlignment = new TfVerticalTextAlignment();
+		|                }
+		|                return tf_VerticalTextAlignment;
+		|            }
+		|        }
+		|
+		|        private static TfCursorVisibility tf_CursorVisibility;
+		|        [ContextProperty(""ВидКурсора"", ""CursorVisibility"")]
+		|        public TfCursorVisibility CursorVisibility
+		|        {
+		|            get
+		|            {
+		|                if (tf_CursorVisibility == null)
+		|                {
+		|                    tf_CursorVisibility = new TfCursorVisibility();
+		|                }
+		|                return tf_CursorVisibility;
+		|            }
+		|        }
+		|
+		|        private static TfTextAlignment tf_TextAlignment;
+		|        [ContextProperty(""ВыравниваниеТекста"", ""TextAlignment"")]
+		|        public TfTextAlignment TextAlignment
+		|        {
+		|            get
+		|            {
+		|                if (tf_TextAlignment == null)
+		|                {
+		|                    tf_TextAlignment = new TfTextAlignment();
+		|                }
+		|                return tf_TextAlignment;
+		|            }
+		|        }
+		|
+		|        private static TfKeys tf_Keys;
+		|        [ContextProperty(""Клавиши"", ""Keys"")]
+		|        public TfKeys Keys
+		|        {
+		|            get
+		|            {
+		|                if (tf_Keys == null)
+		|                {
+		|                    tf_Keys = new TfKeys();
+		|                }
+		|                return tf_Keys;
+		|            }
+		|        }
+		|
+		|        private static TfTextDirection tf_TextDirection;
+		|        [ContextProperty(""НаправлениеТекста"", ""TextDirection"")]
+		|        public TfTextDirection TextDirection
+		|        {
+		|            get
+		|            {
+		|                if (tf_TextDirection == null)
+		|                {
+		|                    tf_TextDirection = new TfTextDirection();
+		|                }
+		|                return tf_TextDirection;
+		|            }
+		|        }
+		|
+		|        private static TfLayoutStyle tf_LayoutStyle;
+		|        [ContextProperty(""СтильКомпоновки"", ""LayoutStyle"")]
+		|        public TfLayoutStyle LayoutStyle
+		|        {
+		|            get
+		|            {
+		|                if (tf_LayoutStyle == null)
+		|                {
+		|                    tf_LayoutStyle = new TfLayoutStyle();
+		|                }
+		|                return tf_LayoutStyle;
+		|            }
+		|        }
+		|
+		|        private static TfProgressBarStyle tf_ProgressBarStyle;
+		|        [ContextProperty(""СтильИндикатора"", ""ProgressBarStyle"")]
+		|        public TfProgressBarStyle ProgressBarStyle
+		|        {
+		|            get
+		|            {
+		|                if (tf_ProgressBarStyle == null)
+		|                {
+		|                    tf_ProgressBarStyle = new TfProgressBarStyle();
+		|                }
+		|                return tf_ProgressBarStyle;
+		|            }
+		|        }
+		|
+		|        private static TfButtonAlignments tf_ButtonAlignments;
+		|        [ContextProperty(""ВыравниваниеКнопок"", ""ButtonAlignments"")]
+		|        public TfButtonAlignments ButtonAlignments
+		|        {
+		|            get
+		|            {
+		|                if (tf_ButtonAlignments == null)
+		|                {
+		|                    tf_ButtonAlignments = new TfButtonAlignments();
+		|                }
+		|                return tf_ButtonAlignments;
+		|            }
+		|        }
+		|
+		|        private static TfDisplayModeLayout tf_DisplayModeLayout;
+		|        [ContextProperty(""МакетПереключателя"", ""DisplayModeLayout"")]
+		|        public TfDisplayModeLayout DisplayModeLayout
+		|        {
+		|            get
+		|            {
+		|                if (tf_DisplayModeLayout == null)
+		|                {
+		|                    tf_DisplayModeLayout = new TfDisplayModeLayout();
+		|                }
+		|                return tf_DisplayModeLayout;
+		|            }
+		|        }
+		|
+		|        private static TfProgressBarFormat tf_ProgressBarFormat;
+		|        [ContextProperty(""ФорматИндикатора"", ""ProgressBarFormat"")]
+		|        public TfProgressBarFormat ProgressBarFormat
+		|        {
+		|            get
+		|            {
+		|                if (tf_ProgressBarFormat == null)
+		|                {
+		|                    tf_ProgressBarFormat = new TfProgressBarFormat();
+		|                }
+		|                return tf_ProgressBarFormat;
+		|            }
+		|        }
+		|
+		|        private static TfMenuItemCheckStyle tf_MenuItemCheckStyle;
+		|        [ContextProperty(""СтильФлажкаЭлементаМеню"", ""MenuItemCheckStyle"")]
+		|        public TfMenuItemCheckStyle MenuItemCheckStyle
+		|        {
+		|            get
+		|            {
+		|                if (tf_MenuItemCheckStyle == null)
+		|                {
+		|                    tf_MenuItemCheckStyle = new TfMenuItemCheckStyle();
+		|                }
+		|                return tf_MenuItemCheckStyle;
+		|            }
+		|        }
+		|
+		|        private static TfMouseFlags tf_MouseFlags;
+		|        [ContextProperty(""ФлагиМыши"", ""MouseFlags"")]
+		|        public TfMouseFlags MouseFlags
+		|        {
+		|            get
+		|            {
+		|                if (tf_MouseFlags == null)
+		|                {
+		|                    tf_MouseFlags = new TfMouseFlags();
+		|                }
+		|                return tf_MouseFlags;
+		|            }
+		|        }
+		|
+		|        private static TfColor tf_Color;
+		|        [ContextProperty(""Цвет"", ""Color"")]
+		|        public TfColor Color
+		|        {
+		|            get
+		|            {
+		|                if (tf_Color == null)
+		|                {
+		|                    tf_Color = new TfColor();
+		|                }
+		|                return tf_Color;
+		|            }
+		|        }
+		|
+		|        private static TfBorderStyle tf_BorderStyle;
+		|        [ContextProperty(""СтильГраницы"", ""BorderStyle"")]
+		|        public TfBorderStyle BorderStyle
+		|        {
+		|            get
+		|            {
+		|                if (tf_BorderStyle == null)
+		|                {
+		|                    tf_BorderStyle = new TfBorderStyle();
+		|                }
+		|                return tf_BorderStyle;
+		|            }
+		|        }
+		|
+		|        // Методы создания объектов.
+		|
+		|        [ContextMethod(""Математика"", ""Math"")]
+		|        public TfMath Math()
+		|        {
+		|            return new TfMath();
+		|        }
+		|
+		|        [ContextMethod(""СтильВкладки"", ""TabStyle"")]
+		|        public TfTabStyle TabStyle()
+		|        {
+		|            return new TfTabStyle();
+		|        }
+		|
+		|        [ContextMethod(""Уведомление"", ""Balloons"")]
+		|        public TfBalloons Balloons()
+		|        {
+		|            return new TfBalloons();
+		|        }
+		|
+		|        [ContextMethod(""СтильКолонки"", ""ColumnStyle"")]
+		|        public TfColumnStyle ColumnStyle()
+		|        {
+		|            return new TfColumnStyle();
+		|        }
+		|
+		|        [ContextMethod(""СтилиКолонки"", ""ColumnStyles"")]
+		|        public TfColumnStyles ColumnStyles()
+		|        {
+		|            return new TfColumnStyles();
+		|        }
+		|
+		|        [ContextMethod(""Переключатель"", ""RadioGroup"")]
+		|        public TfRadioGroup RadioGroup(int p1 = 1, int p2 = 1, int p3 = 10, int p4 = 5)
+		|        {
+		|            TfRadioGroup radioGroup = new TfRadioGroup();
+		|            radioGroup.X = ValueFactory.Create(p1);
+		|            radioGroup.Y = ValueFactory.Create(p2);
+		|            radioGroup.Width = ValueFactory.Create(p3);
+		|            radioGroup.Height = ValueFactory.Create(p4);
+		|            return radioGroup;
+		|        }
+		|
+		|        [ContextMethod(""КолонкаДанных"", ""DataColumn"")]
+		|        public TfDataColumn DataColumn(string p1 = ""Column"", int p2 = 0)
+		|        {
+		|            int type1 = p2;
+		|            System.Type DataType1 = typeof(System.String);
+		|            if (type1 == 0)
+		|            {
+		|                DataType1 = typeof(System.String);
+		|            }
+		|            else if (type1 == 1)
+		|            {
+		|                DataType1 = typeof(System.Decimal);
+		|            }
+		|            else if (type1 == 2)
+		|            {
+		|                DataType1 = typeof(System.Boolean);
+		|            }
+		|            else if (type1 == 3)
+		|            {
+		|                DataType1 = typeof(System.DateTime);
+		|            }
+		|            else if (type1 == 4)
+		|            {
+		|                DataType1 = typeof(System.Object);
+		|            }
+		|            return new TfDataColumn(p1, DataType1);
+		|        }
+		|
+		|        [ContextMethod(""ТаблицаДанных"", ""DataTable"")]
+		|        public TfDataTable DataTable()
+		|        {
+		|            return new TfDataTable();
+		|        }
+		|
+		|        [ContextProperty(""ТипДанных"", ""DataType"")]
+		|        public TfDataType DataType1
+		|        {
+		|            get { return new TfDataType(); }
+		|        }
+		|
+		|        [ContextMethod(""Вкладка"", ""TabPage"")]
+		|        public TfTabPage TabPage(string p1 = ""Вкладка"", IValue p2 = null)
+		|        {
+		|            IValue view;
+		|            if (p2 != null)
+		|            {
+		|                view = p2;
+		|            }
+		|            else
+		|            {
+		|                view = new TfToplevel();
+		|            }
+		|            TfTabPage tab = new TfTabPage();
+		|            tab.Text = p1;
+		|            tab.View = view;
+		|            return tab;
+		|        }
+		|
+		|        [ContextMethod(""ПанельВкладок"", ""TabView"")]
+		|        public TfTabView TabView(int p1 = 1, int p2 = 1, int p3 = 20, int p4 = 5)
+		|        {
+		|            TfTabView tabView = new TfTabView();
+		|            tabView.Frame = new TfRect(p1, p2, p3, p4);
+		|            return tabView;
+		|        }
+		|
+		|        [ContextMethod(""СтильДерева"", ""TreeStyle"")]
+		|        public TfTreeStyle TreeStyle()
+		|        {
+		|            return new TfTreeStyle();
+		|        }
+		|
+		|        [ContextMethod(""УзелДерева"", ""TreeNode"")]
+		|        public TfTreeNode TreeNode(string p1 = ""Узел"")
+		|        {
+		|            TfTreeNode treeNode = new TfTreeNode();
+		|            treeNode.Text = p1;
+		|            return treeNode;
+		|        }
+		|
 		|        [ContextMethod(""ОформительТекста"", ""TextFormatter"")]
 		|        public TfTextFormatter TextFormatter()
 		|        {
@@ -7793,70 +17526,431 @@
 		|        }
 		|
 		|        [ContextMethod(""Атрибут"", ""Attribute"")]
-		|        public TfAttribute Attribute(IValue p1 = null, IValue p2 = null, IValue p3 = null)
+		|        public TfAttribute Attribute(IValue p1 = null, IValue p2 = null)
 		|        {
-		|            if (p1 == null && p2 == null && p3 == null)
+		|            if (Utils.AllNull(p1, p2))
 		|            {
 		|                return new TfAttribute();
 		|            }
-		|            else if (p1 != null && p2 == null && p3 == null)
+		|            else if (Utils.AllNotNull(p1) && Utils.AllNull(p2))
 		|            {
-		|                if (p1.SystemType.Name == ""Число"")
-		|                {
-		|                    return new TfAttribute(Convert.ToInt32(p1.AsNumber()));
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
+		|                return new TfAttribute(Utils.ToInt32(p1));
 		|            }
-		|            else if (p1 != null && p2 != null && p3 == null)
+		|            else if (Utils.AllNotNull(p1, p2))
 		|            {
-		|                if (p1.SystemType.Name == ""Число"")
-		|                {
-		|                    return new TfAttribute(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()));
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
+		|                return new TfAttribute(Utils.ToInt32(p1), Utils.ToInt32(p2));
 		|            }
-		|            else if (p1 != null && p2 != null && p3 != null)
-		|            {
-		|                if (p1.SystemType.Name == ""Число"")
-		|                {
-		|                    return new TfAttribute(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()), Convert.ToInt32(p3.AsNumber()));
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
-		|            }
-		|            else
-		|            {
-		|                return null;
-		|            }
+		|            return null;
 		|        }
 		|
-		|        [ContextMethod(""ЗапуститьИЗавершить"", ""RunAndShutdown"")]
-		|        public void RunAndShutdown()
+		|        [ContextMethod(""ЭлементМеню"", ""MenuItem"")]
+		|        public TfMenuItem MenuItem(string p1 = ""Элемент меню"")
 		|        {
-		|            //Top.CorrectionZet(); // Конфликтует с созданием меню.
-		|            Application.Begin(top.Base_obj.M_Toplevel);
+		|            TfMenuItem menuItem = new TfMenuItem();
+		|            menuItem.Title = p1;
+		|            return menuItem;
 		|        }
 		|
-		|        [ContextMethod(""Запуск"", ""Run"")]
-		|        public void Run()
+		|        [ContextProperty(""Цвета"", ""Colors"")]
+		|        public TfColors Colors
 		|        {
-		|            //Top.CorrectionZet(); // Конфликтует с созданием меню.
-		|            Application.Run();
+		|            get { return new TfColors(); }
 		|        }
 		|
-		|        [ContextProperty(""РазрешитьСобытия"", ""AllowEvents"")]
-		|        public bool HandleEvents
+		|        [ContextMethod(""Толщина"", ""Thickness"")]
+		|        public TfThickness Thickness(IValue p1, IValue p2 = null, IValue p3 = null, IValue p4 = null)
 		|        {
-		|            get { return handleEvents; }
-		|            set { handleEvents = value; }
+		|            if (p2 != null && p3 != null && p4 != null)
+		|            {
+		|                return new TfThickness(Utils.ToInt32(p1), Utils.ToInt32(p2), Utils.ToInt32(p3), Utils.ToInt32(p4));
+		|            }
+		|            return new TfThickness(Utils.ToInt32(p1));
+		|        }
+		|
+		|        [ContextMethod(""ЭлементСтрокиСостояния"", ""StatusItem"")]
+		|        public TfStatusItem StatusItem(int p1, string p2)
+		|        {
+		|            return new TfStatusItem(p1, p2);
+		|        }
+		|
+		|        [ContextMethod(""ПунктМеню"", ""MenuBarItem"")]
+		|        public TfMenuBarItem MenuBarItem(string p1 = ""Пункт меню"")
+		|        {
+		|            TfMenuBarItem menuBarItem = new TfMenuBarItem();
+		|            menuBarItem.Title = p1;
+		|            return menuBarItem;
+		|        }
+		|
+		|        [ContextMethod(""ПанельМеню"", ""MenuBar"")]
+		|        public TfMenuBar MenuBar()
+		|        {
+		|            return new TfMenuBar();
+		|        }
+		|
+		|        [ContextMethod(""СтрокаСостояния"", ""StatusBar"")]
+		|        public TfStatusBar StatusBar()
+		|        {
+		|            return new TfStatusBar();
+		|        }
+		|
+		|        [ContextMethod(""Таймер"", ""Timer"")]
+		|        public TfTimer Timer(int p1 = 1000)
+		|        {
+		|            TfTimer timer = new TfTimer();
+		|            timer.Interval = p1;
+		|            return timer;
+		|        }
+		|
+		|        [ContextMethod(""ОкноСообщений"", ""MessageBox"")]
+		|        public TfMessageBox MessageBox()
+		|        {
+		|            return new TfMessageBox();
+		|        }
+		|
+		|        [ContextMethod(""СтильТаблицы"", ""TableStyle"")]
+		|        public TfTableStyle TableStyle()
+		|        {
+		|            return new TfTableStyle();
+		|        }
+		|
+		|        [ContextMethod(""КонтекстноеМеню"", ""ContextMenu"")]
+		|        public TfContextMenu ContextMenu()
+		|        {
+		|            return new TfContextMenu();
+		|        }
+		|
+		|        [ContextMethod(""Дерево"", ""TreeView"")]
+		|        public TfTreeView TreeView(int p1 = 1, int p2 = 1, int p3 = 10, int p4 = 5)
+		|        {
+		|            TfTreeView treeView = new TfTreeView();
+		|            treeView.Frame = new TfRect(p1, p2, p3, p4);
+		|            return treeView;
+		|        }
+		|
+		|        [ContextMethod(""Текстовый"", ""TextView"")]
+		|        public TfTextView TextView(int p1 = 1, int p2 = 1, int p3 = 30, int p4 = 5)
+		|        {
+		|            TfTextView textView = new TfTextView();
+		|            textView.X = ValueFactory.Create(p1);
+		|            textView.Y = ValueFactory.Create(p2);
+		|            textView.Width = ValueFactory.Create(p3);
+		|            textView.Height = ValueFactory.Create(p4);
+		|            return textView;
+		|        }
+		|
+		|        [ContextMethod(""ПолеДаты"", ""DateField"")]
+		|        public TfDateField DateField(IValue p1 = null, int p2 = 1, int p3 = 1)
+		|        {
+		|            TfDateField dateField = new TfDateField();
+		|            DateTime dateTime = DateTime.Now;
+		|            if (p1 != null)
+		|            {
+		|                dateTime = p1.AsDate();
+		|            }
+		|            dateField.Base_obj.M_DateField.Date = dateTime;
+		|            dateField.X = ValueFactory.Create(p2);
+		|            dateField.Y = ValueFactory.Create(p3);
+		|            return dateField;
+		|        }
+		|
+		|        [ContextMethod(""ПолеВремени"", ""TimeField"")]
+		|        public TfTimeField TimeField(IValue p1 = null, int p2 = 1, int p3 = 1)
+		|        {
+		|            TfTimeField timeField = new TfTimeField();
+		|            DateTime dateTime = DateTime.Now;
+		|            if (p1 != null)
+		|            {
+		|                dateTime = p1.AsDate();
+		|            }
+		|            timeField.Base_obj.M_TimeField.Time = dateTime - DateTime.MinValue;
+		|            timeField.X = ValueFactory.Create(p2);
+		|            timeField.Y = ValueFactory.Create(p3);
+		|            return timeField;
+		|        }
+		|
+		|        [ContextMethod(""ПолеВвода"", ""TextField"")]
+		|        public TfTextField TextField(string p1 = ""Поле ввода"", int p2 = 1, int p3 = 1, int p4 = 14)
+		|        {
+		|            TfTextField textField = new TfTextField();
+		|            textField.Text = p1;
+		|            textField.X = ValueFactory.Create(p2);
+		|            textField.Y = ValueFactory.Create(p3);
+		|            textField.Width = ValueFactory.Create(p4);
+		|            return textField;
+		|        }
+		|
+		|        [ContextMethod(""Таблица"", ""TableView"")]
+		|        public TfTableView TableView(int p1 = 1, int p2 = 1, int p3 = 60, int p4 = 8)
+		|        {
+		|            TfTableView tableView = new TfTableView();
+		|            tableView.X = ValueFactory.Create(p1);
+		|            tableView.Y = ValueFactory.Create(p2);
+		|            tableView.Width = ValueFactory.Create(p3);
+		|            tableView.Height = ValueFactory.Create(p4);
+		|            return tableView;
+		|        }
+		|
+		|        [ContextMethod(""ПолосаПрокрутки"", ""ScrollBarView"")]
+		|        public TfScrollBarView ScrollBarView(IValue p1)
+		|        {
+		|            return new TfScrollBarView(p1, true, true);
+		|        }
+		|
+		|        [ContextMethod(""Прокручиваемый"", ""ScrollView"")]
+		|        public TfScrollView ScrollView(int p1 = 1, int p2 = 1, int p3 = 20, int p4 = 5)
+		|        {
+		|            TfScrollView scrollView = new TfScrollView();
+		|            scrollView.X = ValueFactory.Create(p1);
+		|            scrollView.Y = ValueFactory.Create(p2);
+		|            scrollView.Width = ValueFactory.Create(p3);
+		|            scrollView.Height = ValueFactory.Create(p4);
+		|            return scrollView;
+		|        }
+		|
+		|        [ContextMethod(""РамкаГруппы"", ""FrameView"")]
+		|        public TfFrameView FrameView(string p1 = ""Рамка группы"", int p2 = 1, int p3 = 1, int p4 = 17, int p5 = 5)
+		|        {
+		|            TfFrameView frameView = new TfFrameView();
+		|            frameView.Title = p1;
+		|            frameView.X = ValueFactory.Create(p2);
+		|            frameView.Y = ValueFactory.Create(p3);
+		|            frameView.Width = ValueFactory.Create(p4);
+		|            frameView.Height = ValueFactory.Create(p5);
+		|            return frameView;
+		|        }
+		|
+		|        [ContextMethod(""ВыборЦвета"", ""ColorPicker"")]
+		|        public TfColorPicker ColorPicker(string p1 = ""Выбор цвета"", int p2 = 1, int p3 = 1)
+		|        {
+		|            TfColorPicker сolorPicker = new TfColorPicker();
+		|            сolorPicker.Text = p1;
+		|            сolorPicker.X = ValueFactory.Create(p2);
+		|            сolorPicker.Y = ValueFactory.Create(p3);
+		|            return сolorPicker;
+		|        }
+		|
+		|        [ContextMethod(""СписокЭлементов"", ""ListView"")]
+		|        public TfListView ListView(int p1 = 1, int p2 = 1, int p3 = 30, int p4 = 5)
+		|        {
+		|            TfListView listView = new TfListView();
+		|            listView.X = ValueFactory.Create(p1);
+		|            listView.Y = ValueFactory.Create(p2);
+		|            listView.Width = ValueFactory.Create(p3);
+		|            listView.Height = ValueFactory.Create(p4);
+		|            return listView;
+		|        }
+		|
+		|        [ContextMethod(""ПолеВыбора"", ""ComboBox"")]
+		|        public TfComboBox ComboBox(int p1 = 1, int p2 = 1, int p3 = 30, int p4 = 5)
+		|        {
+		|            TfComboBox comboBox = new TfComboBox();
+		|            comboBox.X = ValueFactory.Create(p1);
+		|            comboBox.Y = ValueFactory.Create(p2);
+		|            comboBox.Width = ValueFactory.Create(p3);
+		|            comboBox.Height = ValueFactory.Create(p4);
+		|            return comboBox;
+		|        }
+		|
+		|        [ContextMethod(""Диалог"", ""Dialog"")]
+		|        public TfDialog Dialog(string p1 = ""Диалог"", int p2 = 1, int p3 = 1, int p4 = 30, int p5 = 10)
+		|        {
+		|            TfDialog dialog = new TfDialog();
+		|            dialog.Title = p1;
+		|            dialog.X = ValueFactory.Create(p2);
+		|            dialog.Y = ValueFactory.Create(p3);
+		|            dialog.Width = ValueFactory.Create(p4);
+		|            dialog.Height = ValueFactory.Create(p5);
+		|            return dialog;
+		|        }
+		|
+		|        [ContextMethod(""ДиалогОткрытия"", ""OpenDialog"")]
+		|        public TfOpenDialog OpenDialog(string p1 = ""Диалог открытия"", string p2 = ""Сообщение"", int p3 = 1, int p4 = 1, int p5 = 80, int p6 = 20, int p7 = 0)
+		|        {
+		|            LabelLanguage = p7;
+		|            TfOpenDialog openDialog = new TfOpenDialog();
+		|            openDialog.Title = p1;
+		|            openDialog.Message = p2;
+		|            openDialog.X = ValueFactory.Create(p3);
+		|            openDialog.Y = ValueFactory.Create(p4);
+		|            openDialog.Width = ValueFactory.Create(p5);
+		|            openDialog.Height = ValueFactory.Create(p6);
+		|            openDialog.Base_obj.LabelLanguage = LabelLanguage;
+		|            return openDialog;
+		|        }
+		|
+		|        [ContextMethod(""ДиалогСохранения"", ""SaveDialog"")]
+		|        public TfSaveDialog SaveDialog(string p1 = ""Диалог сохранения"", string p2 = ""Сообщение"", int p3 = 1, int p4 = 1, int p5 = 80, int p6 = 20, int p7 = 0)
+		|        {
+		|            LabelLanguage = p7;
+		|            TfSaveDialog saveDialog = new TfSaveDialog();
+		|            saveDialog.Title = p1;
+		|            saveDialog.Message = p2;
+		|            saveDialog.X = ValueFactory.Create(p3);
+		|            saveDialog.Y = ValueFactory.Create(p4);
+		|            saveDialog.Width = ValueFactory.Create(p5);
+		|            saveDialog.Height = ValueFactory.Create(p6);
+		|            saveDialog.Base_obj.LabelLanguage = LabelLanguage;
+		|            return saveDialog;
+		|        }
+		|
+		|        [ContextMethod(""Индикатор"", ""ProgressBar"")]
+		|        public TfProgressBar ProgОкноressBar(int p1 = 1, int p2 = 1, int p3 = 40, int p4 = 1)
+		|        {
+		|            TfProgressBar progressBar = new TfProgressBar();
+		|            progressBar.X = ValueFactory.Create(p1);
+		|            progressBar.Y = ValueFactory.Create(p2);
+		|            progressBar.Width = ValueFactory.Create(p3);
+		|            progressBar.Height = ValueFactory.Create(p4);
+		|            return progressBar;
+		|        }
+		|
+		|        [ContextMethod(""Надпись"", ""Label"")]
+		|        public TfLabel Label(string p1 = ""Надпись"", int p2 = 1, int p3 = 1, int p4 = 10, int p5 = 1)
+		|        {
+		|            TfLabel label = new TfLabel();
+		|            label.Text = p1;
+		|            label.X = ValueFactory.Create(p2);
+		|            label.Y = ValueFactory.Create(p3);
+		|            label.Width = ValueFactory.Create(p4);
+		|            label.Height = ValueFactory.Create(p5);
+		|            return label;
+		|        }
+		|
+		|        [ContextMethod(""Флажок"", ""CheckBox"")]
+		|        public TfCheckBox CheckBox(string p1 = ""Флажок"", int p2 = 1, int p3 = 1)
+		|        {
+		|            TfCheckBox checkBox = new TfCheckBox();
+		|            checkBox.Text = p1;
+		|            checkBox.X = ValueFactory.Create(p2);
+		|            checkBox.Y = ValueFactory.Create(p3);
+		|            return checkBox;
+		|        }
+		|
+		|        [ContextMethod(""Граница"", ""Border"")]
+		|        public TfBorder Border(IValue p1 = null)
+		|        {
+		|            TfBorder border = new TfBorder();
+		|            if (Utils.AllNotNull(p1))
+		|            {
+		|                border.BorderStyle = Utils.ToInt32(p1);
+		|            }
+		|            return border;
+		|        }
+		|
+		|        [ContextMethod(""Окно"", ""Window"")]
+		|        public TfWindow Window(string p1 = ""Окно"", int p2 = 1, int p3 = 1, int p4 = 10, int p5 = 5)
+		|        {
+		|            TfWindow window = new TfWindow();
+		|            window.Title = p1;
+		|            window.X = ValueFactory.Create(p2);
+		|            window.Y = ValueFactory.Create(p3);
+		|            window.Width = ValueFactory.Create(p4);
+		|            window.Height = ValueFactory.Create(p5);
+		|            return window;
+		|        }
+		|
+		|        [ContextMethod(""Действие"", ""Action"")]
+		|        public TfAction Action(IRuntimeContextInstance script = null, string methodName = null, IValue param = null)
+		|        {
+		|            return new TfAction(script, methodName, param);
+		|        }
+		|
+		|        [ContextProperty(""Верхний"", ""Top"")]
+		|        public TfToplevel Top
+		|        {
+		|            get { return top; }
+		|        }
+		|
+		|        [ContextMethod(""Кнопка"", ""Button"")]
+		|        public TfButton Button(string p1 = ""Кнопка"", int p2 = 1, int p3 = 1, int p4 = 10, int p5 = 1)
+		|        {
+		|            TfButton button = new TfButton();
+		|            button.Text = p1;
+		|            button.Frame = new TfRect(p2, p3, p4, p5);
+		|            return button;
+		|        }
+		|
+		|        public TfView View(IValue p1 = null, IValue p2 = null, IValue p3 = null)
+		|        {
+		|            if (Utils.AllNull(p1, p2, p3))
+		|            {
+		|                return new TfView();
+		|            }
+		|            else if (Utils.AllNotNull(p1) && Utils.AllNull(p2, p3))
+		|            {
+		|                if (Utils.IsType<TfRect>(p1))
+		|                {
+		|                    return new TfView((TfRect)p1);
+		|                }
+		|            }
+		|            else if (Utils.AllNotNull(p1, p2, p3))
+		|            {
+		|                if (Utils.IsNumber(p1) && Utils.IsNumber(p2) && Utils.IsString(p3))
+		|                {
+		|                    return new TfView(Utils.ToInt32(p1), Utils.ToInt32(p2), Utils.ToString(p3));
+		|                }
+		|                else if (Utils.IsType<TfRect>(p1) && Utils.IsString(p2) && Utils.IsType<TfBorder>(p3))
+		|                {
+		|                    return new TfView((TfRect)p1, Utils.ToString(p2), (TfBorder)p3);
+		|                }
+		|                else if (Utils.IsString(p1) && Utils.IsNumber(p2) && Utils.IsType<TfBorder>(p3))
+		|                {
+		|                    return new TfView(Utils.ToString(p1), Utils.ToInt32(p2), (TfBorder)p3);
+		|                }
+		|            }
+		|            return null;
+		|        }
+		|
+		|        [ContextMethod(""Размер"", ""Size"")]
+		|        public TfSize Size(int p1 = 10, int p2 = 5)
+		|        {
+		|            TfSize size = new TfSize();
+		|            size.Width = p1;
+		|            size.Height = p2;
+		|            return size;
+		|        }
+		|
+		|        [ContextMethod(""Прямоугольник"", ""Rect"")]
+		|        public TfRect Rect(int p1 = 1, int p2 = 1, int p3 = 10, int p4 = 5)
+		|        {
+		|            TfRect rect = new TfRect();
+		|            rect.X = p1;
+		|            rect.Y = p2;
+		|            rect.Width = p3;
+		|            rect.Height = p4;
+		|            return rect;
+		|        }
+		|
+		|        [ContextMethod(""Точка"", ""Point"")]
+		|        public TfPoint Rect(IValue p1 = null, IValue p2 = null)
+		|        {
+		|            if (Utils.AllNull(p1, p2))
+		|            {
+		|                return new TfPoint();
+		|            }
+		|            else if (Utils.AllNotNull(p1, p2))
+		|            {
+		|                return new TfPoint(Utils.ToInt32(p1), Utils.ToInt32(p2));
+		|            }
+		|            return null;
+		|        }
+		|
+		|        [ContextMethod(""Верхний"", ""Toplevel"")]
+		|        public TfToplevel Toplevel(int p1 = 1, int p2 = 1, int p3 = 10, int p4 = 5)
+		|        {
+		|            TfToplevel toplevel = new TfToplevel();
+		|            toplevel.X = ValueFactory.Create(p1);
+		|            toplevel.Y = ValueFactory.Create(p2);
+		|            toplevel.Width = ValueFactory.Create(p3);
+		|            toplevel.Height = ValueFactory.Create(p4);
+		|            return toplevel;
+		|        }
+		|
+		|        // Вспомогательные методы и объекты.
+		|
+		|        private void Application_NotifyNewRunState(Application.RunState obj)
+		|        {
+		|            OnOpen.Invoke();
 		|        }
 		|
 		|        public static dynamic GetEventParameter(dynamic dll_objEvent)
@@ -7900,701 +17994,22 @@
 		|            }
 		|            catch (Exception ex)
 		|            {
-		|                GlobalContext().Echo(""Обработчик не выполнен: "" + action.MethodName + Environment.NewLine + ex.StackTrace);
+		|                Utils.GlobalContext().Echo(""Обработчик не выполнен: "" + action.MethodName + Environment.NewLine + ex.StackTrace);
 		|            }
 		|            Event = null;
 		|            Application.Refresh();
 		|        }
 		|
-		|        [ContextProperty(""Отправитель"", ""Sender"")]
-		|        public IValue Sender
+		|        [ContextMethod(""РазобратьСтроку"", ""SplitString"")]
+		|        public ArrayImpl SplitString(string p1, string p2)
 		|        {
-		|            get { return RevertEqualsObj(Event.Sender); }
+		|            return Utils.SplitString(p1, p2);
 		|        }
 		|
-		|        [ContextProperty(""АргументыСобытия"", ""EventArgs"")]
-		|        public TfEventArgs EventArgs
+		|        [ContextProperty(""НоваяСтрока"", ""NewLine"")]
+		|        public string NewLine
 		|        {
-		|            get { return Event; }
-		|        }
-		|
-		|        private static TfVerticalTextAlignment tf_VerticalTextAlignment = new TfVerticalTextAlignment();
-		|        [ContextProperty(""ВертикальноеВыравниваниеТекста"", ""VerticalTextAlignment"")]
-		|        public TfVerticalTextAlignment VerticalTextAlignment
-		|        {
-		|            get { return tf_VerticalTextAlignment; }
-		|        }
-		|
-		|        private static TfCursorVisibility tf_CursorVisibility = new TfCursorVisibility();
-		|        [ContextProperty(""ВидКурсора"", ""CursorVisibility"")]
-		|        public TfCursorVisibility CursorVisibility
-		|        {
-		|            get { return tf_CursorVisibility; }
-		|        }
-		|
-		|        private static TfTextAlignment tf_TextAlignment = new TfTextAlignment();
-		|        [ContextProperty(""ВыравниваниеТекста"", ""TextAlignment"")]
-		|        public TfTextAlignment TextAlignment
-		|        {
-		|            get { return tf_TextAlignment; }
-		|        }
-		|
-		|        private static TfKeys tf_Keys = new TfKeys();
-		|        [ContextProperty(""Клавиши"", ""Keys"")]
-		|        public TfKeys Keys
-		|        {
-		|            get { return tf_Keys; }
-		|        }
-		|
-		|        private static TfTextDirection tf_TextDirection = new TfTextDirection();
-		|        [ContextProperty(""НаправлениеТекста"", ""TextDirection"")]
-		|        public TfTextDirection TextDirection
-		|        {
-		|            get { return tf_TextDirection; }
-		|        }
-		|
-		|        private static TfLayoutStyle tf_LayoutStyle = new TfLayoutStyle();
-		|        [ContextProperty(""СтильКомпоновки"", ""LayoutStyle"")]
-		|        public TfLayoutStyle LayoutStyle
-		|        {
-		|            get { return tf_LayoutStyle; }
-		|        }
-		|
-		|        private static TfMenuItemCheckStyle tf_MenuItemCheckStyle = new TfMenuItemCheckStyle();
-		|        [ContextProperty(""СтильФлажкаЭлементаМеню"", ""MenuItemCheckStyle"")]
-		|        public TfMenuItemCheckStyle MenuItemCheckStyle
-		|        {
-		|            get { return tf_MenuItemCheckStyle; }
-		|        }
-		|
-		|        private static TfMouseFlags tf_MouseFlags = new TfMouseFlags();
-		|        [ContextProperty(""ФлагиМыши"", ""MouseFlags"")]
-		|        public TfMouseFlags MouseFlags
-		|        {
-		|            get { return tf_MouseFlags; }
-		|        }
-		|
-		|        private static TfColor tf_Color = new TfColor();
-		|        [ContextProperty(""Цвет"", ""Color"")]
-		|        public TfColor Color
-		|        {
-		|            get { return tf_Color; }
-		|        }
-		|
-		|        private static TfBorderStyle tf_BorderStyle = new TfBorderStyle();
-		|        [ContextProperty(""СтильГраницы"", ""BorderStyle"")]
-		|        public TfBorderStyle BorderStyle
-		|        {
-		|            get { return tf_BorderStyle; }
-		|        }
-		|
-		|        [ContextMethod(""Граница"", ""Border"")]
-		|        public TfBorder Border()
-		|        {
-		|            return new TfBorder();
-		|        }
-		|
-		|        [ContextMethod(""Окно"", ""Window"")]
-		|        public TfWindow Window(IValue p1 = null, IValue p2 = null, IValue p3 = null, IValue p4 = null)
-		|        {
-		|            if (p1 == null && p2 == null && p3 == null && p4 == null)
-		|            {
-		|                return new TfWindow();
-		|            }
-		|            else if (p1 != null && p2 == null && p3 == null && p4 == null)
-		|            {
-		|                if (p1.SystemType.Name == ""Строка"")
-		|                {
-		|                    return new TfWindow(p1.AsString());
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
-		|            }
-		|            else if (p1 != null && p2 != null && p3 == null && p4 == null)
-		|            {
-		|                if (p1.GetType() == typeof(TfRect) && p2.SystemType.Name == ""Строка"")
-		|                {
-		|                    return new TfWindow((TfRect)p1, p2.AsString());
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
-		|            }
-		|            else if (p1 != null && p2 != null && p3 != null && p4 == null)
-		|            {
-		|                if (p1.SystemType.Name == ""Строка"" && p2.SystemType.Name == ""Число"" && p3.GetType() == typeof(TfBorder))
-		|                {
-		|                    return new TfWindow(p1.AsString(), Convert.ToInt32(p2.AsNumber()), (TfBorder)p3);
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
-		|            }
-		|            else if (p1 != null && p2 != null && p3 != null && p4 != null)
-		|            {
-		|                if (p1.GetType() == typeof(TfRect) && p2.SystemType.Name == ""Строка"" && p3.SystemType.Name == ""Число"" && p4.GetType() == typeof(TfBorder))
-		|                {
-		|                    return new TfWindow((TfRect)p1, p2.AsString(), Convert.ToInt32(p3.AsNumber()), (TfBorder)p4);
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
-		|            }
-		|            else
-		|            {
-		|                return null;
-		|            }
-		|        }
-		|
-		|        [ContextMethod(""Действие"", ""Action"")]
-		|        public TfAction Action(IRuntimeContextInstance script = null, string methodName = null, IValue param = null)
-		|        {
-		|            return new TfAction(script, methodName, param);
-		|        }
-		|
-		|        [ContextMethod(""Активировать"", ""Init"")]
-		|        public void Init()
-		|        {
-		|            Application.Init();
-		|            try
-		|            {
-		|                Application.NotifyNewRunState += Application_NotifyNewRunState;
-		|                top = new TfToplevel(Application.Top);
-		|            }
-		|            catch { }
-		|        }
-		|
-		|        [ContextProperty(""Верхний"", ""Top"")]
-		|        public TfToplevel Top
-		|        {
-		|            get { return top; }
-		|        }
-		|
-		|        [ContextMethod(""Кнопка"", ""Button"")]
-		|        public TfButton Button(IValue p1 = null, IValue p2 = null, IValue p3 = null, IValue p4 = null)
-		|        {
-		|            if (p1 == null && p2 == null && p3 == null && p4 == null)
-		|            {
-		|                return new TfButton();
-		|            }
-		|            else if (p1 != null && p2 != null && p3 != null && p4 != null)
-		|            {
-		|                if (p1.SystemType.Name == ""Число"" && p2.SystemType.Name == ""Число"" && p3.SystemType.Name == ""Строка"" && p4.SystemType.Name == ""Булево"")
-		|                {
-		|                    return new TfButton(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()), p3.AsString(), p4.AsBoolean());
-		|                }
-		|                else if (p1.SystemType.Name == ""Число"" && p2.SystemType.Name == ""Число"" && p3.SystemType.Name == ""Число"" && p4.SystemType.Name == ""Число"")
-		|                {
-		|                    TfButton TfButton1 = new TfButton();
-		|                    TfButton1.Base_obj.M_Button.X = Terminal.Gui.Pos.At(Convert.ToInt32(p1.AsNumber()));
-		|                    TfButton1.Base_obj.M_Button.Y = Terminal.Gui.Pos.At(Convert.ToInt32(p2.AsNumber()));
-		|                    TfButton1.Base_obj.M_Button.Width = Terminal.Gui.Dim.Sized(Convert.ToInt32(p3.AsNumber()));
-		|                    TfButton1.Base_obj.M_Button.Height = Terminal.Gui.Dim.Sized(Convert.ToInt32(p4.AsNumber()));
-		|                    return TfButton1;
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
-		|            }
-		|            else if (p1 != null && p2 != null && p3 != null && p4 == null)
-		|            {
-		|                if (p1.SystemType.Name == ""Число"" && p2.SystemType.Name == ""Число"" && p3.SystemType.Name == ""Строка"")
-		|                {
-		|                    return new TfButton(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()), p3.AsString());
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
-		|            }
-		|            else if (p1 != null && p2 != null && p3 == null && p4 == null)
-		|            {
-		|                if (p1.SystemType.Name == ""Строка"" && p2.SystemType.Name == ""Булево"")
-		|                {
-		|                    return new TfButton(p1.AsString(), p2.AsBoolean());
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
-		|            }
-		|            else if (p1 != null && p2 == null && p3 == null && p4 == null)
-		|            {
-		|                if (p1.SystemType.Name == ""Строка"")
-		|                {
-		|                    return new TfButton(p1.AsString());
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
-		|            }
-		|            else
-		|            {
-		|                return null;
-		|            }
-		|        }
-		|
-		|        public TfView View(IValue p1 = null, IValue p2 = null, IValue p3 = null)
-		|        {
-		|            if (p1 == null && p2 == null && p3 == null)
-		|            {
-		|                return new TfView();
-		|            }
-		|            else if (p1 != null && p2 == null && p3 == null)
-		|            {
-		|                if (p1.GetType() == typeof(TfRect))
-		|                {
-		|                    return new TfView((TfRect)p1);
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
-		|            }
-		|            else if (p1 != null && p2 != null && p3 != null)
-		|            {
-		|                if (p1.SystemType.Name == ""Число"" && p2.SystemType.Name == ""Число"" && p3.SystemType.Name == ""Строка"")
-		|                {
-		|                    return new TfView(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()), p3.AsString());
-		|                }
-		|                else if (p1.GetType() == typeof(TfRect) && p2.SystemType.Name == ""Строка"" && p3.GetType() == typeof(TfBorder))
-		|                {
-		|                    return new TfView((TfRect)p1, p2.AsString(), (TfBorder)p3);
-		|                }
-		|                else if (p1.SystemType.Name == ""Строка"" && p2.SystemType.Name == ""Число"" && p3.GetType() == typeof(TfBorder))
-		|                {
-		|                    return new TfView(p1.AsString(), Convert.ToInt32(p2.AsNumber()), (TfBorder)p3);
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
-		|            }
-		|            else
-		|            {
-		|                return null;
-		|            }
-		|        }
-		|
-		|        [ContextMethod(""Размер"", ""Size"")]
-		|        public TfSize Size(IValue p1 = null, IValue p2 = null)
-		|        {
-		|            if (p1 == null && p2 == null)
-		|            {
-		|                return new TfSize();
-		|            }
-		|            else if (p1 != null && p2 != null)
-		|            {
-		|                if (p1.SystemType.Name == ""Число"" && p2.SystemType.Name == ""Число"")
-		|                {
-		|                    return new TfSize(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()));
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
-		|            }
-		|            else
-		|            {
-		|                return null;
-		|            }
-		|        }
-		|
-		|        [ContextMethod(""Прямоугольник"", ""Rect"")]
-		|        public TfRect Rect(IValue p1 = null, IValue p2 = null, IValue p3 = null, IValue p4 = null)
-		|        {
-		|            if (p1 == null && p2 == null && p3 == null && p4 == null)
-		|            {
-		|                return new TfRect();
-		|            }
-		|            else if (p1 != null && p2 != null && p3 == null && p4 == null)
-		|            {
-		|                if (p1.GetType() == typeof(TfPoint) && p2.GetType() == typeof(TfSize))
-		|                {
-		|                    return new TfRect((TfPoint)p1, (TfSize)p2);
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
-		|            }
-		|            else if (p1 != null && p2 != null && p3 != null && p4 != null)
-		|            {
-		|                if (p1.SystemType.Name == ""Число"" && p2.SystemType.Name == ""Число"" && p3.SystemType.Name == ""Число"" && p4.SystemType.Name == ""Число"")
-		|                {
-		|                    return new TfRect(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()), Convert.ToInt32(p3.AsNumber()), Convert.ToInt32(p4.AsNumber()));
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
-		|            }
-		|            else
-		|            {
-		|                return null;
-		|            }
-		|        }
-		|
-		|        [ContextMethod(""Точка"", ""Point"")]
-		|        public TfPoint Rect(IValue p1 = null, IValue p2 = null)
-		|        {
-		|            if (p1 == null && p2 == null)
-		|            {
-		|                return new TfPoint();
-		|            }
-		|            else if (p1 != null && p2 != null)
-		|            {
-		|                if (p1.SystemType.Name == ""Число"" && p2.SystemType.Name == ""Число"")
-		|                {
-		|                    return new TfPoint(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()));
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
-		|            }
-		|            else if (p1 != null && p2 == null)
-		|            {
-		|                if (p1.GetType() == typeof(TfSize))
-		|                {
-		|                    return new TfPoint((TfSize)p1);
-		|                }
-		|                else
-		|                {
-		|                    return null;
-		|                }
-		|            }
-		|            else
-		|            {
-		|                return null;
-		|            }
-		|        }
-		|
-		|        [ContextMethod(""Верхний"", ""Toplevel"")]
-		|        public TfToplevel Toplevel(IValue p1 = null, IValue p2 = null, IValue p3 = null, IValue p4 = null)
-		|        {
-		|            if (p1 != null)
-		|            {
-		|                if (p1.GetType() == typeof(TfRect))
-		|                {
-		|                    return new TfToplevel((TfRect)p1);
-		|                }
-		|                else if (p1.SystemType.Name == ""Число"")
-		|                {
-		|                    TfRect TfRect1 = new TfRect(Convert.ToInt32(p1.AsNumber()), Convert.ToInt32(p2.AsNumber()), Convert.ToInt32(p3.AsNumber()), Convert.ToInt32(p4.AsNumber()));
-		|                    return new TfToplevel(TfRect1);
-		|                }
-		|            }
-		|            return new TfToplevel();
-		|        }
-		|
-		|        public static System.Collections.ArrayList StrFindBetween(string p1, string p2 = null, string p3 = null, bool p4 = true, bool p5 = true)
-		|        {
-		|            //p1 - исходная строка
-		|            //p2 - подстрока поиска от которой ведем поиск
-		|            //p3 - подстрока поиска до которой ведем поиск
-		|            //p4 - не включать p2 и p3 в результат
-		|            //p5 - в результат не будут включены участки, содержащие другие найденные участки, удовлетворяющие переданным параметрам
-		|            //функция возвращает массив строк
-		|            string str1 = p1;
-		|            int Position1;
-		|            System.Collections.ArrayList ArrayList1 = new System.Collections.ArrayList();
-		|            if (p2 != null && p3 == null)
-		|            {
-		|                Position1 = str1.IndexOf(p2);
-		|                while (Position1 >= 0)
-		|                {
-		|                    ArrayList1.Add(ValueFactory.Create("""" + ((p4) ? str1.Substring(Position1 + p2.Length) : str1.Substring(Position1))));
-		|                    str1 = str1.Substring(Position1 + 1);
-		|                    Position1 = str1.IndexOf(p2);
-		|                }
-		|            }
-		|            else if (p2 == null && p3 != null)
-		|            {
-		|                Position1 = str1.IndexOf(p3) + 1;
-		|                int SumPosition1 = Position1;
-		|                while (Position1 > 0)
-		|                {
-		|                    ArrayList1.Add(ValueFactory.Create("""" + ((p4) ? str1.Substring(0, SumPosition1 - 1) : str1.Substring(0, SumPosition1 - 1 + p3.Length))));
-		|                    try
-		|                    {
-		|                        Position1 = str1.Substring(SumPosition1 + 1).IndexOf(p3) + 1;
-		|                        SumPosition1 = SumPosition1 + Position1 + 1;
-		|                    }
-		|                    catch
-		|                    {
-		|                        break;
-		|                    }
-		|                }
-		|            }
-		|            else if (p2 != null && p3 != null)
-		|            {
-		|                Position1 = str1.IndexOf(p2);
-		|                while (Position1 >= 0)
-		|                {
-		|                    string Стр2;
-		|                    Стр2 = (p4) ? str1.Substring(Position1 + p2.Length) : str1.Substring(Position1);
-		|                    int Position2 = Стр2.IndexOf(p3) + 1;
-		|                    int SumPosition2 = Position2;
-		|                    while (Position2 > 0)
-		|                    {
-		|                        if (p5)
-		|                        {
-		|                            if (Стр2.Substring(0, SumPosition2 - 1).IndexOf(p3) <= -1)
-		|                            {
-		|                                ArrayList1.Add(ValueFactory.Create("""" + ((p4) ? Стр2.Substring(0, SumPosition2 - 1) : Стр2.Substring(0, SumPosition2 - 1 + p3.Length))));
-		|                            }
-		|                        }
-		|                        else
-		|                        {
-		|                            ArrayList1.Add(ValueFactory.Create("""" + ((p4) ? Стр2.Substring(0, SumPosition2 - 1) : Стр2.Substring(0, SumPosition2 - 1 + p3.Length))));
-		|                        }
-		|                        try
-		|                        {
-		|                            Position2 = Стр2.Substring(SumPosition2 + 1).IndexOf(p3) + 1;
-		|                            SumPosition2 = SumPosition2 + Position2 + 1;
-		|                        }
-		|                        catch
-		|                        {
-		|                            break;
-		|
-		|                        }
-		|                    }
-		|                    str1 = str1.Substring(Position1 + 1);
-		|                    Position1 = str1.IndexOf(p2);
-		|                }
-		|            }
-		|            return ArrayList1;
-		|        }
-		|
-		|        public static void AddToHashtable(dynamic p1, dynamic p2)
-		|        {
-		|            if (!hashtable.ContainsKey(p1))
-		|            {
-		|                hashtable.Add(p1, p2);
-		|            }
-		|            else
-		|            {
-		|                if (!((object)hashtable[p1]).Equals(p2))
-		|                {
-		|                    hashtable[p1] = p2;
-		|                }
-		|            }
-		|        }
-		|
-		|        public static void AddToShortcutDictionary(decimal p1, IValue p2)
-		|        {
-		|            if (!shortcutDictionary.ContainsKey(p1))
-		|            {
-		|                ArrayList ArrayList1 = new ArrayList();
-		|                ArrayList1.Add(p2);
-		|                shortcutDictionary.Add(p1, ArrayList1);
-		|            }
-		|            else
-		|            {
-		|                ArrayList ArrayList1 = shortcutDictionary[p1];
-		|                if (!ArrayList1.Contains(p2))
-		|                {
-		|                    ArrayList1.Add(p2);
-		|                }
-		|            }
-		|        }
-		|
-		|        public static void RemoveFromShortcutDictionary(decimal p1, IValue p2)
-		|        {
-		|            if (shortcutDictionary.ContainsKey(p1))
-		|            {
-		|                try
-		|                {
-		|                    shortcutDictionary[p1].Remove(p2);
-		|                }
-		|                catch { }
-		|            }
-		|        }
-		|
-		|        public static ArrayList GetFromShortcutDictionary(IValue p1)
-		|        {
-		|            ArrayList ArrayList1 = new ArrayList();
-		|            foreach (var item in shortcutDictionary)
-		|            {
-		|                for (int i = 0; i < item.Value.Count; i++)
-		|                {
-		|                    if (item.Value[i] == p1)
-		|                    {
-		|                        ArrayList1.Add(item.Key);
-		|                    }
-		|                }
-		|            }
-		|            return ArrayList1;
-		|        }
-		|
-		|        public static dynamic RevertShortcut(dynamic shortcut)
-		|        {
-		|            try
-		|            {
-		|                return shortcutDictionary[shortcut];
-		|            }
-		|            catch
-		|            {
-		|                return null;
-		|            }
-		|        }
-		|
-		|        public static dynamic RevertEqualsObj(dynamic initialObject)
-		|        {
-		|            try
-		|            {
-		|                return hashtable[initialObject];
-		|            }
-		|            catch
-		|            {
-		|                return null;
-		|            }
-		|        }
-		|
-		|        public static IValue RevertObj(dynamic initialObject)
-		|        {
-		|            //ScriptEngine.Machine.Values.NullValue NullValue1;
-		|            //ScriptEngine.Machine.Values.BooleanValue BooleanValue1;
-		|            //ScriptEngine.Machine.Values.DateValue DateValue1;
-		|            //ScriptEngine.Machine.Values.NumberValue NumberValue1;
-		|            //ScriptEngine.Machine.Values.StringValue StringValue1;
-		|
-		|            //ScriptEngine.Machine.Values.GenericValue GenericValue1;
-		|            //ScriptEngine.Machine.Values.TypeTypeValue TypeTypeValue1;
-		|            //ScriptEngine.Machine.Values.UndefinedValue UndefinedValue1;
-		|
-		|            // Если initialObject равен null.
-		|            try
-		|            {
-		|                if (initialObject == null)
-		|                {
-		|                    return (IValue)null;
-		|                }
-		|            }
-		|            catch { }
-		|            // Если initialObject равен null.
-		|            try
-		|            {
-		|                string str_initialObject = initialObject.GetType().ToString();
-		|            }
-		|            catch
-		|            {
-		|                return (IValue)null;
-		|            }
-		|            // initialObject не равен null
-		|            dynamic Obj1 = null;
-		|            string str1 = initialObject.GetType().ToString();
-		|            // Если initialObject второго уровня и у него есть ссылка на третий уровень.
-		|            try
-		|            {
-		|                Obj1 = initialObject.dll_obj;
-		|            }
-		|            catch { }
-		|            if (Obj1 != null)
-		|            {
-		|                return (IValue)Obj1;
-		|            }
-		|            // если initialObject не из пространства имен onescriptgui, то есть Уровень1 и у него есть аналог в
-		|            // пространстве имен ostgui с конструктором принимающим параметром initialObject
-		|            try
-		|            {
-		|                if (!str1.Contains(""ostgui.""))
-		|                {
-		|                    string str2 = ""ostgui.Tf"" + str1.Substring(str1.LastIndexOf(""."") + 1);
-		|                    System.Type TestType = System.Type.GetType(str2, false, true);
-		|                    object[] args = { initialObject };
-		|                    Obj1 = Activator.CreateInstance(TestType, args);
-		|                }
-		|            }
-		|            catch { }
-		|            if (Obj1 != null)
-		|            {
-		|                return (IValue)Obj1;
-		|            }
-		|            // если initialObject из пространства имен onescriptgui, то есть Уровень2 и у него есть аналог в
-		|            // пространстве имен ostgui с конструктором принимающим параметром initialObject
-		|            try
-		|            {
-		|                if (str1.Contains(""ostgui.""))
-		|                {
-		|                    string str3 = str1.Replace(""ostgui."", ""ostgui.Tf"");
-		|                    System.Type TestType = System.Type.GetType(str3, false, true);
-		|                    object[] args = { initialObject };
-		|                    Obj1 = Activator.CreateInstance(TestType, args);
-		|                }
-		|            }
-		|            catch { }
-		|            if (Obj1 != null)
-		|            {
-		|                return (IValue)Obj1;
-		|            }
-		|            // Если initialObject с возможными другими типами.
-		|            string str4 = null;
-		|            try
-		|            {
-		|                str4 = initialObject.SystemType.Name;
-		|            }
-		|            catch
-		|            {
-		|                if ((str1 == ""System.String"") ||
-		|                (str1 == ""System.Decimal"") ||
-		|                (str1 == ""System.Int32"") ||
-		|                (str1 == ""System.Boolean"") ||
-		|                (str1 == ""System.DateTime""))
-		|                {
-		|                    return (IValue)ValueFactory.Create(initialObject);
-		|                }
-		|                else if (str1 == ""System.Byte"")
-		|                {
-		|                    int vOut = Convert.ToInt32(initialObject);
-		|                    return (IValue)ValueFactory.Create(vOut);
-		|                }
-		|                else if (str1 == ""System.DBNull"")
-		|                {
-		|                    string vOut = Convert.ToString(initialObject);
-		|                    return (IValue)ValueFactory.Create(vOut);
-		|                }
-		|            }
-		|            // Если тип initialObject определяется односкриптом.
-		|            if (str4 == ""Неопределено"")
-		|            {
-		|                return (IValue)null;
-		|            }
-		|            if (str4 == ""Булево"")
-		|            {
-		|                return (IValue)initialObject;
-		|            }
-		|            if (str4 == ""Дата"")
-		|            {
-		|                return (IValue)initialObject;
-		|            }
-		|            if (str4 == ""Число"")
-		|            {
-		|                return (IValue)initialObject;
-		|            }
-		|            if (str4 == ""Строка"")
-		|            {
-		|                return (IValue)initialObject;
-		|            }
-		|            // Если ничего не подходит.
-		|            return (IValue)initialObject;
-		|        }
-		|
-		|        public static void WriteToFile(string str)
-		|        {
-		|            // добавление в файл
-		|            using (System.IO.StreamWriter writer = new System.IO.StreamWriter(""C:\\444\\Ошибки.txt"", true, Encoding.UTF8))
-		|            {
-		|                writer.WriteLineAsync(str);
-		|            }
+		|            get { return Utils.NewLine; }
 		|        }
 		|    }
 		|}
@@ -26688,8 +36103,8 @@
 	|        public static bool UseSystemConsole { get; set; } = false;
 	|
 	|        //*master//
-	|        //// For Unit testing - ignores UseSystemConsole
-	|        //internal static bool ForceFakeConsole;
+	|        //////// For Unit testing - ignores UseSystemConsole
+	|        //////internal static bool ForceFakeConsole;
 	|        //master*//
 	|
 	|        /// <summary>
@@ -42543,7 +51958,13 @@
 	|                    if (ExecuteSelection())
 	|                    {
 	|                        host.canceled = false;
-	|                        Application.RequestStop();
+	|
+	|                        //*master//
+	|                        //////Application.RequestStop();
+	|                        host.DialogResult = new ostgui.TfDialogResult().OK;
+	|                        host.OnDialogClosed(host);
+	|                        host.Visible = false;
+	|                        //master*//
 	|                    }
 	|                    return true;
 	|                case MouseFlags.Button1Clicked | MouseFlags.ButtonShift:
@@ -42990,12 +52411,90 @@
 	|        }
 	|    }
 	|
+	|    //*master//
+	|    public class DialogEventArgs : System.EventArgs
+	|    {
+	|        private decimal dialogResult;
+	|        private FileDialog dialog;
+	|        private string filePath;
+	|        private string directoryPath;
+	|        private ScriptEngine.HostedScript.Library.ArrayImpl filePaths;
+	|
+	|        public DialogEventArgs(FileDialog d)
+	|        {
+	|            dialogResult = d.DialogResult;
+	|            dialog = d;
+	|            filePath = d.FilePath.ToString();
+	|            directoryPath = d.DirectoryPath.ToString();
+	|            if (d.GetType() == typeof(OpenDialog))
+	|            {
+	|                ScriptEngine.HostedScript.Library.ArrayImpl ArrayImpl1 = new ScriptEngine.HostedScript.Library.ArrayImpl();
+	|                foreach (var file in ((OpenDialog)d).FilePaths)
+	|                {
+	|                    ArrayImpl1.Add(ScriptEngine.Machine.ValueFactory.Create(file));
+	|                }
+	|                filePaths = ArrayImpl1;
+	|            }
+	|            else
+	|            {
+	|                filePaths = null;
+	|            }
+	|        }
+	|
+	|        public decimal DialogResult
+	|        {
+	|            get { return dialogResult; }
+	|            set { dialogResult = value; }
+	|        }
+	|
+	|        public FileDialog Dialog
+	|        {
+	|            get { return dialog; }
+	|            set { dialog = value; }
+	|        }
+	|
+	|        public string FilePath
+	|        {
+	|            get { return filePath; }
+	|            set { filePath = value; }
+	|        }
+	|
+	|        public string DirectoryPath
+	|        {
+	|            get { return directoryPath; }
+	|            set { directoryPath = value; }
+	|        }
+	|
+	|        public ScriptEngine.HostedScript.Library.ArrayImpl FilePaths
+	|        {
+	|            get { return filePaths; }
+	|            set { filePaths = value; }
+	|        }
+	|    }
+	|    //master*//
+	|
 	|    /// <summary>
 	|    /// Base class for the <see cref=""OpenDialog""/> and the <see cref=""SaveDialog""/>
 	|    /// </summary>
 	|    public class FileDialog : Dialog
 	|    {
-	|        Button prompt, cancel;
+	|        //*master//
+	|        public decimal DialogResult;
+	|        public event EventHandler<DialogEventArgs> DialogClosed;
+	|        public void OnDialogClosed(FileDialog fd)
+	|        {
+	|            var handler = DialogClosed;
+	|            if (handler != null)
+	|            {
+	|                handler(this, new DialogEventArgs(fd));
+	|            }
+	|        }
+	|        //master*//
+	|
+	|        //*master//
+	|        //////Button prompt, cancel;
+	|        public Button prompt, cancel;
+	|        //master*//
 	|        Label nameFieldLabel, message, nameDirLabel;
 	|        TextField dirEntry, nameEntry;
 	|        internal DirListView dirListView;
@@ -43119,7 +52618,13 @@
 	|            this.cancel = new Button(""Cancel"");
 	|            this.cancel.Clicked += () =>
 	|            {
-	|                Cancel();
+	|                //*master//
+	|                //////Cancel();
+	|                this.DialogResult = new ostgui.TfDialogResult().Cancel;
+	|                OnDialogClosed(this);
+	|                canceled = true;
+	|                this.Visible = false;
+	|                //master*//
 	|            };
 	|            AddButton(cancel);
 	|
@@ -43155,7 +52660,13 @@
 	|                    FilePath = Path.Combine(FilePath.ToString(), $""{name}{ext}"");
 	|                }
 	|                canceled = false;
-	|                Application.RequestStop();
+	|
+	|                //*master//
+	|                //////Application.RequestStop();
+	|                this.DialogResult = new ostgui.TfDialogResult().OK;
+	|                OnDialogClosed(this);
+	|                this.Visible = false;
+	|                //master*//
 	|            };
 	|            AddButton(this.prompt);
 	|
@@ -43181,15 +52692,24 @@
 	|            {
 	|                if (e.KeyEvent.Key == Key.Esc)
 	|                {
-	|                    Cancel();
+	|                    //*master//
+	|                    //////Cancel();
+	|                    this.DialogResult = new ostgui.TfDialogResult().Cancel;
+	|                    OnDialogClosed(this);
+	|                    canceled = true;
+	|                    this.Visible = false;
+	|                    //master*//
+	|
 	|                    e.Handled = true;
 	|                }
 	|            };
-	|            void Cancel()
-	|            {
-	|                canceled = true;
-	|                Application.RequestStop();
-	|            }
+	|            //*master//
+	|            //////void Cancel()
+	|            //////{
+	|            //////    canceled = true;
+	|            //////    Application.RequestStop();
+	|            //////}
+	|            //master*//
 	|        }
 	|
 	|        private static int SetComboBoxHeight(List<string> allowedTypes)
@@ -43351,6 +52871,27 @@
 	|    /// </remarks>
 	|    public class SaveDialog : FileDialog
 	|    {
+	|        //*master//
+	|        // Добавил перевод надписи кнопки, так как односкрипт двуязычный.
+	|        private int labelLanguage = 0;
+	|        public int LabelLanguage
+	|        {
+	|            get { return labelLanguage; }
+	|            set
+	|            {
+	|                if (value == 0)
+	|                {
+	|                    base.cancel.Text = ""Отмена"";
+	|                }
+	|                else
+	|                {
+	|                    base.cancel.Text = ""Cancel"";
+	|                }
+	|                labelLanguage = value;
+	|            }
+	|        }
+	|        //master*//
+	|
 	|        /// <summary>
 	|        /// Initializes a new <see cref=""SaveDialog""/>.
 	|        /// </summary>
@@ -43402,6 +52943,27 @@
 	|    public class OpenDialog : FileDialog
 	|    {
 	|        OpenMode openMode;
+	|
+	|        //*master//
+	|        // Добавил перевод надписи кнопки, так как односкрипт двуязычный.
+	|        private int labelLanguage = 0;
+	|        public int LabelLanguage
+	|        {
+	|            get { return labelLanguage; }
+	|            set
+	|            {
+	|                if (value == 0)
+	|                {
+	|                    base.cancel.Text = ""Отмена"";
+	|                }
+	|                else
+	|                {
+	|                    base.cancel.Text = ""Cancel"";
+	|                }
+	|                labelLanguage = value;
+	|            }
+	|        }
+	|        //master*//
 	|
 	|        /// <summary>
 	|        /// Determine which <see cref=""System.IO""/> type to open.
@@ -76595,13 +86157,29 @@
 	|            IsInitialized = true;
 	|            if (subviews?.Count > 0)
 	|            {
-	|                foreach (var view in subviews)
+	|                //*master//
+	|                // Эту конструкцию помещаю в попытку, так как возникает ошибка обработки события 
+	|                // Текстовый.СодержимоеИзменено (TextView.ContentsChanged) Событие
+	|                //////foreach (var view in subviews)
+	|                //////{
+	|                //////    if (!view.IsInitialized)
+	|                //////    {
+	|                //////        view.EndInit();
+	|                //////    }
+	|                //////}
+	|
+	|                try
 	|                {
-	|                    if (!view.IsInitialized)
+	|                    foreach (var view in subviews)
 	|                    {
-	|                        view.EndInit();
+	|                        if (!view.IsInitialized)
+	|                        {
+	|                            view.EndInit();
+	|                        }
 	|                    }
 	|                }
+	|                catch { }
+	|                //master*//
 	|            }
 	|            Initialized?.Invoke(this, EventArgs.Empty);
 	|        }
@@ -77487,8 +87065,49 @@
 	|            return sz;
 	|        }
 	|
+	|        //*master//
+	|        // Этот метод заменю на метод с ограничением минимального размера терминала, иначе в windows программа закрывается.
+	|        //////internal Size SetConsoleWindow(short cols, short rows)
+	|        //////{
+	|        //////    var csbi = new CONSOLE_SCREEN_BUFFER_INFOEX();
+	|        //////    csbi.cbSize = (uint)Marshal.SizeOf(csbi);
+	|
+	|        //////    if (!GetConsoleScreenBufferInfoEx(IsWindowsTerminal ? OutputHandle : screenBuffer, ref csbi))
+	|        //////    {
+	|        //////        throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());
+	|        //////    }
+	|        //////    var maxWinSize = GetLargestConsoleWindowSize(IsWindowsTerminal ? OutputHandle : screenBuffer);
+	|        //////    var newCols = Math.Min(cols, maxWinSize.X);
+	|        //////    var newRows = Math.Min(rows, maxWinSize.Y);
+	|        //////    csbi.dwSize = new Coord(newCols, Math.Max(newRows, (short)1));
+	|        //////    csbi.srWindow = new SmallRect(0, 0, newCols, newRows);
+	|        //////    csbi.dwMaximumWindowSize = new Coord(newCols, newRows);
+	|        //////    if (!SetConsoleScreenBufferInfoEx(IsWindowsTerminal ? OutputHandle : screenBuffer, ref csbi))
+	|        //////    {
+	|        //////        throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());
+	|        //////    }
+	|        //////    var winRect = new SmallRect(0, 0, (short)(newCols - 1), (short)Math.Max(newRows - 1, 0));
+	|        //////    if (!SetConsoleWindowInfo(OutputHandle, true, ref winRect))
+	|        //////    {
+	|        //////        //throw new System.ComponentModel.Win32Exception (Marshal.GetLastWin32Error ());
+	|        //////        return new Size(cols, rows);
+	|        //////    }
+	|        //////    SetConsoleOutputWindow(csbi);
+	|        //////    return new Size(winRect.Right + 1, newRows - 1 < 0 ? 0 : winRect.Bottom + 1);
+	|        //////}
 	|        internal Size SetConsoleWindow(short cols, short rows)
 	|        {
+	|            short _cols = cols;
+	|            short _rows = rows;
+	|            if (cols < Convert.ToInt16(ostgui.Utils.minCols))
+	|            {
+	|                _cols = Convert.ToInt16(ostgui.Utils.minCols);
+	|            }
+	|            if (rows < Convert.ToInt16(ostgui.Utils.minRows))
+	|            {
+	|                _rows = Convert.ToInt16(ostgui.Utils.minRows);
+	|            }
+	|
 	|            var csbi = new CONSOLE_SCREEN_BUFFER_INFOEX();
 	|            csbi.cbSize = (uint)Marshal.SizeOf(csbi);
 	|
@@ -77497,8 +87116,8 @@
 	|                throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());
 	|            }
 	|            var maxWinSize = GetLargestConsoleWindowSize(IsWindowsTerminal ? OutputHandle : screenBuffer);
-	|            var newCols = Math.Min(cols, maxWinSize.X);
-	|            var newRows = Math.Min(rows, maxWinSize.Y);
+	|            var newCols = Math.Min(_cols, maxWinSize.X);
+	|            var newRows = Math.Min(_rows, maxWinSize.Y);
 	|            csbi.dwSize = new Coord(newCols, Math.Max(newRows, (short)1));
 	|            csbi.srWindow = new SmallRect(0, 0, newCols, newRows);
 	|            csbi.dwMaximumWindowSize = new Coord(newCols, newRows);
@@ -77510,11 +87129,12 @@
 	|            if (!SetConsoleWindowInfo(OutputHandle, true, ref winRect))
 	|            {
 	|                //throw new System.ComponentModel.Win32Exception (Marshal.GetLastWin32Error ());
-	|                return new Size(cols, rows);
+	|                return new Size(_cols, _rows);
 	|            }
 	|            SetConsoleOutputWindow(csbi);
 	|            return new Size(winRect.Right + 1, newRows - 1 < 0 ? 0 : winRect.Bottom + 1);
 	|        }
+	|        //master*//
 	|
 	|        void SetConsoleOutputWindow(CONSOLE_SCREEN_BUFFER_INFOEX csbi)
 	|        {
@@ -81324,6 +90944,10 @@
 	|    /// </summary>
 	|    public class TreeNode : ITreeNode
 	|    {
+	|        //*master//
+	|        public ScriptEngine.Machine.IValue TagProp { get; set; }
+	|        //master*//
+	|
 	|        /// <summary>
 	|        /// Children of the current node
 	|        /// </summary>
@@ -82789,7 +92413,10 @@
 	|            {
 	|                if (object.ReferenceEquals(resourceMan, null))
 	|                {
-	|                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager(""Terminal.Gui.Resources.Strings"", typeof(Strings).Assembly);
+	|                    //*master//
+	|                    //////global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager((""Terminal.Gui.Resources.Strings"", typeof(Strings).Assembly);
+	|                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager(""ostgui.Properties.Resources"", typeof(Strings).Assembly);
+	|                    //master*//
 	|                    resourceMan = temp;
 	|                }
 	|                return resourceMan;
@@ -82818,10 +92445,21 @@
 	|        /// </summary>
 	|        internal static string ctxCopy
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""ctxCopy"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""ctxCopy"", resourceCulture);
+	|                string str = ResourceManager.GetString(""ctxCopy"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -82829,10 +92467,21 @@
 	|        /// </summary>
 	|        internal static string ctxCut
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""ctxCut"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""ctxCut"", resourceCulture);
+	|                string str = ResourceManager.GetString(""ctxCut"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -82840,10 +92489,21 @@
 	|        /// </summary>
 	|        internal static string ctxDeleteAll
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""ctxDeleteAll"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""ctxDeleteAll"", resourceCulture);
+	|                string str = ResourceManager.GetString(""ctxDeleteAll"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -82851,10 +92511,21 @@
 	|        /// </summary>
 	|        internal static string ctxPaste
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""ctxPaste"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""ctxPaste"", resourceCulture);
+	|                string str = ResourceManager.GetString(""ctxPaste"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -82862,10 +92533,21 @@
 	|        /// </summary>
 	|        internal static string ctxRedo
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""ctxRedo"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""ctxRedo"", resourceCulture);
+	|                string str = ResourceManager.GetString(""ctxRedo"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -82873,10 +92555,21 @@
 	|        /// </summary>
 	|        internal static string ctxSelectAll
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""ctxSelectAll"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""ctxSelectAll"", resourceCulture);
+	|                string str = ResourceManager.GetString(""ctxSelectAll"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -82884,10 +92577,21 @@
 	|        /// </summary>
 	|        internal static string ctxUndo
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""ctxUndo"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""ctxUndo"", resourceCulture);
+	|                string str = ResourceManager.GetString(""ctxUndo"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -82895,10 +92599,21 @@
 	|        /// </summary>
 	|        internal static string fdDirectory
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""fdDirectory"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""fdDirectory"", resourceCulture);
+	|                string str = ResourceManager.GetString(""fdDirectory"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -82906,10 +92621,21 @@
 	|        /// </summary>
 	|        internal static string fdFile
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""fdFile"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""fdFile"", resourceCulture);
+	|                string str = ResourceManager.GetString(""fdFile"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -82917,10 +92643,21 @@
 	|        /// </summary>
 	|        internal static string fdOpen
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""fdOpen"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""fdOpen"", resourceCulture);
+	|                string str = ResourceManager.GetString(""fdOpen"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -82928,10 +92665,21 @@
 	|        /// </summary>
 	|        internal static string fdSave
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""fdSave"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""fdSave"", resourceCulture);
+	|                string str = ResourceManager.GetString(""fdSave"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -82939,10 +92687,21 @@
 	|        /// </summary>
 	|        internal static string fdSaveAs
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""fdSaveAs"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""fdSaveAs"", resourceCulture);
+	|                string str = ResourceManager.GetString(""fdSaveAs"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -82950,10 +92709,21 @@
 	|        /// </summary>
 	|        internal static string fdSelectFolder
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""fdSelectFolder"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""fdSelectFolder"", resourceCulture);
+	|                string str = ResourceManager.GetString(""fdSelectFolder"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -82961,10 +92731,21 @@
 	|        /// </summary>
 	|        internal static string fdSelectMixed
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""fdSelectMixed"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""fdSelectMixed"", resourceCulture);
+	|                string str = ResourceManager.GetString(""fdSelectMixed"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -82972,10 +92753,21 @@
 	|        /// </summary>
 	|        internal static string wzBack
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""wzBack"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""wzBack"", resourceCulture);
+	|                string str = ResourceManager.GetString(""wzBack"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -82983,10 +92775,21 @@
 	|        /// </summary>
 	|        internal static string wzFinish
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""wzFinish"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""wzFinish"", resourceCulture);
+	|                string str = ResourceManager.GetString(""wzFinish"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -82994,10 +92797,21 @@
 	|        /// </summary>
 	|        internal static string wzNext
 	|        {
+	|            //*master//
+	|            //////get
+	|            //////{
+	|            //////    return ResourceManager.GetString(""wzNext"", resourceCulture);
+	|            //////}
 	|            get
 	|            {
-	|                return ResourceManager.GetString(""wzNext"", resourceCulture);
+	|                string str = ResourceManager.GetString(""wzNext"", resourceCulture);
+	|                if (ostgui.OneScriptTerminalGui.instance.LabelLanguage == 0)
+	|                {
+	|                    return ostgui.Utils.labelRusEn[str];
+	|                }
+	|                return str;
 	|            }
+	|            //master*//
 	|        }
 	|    }
 	|}//namespace Terminal.Gui.Resources

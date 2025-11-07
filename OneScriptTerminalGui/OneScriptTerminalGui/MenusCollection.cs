@@ -21,13 +21,14 @@ namespace ostgui
         }
 
         [ContextMethod("Добавить", "Add")]
-        public void Add(TfMenuBarItem p1)
+        public TfMenuBarItem Add(TfMenuBarItem p1)
         {
             Terminal.Gui.MenuBarItem[] MenuBarItem2 = new Terminal.Gui.MenuBarItem[M_Object.Length + 1];
             M_Object.CopyTo(MenuBarItem2, 0);
             MenuBarItem2[M_Object.Length] = p1.Base_obj.M_MenuBarItem;
             M_Object = MenuBarItem2;
             p1.M_MenuBar = M_MenuBar;
+            return p1;
         }
 
         [ContextMethod("Очистить", "Clear")]
@@ -36,10 +37,10 @@ namespace ostgui
             M_Object = new Terminal.Gui.MenuBarItem[0];
         }
 
-        [ContextMethod("ПунктМеню", "MenuBarItem")]
-        public TfMenuBarItem MenuBarItem(int p1)
+        [ContextMethod("Получить", "Get")]
+        public TfMenuBarItem Get(int p1)
         {
-            return OneScriptTerminalGui.RevertEqualsObj(M_Object[p1]).dll_obj;
+            return Utils.RevertEqualsObj(M_Object[p1]).dll_obj;
         }
 
         [ContextMethod("Удалить", "Remove")]

@@ -27,7 +27,7 @@ namespace ostgui
             };
 
             M_StatusItem = new Terminal.Gui.StatusItem(p1, p2, Clicked);
-            OneScriptTerminalGui.AddToHashtable(M_StatusItem, this);
+            Utils.AddToHashtable(M_StatusItem, this);
         }
 
         public IValue Tag
@@ -78,7 +78,7 @@ namespace ostgui
         [ContextProperty("Данные", "Data")]
         public IValue Data
         {
-            get { return OneScriptTerminalGui.RevertObj(Base_obj.Data); }
+            get { return Utils.RevertObj(Base_obj.Data); }
             set { Base_obj.Data = value; }
         }
 
@@ -105,18 +105,18 @@ namespace ostgui
         [ContextMethod("ДобавитьСочетаниеКлавиш", "AddShortcut")]
         public void AddShortcut(decimal p1)
         {
-            OneScriptTerminalGui.AddToShortcutDictionary(p1, this);
+            Utils.AddToShortcutDictionary(p1, this);
         }
 
         [ContextMethod("ПолучитьСочетаниеКлавиш", "GetShortcut")]
         public ValueListImpl GetShortcut()
         {
             ValueListImpl ValueListImpl1 = new ValueListImpl();
-            ArrayList ArrayList1 = OneScriptTerminalGui.GetFromShortcutDictionary(this);
+            ArrayList ArrayList1 = Utils.GetFromShortcutDictionary(this);
             for (int i = 0; i < ArrayList1.Count; i++)
             {
                 decimal shortcut = (decimal)ArrayList1[i];
-                ValueListImpl1.Add(ValueFactory.Create(shortcut), OneScriptTerminalGui.instance.Keys.ToStringRu(shortcut));
+                ValueListImpl1.Add(ValueFactory.Create(shortcut), OneScriptTerminalGui.instance.Keys.NameEn(shortcut));
             }
             if (ValueListImpl1.Count() > 0)
             {
@@ -128,7 +128,7 @@ namespace ostgui
         [ContextMethod("УдалитьСочетаниеКлавиш", "RemoveShortcut")]
         public void RemoveShortcut(decimal p1)
         {
-            OneScriptTerminalGui.RemoveFromShortcutDictionary(p1, this);
+            Utils.RemoveFromShortcutDictionary(p1, this);
         }
 
     }

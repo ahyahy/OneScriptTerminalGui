@@ -63,6 +63,11 @@
 		// Пропустить класс или поставить в конец списка.
 		Если (СтрНайти(Массив0[А].ПолноеИмя, "MessageBoxInterval") > 0) 
 			или (СтрНайти(Массив0[А].ПолноеИмя, "xxxxxxxxxxxxxxxxxxxx") > 0)
+			или (СтрНайти(Массив0[А].ПолноеИмя, "OneScriptTerminalGuiSendConsoleKey") > 0)
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ContextMenuMouseFlagsProperty") > 0)
+			
+			
+			
 			Тогда // Этот не работает в линуксе и в линуксе пропустим.
 			Если Вин Тогда
 				МассивГолова.Добавить(Массив0[А]);
@@ -70,38 +75,102 @@
 				Продолжить;
 			КонецЕсли;
 		ИначеЕсли 
-			(СтрНайти(Массив0[А].ПолноеИмя, "ToplevelMouseEnterEvent") > 0) 
-			или (СтрНайти(Массив0[А].ПолноеИмя, "ToplevelMouseLeaveEvent") > 0) 
-			или (СтрНайти(Массив0[А].ПолноеИмя, "ToplevelMouseClickEvent") > 0) 
-			или (СтрНайти(Массив0[А].ПолноеИмя, "OneScriptTerminalGuiResizedEvent") > 0) 
-			или (СтрНайти(Массив0[А].ПолноеИмя, "BorderBorderChangedEvent") > 0) 
+			(СтрНайти(Массив0[А].ПолноеИмя, "ButtonMouseClickEvent") > 0) 
 			или (СтрНайти(Массив0[А].ПолноеИмя, "ButtonMouseEnterEvent") > 0) 
 			или (СтрНайти(Массив0[А].ПолноеИмя, "ButtonMouseLeaveEvent") > 0) 
-			или (СтрНайти(Массив0[А].ПолноеИмя, "ButtonMouseClickEvent") > 0) 
-			или (СтрНайти(Массив0[А].ПолноеИмя, "WindowMouseEnterEvent") > 0) 
-			или (СтрНайти(Массив0[А].ПолноеИмя, "WindowMouseLeaveEvent") > 0) 
-			или (СтрНайти(Массив0[А].ПолноеИмя, "WindowMouseClickEvent") > 0) 
-			или (СтрНайти(Массив0[А].ПолноеИмя, "MenuBarMouseEnterEvent") > 0) 
-			или (СтрНайти(Массив0[А].ПолноеИмя, "MenuBarMouseLeaveEvent") > 0) 
-			или (СтрНайти(Массив0[А].ПолноеИмя, "MenuBarMenuOpening") > 0) 
-			или (СтрНайти(Массив0[А].ПолноеИмя, "StatusBarMouseClickEvent") > 0) 
-			или (СтрНайти(Массив0[А].ПолноеИмя, "StatusBarMouseEnterEvent") > 0) 
-			или (СтрНайти(Массив0[А].ПолноеИмя, "StatusBarMouseLeaveEvent") > 0) 
-			или (СтрНайти(Массив0[А].ПолноеИмя, "EventArgsBorderProperty") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "CheckBoxMouseEnterEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "CheckBoxMouseLeaveEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ColorPickerMouseEnterEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ColorPickerMouseLeaveEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ColumnStyleCellsColorMethod") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ContextMenuHideMethod") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ContextMenuIsShowProperty") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ContextMenuMouseFlagsProperty") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ContextMenuPositionProperty") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ContextMenuShowMethod") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ContextMenuSubMenuProperty") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ContextMenuUseSubMenusSingleFrameProperty") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "DateFieldMouseClickEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "DateFieldMouseEnterEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "DateFieldMouseLeaveEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "DialogMouseClickEvent") > 0) 
 			или (СтрНайти(Массив0[А].ПолноеИмя, "EventArgsFlagsProperty") > 0) 
 			или (СтрНайти(Массив0[А].ПолноеИмя, "EventArgsSizeProperty") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "EventArgsTabProperty") > 0) 
 			или (СтрНайти(Массив0[А].ПолноеИмя, "EventArgsViewProperty") > 0) 
 			или (СтрНайти(Массив0[А].ПолноеИмя, "EventArgsXProperty") > 0) 
 			или (СтрНайти(Массив0[А].ПолноеИмя, "EventArgsYProperty") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "LabelClickedEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "LabelMouseClickEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "LabelMouseEnterEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "LabelMouseLeaveEvent") > 0) 
 			или (СтрНайти(Массив0[А].ПолноеИмя, "MenuBarItemClickedEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "MenuBarMouseEnterEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "MenuBarMouseLeaveEvent") > 0) 
 			или (СтрНайти(Массив0[А].ПолноеИмя, "MenuItemClickedEvent") > 0) 
-			
-			
-			
-			
-			
-			
-			
+			или (СтрНайти(Массив0[А].ПолноеИмя, "OneScriptTerminalGuiResizedEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ProgressBarMouseClickEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ProgressBarMouseEnterEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ProgressBarMouseLeaveEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "RadioGroupMouseEnterEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "RadioGroupMouseLeaveEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "StatusBarMouseClickEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "StatusBarMouseEnterEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "StatusBarMouseLeaveEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TabViewTabClickedEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TableViewMouseClickEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TableViewMouseEnterEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TableViewMouseLeaveEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TextFieldMouseClickEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TextFieldMouseEnterEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TextFieldMouseLeaveEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TextViewMouseClickEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TextViewMouseEnterEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TextViewMouseLeaveEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TimeFieldMouseClickEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TimeFieldMouseEnterEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TimeFieldMouseLeaveEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ToplevelMouseClickEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ToplevelMouseEnterEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ToplevelMouseLeaveEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TreeViewEnsureVisibleMethod") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TreeViewMouseClickEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TreeViewMouseEnterEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TreeViewMouseLeaveEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TreeViewScrollDownMethod") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TreeViewScrollUpMethod") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "WindowMouseClickEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "WindowMouseEnterEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "WindowMouseLeaveEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "OneScriptTerminalGuiOpenDialog") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "CheckBoxToggled") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "EventArgsDialogResultProperty") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "EventArgsDirectoryPathProperty") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "EventArgsFilePathProperty") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "EventArgsFilePathsProperty") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "OneScriptTerminalGuiOpenDialogMethod") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "OneScriptTerminalGuiSaveDialogMethod") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "OpenDialogConstructor") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "OpenDialogDialogClosedEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "SaveDialogConstructor") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "SaveDialogDialogClosedEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ComboBoxKeyPress") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ComboBoxOpenSelectedItem") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ComboBoxEnter") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "DateFieldKeyPress") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TableViewCellActivated") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TableViewNativeCellActivated") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ContextMenuIsShow") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ContextMenuShow") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ContextMenuAddShortcutMethod") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ContextMenuGetShortcutMethod") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ContextMenuRemoveShortcutMethod") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ContextMenuShortcutActionEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "OneScriptTerminalGuiWinPlatformProperty") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "EventArgsOldToggledProperty") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ListViewOpenSelectedItemEvent") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "ContextMenuConstructor") > 0) 
+			или (СтрНайти(Массив0[А].ПолноеИмя, "TableViewNativeCellActivated") > 0) 
 			
 			
 			
@@ -120,6 +189,7 @@
 	Для А = 0 По МассивГолова.ВГраница() Цикл
 		ВыбранныеФайлы.Добавить(МассивГолова[А]);
 	КонецЦикла;
+	// Если без интерактивных.
 	Для А = 0 По МассивХвост.ВГраница() Цикл
 		ВыбранныеФайлы.Добавить(МассивХвост[А]);
 	КонецЦикла;
@@ -145,16 +215,16 @@
 		Стр = ТекстДок.ПолучитьТекст();
 		
 		Заголовок = "";
-		М0 = СтрНайтиМежду(Стр, "<H1 class=dtH1>", "</H1>", , );
+		М0 = СтрНайтиМежду(Стр, "<h1 class=dtH1>", "</h1>", , );
 		Если М0.Количество() > 0 Тогда
 			Заголовок = СтрЗаменить(М0[0], "&nbsp;", " ");
 		КонецЕсли;
 		
-		М = СтрНайтиМежду(Стр, "<summary>Тестовый код</summary>", "</PRE>", Ложь, );
+		М = СтрНайтиМежду(Стр, "<summary>Тестовый код</summary>", "</pre>", Ложь, );
 		Если М.Количество() > 0 Тогда
 			Для А2 = 0 По М.Количество() - 1 Цикл
-				ТестовыйКод = СтрНайтиМежду(М[А2], "<DIV id=""cont2"">", "</DIV>", Ложь, )[0];
-				ТестовыйКод = СтрНайтиМежду(ТестовыйКод, """>", "</DIV>", , )[0];
+				ТестовыйКод = СтрНайтиМежду(М[А2], "<div id=""cont2"">", "</div>", Ложь, )[0];
+				ТестовыйКод = СтрНайтиМежду(ТестовыйКод, """>", "</div>", , )[0];
 				
 				Если Не (СокрЛП(ТестовыйКод) = "") Тогда
 					// Заменим Сообщить на ТФ.ДобавитьВесьТекст

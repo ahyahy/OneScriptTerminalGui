@@ -22,19 +22,26 @@ namespace ostgui
         }
 
         [ContextMethod("Добавить", "Add")]
-        public void Add(TfStatusItem p1)
+        public TfStatusItem Add(TfStatusItem p1)
         {
             Terminal.Gui.StatusItem[] StatusItem2 = new Terminal.Gui.StatusItem[M_Object.Length + 1];
             M_Object.CopyTo(StatusItem2, 0);
             StatusItem2[M_Object.Length] = p1.Base_obj.M_StatusItem;
             M_Object = StatusItem2;
             p1.M_StatusBar = M_StatusBar;
+            return p1;
         }
 
         [ContextMethod("Очистить", "Clear")]
         public void Clear()
         {
             M_Object = new Terminal.Gui.StatusItem[0];
+        }
+
+        [ContextMethod("Получить", "Get")]
+        public TfStatusItem Get(int p1)
+        {
+            return Utils.RevertEqualsObj(M_Object[p1]).dll_obj;
         }
 
         [ContextMethod("Удалить", "Remove")]
@@ -52,12 +59,6 @@ namespace ostgui
                 }
             }
             M_Object = StatusItem2;
-        }
-
-        [ContextMethod("ЭлементСтрокиСостояния", "StatusItem")]
-        public TfStatusItem StatusItem(int p1)
-        {
-            return OneScriptTerminalGui.RevertEqualsObj(M_Object[p1]).dll_obj;
         }
 
     }

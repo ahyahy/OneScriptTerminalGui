@@ -56,19 +56,48 @@
   <ItemGroup>
     <Compile Include="Action.cs" />
     <Compile Include="Attribute.cs" />
+    <Compile Include="Balloons.cs" />
     <Compile Include="Border.cs" />
     <Compile Include="BorderStyle.cs" />
     <Compile Include="Button.cs" />
+    <Compile Include="ButtonAlignments.cs" />
+    <Compile Include="CheckBox.cs" />
     <Compile Include="Color.cs" />
+    <Compile Include="ColorPicker.cs" />
     <Compile Include="Colors.cs" />
     <Compile Include="ColorScheme.cs" />
+    <Compile Include="ColumnStyle.cs" />
+    <Compile Include="ColumnStyles.cs" />
+    <Compile Include="ComboBox.cs" />
     <Compile Include="CommandTUI.cs" />
     <Compile Include="ConsoleKey.cs" />
+    <Compile Include="ContextMenu.cs" />
     <Compile Include="CursorVisibility.cs" />
+    <Compile Include="DataColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataColumnCollection.cs" />
+    <Compile Include="DataItem.cs" />
+    <Compile Include="DataRow.cs" />
+    <Compile Include="DataRowCollection.cs" />
+    <Compile Include="DataTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataType.cs" />
+    <Compile Include="DateField.cs" />
+    <Compile Include="Dialog.cs" />
+    <Compile Include="DialogResult.cs" />
     <Compile Include="Dim.cs" />
+    <Compile Include="DisplayModeLayout.cs" />
     <Compile Include="EventArgs.cs" />
+    <Compile Include="FileDialog.cs" />
+    <Compile Include="FrameView.cs" />
     <Compile Include="Keys.cs" />
+    <Compile Include="Label.cs" />
+    <Compile Include="Language.cs" />
     <Compile Include="LayoutStyle.cs" />
+    <Compile Include="ListView.cs" />
+    <Compile Include="Math.cs" />
     <Compile Include="MenuBar.cs" />
     <Compile Include="MenuBarItem.cs" />
     <Compile Include="MenuBarItemChildren.cs" />
@@ -79,28 +108,52 @@
     <Compile Include="MouseFlags.cs" />
     <Compile Include="NStackSupport.cs" />
     <Compile Include="OneScriptTerminalGui.cs" />
+    <Compile Include="OpenDialog.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Pos.cs" />
+    <Compile Include="ProgressBar.cs" />
+    <Compile Include="ProgressBarFormat.cs" />
+    <Compile Include="ProgressBarStyle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RadioGroup.cs" />
+    <Compile Include="RadioGroupItems.cs" />
     <Compile Include="Rect.cs" />
     <Compile Include="Responder.cs" />
+    <Compile Include="SaveDialog.cs" />
+    <Compile Include="ScrollBarView.cs" />
+    <Compile Include="ScrollView.cs" />
     <Compile Include="Size.cs" />
+    <Compile Include="SortOrder.cs" />
     <Compile Include="StatusBar.cs" />
     <Compile Include="StatusBarItems.cs" />
     <Compile Include="StatusItem.cs" />
     <Compile Include="SubviewCollection.cs" />
+    <Compile Include="TableStyle.cs" />
+    <Compile Include="TableView.cs" />
+    <Compile Include="TabPage.cs" />
+    <Compile Include="TabsCollection.cs" />
+    <Compile Include="TabStyle.cs" />
+    <Compile Include="TabView.cs" />
     <Compile Include="TextAlignment.cs" />
     <Compile Include="TextDirection.cs" />
+    <Compile Include="TextField.cs" />
     <Compile Include="TextFormatter.cs" />
+    <Compile Include="TextView.cs" />
     <Compile Include="Thickness.cs" />
+    <Compile Include="TimeField.cs" />
     <Compile Include="Timer.cs" />
     <Compile Include="Toplevel.cs" />
+    <Compile Include="TreeNode.cs" />
+    <Compile Include="TreeStyle.cs" />
+    <Compile Include="TreeView.cs" />
     <Compile Include="TuiSupport.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="ValueList.cs" />
     <Compile Include="VerticalTextAlignment.cs" />
     <Compile Include="View.cs" />
     <Compile Include="Window.cs" />
@@ -109,10 +162,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="System.CodeDom.dll" />
   </ItemGroup>
   <ItemGroup>

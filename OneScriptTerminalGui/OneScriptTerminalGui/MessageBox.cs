@@ -77,9 +77,14 @@ namespace ostgui
             set { width = value; }
         }
 
-        [ContextMethod("Запрос", "Query")]
-        public int Query()
+        [ContextMethod("Показать", "Show")]
+        public int Show(string p1 = null)
         {
+            if (p1 != null)
+            {
+                Message = p1;
+            }
+
             // Уберем на время появления модального окна события мыши.
             dynamic actRootMouseEvent = Application.RootMouseEvent;
             Application.RootMouseEvent = null;
@@ -100,7 +105,7 @@ namespace ostgui
             int _widthMessage = TfSize1.Width;
             int _widthTitle = Title.Length + 5;
             int _widthTerminal = Application.Driver.Cols - 8;
-            int _width = Math.Max(_widthMessage, Math.Max(_widthTitle, maxLengthButtons));
+            int _width = Math.Max(_widthMessage, Math.Max(_widthTitle, maxLengthButtons)) + 3;
             if (_width >= _widthTerminal)
             {
                 _width = _widthTerminal;

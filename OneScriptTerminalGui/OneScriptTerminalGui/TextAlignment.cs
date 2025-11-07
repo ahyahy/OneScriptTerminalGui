@@ -2,6 +2,7 @@
 using ScriptEngine.Machine;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 
 namespace ostgui
 {
@@ -33,81 +34,67 @@ namespace ostgui
             }
         }
 
+        [ContextProperty("Количество", "Count")]
+        public int CountProp
+        {
+            get { return _list.Count; }
+        }
+
+        [ContextMethod("Получить", "Get")]
+        public IValue Get(int index)
+        {
+            return _list[index];
+        }
+
+        [ContextMethod("Имя")]
+        public string NameRu(decimal p1)
+        {
+            return namesRu.TryGetValue(p1, out string name) ? name : p1.ToString();
+        }
+
+        [ContextMethod("Name")]
+        public string NameEn(decimal p1)
+        {
+            return namesEn.TryGetValue(p1, out string name) ? name : p1.ToString();
+        }
+
         public TfTextAlignment()
         {
-            _list = new List<IValue>();
-            _list.Add(ValueFactory.Create(Left));
-            _list.Add(ValueFactory.Create(Justified));
-            _list.Add(ValueFactory.Create(Right));
-            _list.Add(ValueFactory.Create(Centered));
+            _list = new List<decimal>
+            {
+                Left,
+                Justified,
+                Right,
+                Centered,
+            }.Select(ValueFactory.Create).ToList();
         }
+
+        private static readonly Dictionary<decimal, string> namesRu = new Dictionary<decimal, string>
+        {
+            {0, "Лево"},
+            {3, "Подобранный"},
+            {1, "Право"},
+            {2, "Центр"},
+        };
+
+        private static readonly Dictionary<decimal, string> namesEn = new Dictionary<decimal, string>
+        {
+            {0, "Left"},
+            {3, "Justified"},
+            {1, "Right"},
+            {2, "Centered"},
+        };
 
         [ContextProperty("Лево", "Left")]
-        public int Left
-        {
-            get { return 0; }
-        }
+        public decimal Left => 0;
 
         [ContextProperty("Подобранный", "Justified")]
-        public int Justified
-        {
-            get { return 3; }
-        }
+        public decimal Justified => 3;
 
         [ContextProperty("Право", "Right")]
-        public int Right
-        {
-            get { return 1; }
-        }
+        public decimal Right => 1;
 
         [ContextProperty("Центр", "Centered")]
-        public int Centered
-        {
-            get { return 2; }
-        }
-
-        [ContextMethod("ВСтроку", "ВСтроку")]
-        public string ToStringRu(decimal p1)
-        {
-            string str = p1.ToString();
-            switch (p1)
-            {
-                case 0:
-                    str = "Лево";
-                    break;
-                case 3:
-                    str = "Подобранный";
-                    break;
-                case 1:
-                    str = "Право";
-                    break;
-                case 2:
-                    str = "Центр";
-                    break;
-            }
-            return str;
-        }
-
-        [ContextMethod("ToString", "ToString")]
-        public string ToStringEn(decimal p1)
-        {
-            string str = p1.ToString();
-            switch (p1)
-            {
-                case 0:
-                    str = "Left";
-                    break;
-                case 3:
-                    str = "Justified";
-                    break;
-                case 1:
-                    str = "Right";
-                    break;
-                case 2:
-                    str = "Centered";
-                    break;
-            }
-            return str;
-        }
+        public decimal Centered => 2;
     }
 }

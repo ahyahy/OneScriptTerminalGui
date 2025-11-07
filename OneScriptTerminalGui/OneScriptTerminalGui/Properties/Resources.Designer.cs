@@ -187,26 +187,6 @@ namespace ostgui.Properties {
         }
         
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
-        internal static byte[] System_CodeDom {
-            get {
-                object obj = ResourceManager.GetObject("System_CodeDom", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
-        internal static byte[] System_ValueTuple {
-            get {
-                object obj = ResourceManager.GetObject("System_ValueTuple", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на _Back.
         /// </summary>
         internal static string wzBack {

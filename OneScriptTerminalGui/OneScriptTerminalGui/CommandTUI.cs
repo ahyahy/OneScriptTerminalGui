@@ -2,6 +2,7 @@
 using ScriptEngine.Machine;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 
 namespace ostgui
 {
@@ -33,1004 +34,493 @@ namespace ostgui
             }
         }
 
+        [ContextProperty("Количество", "Count")]
+        public int CountProp
+        {
+            get { return _list.Count; }
+        }
+
+        [ContextMethod("Получить", "Get")]
+        public IValue Get(int index)
+        {
+            return _list[index];
+        }
+
+        [ContextMethod("Имя")]
+        public string NameRu(decimal p1)
+        {
+            return namesRu.TryGetValue(p1, out string name) ? name : p1.ToString();
+        }
+
+        [ContextMethod("Name")]
+        public string NameEn(decimal p1)
+        {
+            return namesEn.TryGetValue(p1, out string name) ? name : p1.ToString();
+        }
+
         public TfCommandTUI()
         {
-            _list = new List<IValue>();
-            _list.Add(ValueFactory.Create(Redo));
-            _list.Add(ValueFactory.Create(TopHome));
-            _list.Add(ValueFactory.Create(TopHomeExtend));
-            _list.Add(ValueFactory.Create(LineUpToFirstBranch));
-            _list.Add(ValueFactory.Create(EnableOverwrite));
-            _list.Add(ValueFactory.Create(Paste));
-            _list.Add(ValueFactory.Create(SelectAll));
-            _list.Add(ValueFactory.Create(Cut));
-            _list.Add(ValueFactory.Create(CutToEndLine));
-            _list.Add(ValueFactory.Create(CutToStartLine));
-            _list.Add(ValueFactory.Create(EndOfPage));
-            _list.Add(ValueFactory.Create(EndOfLine));
-            _list.Add(ValueFactory.Create(EndOfLineExtend));
-            _list.Add(ValueFactory.Create(Copy));
-            _list.Add(ValueFactory.Create(Left));
-            _list.Add(ValueFactory.Create(LeftHome));
-            _list.Add(ValueFactory.Create(LeftHomeExtend));
-            _list.Add(ValueFactory.Create(LeftExtend));
-            _list.Add(ValueFactory.Create(StartOfPage));
-            _list.Add(ValueFactory.Create(StartOfLine));
-            _list.Add(ValueFactory.Create(StartOfLineExtend));
-            _list.Add(ValueFactory.Create(LineDownToLastBranch));
-            _list.Add(ValueFactory.Create(BottomEnd));
-            _list.Add(ValueFactory.Create(BottomEndExtend));
-            _list.Add(ValueFactory.Create(NewLine));
-            _list.Add(ValueFactory.Create(Refresh));
-            _list.Add(ValueFactory.Create(DisableOverwrite));
-            _list.Add(ValueFactory.Create(OpenSelectedItem));
-            _list.Add(ValueFactory.Create(Cancel));
-            _list.Add(ValueFactory.Create(Undo));
-            _list.Add(ValueFactory.Create(ToggleChecked));
-            _list.Add(ValueFactory.Create(ToggleOverwrite));
-            _list.Add(ValueFactory.Create(ToggleExtend));
-            _list.Add(ValueFactory.Create(ToggleExpandCollapse));
-            _list.Add(ValueFactory.Create(QuitToplevel));
-            _list.Add(ValueFactory.Create(Right));
-            _list.Add(ValueFactory.Create(RightEnd));
-            _list.Add(ValueFactory.Create(RightEndExtend));
-            _list.Add(ValueFactory.Create(RightExtend));
-            _list.Add(ValueFactory.Create(PreviousView));
-            _list.Add(ValueFactory.Create(PreviousViewOrTop));
-            _list.Add(ValueFactory.Create(Accept));
-            _list.Add(ValueFactory.Create(Suspend));
-            _list.Add(ValueFactory.Create(ScrollUp));
-            _list.Add(ValueFactory.Create(ScrollLeft));
-            _list.Add(ValueFactory.Create(ScrollDown));
-            _list.Add(ValueFactory.Create(ScrollRight));
-            _list.Add(ValueFactory.Create(Expand));
-            _list.Add(ValueFactory.Create(ExpandAll));
-            _list.Add(ValueFactory.Create(Collapse));
-            _list.Add(ValueFactory.Create(CollapseAll));
-            _list.Add(ValueFactory.Create(NextView));
-            _list.Add(ValueFactory.Create(Tab));
-            _list.Add(ValueFactory.Create(NextViewOrTop));
-            _list.Add(ValueFactory.Create(WordLeft));
-            _list.Add(ValueFactory.Create(WordLeftExtend));
-            _list.Add(ValueFactory.Create(WordRight));
-            _list.Add(ValueFactory.Create(WordRightExtend));
-            _list.Add(ValueFactory.Create(PageUp));
-            _list.Add(ValueFactory.Create(PageUpExtend));
-            _list.Add(ValueFactory.Create(PageLeft));
-            _list.Add(ValueFactory.Create(PageDown));
-            _list.Add(ValueFactory.Create(PageDownExtend));
-            _list.Add(ValueFactory.Create(PageRight));
-            _list.Add(ValueFactory.Create(LineUp));
-            _list.Add(ValueFactory.Create(LineUpExtend));
-            _list.Add(ValueFactory.Create(LineDown));
-            _list.Add(ValueFactory.Create(LineDownExtend));
-            _list.Add(ValueFactory.Create(BackTab));
-            _list.Add(ValueFactory.Create(DeleteAll));
-            _list.Add(ValueFactory.Create(DeleteCharLeft));
-            _list.Add(ValueFactory.Create(DeleteCharRight));
-            _list.Add(ValueFactory.Create(KillWordForwards));
-            _list.Add(ValueFactory.Create(KillWordBackwards));
-            _list.Add(ValueFactory.Create(UnixEmulation));
+            _list = new List<decimal>
+            {
+                Redo,
+                TopHome,
+                TopHomeExtend,
+                LineUpToFirstBranch,
+                EnableOverwrite,
+                Paste,
+                SelectAll,
+                Cut,
+                CutToEndLine,
+                CutToStartLine,
+                EndOfPage,
+                EndOfLine,
+                EndOfLineExtend,
+                Copy,
+                Left,
+                LeftHome,
+                LeftHomeExtend,
+                LeftExtend,
+                StartOfPage,
+                StartOfLine,
+                StartOfLineExtend,
+                LineDownToLastBranch,
+                BottomEnd,
+                BottomEndExtend,
+                NewLine,
+                Refresh,
+                DisableOverwrite,
+                OpenSelectedItem,
+                Cancel,
+                Undo,
+                ToggleChecked,
+                ToggleOverwrite,
+                ToggleExtend,
+                ToggleExpandCollapse,
+                QuitToplevel,
+                Right,
+                RightEnd,
+                RightEndExtend,
+                RightExtend,
+                PreviousView,
+                PreviousViewOrTop,
+                Accept,
+                Suspend,
+                ScrollUp,
+                ScrollLeft,
+                ScrollDown,
+                ScrollRight,
+                Expand,
+                ExpandAll,
+                Collapse,
+                CollapseAll,
+                NextView,
+                Tab,
+                NextViewOrTop,
+                WordLeft,
+                WordLeftExtend,
+                WordRight,
+                WordRightExtend,
+                PageUp,
+                PageUpExtend,
+                PageLeft,
+                PageDown,
+                PageDownExtend,
+                PageRight,
+                LineUp,
+                LineUpExtend,
+                LineDown,
+                LineDownExtend,
+                BackTab,
+                DeleteAll,
+                DeleteCharLeft,
+                DeleteCharRight,
+                KillWordForwards,
+                KillWordBackwards,
+                UnixEmulation,
+            }.Select(ValueFactory.Create).ToList();
         }
+
+        private static readonly Dictionary<decimal, string> namesRu = new Dictionary<decimal, string>
+        {
+            {60, "Вернуть"},
+            {29, "ВерхДомой"},
+            {30, "ВерхДомойРасширить"},
+            {6, "ВерхнийДочернийВетки"},
+            {23, "ВключитьПерезапись"},
+            {63, "Вставить"},
+            {45, "ВыбратьВсе"},
+            {62, "Вырезать"},
+            {18, "ВырезатьДоКонцаСтроки"},
+            {19, "ВырезатьДоНачалаСтроки"},
+            {52, "КонецСтраницы"},
+            {49, "КонецСтроки"},
+            {50, "КонецСтрокиРасширить"},
+            {61, "Копировать"},
+            {8, "Лево"},
+            {55, "ЛевоНачало"},
+            {56, "ЛевоНачалоРасширить"},
+            {10, "ЛевоРасширить"},
+            {51, "НачалоСтраницы"},
+            {47, "НачалоСтроки"},
+            {48, "НачалоСтрокиРасширить"},
+            {2, "НижнийДочернийВетки"},
+            {31, "НизКонец"},
+            {32, "НизКонецРасширить"},
+            {72, "НоваяСтрока"},
+            {70, "Обновить"},
+            {24, "ОтключитьПерезапись"},
+            {33, "ОткрытьВыбранный"},
+            {41, "Отмена"},
+            {59, "Отменить"},
+            {34, "ПереключитьОтметку"},
+            {22, "ПереключитьПерезапись"},
+            {71, "ПереключитьРасширение"},
+            {36, "ПереключитьСвертывание"},
+            {64, "ПокинутьВерхний"},
+            {11, "Право"},
+            {57, "ПравоКонец"},
+            {58, "ПравоКонецРасширить"},
+            {13, "ПравоРасширить"},
+            {67, "Предыдущий"},
+            {69, "ПредыдущийИлиВерхний"},
+            {35, "Принять"},
+            {65, "Приостановить"},
+            {7, "ПрокрутитьВверх"},
+            {9, "ПрокрутитьВлево"},
+            {3, "ПрокрутитьВниз"},
+            {12, "ПрокрутитьВправо"},
+            {37, "Развернуть"},
+            {38, "РазвернутьВсе"},
+            {39, "Свернуть"},
+            {40, "СвернутьВсе"},
+            {66, "Следующий"},
+            {73, "Следующий"},
+            {68, "СледующийИлиВерхний"},
+            {14, "СловоВлево"},
+            {15, "СловоВлевоРасширить"},
+            {16, "СловоВправо"},
+            {17, "СловоВправоРасширить"},
+            {27, "СтраницаВверх"},
+            {28, "СтраницаВверхРасширить"},
+            {53, "СтраницаВлево"},
+            {25, "СтраницаВниз"},
+            {26, "СтраницаВнизРасширить"},
+            {54, "СтраницаПраво"},
+            {4, "СтрокаВверх"},
+            {5, "СтрокаВверхРасширить"},
+            {0, "СтрокаВниз"},
+            {1, "СтрокаВнизРасширить"},
+            {74, "ТабНазад"},
+            {46, "УдалитьВсе"},
+            {44, "УдалитьСимволСлева"},
+            {43, "УдалитьСимволСправа"},
+            {20, "УдалитьСловоВперед"},
+            {21, "УдалитьСловоНазад"},
+            {42, "ЮниксЭмуляция"},
+        };
+
+        private static readonly Dictionary<decimal, string> namesEn = new Dictionary<decimal, string>
+        {
+            {60, "Redo"},
+            {29, "TopHome"},
+            {30, "TopHomeExtend"},
+            {6, "LineUpToFirstBranch"},
+            {23, "EnableOverwrite"},
+            {63, "Paste"},
+            {45, "SelectAll"},
+            {62, "Cut"},
+            {18, "CutToEndLine"},
+            {19, "CutToStartLine"},
+            {52, "EndOfPage"},
+            {49, "EndOfLine"},
+            {50, "EndOfLineExtend"},
+            {61, "Copy"},
+            {8, "Left"},
+            {55, "LeftHome"},
+            {56, "LeftHomeExtend"},
+            {10, "LeftExtend"},
+            {51, "StartOfPage"},
+            {47, "StartOfLine"},
+            {48, "StartOfLineExtend"},
+            {2, "LineDownToLastBranch"},
+            {31, "BottomEnd"},
+            {32, "BottomEndExtend"},
+            {72, "NewLine"},
+            {70, "Refresh"},
+            {24, "DisableOverwrite"},
+            {33, "OpenSelectedItem"},
+            {41, "Cancel"},
+            {59, "Undo"},
+            {34, "ToggleChecked"},
+            {22, "ToggleOverwrite"},
+            {71, "ToggleExtend"},
+            {36, "ToggleExpandCollapse"},
+            {64, "QuitToplevel"},
+            {11, "Right"},
+            {57, "RightEnd"},
+            {58, "RightEndExtend"},
+            {13, "RightExtend"},
+            {67, "PreviousView"},
+            {69, "PreviousViewOrTop"},
+            {35, "Accept"},
+            {65, "Suspend"},
+            {7, "ScrollUp"},
+            {9, "ScrollLeft"},
+            {3, "ScrollDown"},
+            {12, "ScrollRight"},
+            {37, "Expand"},
+            {38, "ExpandAll"},
+            {39, "Collapse"},
+            {40, "CollapseAll"},
+            {66, "NextView"},
+            {73, "Tab"},
+            {68, "NextViewOrTop"},
+            {14, "WordLeft"},
+            {15, "WordLeftExtend"},
+            {16, "WordRight"},
+            {17, "WordRightExtend"},
+            {27, "PageUp"},
+            {28, "PageUpExtend"},
+            {53, "PageLeft"},
+            {25, "PageDown"},
+            {26, "PageDownExtend"},
+            {54, "PageRight"},
+            {4, "LineUp"},
+            {5, "LineUpExtend"},
+            {0, "LineDown"},
+            {1, "LineDownExtend"},
+            {74, "BackTab"},
+            {46, "DeleteAll"},
+            {44, "DeleteCharLeft"},
+            {43, "DeleteCharRight"},
+            {20, "KillWordForwards"},
+            {21, "KillWordBackwards"},
+            {42, "UnixEmulation"},
+        };
 
         [ContextProperty("Вернуть", "Redo")]
-        public int Redo
-        {
-            get { return 60; }
-        }
+        public decimal Redo => 60;
 
         [ContextProperty("ВерхДомой", "TopHome")]
-        public int TopHome
-        {
-            get { return 29; }
-        }
+        public decimal TopHome => 29;
 
         [ContextProperty("ВерхДомойРасширить", "TopHomeExtend")]
-        public int TopHomeExtend
-        {
-            get { return 30; }
-        }
+        public decimal TopHomeExtend => 30;
 
         [ContextProperty("ВерхнийДочернийВетки", "LineUpToFirstBranch")]
-        public int LineUpToFirstBranch
-        {
-            get { return 6; }
-        }
+        public decimal LineUpToFirstBranch => 6;
 
         [ContextProperty("ВключитьПерезапись", "EnableOverwrite")]
-        public int EnableOverwrite
-        {
-            get { return 23; }
-        }
+        public decimal EnableOverwrite => 23;
 
         [ContextProperty("Вставить", "Paste")]
-        public int Paste
-        {
-            get { return 63; }
-        }
+        public decimal Paste => 63;
 
         [ContextProperty("ВыбратьВсе", "SelectAll")]
-        public int SelectAll
-        {
-            get { return 45; }
-        }
+        public decimal SelectAll => 45;
 
         [ContextProperty("Вырезать", "Cut")]
-        public int Cut
-        {
-            get { return 62; }
-        }
+        public decimal Cut => 62;
 
         [ContextProperty("ВырезатьДоКонцаСтроки", "CutToEndLine")]
-        public int CutToEndLine
-        {
-            get { return 18; }
-        }
+        public decimal CutToEndLine => 18;
 
         [ContextProperty("ВырезатьДоНачалаСтроки", "CutToStartLine")]
-        public int CutToStartLine
-        {
-            get { return 19; }
-        }
+        public decimal CutToStartLine => 19;
 
         [ContextProperty("КонецСтраницы", "EndOfPage")]
-        public int EndOfPage
-        {
-            get { return 52; }
-        }
+        public decimal EndOfPage => 52;
 
         [ContextProperty("КонецСтроки", "EndOfLine")]
-        public int EndOfLine
-        {
-            get { return 49; }
-        }
+        public decimal EndOfLine => 49;
 
         [ContextProperty("КонецСтрокиРасширить", "EndOfLineExtend")]
-        public int EndOfLineExtend
-        {
-            get { return 50; }
-        }
+        public decimal EndOfLineExtend => 50;
 
         [ContextProperty("Копировать", "Copy")]
-        public int Copy
-        {
-            get { return 61; }
-        }
+        public decimal Copy => 61;
 
         [ContextProperty("Лево", "Left")]
-        public int Left
-        {
-            get { return 8; }
-        }
+        public decimal Left => 8;
 
         [ContextProperty("ЛевоНачало", "LeftHome")]
-        public int LeftHome
-        {
-            get { return 55; }
-        }
+        public decimal LeftHome => 55;
 
         [ContextProperty("ЛевоНачалоРасширить", "LeftHomeExtend")]
-        public int LeftHomeExtend
-        {
-            get { return 56; }
-        }
+        public decimal LeftHomeExtend => 56;
 
         [ContextProperty("ЛевоРасширить", "LeftExtend")]
-        public int LeftExtend
-        {
-            get { return 10; }
-        }
+        public decimal LeftExtend => 10;
 
         [ContextProperty("НачалоСтраницы", "StartOfPage")]
-        public int StartOfPage
-        {
-            get { return 51; }
-        }
+        public decimal StartOfPage => 51;
 
         [ContextProperty("НачалоСтроки", "StartOfLine")]
-        public int StartOfLine
-        {
-            get { return 47; }
-        }
+        public decimal StartOfLine => 47;
 
         [ContextProperty("НачалоСтрокиРасширить", "StartOfLineExtend")]
-        public int StartOfLineExtend
-        {
-            get { return 48; }
-        }
+        public decimal StartOfLineExtend => 48;
 
         [ContextProperty("НижнийДочернийВетки", "LineDownToLastBranch")]
-        public int LineDownToLastBranch
-        {
-            get { return 2; }
-        }
+        public decimal LineDownToLastBranch => 2;
 
         [ContextProperty("НизКонец", "BottomEnd")]
-        public int BottomEnd
-        {
-            get { return 31; }
-        }
+        public decimal BottomEnd => 31;
 
         [ContextProperty("НизКонецРасширить", "BottomEndExtend")]
-        public int BottomEndExtend
-        {
-            get { return 32; }
-        }
+        public decimal BottomEndExtend => 32;
 
         [ContextProperty("НоваяСтрока", "NewLine")]
-        public int NewLine
-        {
-            get { return 72; }
-        }
+        public decimal NewLine => 72;
 
         [ContextProperty("Обновить", "Refresh")]
-        public int Refresh
-        {
-            get { return 70; }
-        }
+        public decimal Refresh => 70;
 
         [ContextProperty("ОтключитьПерезапись", "DisableOverwrite")]
-        public int DisableOverwrite
-        {
-            get { return 24; }
-        }
+        public decimal DisableOverwrite => 24;
 
         [ContextProperty("ОткрытьВыбранный", "OpenSelectedItem")]
-        public int OpenSelectedItem
-        {
-            get { return 33; }
-        }
+        public decimal OpenSelectedItem => 33;
 
         [ContextProperty("Отмена", "Cancel")]
-        public int Cancel
-        {
-            get { return 41; }
-        }
+        public decimal Cancel => 41;
 
         [ContextProperty("Отменить", "Undo")]
-        public int Undo
-        {
-            get { return 59; }
-        }
+        public decimal Undo => 59;
 
         [ContextProperty("ПереключитьОтметку", "ToggleChecked")]
-        public int ToggleChecked
-        {
-            get { return 34; }
-        }
+        public decimal ToggleChecked => 34;
 
         [ContextProperty("ПереключитьПерезапись", "ToggleOverwrite")]
-        public int ToggleOverwrite
-        {
-            get { return 22; }
-        }
+        public decimal ToggleOverwrite => 22;
 
         [ContextProperty("ПереключитьРасширение", "ToggleExtend")]
-        public int ToggleExtend
-        {
-            get { return 71; }
-        }
+        public decimal ToggleExtend => 71;
 
         [ContextProperty("ПереключитьСвертывание", "ToggleExpandCollapse")]
-        public int ToggleExpandCollapse
-        {
-            get { return 36; }
-        }
+        public decimal ToggleExpandCollapse => 36;
 
         [ContextProperty("ПокинутьВерхний", "QuitToplevel")]
-        public int QuitToplevel
-        {
-            get { return 64; }
-        }
+        public decimal QuitToplevel => 64;
 
         [ContextProperty("Право", "Right")]
-        public int Right
-        {
-            get { return 11; }
-        }
+        public decimal Right => 11;
 
         [ContextProperty("ПравоКонец", "RightEnd")]
-        public int RightEnd
-        {
-            get { return 57; }
-        }
+        public decimal RightEnd => 57;
 
         [ContextProperty("ПравоКонецРасширить", "RightEndExtend")]
-        public int RightEndExtend
-        {
-            get { return 58; }
-        }
+        public decimal RightEndExtend => 58;
 
         [ContextProperty("ПравоРасширить", "RightExtend")]
-        public int RightExtend
-        {
-            get { return 13; }
-        }
+        public decimal RightExtend => 13;
 
         [ContextProperty("Предыдущий", "PreviousView")]
-        public int PreviousView
-        {
-            get { return 67; }
-        }
+        public decimal PreviousView => 67;
 
         [ContextProperty("ПредыдущийИлиВерхний", "PreviousViewOrTop")]
-        public int PreviousViewOrTop
-        {
-            get { return 69; }
-        }
+        public decimal PreviousViewOrTop => 69;
 
         [ContextProperty("Принять", "Accept")]
-        public int Accept
-        {
-            get { return 35; }
-        }
+        public decimal Accept => 35;
 
         [ContextProperty("Приостановить", "Suspend")]
-        public int Suspend
-        {
-            get { return 65; }
-        }
+        public decimal Suspend => 65;
 
         [ContextProperty("ПрокрутитьВверх", "ScrollUp")]
-        public int ScrollUp
-        {
-            get { return 7; }
-        }
+        public decimal ScrollUp => 7;
 
         [ContextProperty("ПрокрутитьВлево", "ScrollLeft")]
-        public int ScrollLeft
-        {
-            get { return 9; }
-        }
+        public decimal ScrollLeft => 9;
 
         [ContextProperty("ПрокрутитьВниз", "ScrollDown")]
-        public int ScrollDown
-        {
-            get { return 3; }
-        }
+        public decimal ScrollDown => 3;
 
         [ContextProperty("ПрокрутитьВправо", "ScrollRight")]
-        public int ScrollRight
-        {
-            get { return 12; }
-        }
+        public decimal ScrollRight => 12;
 
         [ContextProperty("Развернуть", "Expand")]
-        public int Expand
-        {
-            get { return 37; }
-        }
+        public decimal Expand => 37;
 
         [ContextProperty("РазвернутьВсе", "ExpandAll")]
-        public int ExpandAll
-        {
-            get { return 38; }
-        }
+        public decimal ExpandAll => 38;
 
         [ContextProperty("Свернуть", "Collapse")]
-        public int Collapse
-        {
-            get { return 39; }
-        }
+        public decimal Collapse => 39;
 
         [ContextProperty("СвернутьВсе", "CollapseAll")]
-        public int CollapseAll
-        {
-            get { return 40; }
-        }
+        public decimal CollapseAll => 40;
 
         [ContextProperty("Следующий", "NextView")]
-        public int NextView
-        {
-            get { return 66; }
-        }
+        public decimal NextView => 66;
 
         [ContextProperty("Следующий", "Tab")]
-        public int Tab
-        {
-            get { return 73; }
-        }
+        public decimal Tab => 73;
 
         [ContextProperty("СледующийИлиВерхний", "NextViewOrTop")]
-        public int NextViewOrTop
-        {
-            get { return 68; }
-        }
+        public decimal NextViewOrTop => 68;
 
         [ContextProperty("СловоВлево", "WordLeft")]
-        public int WordLeft
-        {
-            get { return 14; }
-        }
+        public decimal WordLeft => 14;
 
         [ContextProperty("СловоВлевоРасширить", "WordLeftExtend")]
-        public int WordLeftExtend
-        {
-            get { return 15; }
-        }
+        public decimal WordLeftExtend => 15;
 
         [ContextProperty("СловоВправо", "WordRight")]
-        public int WordRight
-        {
-            get { return 16; }
-        }
+        public decimal WordRight => 16;
 
         [ContextProperty("СловоВправоРасширить", "WordRightExtend")]
-        public int WordRightExtend
-        {
-            get { return 17; }
-        }
+        public decimal WordRightExtend => 17;
 
-        [ContextProperty("СтраницаВерх", "PageUp")]
-        public int PageUp
-        {
-            get { return 27; }
-        }
+        [ContextProperty("СтраницаВверх", "PageUp")]
+        public decimal PageUp => 27;
 
-        [ContextProperty("СтраницаВерхРасширить", "PageUpExtend")]
-        public int PageUpExtend
-        {
-            get { return 28; }
-        }
+        [ContextProperty("СтраницаВверхРасширить", "PageUpExtend")]
+        public decimal PageUpExtend => 28;
 
         [ContextProperty("СтраницаВлево", "PageLeft")]
-        public int PageLeft
-        {
-            get { return 53; }
-        }
+        public decimal PageLeft => 53;
 
         [ContextProperty("СтраницаВниз", "PageDown")]
-        public int PageDown
-        {
-            get { return 25; }
-        }
+        public decimal PageDown => 25;
 
         [ContextProperty("СтраницаВнизРасширить", "PageDownExtend")]
-        public int PageDownExtend
-        {
-            get { return 26; }
-        }
+        public decimal PageDownExtend => 26;
 
         [ContextProperty("СтраницаПраво", "PageRight")]
-        public int PageRight
-        {
-            get { return 54; }
-        }
+        public decimal PageRight => 54;
 
-        [ContextProperty("СтрокаВерх", "LineUp")]
-        public int LineUp
-        {
-            get { return 4; }
-        }
+        [ContextProperty("СтрокаВверх", "LineUp")]
+        public decimal LineUp => 4;
 
-        [ContextProperty("СтрокаВерхРасширить", "LineUpExtend")]
-        public int LineUpExtend
-        {
-            get { return 5; }
-        }
+        [ContextProperty("СтрокаВверхРасширить", "LineUpExtend")]
+        public decimal LineUpExtend => 5;
 
         [ContextProperty("СтрокаВниз", "LineDown")]
-        public int LineDown
-        {
-            get { return 0; }
-        }
+        public decimal LineDown => 0;
 
         [ContextProperty("СтрокаВнизРасширить", "LineDownExtend")]
-        public int LineDownExtend
-        {
-            get { return 1; }
-        }
+        public decimal LineDownExtend => 1;
 
         [ContextProperty("ТабНазад", "BackTab")]
-        public int BackTab
-        {
-            get { return 74; }
-        }
+        public decimal BackTab => 74;
 
         [ContextProperty("УдалитьВсе", "DeleteAll")]
-        public int DeleteAll
-        {
-            get { return 46; }
-        }
+        public decimal DeleteAll => 46;
 
         [ContextProperty("УдалитьСимволСлева", "DeleteCharLeft")]
-        public int DeleteCharLeft
-        {
-            get { return 44; }
-        }
+        public decimal DeleteCharLeft => 44;
 
         [ContextProperty("УдалитьСимволСправа", "DeleteCharRight")]
-        public int DeleteCharRight
-        {
-            get { return 43; }
-        }
+        public decimal DeleteCharRight => 43;
 
         [ContextProperty("УдалитьСловоВперед", "KillWordForwards")]
-        public int KillWordForwards
-        {
-            get { return 20; }
-        }
+        public decimal KillWordForwards => 20;
 
         [ContextProperty("УдалитьСловоНазад", "KillWordBackwards")]
-        public int KillWordBackwards
-        {
-            get { return 21; }
-        }
+        public decimal KillWordBackwards => 21;
 
         [ContextProperty("ЮниксЭмуляция", "UnixEmulation")]
-        public int UnixEmulation
-        {
-            get { return 42; }
-        }
-
-        [ContextMethod("ВСтроку", "ВСтроку")]
-        public string ToStringRu(decimal p1)
-        {
-            string str = p1.ToString();
-            switch (p1)
-            {
-                case 60:
-                    str = "Вернуть";
-                    break;
-                case 29:
-                    str = "ВерхДомой";
-                    break;
-                case 30:
-                    str = "ВерхДомойРасширить";
-                    break;
-                case 6:
-                    str = "ВерхнийДочернийВетки";
-                    break;
-                case 23:
-                    str = "ВключитьПерезапись";
-                    break;
-                case 63:
-                    str = "Вставить";
-                    break;
-                case 45:
-                    str = "ВыбратьВсе";
-                    break;
-                case 62:
-                    str = "Вырезать";
-                    break;
-                case 18:
-                    str = "ВырезатьДоКонцаСтроки";
-                    break;
-                case 19:
-                    str = "ВырезатьДоНачалаСтроки";
-                    break;
-                case 52:
-                    str = "КонецСтраницы";
-                    break;
-                case 49:
-                    str = "КонецСтроки";
-                    break;
-                case 50:
-                    str = "КонецСтрокиРасширить";
-                    break;
-                case 61:
-                    str = "Копировать";
-                    break;
-                case 8:
-                    str = "Лево";
-                    break;
-                case 55:
-                    str = "ЛевоНачало";
-                    break;
-                case 56:
-                    str = "ЛевоНачалоРасширить";
-                    break;
-                case 10:
-                    str = "ЛевоРасширить";
-                    break;
-                case 51:
-                    str = "НачалоСтраницы";
-                    break;
-                case 47:
-                    str = "НачалоСтроки";
-                    break;
-                case 48:
-                    str = "НачалоСтрокиРасширить";
-                    break;
-                case 2:
-                    str = "НижнийДочернийВетки";
-                    break;
-                case 31:
-                    str = "НизКонец";
-                    break;
-                case 32:
-                    str = "НизКонецРасширить";
-                    break;
-                case 72:
-                    str = "НоваяСтрока";
-                    break;
-                case 70:
-                    str = "Обновить";
-                    break;
-                case 24:
-                    str = "ОтключитьПерезапись";
-                    break;
-                case 33:
-                    str = "ОткрытьВыбранный";
-                    break;
-                case 41:
-                    str = "Отмена";
-                    break;
-                case 59:
-                    str = "Отменить";
-                    break;
-                case 34:
-                    str = "ПереключитьОтметку";
-                    break;
-                case 22:
-                    str = "ПереключитьПерезапись";
-                    break;
-                case 71:
-                    str = "ПереключитьРасширение";
-                    break;
-                case 36:
-                    str = "ПереключитьСвертывание";
-                    break;
-                case 64:
-                    str = "ПокинутьВерхний";
-                    break;
-                case 11:
-                    str = "Право";
-                    break;
-                case 57:
-                    str = "ПравоКонец";
-                    break;
-                case 58:
-                    str = "ПравоКонецРасширить";
-                    break;
-                case 13:
-                    str = "ПравоРасширить";
-                    break;
-                case 67:
-                    str = "Предыдущий";
-                    break;
-                case 69:
-                    str = "ПредыдущийИлиВерхний";
-                    break;
-                case 35:
-                    str = "Принять";
-                    break;
-                case 65:
-                    str = "Приостановить";
-                    break;
-                case 7:
-                    str = "ПрокрутитьВверх";
-                    break;
-                case 9:
-                    str = "ПрокрутитьВлево";
-                    break;
-                case 3:
-                    str = "ПрокрутитьВниз";
-                    break;
-                case 12:
-                    str = "ПрокрутитьВправо";
-                    break;
-                case 37:
-                    str = "Развернуть";
-                    break;
-                case 38:
-                    str = "РазвернутьВсе";
-                    break;
-                case 39:
-                    str = "Свернуть";
-                    break;
-                case 40:
-                    str = "СвернутьВсе";
-                    break;
-                case 66:
-                    str = "Следующий";
-                    break;
-                case 73:
-                    str = "Следующий";
-                    break;
-                case 68:
-                    str = "СледующийИлиВерхний";
-                    break;
-                case 14:
-                    str = "СловоВлево";
-                    break;
-                case 15:
-                    str = "СловоВлевоРасширить";
-                    break;
-                case 16:
-                    str = "СловоВправо";
-                    break;
-                case 17:
-                    str = "СловоВправоРасширить";
-                    break;
-                case 27:
-                    str = "СтраницаВерх";
-                    break;
-                case 28:
-                    str = "СтраницаВерхРасширить";
-                    break;
-                case 53:
-                    str = "СтраницаВлево";
-                    break;
-                case 25:
-                    str = "СтраницаВниз";
-                    break;
-                case 26:
-                    str = "СтраницаВнизРасширить";
-                    break;
-                case 54:
-                    str = "СтраницаПраво";
-                    break;
-                case 4:
-                    str = "СтрокаВерх";
-                    break;
-                case 5:
-                    str = "СтрокаВерхРасширить";
-                    break;
-                case 0:
-                    str = "СтрокаВниз";
-                    break;
-                case 1:
-                    str = "СтрокаВнизРасширить";
-                    break;
-                case 74:
-                    str = "ТабНазад";
-                    break;
-                case 46:
-                    str = "УдалитьВсе";
-                    break;
-                case 44:
-                    str = "УдалитьСимволСлева";
-                    break;
-                case 43:
-                    str = "УдалитьСимволСправа";
-                    break;
-                case 20:
-                    str = "УдалитьСловоВперед";
-                    break;
-                case 21:
-                    str = "УдалитьСловоНазад";
-                    break;
-                case 42:
-                    str = "ЮниксЭмуляция";
-                    break;
-            }
-            return str;
-        }
-
-        [ContextMethod("ToString", "ToString")]
-        public string ToStringEn(decimal p1)
-        {
-            string str = p1.ToString();
-            switch (p1)
-            {
-                case 60:
-                    str = "Redo";
-                    break;
-                case 29:
-                    str = "TopHome";
-                    break;
-                case 30:
-                    str = "TopHomeExtend";
-                    break;
-                case 6:
-                    str = "LineUpToFirstBranch";
-                    break;
-                case 23:
-                    str = "EnableOverwrite";
-                    break;
-                case 63:
-                    str = "Paste";
-                    break;
-                case 45:
-                    str = "SelectAll";
-                    break;
-                case 62:
-                    str = "Cut";
-                    break;
-                case 18:
-                    str = "CutToEndLine";
-                    break;
-                case 19:
-                    str = "CutToStartLine";
-                    break;
-                case 52:
-                    str = "EndOfPage";
-                    break;
-                case 49:
-                    str = "EndOfLine";
-                    break;
-                case 50:
-                    str = "EndOfLineExtend";
-                    break;
-                case 61:
-                    str = "Copy";
-                    break;
-                case 8:
-                    str = "Left";
-                    break;
-                case 55:
-                    str = "LeftHome";
-                    break;
-                case 56:
-                    str = "LeftHomeExtend";
-                    break;
-                case 10:
-                    str = "LeftExtend";
-                    break;
-                case 51:
-                    str = "StartOfPage";
-                    break;
-                case 47:
-                    str = "StartOfLine";
-                    break;
-                case 48:
-                    str = "StartOfLineExtend";
-                    break;
-                case 2:
-                    str = "LineDownToLastBranch";
-                    break;
-                case 31:
-                    str = "BottomEnd";
-                    break;
-                case 32:
-                    str = "BottomEndExtend";
-                    break;
-                case 72:
-                    str = "NewLine";
-                    break;
-                case 70:
-                    str = "Refresh";
-                    break;
-                case 24:
-                    str = "DisableOverwrite";
-                    break;
-                case 33:
-                    str = "OpenSelectedItem";
-                    break;
-                case 41:
-                    str = "Cancel";
-                    break;
-                case 59:
-                    str = "Undo";
-                    break;
-                case 34:
-                    str = "ToggleChecked";
-                    break;
-                case 22:
-                    str = "ToggleOverwrite";
-                    break;
-                case 71:
-                    str = "ToggleExtend";
-                    break;
-                case 36:
-                    str = "ToggleExpandCollapse";
-                    break;
-                case 64:
-                    str = "QuitToplevel";
-                    break;
-                case 11:
-                    str = "Right";
-                    break;
-                case 57:
-                    str = "RightEnd";
-                    break;
-                case 58:
-                    str = "RightEndExtend";
-                    break;
-                case 13:
-                    str = "RightExtend";
-                    break;
-                case 67:
-                    str = "PreviousView";
-                    break;
-                case 69:
-                    str = "PreviousViewOrTop";
-                    break;
-                case 35:
-                    str = "Accept";
-                    break;
-                case 65:
-                    str = "Suspend";
-                    break;
-                case 7:
-                    str = "ScrollUp";
-                    break;
-                case 9:
-                    str = "ScrollLeft";
-                    break;
-                case 3:
-                    str = "ScrollDown";
-                    break;
-                case 12:
-                    str = "ScrollRight";
-                    break;
-                case 37:
-                    str = "Expand";
-                    break;
-                case 38:
-                    str = "ExpandAll";
-                    break;
-                case 39:
-                    str = "Collapse";
-                    break;
-                case 40:
-                    str = "CollapseAll";
-                    break;
-                case 66:
-                    str = "NextView";
-                    break;
-                case 73:
-                    str = "Tab";
-                    break;
-                case 68:
-                    str = "NextViewOrTop";
-                    break;
-                case 14:
-                    str = "WordLeft";
-                    break;
-                case 15:
-                    str = "WordLeftExtend";
-                    break;
-                case 16:
-                    str = "WordRight";
-                    break;
-                case 17:
-                    str = "WordRightExtend";
-                    break;
-                case 27:
-                    str = "PageUp";
-                    break;
-                case 28:
-                    str = "PageUpExtend";
-                    break;
-                case 53:
-                    str = "PageLeft";
-                    break;
-                case 25:
-                    str = "PageDown";
-                    break;
-                case 26:
-                    str = "PageDownExtend";
-                    break;
-                case 54:
-                    str = "PageRight";
-                    break;
-                case 4:
-                    str = "LineUp";
-                    break;
-                case 5:
-                    str = "LineUpExtend";
-                    break;
-                case 0:
-                    str = "LineDown";
-                    break;
-                case 1:
-                    str = "LineDownExtend";
-                    break;
-                case 74:
-                    str = "BackTab";
-                    break;
-                case 46:
-                    str = "DeleteAll";
-                    break;
-                case 44:
-                    str = "DeleteCharLeft";
-                    break;
-                case 43:
-                    str = "DeleteCharRight";
-                    break;
-                case 20:
-                    str = "KillWordForwards";
-                    break;
-                case 21:
-                    str = "KillWordBackwards";
-                    break;
-                case 42:
-                    str = "UnixEmulation";
-                    break;
-            }
-            return str;
-        }
+        public decimal UnixEmulation => 42;
     }
 }
