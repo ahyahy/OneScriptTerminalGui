@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Главная</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styleos.css">
+	<script defer src="mobil.js"></script>
+</head>
+<body>
+    <header>
+        <section>
+            <div>
+                <div id="logo"><big><big><big>Терминал-формы<br><small><small>для сценарного языка</small></small> OneScript </big></big></big></div>
+            </div>
+            <div style="direction: rtl; overflow:hidden; padding: 8px 0px 0px 0px; margin-top:-7px;">
+				<div id=div22>
+					<input type="checkbox" id="toggle">
+					<label id="label1" class="hamburger-icon" onclick="label1click()"><div></div><div></div><div></div></label>
+				</div>
+                <nav>
+                    <a onclick="navclick(event)" href="index.html">Главная</a>
+                    <a onclick="navclick(event)" href="screenshot.html">Скриншоты</a>
+                    <a onclick="navclick(event)" href="howworks.html">Как это работает</a>
+                    <a onclick="navclick(event)" href="doc.html">Документация</a>
+                    <a onclick="navclick(event)" href="down.html">Скачать</a>
+                    <a onclick="navclick(event)" href="kont.html">Контакты</a>
+					<input type="checkbox" id="toggle2">
+                    <a id="mobil" onclick="mobilClick()">`</a>
+                </nav>
+            </div>
+        </section>
+    </header>
+    <section>
+		<p>Для сценарного языка <a href="https://oscript.io/" target="_blank"><b>OneScript</b></a> написаны библиотеки, создающие графический интерфейс 
+			и тем самым расширяющие его возможности и область применения. Одна из них - библиотека 
+			<a href="https://infostart.ru/1c/articles/1617468/" target="_blank"><b>OneScriptForms</b></a> использует объекты из 
+			пространства имен System.Windows.Forms.
+			<br><br>Другая - <a href="https://infostart.ru/1c/tools/2290947/" target="_blank"><b>OneScriptDeclarativeForms</b></a> 
+			для построения интерфейса использует веб-технологии. 
+			<br><br>И есть разработка 
+			<a href="https://infostart.ru/1c/articles/540284/" target="_blank"><b>oscript-simple-gui</b></a>, так же с объектами 
+			System.Windows.Forms.
+			<br><br>Вроде бы достаточно. Но когда в телеграмм канале односкрипта 
+			<a href="https://t.me/oscript_library" target="_blank"><b>Чат по движку OneScript и библиотеке пакетов oscript-library</b></a>
+			обсуждалось улучшение общения с консолью, я подумал, что здесь есть над чем поработать. Как следует 
+			пройдясь по интернету нашел на github продвинутую реализацию TUI 
+			<a href="https://github.com/gui-cs/Terminal.Gui?ysclid=m8314j0r3q191282313" target="_blank"><b>Terminal.Gui</b></a>.
+			Подходила по всем параметрам. Написана на C#, находится в активной разработке, большое сообщество разработчиков, 
+			10k+ звезд, завидные характеристики. Дело за малым, адаптировать для односкрипта. Что из этого получилось судите сами. 
+			Классов пока немного, но и времени прошло с начала работы тоже немного. Новые классы элементов управления будут 
+			добавляться со скоростью пропорционально размеру моего свободного времени. А на сейчас есть основа - базовые классы, 
+			обработка событий, куча моих сценариев по автоматизации создания и тестирования кода библиотеки.
+		</p>
+    </section>
+</body>
+</html>
