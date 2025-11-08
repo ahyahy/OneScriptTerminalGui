@@ -116,6 +116,7 @@ namespace ostgui
         private static int originalLeft;
         private static int currentLeft;
         private const int SW_MAXIMIZE = 3;
+        private static bool applicationIsStop = false;
 
         private static void MonitorWindowPosition(IntPtr hwnd)
         {
@@ -123,7 +124,7 @@ namespace ostgui
             int currentHeight;
             WINDOWPLACEMENT placement = new WINDOWPLACEMENT();
             bool isMaximizedByState = false;
-            while (isRunning)
+            while (isRunning && !applicationIsStop)
             {
                 // Проверка состояния окна
                 placement.length = Marshal.SizeOf(typeof(WINDOWPLACEMENT));
@@ -228,13 +229,20 @@ namespace ostgui
                 Utils.minCols = Cols;
                 Utils.minRows = Rows;
 
+                Application.NotifyStopRunState += Application_NotifyStopRunState;
                 Application.NotifyNewRunState += Application_NotifyNewRunState;
                 top = new TfToplevel(Application.Top);
+                applicationIsStop = false;
             }
             catch (Exception ex)
             {
                 Utils.GlobalContext().Echo($"Ошибка инициализации: {ex.Message}");
             }
+        }
+
+        private void Application_NotifyStopRunState(Terminal.Gui.Toplevel obj)
+        {
+            applicationIsStop = true;
         }
 
         [ContextProperty("РазмерИзменен", "Resized")]
@@ -587,11 +595,20 @@ namespace ostgui
             Application.Refresh();
         }
 
+        private bool errorRecord = false;
+        [ContextProperty("ЗаписьОшибок", "ErrorRecord")]
+        public bool ErrorRecord
+        {
+            get { return errorRecord; }
+            set { errorRecord = value; }
+        }
+
         [ContextMethod("Завершить", "Shutdown")]
         public void Shutdown()
         {
-            //Application.Shutdown();
-            Application.RequestStop(Top.Base_obj.M_Toplevel);
+            //Application.RequestStop(Top.Base_obj.M_Toplevel);
+            Application.Shutdown();
+            applicationIsStop = true;
         }
 
         [ContextMethod("ЗапуститьИЗавершить", "RunAndShutdown")]
@@ -604,7 +621,11 @@ namespace ostgui
             }
             catch (Exception ex)
             {
-                Utils.WriteToFile("Error RunAndShutdown = " + ex.StackTrace);
+                string _ex = "" + ex.StackTrace;
+                if (ErrorRecord)
+                {
+                    Utils.WriteToFile("Error RunAndShutdown = " + _ex);
+                }
             }
         }
 
@@ -618,7 +639,11 @@ namespace ostgui
             }
             catch (Exception ex)
             {
-                Utils.WriteToFile("Error Run = " + ex.StackTrace);
+                string _ex = "" + ex.StackTrace;
+                if (ErrorRecord)
+                {
+                    Utils.WriteToFile("Error Run = " + _ex);
+                }
             }
         }
 
@@ -1504,7 +1529,11 @@ namespace ostgui
                 Utils.GlobalContext().Echo("Обработчик не выполнен: " + action.MethodName + Environment.NewLine + ex.StackTrace);
             }
             Event = null;
-            Application.Refresh();
+            try
+            {
+                Application.Refresh();
+            }
+            catch { }
         }
 
         [ContextMethod("РазобратьСтроку", "SplitString")]

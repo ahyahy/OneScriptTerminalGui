@@ -3358,94 +3358,191 @@ namespace Terminal.Gui
         /// it will be set to <see langword="false"/> if at least one iteration happened.</param>
         public static void RunMainLoopIteration(ref RunState state, bool wait, ref bool firstIteration)
         {
-            if (MainLoop.EventsPending(wait))
+            //*master//
+            // Весь оригинальный код метода поместим в попытку, потому что иногда 
+            // нужно в обработчике сценария завершить приложение, а оно генерирует ошибки.
+            //////if (MainLoop.EventsPending(wait))
+            //////{
+            //////    // Notify Toplevel it's ready
+            //////    if (firstIteration)
+            //////    {
+            //////        state.Toplevel.OnReady();
+            //////    }
+
+            //////    MainLoop.MainIteration();
+            //////    Iteration?.Invoke();
+
+            //////    EnsureModalOrVisibleAlwaysOnTop(state.Toplevel);
+            //////    if (!EnsuresNotModalNotRunningAndNotCurrent(state.Toplevel))
+            //////    {
+            //////        EnsuresMdiChildOnFrontIfMdiTopNotMostFocused();
+            //////    }
+            //////    if ((state.Toplevel != Current && Current?.Modal == true)
+            //////        || (state.Toplevel != Current && Current?.Modal == false))
+            //////    {
+
+            //////        MdiTop?.OnDeactivate(state.Toplevel);
+            //////        state.Toplevel = Current;
+            //////        MdiTop?.OnActivate(state.Toplevel);
+            //////        Top.SetChildNeedsDisplay();
+            //////        Refresh();
+            //////    }
+            //////    if (Driver.EnsureCursorVisibility())
+            //////    {
+            //////        state.Toplevel.SetNeedsDisplay();
+            //////    }
+            //////}
+            //////else if (!wait)
+            //////{
+            //////    return;
+            //////}
+            //////firstIteration = false;
+
+            //////if (state.Toplevel != Top
+            //////    && (!Top.NeedDisplay.IsEmpty || Top.ChildNeedsDisplay || Top.LayoutNeeded))
+            //////{
+            //////    Top.Redraw(Top.Bounds);
+            //////    foreach (var top in toplevels.Reverse())
+            //////    {
+            //////        if (top != Top && top != state.Toplevel)
+            //////        {
+            //////            top.SetNeedsDisplay();
+            //////            top.Redraw(top.Bounds);
+            //////        }
+            //////    }
+            //////    state.Toplevel.SetNeedsDisplay(state.Toplevel.Bounds);
+            //////}
+            //////if (!state.Toplevel.NeedDisplay.IsEmpty || state.Toplevel.ChildNeedsDisplay || state.Toplevel.LayoutNeeded
+            //////    || MdiChildNeedsDisplay())
+            //////{
+
+            //////    bool isTopNeedsDisplay;
+            //////    do
+            //////    {
+            //////        state.Toplevel.Redraw(state.Toplevel.Bounds);
+            //////        if (DebugDrawBounds)
+            //////        {
+            //////            DrawBounds(state.Toplevel);
+            //////        }
+            //////        state.Toplevel.PositionCursor();
+            //////        Driver.Refresh();
+            //////        isTopNeedsDisplay = IsTopNeedsDisplay(state.Toplevel);
+            //////        if (isTopNeedsDisplay)
+            //////        {
+            //////            Top.Redraw(Top.Bounds);
+            //////            state.Toplevel.SetNeedsDisplay();
+            //////        }
+            //////    } while (isTopNeedsDisplay);
+            //////}
+            //////else
+            //////{
+            //////    Driver.UpdateCursor();
+            //////}
+
+            //////bool IsTopNeedsDisplay(Toplevel toplevel)
+            //////{
+            //////    if (toplevel != Top && !toplevel.Modal
+            //////        && (!Top.NeedDisplay.IsEmpty || Top.ChildNeedsDisplay || Top.LayoutNeeded))
+            //////    {
+
+            //////        return true;
+            //////    }
+            //////    return false;
+            //////}
+
+            try
             {
-                // Notify Toplevel it's ready
-                if (firstIteration)
+                if (MainLoop.EventsPending(wait))
                 {
-                    state.Toplevel.OnReady();
-                }
-
-                MainLoop.MainIteration();
-                Iteration?.Invoke();
-
-                EnsureModalOrVisibleAlwaysOnTop(state.Toplevel);
-                if (!EnsuresNotModalNotRunningAndNotCurrent(state.Toplevel))
-                {
-                    EnsuresMdiChildOnFrontIfMdiTopNotMostFocused();
-                }
-                if ((state.Toplevel != Current && Current?.Modal == true)
-                    || (state.Toplevel != Current && Current?.Modal == false))
-                {
-
-                    MdiTop?.OnDeactivate(state.Toplevel);
-                    state.Toplevel = Current;
-                    MdiTop?.OnActivate(state.Toplevel);
-                    Top.SetChildNeedsDisplay();
-                    Refresh();
-                }
-                if (Driver.EnsureCursorVisibility())
-                {
-                    state.Toplevel.SetNeedsDisplay();
-                }
-            }
-            else if (!wait)
-            {
-                return;
-            }
-            firstIteration = false;
-
-            if (state.Toplevel != Top
-                && (!Top.NeedDisplay.IsEmpty || Top.ChildNeedsDisplay || Top.LayoutNeeded))
-            {
-                Top.Redraw(Top.Bounds);
-                foreach (var top in toplevels.Reverse())
-                {
-                    if (top != Top && top != state.Toplevel)
+                    // Notify Toplevel it's ready
+                    if (firstIteration)
                     {
-                        top.SetNeedsDisplay();
-                        top.Redraw(top.Bounds);
+                        state.Toplevel.OnReady();
                     }
-                }
-                state.Toplevel.SetNeedsDisplay(state.Toplevel.Bounds);
-            }
-            if (!state.Toplevel.NeedDisplay.IsEmpty || state.Toplevel.ChildNeedsDisplay || state.Toplevel.LayoutNeeded
-                || MdiChildNeedsDisplay())
-            {
 
-                bool isTopNeedsDisplay;
-                do
-                {
-                    state.Toplevel.Redraw(state.Toplevel.Bounds);
-                    if (DebugDrawBounds)
+                    MainLoop.MainIteration();
+                    Iteration?.Invoke();
+
+                    EnsureModalOrVisibleAlwaysOnTop(state.Toplevel);
+                    if (!EnsuresNotModalNotRunningAndNotCurrent(state.Toplevel))
                     {
-                        DrawBounds(state.Toplevel);
+                        EnsuresMdiChildOnFrontIfMdiTopNotMostFocused();
                     }
-                    state.Toplevel.PositionCursor();
-                    Driver.Refresh();
-                    isTopNeedsDisplay = IsTopNeedsDisplay(state.Toplevel);
-                    if (isTopNeedsDisplay)
+                    if ((state.Toplevel != Current && Current?.Modal == true)
+                        || (state.Toplevel != Current && Current?.Modal == false))
                     {
-                        Top.Redraw(Top.Bounds);
+
+                        MdiTop?.OnDeactivate(state.Toplevel);
+                        state.Toplevel = Current;
+                        MdiTop?.OnActivate(state.Toplevel);
+                        Top.SetChildNeedsDisplay();
+                        Refresh();
+                    }
+                    if (Driver.EnsureCursorVisibility())
+                    {
                         state.Toplevel.SetNeedsDisplay();
                     }
-                } while (isTopNeedsDisplay);
-            }
-            else
-            {
-                Driver.UpdateCursor();
-            }
+                }
+                else if (!wait)
+                {
+                    return;
+                }
+                firstIteration = false;
 
-            bool IsTopNeedsDisplay(Toplevel toplevel)
-            {
-                if (toplevel != Top && !toplevel.Modal
+                if (state.Toplevel != Top
                     && (!Top.NeedDisplay.IsEmpty || Top.ChildNeedsDisplay || Top.LayoutNeeded))
                 {
-
-                    return true;
+                    Top.Redraw(Top.Bounds);
+                    foreach (var top in toplevels.Reverse())
+                    {
+                        if (top != Top && top != state.Toplevel)
+                        {
+                            top.SetNeedsDisplay();
+                            top.Redraw(top.Bounds);
+                        }
+                    }
+                    state.Toplevel.SetNeedsDisplay(state.Toplevel.Bounds);
                 }
-                return false;
+                if (!state.Toplevel.NeedDisplay.IsEmpty || state.Toplevel.ChildNeedsDisplay || state.Toplevel.LayoutNeeded
+                    || MdiChildNeedsDisplay())
+                {
+
+                    bool isTopNeedsDisplay;
+                    do
+                    {
+                        state.Toplevel.Redraw(state.Toplevel.Bounds);
+                        if (DebugDrawBounds)
+                        {
+                            DrawBounds(state.Toplevel);
+                        }
+                        state.Toplevel.PositionCursor();
+                        Driver.Refresh();
+                        isTopNeedsDisplay = IsTopNeedsDisplay(state.Toplevel);
+                        if (isTopNeedsDisplay)
+                        {
+                            Top.Redraw(Top.Bounds);
+                            state.Toplevel.SetNeedsDisplay();
+                        }
+                    } while (isTopNeedsDisplay);
+                }
+                else
+                {
+                    Driver.UpdateCursor();
+                }
+
+                bool IsTopNeedsDisplay(Toplevel toplevel)
+                {
+                    if (toplevel != Top && !toplevel.Modal
+                        && (!Top.NeedDisplay.IsEmpty || Top.ChildNeedsDisplay || Top.LayoutNeeded))
+                    {
+
+                        return true;
+                    }
+                    return false;
+                }
             }
+            catch { }
+            //master*//
         }
 
         static void EnsuresMdiChildOnFrontIfMdiTopNotMostFocused()
