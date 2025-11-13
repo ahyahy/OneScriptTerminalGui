@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Width Property</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
+    <script defer src="mobilstyle.js"></script>
+</head>
+<body id=bodyID class=dtBODY>
+    <div id=nsbanner>
+        <div id=bannerrow1>
+            <table class=bannerparthead cellSpacing=0>
+                <tbody>
+                    <tr id=hdr>
+                        <td class=runninghead></td>
+                        <td class=product></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id=TitleRow>
+            <h1 class=dtH1>Флажок.Ширина&nbsp;(CheckBox.Width)&nbsp;Свойство</h1>
+        </div>
+    </div>
+    <div id=nstext>
+        <h4 class=dtH4>Использование</h4>
+        <p>Чтение и запись.</p>
+        <h4 class=dtH4>Значение</h4>
+        <p>Тип: <a href="OSTGui.Dim.html">Величина&nbsp;(Dim)</a>.</p>
+        <p>Возвращает или задает ширину элемента.</p>
+        <h4 class=dtH4>Примечание</h4>
+        <p></p>
+        <h4 class=dtH4>Пример</h4>
+            <pre class=code>
+Ширина = Флажок1.Ширина;
+</pre>
+            <details>
+                <summary>Полный пример кода</summary>
+                    <pre class=code>
+<button id="copy1" type="button" style="font-size:100%;">Копировать</button>
+<hr style="border-color: lightgray;"><div id="cont1">
+Перем ТФ, Ширина, Флажок1;
+
+Процедура ПриОткрытии() Экспорт
+	Ширина = Флажок1.Ширина;
+	ТФ.Уведомление().Показать("Ширина = " + Ширина, -1);
+КонецПроцедуры
+
+ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
+ТФ = Новый ТерминалФормыДляОдноСкрипта();
+
+Флажок1 = ТФ.Верхний.Добавить(ТФ.Флажок("Ф_лажок1"));
+
+ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
+
+ТФ.Запуск();
+</div>
+</pre>
+            </details>
+        <p></p>
+        <details>
+            <summary>Тестовый код</summary>
+            <pre class=code>
+<button id="copy2" type="button" style="font-size:100%;">Копировать</button>
+<hr style="border-color: lightgray;"><div id="cont2">
+Перем ТФ, Ширина, Флажок1;
+
+Процедура ПриОткрытии() Экспорт
+	Ширина = Флажок1.Ширина;
+	ТФ.Уведомление().Показать("Ширина = " + Ширина, -1);
+КонецПроцедуры
+
+ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
+ТФ = Новый ТерминалФормыДляОдноСкрипта();
+
+Флажок1 = ТФ.Верхний.Добавить(ТФ.Флажок("Ф_лажок1"));
+
+ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
+ТФ.ЗапуститьИЗавершить();
+
+Сообщить(?(
+ТипЗнч(Ширина) = Тип("ТфВеличина")
+, "", "!!! ") + "Флажок.Ширина (CheckBox.Width) Свойство" + " " + ТекущаяДата() + Символы.ПС);
+</div>
+</pre>
+        </details>
+        <p></p>
+        <h4 class=dtH4>Смотрите также</h4>
+        <p><a href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</a></p>
+    </div>
+</body>
+</html>

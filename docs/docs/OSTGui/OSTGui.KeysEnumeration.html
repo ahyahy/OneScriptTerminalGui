@@ -1,0 +1,550 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Клавиши Перечисление</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
+    <script defer src="mobilstyle.js"></script>
+</head>
+<body id=bodyID class=dtBODY onclick="divrightClick(event)">
+    <div id=nsbanner>
+        <div id=bannerrow1>
+            <table class=bannerparthead cellSpacing=0>
+                <tbody>
+                    <tr id=hdr>
+                        <td class=runninghead></td>
+                        <td class=product></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id=TitleRow>
+            <h1 class=dtH1>Клавиши (Keys) Перечисление</h1>
+        </div>
+    </div>
+    <div id=nstext>
+        <h4 class=dtH4>Описание</h4>
+        <p>Задает коды и модификаторы клавиш.</p>
+        <p>
+			<br>Ключи числовых значений - это значения от <b>48</b> до <b>57</b>, и соответствуют цифрам от <b>0</b> до <b>9</b>.
+			<br>Верхнерегистровые клавиши - это значения от <b>65</b> до <b>90</b>, и соответствуют буквам от <b>А</b> до <b>Z</b>.
+			<br>Так как синтаксис OneScript регистронезависимый, буквы нижнего регистра (строчные) для однозначного определения 
+			имеют в имени окончание <b>"_low"</b>. Буквы верхнего регистра (прописные) имеют в имени окончание <b>"_up"</b>. 
+		</p>
+        <h4 class=dtH4>Члены</h4>
+        <div class=tablediv>
+            <table class=dtTABLE cellSpacing=0>
+                <tbody>					
+                    <tr vAlign=top>
+                        <th width="38%">Имя члена</th>
+                        <th width="50%">Описание</th>
+                        <th width="12%">Значение</th>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>a_low (a_low)</b></td>
+                        <td>Код клавиши при нажатии <b>A</b></td>
+                        <td>97</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>A_up (A_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-A</b></td>
+                        <td>65</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>AltMask (AltMask)</b></td>
+                        <td>Когда установлена эта специальная маска, код клавиши представляет последовательность <b>Alt-KeyValue</b>. И значение кода клавиши можно получить удалив значение <b>AltMask</b></td>
+                        <td>2147483648</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>b_low (b_low)</b></td>
+                        <td>Код клавиши при нажатии <b>B</b></td>
+                        <td>98</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>B_up (B_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-B</b></td>
+                        <td>66</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>Backspace (Backspace)</b></td>
+                        <td>Клавиша <b>Backspace</b></td>
+                        <td>8</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>BackTab (BackTab)</b></td>
+                        <td>Клавиша <b>Shift-Tab</b> (противоположность клавиши <b>Tab</b>)</td>
+                        <td>1048586</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>c_low (c_low)</b></td>
+                        <td>Код клавиши при нажатии <b>C</b></td>
+                        <td>99</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>C_up (C_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-C</b></td>
+                        <td>67</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>CharMask (CharMask)</b></td>
+                        <td>Специальная маска, которая указывает на то, что это значение символа, значения вне этой специальной маски указывают на специальные символы, такие как комбинации <b>Alt-key</b> или специальные ключи на клавиатуре, такие как функциональные клавиши, клавиши стрелок и так далее</td>
+                        <td>1048575</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>Clear (Clear)</b></td>
+                        <td>Код клавиши при нажатии <b>Clear</b></td>
+                        <td>12</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>CtrlMask (CtrlMask)</b></td>
+                        <td>Когда установлена эта специальная маска, код клавиши представляет последовательность <b>Ctrl-KeyValue</b>. И значение кода клавиши можно получить удалив значение <b>CtrlMask</b></td>
+                        <td>1073741824</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>CursorDown (CursorDown)</b></td>
+                        <td>Клавиша <b>CursorDown</b> (СТРЕЛКА ВНИЗ)</td>
+                        <td>1048577</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>CursorLeft (CursorLeft)</b></td>
+                        <td>Клавиша <b>CursorLeft</b> (СТРЕЛКА ВЛЕВО)</td>
+                        <td>1048578</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>CursorRight (CursorRight)</b></td>
+                        <td>Клавиша <b>CursorRight</b> (СТРЕЛКА ВПРАВО)</td>
+                        <td>1048579</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>CursorUp (CursorUp)</b></td>
+                        <td>Клавиша <b>CursorUp</b> (СТРЕЛКА ВВЕРХ)</td>
+                        <td>1048576</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>d_low (d_low)</b></td>
+                        <td>Код клавиши при нажатии <b>D</b></td>
+                        <td>100</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>D_up (D_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-D</b></td>
+                        <td>68</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>D0 (D0)</b></td>
+                        <td>Цифра <b>0</b></td>
+                        <td>48</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>D1 (D1)</b></td>
+                        <td>Цифра <b>1</b></td>
+                        <td>49</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>D2 (D2)</b></td>
+                        <td>Цифра <b>2</b></td>
+                        <td>50</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>D3 (D3)</b></td>
+                        <td>Цифра <b>3</b></td>
+                        <td>51</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>D4 (D4)</b></td>
+                        <td>Цифра <b>4</b></td>
+                        <td>52</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>D5 (D5)</b></td>
+                        <td>Цифра <b>5</b></td>
+                        <td>53</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>D6 (D6)</b></td>
+                        <td>Цифра <b>6</b></td>
+                        <td>54</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>D7 (D7)</b></td>
+                        <td>Цифра <b>7</b></td>
+                        <td>55</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>D8 (D8)</b></td>
+                        <td>Цифра <b>8</b></td>
+                        <td>56</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>D9 (D9)</b></td>
+                        <td>Цифра <b>9</b></td>
+                        <td>57</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>Delete (Delete)</b></td>
+                        <td>Код клавиши при нажатии клавиши <b>Del</b></td>
+                        <td>127</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>DeleteChar (DeleteChar)</b></td>
+                        <td>Клавиша <b>Del</b></td>
+                        <td>1048585</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>e_low (e_low)</b></td>
+                        <td>Код клавиши при нажатии <b>E</b></td>
+                        <td>101</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>E_up (E_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-E</b></td>
+                        <td>69</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>End (End)</b></td>
+                        <td>Клавиша <b>End</b></td>
+                        <td>1048583</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>Enter (Enter)</b></td>
+                        <td>Код клавиши при нажатии клавиши <b>Enter</b></td>
+                        <td>10</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>Esc (Esc)</b></td>
+                        <td>Код клавиши при нажатии клавиши <b>Esc</b></td>
+                        <td>27</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>f_low (f_low)</b></td>
+                        <td>Код клавиши при нажатии <b>F</b></td>
+                        <td>102</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>F_up (F_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-F</b></td>
+                        <td>70</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>F1 (F1)</b></td>
+                        <td>Клавиша <b>F1</b></td>
+                        <td>1048588</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>F10 (F10)</b></td>
+                        <td>Клавиша <b>F10</b></td>
+                        <td>1048597</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>F11 (F11)</b></td>
+                        <td>Клавиша <b>F11</b></td>
+                        <td>1048598</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>F12 (F12)</b></td>
+                        <td>Клавиша <b>F12</b></td>
+                        <td>1048599</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>F2 (F2)</b></td>
+                        <td>Клавиша <b>F2</b></td>
+                        <td>1048589</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>F3 (F3)</b></td>
+                        <td>Клавиша <b>F3</b></td>
+                        <td>1048590</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>F4 (F4)</b></td>
+                        <td>Клавиша <b>F4</b></td>
+                        <td>1048591</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>F5 (F5)</b></td>
+                        <td>Клавиша <b>F5</b></td>
+                        <td>1048592</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>F6 (F6)</b></td>
+                        <td>Клавиша <b>F6</b></td>
+                        <td>1048593</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>F7 (F7)</b></td>
+                        <td>Клавиша <b>F7</b></td>
+                        <td>1048594</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>F8 (F8)</b></td>
+                        <td>Клавиша <b>F8</b></td>
+                        <td>1048595</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>F9 (F9)</b></td>
+                        <td>Клавиша <b>F9</b></td>
+                        <td>1048596</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>g_low (g_low)</b></td>
+                        <td>Код клавиши при нажатии <b>G</b></td>
+                        <td>103</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>G_up (G_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-G</b></td>
+                        <td>71</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>h_low (h_low)</b></td>
+                        <td>Код клавиши при нажатии <b>H</b></td>
+                        <td>104</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>H_up (H_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-H</b></td>
+                        <td>72</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>Home (Home)</b></td>
+                        <td>Клавиша <b>Home</b></td>
+                        <td>1048582</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>i_low (i_low)</b></td>
+                        <td>Код клавиши при нажатии <b>I</b></td>
+                        <td>105</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>I_up (I_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-I</b></td>
+                        <td>73</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>InsertChar (InsertChar)</b></td>
+                        <td>Клавиша <b>Insert</b></td>
+                        <td>45</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>j_low (j_low)</b></td>
+                        <td>Код клавиши при нажатии <b>J</b></td>
+                        <td>106</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>J_up (J_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-J</b></td>
+                        <td>74</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>k_low (k_low)</b></td>
+                        <td>Код клавиши при нажатии <b>K</b></td>
+                        <td>107</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>K_up (K_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-K</b></td>
+                        <td>75</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>l_low (l_low)</b></td>
+                        <td>Код клавиши при нажатии <b>L</b></td>
+                        <td>108</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>L_up (L_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-L</b></td>
+                        <td>76</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>m_low (m_low)</b></td>
+                        <td>Код клавиши при нажатии <b>M</b></td>
+                        <td>109</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>M_up (M_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-M</b></td>
+                        <td>77</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>n_low (n_low)</b></td>
+                        <td>Код клавиши при нажатии <b>N</b></td>
+                        <td>110</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>N_up (N_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-N</b></td>
+                        <td>78</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>Null (Null)</b></td>
+                        <td>Код клавиши представляющий значение <b>Null</b> или <b>Emrty</b></td>
+                        <td>0</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>o_low (o_low)</b></td>
+                        <td>Код клавиши при нажатии <b>O</b></td>
+                        <td>111</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>O_up (O_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-O</b></td>
+                        <td>79</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>p_low (p_low)</b></td>
+                        <td>Код клавиши при нажатии <b>P</b></td>
+                        <td>112</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>P_up (P_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-P</b></td>
+                        <td>80</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>PageDown (PageDown)</b></td>
+                        <td>Клавиша <b>PageDown</b></td>
+                        <td>1048581</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>PageUp (PageUp)</b></td>
+                        <td>Клавиша <b>PageUp</b></td>
+                        <td>1048580</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>PrintScreen (PrintScreen)</b></td>
+                        <td>Клавиша <b>PrintScreen</b></td>
+                        <td>1048587</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>q_low (q_low)</b></td>
+                        <td>Код клавиши при нажатии <b>Q</b></td>
+                        <td>113</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>Q_up (Q_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-Q</b></td>
+                        <td>81</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>r_low (r_low)</b></td>
+                        <td>Код клавиши при нажатии <b>R</b></td>
+                        <td>114</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>R_up (R_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-R</b></td>
+                        <td>82</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>s_low (s_low)</b></td>
+                        <td>Код клавиши при нажатии <b>S</b></td>
+                        <td>115</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>S_up (S_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-S</b></td>
+                        <td>83</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>ShiftMask (ShiftMask)</b></td>
+                        <td>Когда установлена эта специальная маска, код клавиши представляет последовательность <b>Shift-KeyValue</b>. И значение кода клавиши можно получить удалив значение <b>ShiftMask</b></td>
+                        <td>268435456</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>Space (Space)</b></td>
+                        <td>Код клавиши при нажатии <b>Space</b></td>
+                        <td>32</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>SpecialMask (SpecialMask)</b></td>
+                        <td>Когда установлена эта специальная маска, код клавиши представляет специальную маску. В противном случае значение является одним из нижних битов (извлеченных из <b>Charmask</b>).</td>
+                        <td>4293918720</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>t_low (t_low)</b></td>
+                        <td>Код клавиши при нажатии <b>T</b></td>
+                        <td>116</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>T_up (T_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-T</b></td>
+                        <td>84</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>Tab (Tab)</b></td>
+                        <td>Код клавиши при нажатии <b>Tab</b></td>
+                        <td>9</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>u_low (u_low)</b></td>
+                        <td>Код клавиши при нажатии <b>U</b></td>
+                        <td>117</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>U_up (U_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-U</b></td>
+                        <td>85</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>Unknown (Unknown)</b></td>
+                        <td>Была нажата неизвестная клавиша</td>
+                        <td>1048612</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>v_low (v_low)</b></td>
+                        <td>Код клавиши при нажатии <b>V</b></td>
+                        <td>118</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>V_up (V_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-V</b></td>
+                        <td>86</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>w_low (w_low)</b></td>
+                        <td>Код клавиши при нажатии <b>W</b></td>
+                        <td>119</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>W_up (W_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-W</b></td>
+                        <td>87</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>x_low (x_low)</b></td>
+                        <td>Код клавиши при нажатии <b>X</b></td>
+                        <td>120</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>X_up (X_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-X</b></td>
+                        <td>88</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>y_low (y_low)</b></td>
+                        <td>Код клавиши при нажатии <b>Y</b></td>
+                        <td>121</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>Y_up (Y_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-Y</b></td>
+                        <td>89</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>z_low (z_low)</b></td>
+                        <td>Код клавиши при нажатии <b>Z</b></td>
+                        <td>122</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>Z_up (Z_up)</b></td>
+                        <td>Код клавиши при нажатии <b>Shift-Z</b></td>
+                        <td>90</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h4 class=dtH4>Смотрите также</h4>
+        <p><a href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</a></p>
+    </div>
+</body>
+</html>

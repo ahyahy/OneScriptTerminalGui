@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>ColorScheme Constructor</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
+    <script defer src="mobilstyle.js"></script>
+</head>
+<body id=bodyID class=dtBODY>
+    <div id=nsbanner>
+        <div id=bannerrow1>
+            <table class=bannerparthead cellSpacing=0>
+                <tbody>
+                    <tr id=hdr>
+                        <td class=runninghead></td>
+                        <td class=product></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id=TitleRow>
+            <h1 class=dtH1>ЦветоваяСхема (ColorScheme)&nbsp;Конструктор</h1>
+        </div>
+    </div>
+    <div id=nstext>
+        <h4 class=dtH4>Синтаксис</h4>
+        <p>ЦветоваяСхема()</p>
+        <h4 class=dtH4>Параметры</h4>
+        <dl></dl>
+        <h4 class=dtH4>Описание</h4>
+        <p>Создаёт новый экземпляр класса <b>ЦветоваяСхема&nbsp;(ColorScheme)</b>.</p>
+        <h4 class=dtH4>Примечание</h4>
+        <p></p>
+        <h4 class=dtH4>Пример</h4>
+        <pre class=code>
+ЦветоваяСхема1 = ТФ.ЦветоваяСхема();
+</pre>
+        <details>
+            <summary>Полный пример кода</summary>
+            <pre class=code>
+<button id="copy1" type="button" style="font-size:100%;">Копировать</button>
+<hr style="border-color: lightgray;"><div id="cont1">
+Перем ТФ, ЦветоваяСхема1, ЦветоваяСхема;
+
+Процедура ПриОткрытии() Экспорт
+	ЦветоваяСхема = ЦветоваяСхема1;
+	ТФ.Верхний.Текст = "ЦветоваяСхема1 = " + ЦветоваяСхема;
+КонецПроцедуры
+
+ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
+ТФ = Новый ТерминалФормыДляОдноСкрипта();
+
+Окно1 = ТФ.Верхний.Добавить(ТФ.Окно("Окно1", 1, 1, 80, 15));
+Окно1.Текст = "ЦветоваяСхема1.Фокус = ТФ.Атрибут(ТФ.Цвет.Синий, ТФ.Цвет.Серый);";
+
+ЦветоваяСхема1 = ТФ.ЦветоваяСхема();
+ЦветоваяСхема1.Фокус = ТФ.Атрибут(ТФ.Цвет.Синий, ТФ.Цвет.Серый);
+Окно1.ЦветоваяСхема = ЦветоваяСхема1;
+
+ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
+
+ТФ.Запуск();
+</div>
+</pre>
+        </details>
+        <p></p>
+        <details>
+            <summary>Тестовый код</summary>
+            <pre class=code>
+<button id="copy2" type="button" style="font-size:100%;">Копировать</button>
+<hr style="border-color: lightgray;"><div id="cont2">
+Перем ТФ, ЦветоваяСхема1, ЦветоваяСхема;
+
+Процедура ПриОткрытии() Экспорт
+	ЦветоваяСхема = ЦветоваяСхема1;
+	ТФ.Верхний.Текст = "ЦветоваяСхема1 = " + ЦветоваяСхема;
+КонецПроцедуры
+
+ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
+ТФ = Новый ТерминалФормыДляОдноСкрипта();
+
+Окно1 = ТФ.Верхний.Добавить(ТФ.Окно("Окно1", 1, 1, 80, 15));
+Окно1.Текст = "ЦветоваяСхема1.Фокус = ТФ.Атрибут(ТФ.Цвет.Синий, ТФ.Цвет.Серый);";
+
+ЦветоваяСхема1 = ТФ.ЦветоваяСхема();
+ЦветоваяСхема1.Фокус = ТФ.Атрибут(ТФ.Цвет.Синий, ТФ.Цвет.Серый);
+Окно1.ЦветоваяСхема = ЦветоваяСхема1;
+
+ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
+ТФ.ЗапуститьИЗавершить();
+
+Сообщить(?(
+ТипЗнч(ЦветоваяСхема1) = Тип("ТфЦветоваяСхема")
+, "", "!!! ") + "ЦветоваяСхема (ColorScheme) Конструктор" + " " + ТекущаяДата() + Символы.ПС);
+</div>
+</pre>
+        </details>
+        <p></p>
+        <h4 class=dtH4>Смотрите также</h4>
+        <p><a href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</a></p>
+    </div>
+</body>
+</html>
