@@ -52,7 +52,9 @@
     - Текстовый (TextView)
     - Уведомление (Balloons)
     - Флажок (CheckBox)
-   
+
+https://github.com/user-attachments/assets/cafcfbff-aa21-4fe9-b4d2-76cb8ad0e4c5
+
 ### Как это работает.
 Вы можете создать приложение, которое: 
 * Будет написано на сценарном языке OneScript (читай - языке 1С).
