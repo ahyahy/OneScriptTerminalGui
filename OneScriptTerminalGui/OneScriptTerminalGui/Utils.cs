@@ -26,6 +26,7 @@ namespace ostgui
         public static IRuntimeContextInstance startupScript = GlobalContext().StartupScript();
         public static string pathStartupScript = startupScript.GetPropValue(startupScript.FindProperty("Path")).AsString();
         public static string pathLog = Path.Combine(Utils.pathStartupScript, "logtui.txt");
+        public static string nameStartupScript = startupScript.GetPropValue(startupScript.FindProperty("Source")).AsString();
 
         //ScriptEngine.Machine.Values.NullValue NullValue1;
         //ScriptEngine.Machine.Values.BooleanValue BooleanValue1;
@@ -394,6 +395,16 @@ namespace ostgui
             {
                 writer.WriteLineAsync("" + Environment.NewLine + DateTime.Now.ToString() + Environment.NewLine + str);
             }
+        }
+
+        public static string TempName
+        {
+            get { return $"{Guid.NewGuid():N}"; }
+        }
+
+        public static string NameStartupScript
+        {
+            get { return nameStartupScript; }
         }
 
         public static string PathLog

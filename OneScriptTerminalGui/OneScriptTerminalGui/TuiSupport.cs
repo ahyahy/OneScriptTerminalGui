@@ -50366,14 +50366,31 @@ namespace Terminal.Gui
         /// </remarks>
         public void Clear()
         {
-            var h = Frame.Height;
-            var w = Frame.Width;
-            for (var line = 0; line < h; line++)
+            //////var h = Frame.Height;
+            //////var w = Frame.Width;
+            //////for (var line = 0; line < h; line++)
+            //////{
+            //////    Move(0, line);
+            //////    for (var col = 0; col < w; col++)
+            //////        Driver.AddRune(' ');
+            //////}
+
+            //*master//
+            // Весь оригинальный код метода поместим в попытку, потому что иногда 
+            // нужно в обработчике сценария завершить приложение, а оно генерирует ошибки.
+            try
             {
-                Move(0, line);
-                for (var col = 0; col < w; col++)
-                    Driver.AddRune(' ');
+                var h = Frame.Height;
+                var w = Frame.Width;
+                for (var line = 0; line < h; line++)
+                {
+                    Move(0, line);
+                    for (var col = 0; col < w; col++)
+                        Driver.AddRune(' ');
+                }
             }
+            catch { }
+            //master*//
         }
 
         /// <summary>
@@ -50551,13 +50568,29 @@ namespace Terminal.Gui
         ///  if set to <see langword="true"/>, the col, row values are clamped to the screen (terminal) dimensions (0..TerminalDim-1).</param>
         public void Move(int col, int row, bool clipped = false)
         {
-            if (Driver.Rows == 0)
-            {
-                return;
-            }
+            //////if (Driver.Rows == 0)
+            //////{
+            //////    return;
+            //////}
 
-            ViewToScreen(col, row, out var rCol, out var rRow, clipped);
-            Driver.Move(rCol, rRow);
+            //////ViewToScreen(col, row, out var rCol, out var rRow, clipped);
+            //////Driver.Move(rCol, rRow);
+
+            //*master//
+            // Весь оригинальный код метода поместим в попытку, потому что иногда 
+            // нужно в обработчике сценария завершить приложение, а оно генерирует ошибки.
+            try
+            {
+                if (Driver.Rows == 0)
+                {
+                    return;
+                }
+
+                ViewToScreen(col, row, out var rCol, out var rRow, clipped);
+                Driver.Move(rCol, rRow);
+            }
+            catch { }
+            //master*//
         }
 
         /// <summary>

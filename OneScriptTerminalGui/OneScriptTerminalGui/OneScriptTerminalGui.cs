@@ -76,6 +76,9 @@ namespace ostgui
             return instance;
         }
 
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+
         [DllImport("user32.dll")]
         private static extern bool GetWindowPlacement(IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
 
@@ -117,6 +120,7 @@ namespace ostgui
         private static int currentLeft;
         private const int SW_MAXIMIZE = 3;
         private static bool applicationIsStop = false;
+        private const uint WM_CLOSE = 0x0010;
 
         private static void MonitorWindowPosition(IntPtr hwnd)
         {
@@ -166,6 +170,14 @@ namespace ostgui
         }
 
         // Методы и свойства объекта OneScriptTerminalGui.
+
+        private bool testMode = false;
+        [ContextProperty("РежимТестирования", "TestMode")]
+        public bool TestMode
+        {
+            get { return testMode; }
+            set { testMode = value; }
+        }
 
         [ContextProperty("ПлатформаWin", "WinPlatform")]
         public bool WinPlatform
@@ -625,6 +637,8 @@ namespace ostgui
                 if (ErrorRecord)
                 {
                     Utils.WriteToFile("Error RunAndShutdown = " + _ex);
+                    Utils.WriteToFile("{" + Utils.NameStartupScript + " Error RunAndShutdown = " + _ex);
+                    instance.Shutdown();
                 }
             }
         }
@@ -643,6 +657,8 @@ namespace ostgui
                 if (ErrorRecord)
                 {
                     Utils.WriteToFile("Error Run = " + _ex);
+                    Utils.WriteToFile("{" + Utils.NameStartupScript + " Error Run = " + _ex);
+                    instance.Shutdown();
                 }
             }
         }
@@ -1480,6 +1496,12 @@ namespace ostgui
 
         // Вспомогательные методы и объекты.
 
+        [ContextProperty("СлучайноеИмя", "TempName")]
+        public string TempName
+        {
+            get { return Utils.TempName; }
+        }
+
         private void Application_NotifyNewRunState(Application.RunState obj)
         {
             OnOpen.Invoke();
@@ -1527,6 +1549,15 @@ namespace ostgui
             catch (Exception ex)
             {
                 Utils.GlobalContext().Echo("Обработчик не выполнен: " + action.MethodName + Environment.NewLine + ex.StackTrace);
+                Utils.WriteToFile("{" + Utils.NameStartupScript + " Обработчик не выполнен: " + action.MethodName + Environment.NewLine + ex.StackTrace);
+                instance.Shutdown();
+
+                if (isWin && instance.TestMode)
+                {
+                    IntPtr hwnd = GetConsoleWindow();
+                    // Отправляем сообщение WM_CLOSE — окно получит команду на закрытие
+                    SendMessage(hwnd, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
+                }
             }
             Event = null;
             try
