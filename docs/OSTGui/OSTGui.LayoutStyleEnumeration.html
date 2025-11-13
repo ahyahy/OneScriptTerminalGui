@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>СтильКомпоновки Перечисление</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
+    <script defer src="mobilstyle.js"></script>
+</head>
+<body id=bodyID class=dtBODY onclick="divrightClick(event)">
+    <div id=nsbanner>
+        <div id=bannerrow1>
+            <table class=bannerparthead cellSpacing=0>
+                <tbody>
+                    <tr id=hdr>
+                        <td class=runninghead></td>
+                        <td class=product></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id=TitleRow>
+            <h1 class=dtH1>СтильКомпоновки (LayoutStyle) Перечисление</h1>
+        </div>
+    </div>
+    <div id=nstext>
+        <h4 class=dtH4>Описание</h4>
+        <p>Указывает как выполняется компоновка элемента.</p>
+        <p>
+			Библиотека <b>ТерминалФормыДляОдноСкрипта</b> поддерживает две различные системы компоновки: абсолютную и вычисляемую. 
+			Абсолютная система используется, когда вы хотите, чтобы представление располагалось точно в указанном месте, и хотите 
+			вручную управлять его расположением. Для этого нужно вызвать конструктор элемента с аргументом типа <b>Прямоугольник (Rect)</b>. 
+			После этого для изменения положения представления можно изменять свойство <b>Кадр (Frame)</b> элемента.
+		</p>
+        <p>
+			Система компоновки не поддерживает целые числа. Вместо этого свойства <b>Икс (X)</b> и <b>Игрек (Y)</b> имеют 
+			тип <b>Позиция (Pos)</b>, а свойства <b>Ширина (Width)</b> и <b>Высота (Height)</b> имеют тип <b>Величина (Dim)</b>, 
+			которые могут быть созданы неявно на основе целочисленных значений.
+		</p>
+        <h4 class=dtH4>Члены</h4>
+        <div class=tablediv>
+            <table class=dtTABLE cellSpacing=0>
+                <tbody>					
+                    <tr vAlign=top>
+                        <th width="38%">Имя члена</th>
+                        <th width="50%">Описание</th>
+                        <th width="12%">Значение</th>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>Абсолютно (Absolute)</b></td>
+                        <td>Положение и размер элемента основаны на значении кадра.</td>
+                        <td>0</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td><b>Вычислено (Computed)</b></td>
+                        <td>Положение и размер элемента будут рассчитаны на основе свойств <b>X</b>, <b>Y</b>, <b>ширины</b> и <b>высоты</b> и установлены на кадре.</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h4 class=dtH4>Смотрите также</h4>
+        <p><a href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</a></p>
+    </div>
+</body>
+</html>

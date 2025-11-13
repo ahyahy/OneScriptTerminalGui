@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>RadioGroupItems.Remove Method</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
+    <script defer src="mobilstyle.js"></script>
+</head>
+<body id=bodyID class=dtBODY>
+    <div id=nsbanner>
+        <div id=bannerrow1>
+            <table class=bannerparthead cellSpacing=0>
+                <tbody>
+                    <tr id=hdr>
+                        <td class=runninghead></td>
+                        <td class=product></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id=TitleRow>
+            <h1 class=dtH1>МеткиПереключателя.Удалить (RadioGroupItems.Remove)&nbsp;Метод</h1>
+        </div>
+    </div>
+    <div id=nstext>
+        <h4 class=dtH4>Синтаксис</h4>
+        <p>Удалить(&lt;Метка&gt;)</p>
+        <h4 class=dtH4>Параметры</h4>
+        <dl>
+            <dt><i>Метка</i> (обязательный)</dt>
+            <dd>Тип: Строка.</dd>
+            <dd>
+                Значение для удаления из коллекции.
+            </dd>
+        </dl>
+        <h4 class=dtH4>Возвращаемое значение</h4>
+        <p></p>
+        <p></p>
+        <h4 class=dtH4>Описание</h4>
+        <p>Удаляет метку из коллекции.</p>
+        <h4 class=dtH4>Примечание</h4>
+        <p></p>
+        <h4 class=dtH4>Пример</h4>
+            <pre class=code>
+Переключатель1.Метки.Удалить("Метка1");
+</pre>
+            <details>
+                <summary>Полный пример кода</summary>
+                    <pre class=code>
+<button id="copy1" type="button" style="font-size:100%;">Копировать</button>
+<hr style="border-color: lightgray;"><div id="cont1">
+Перем ТФ, Переключатель1;
+
+Процедура ПриОткрытии() Экспорт
+	Переключатель1.Метки.Удалить("Метка1");
+	Количество = Переключатель1.Метки.Количество;
+	ТФ.Уведомление().Показать("Количество = " + Количество, -1);
+КонецПроцедуры
+
+ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
+ТФ = Новый ТерминалФормыДляОдноСкрипта();
+
+Переключатель1 = ТФ.Верхний.Добавить(ТФ.Переключатель());
+Метки1 = Переключатель1.Метки;
+Метки1.Добавить("Метка1");
+Метки1.Добавить("Метка2");
+Метки1.Добавить("Метка3");
+Переключатель1.ИндексВыбранного = 1;
+
+ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
+
+ТФ.Запуск();
+</div>
+</pre>
+            </details>
+        <p></p>
+        <details>
+            <summary>Тестовый код</summary>
+            <pre class=code>
+<button id="copy2" type="button" style="font-size:100%;">Копировать</button>
+<hr style="border-color: lightgray;"><div id="cont2">
+Перем ТФ, Переключатель1, Количество;
+
+Процедура ПриОткрытии() Экспорт
+	Переключатель1.Метки.Удалить("Метка1");
+	Количество = Переключатель1.Метки.Количество;
+	ТФ.Уведомление().Показать("Количество = " + Количество, -1);
+КонецПроцедуры
+
+ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
+ТФ = Новый ТерминалФормыДляОдноСкрипта();
+
+Переключатель1 = ТФ.Верхний.Добавить(ТФ.Переключатель());
+Метки1 = Переключатель1.Метки;
+Метки1.Добавить("Метка1");
+Метки1.Добавить("Метка2");
+Метки1.Добавить("Метка3");
+Переключатель1.ИндексВыбранного = 1;
+
+ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
+ТФ.ЗапуститьИЗавершить();
+
+Сообщить(?(
+Количество = 2
+, "", "!!! ") + "МеткиПереключателя.Удалить (RadioGroupItems.Remove) Метод" + " " + ТекущаяДата() + Символы.ПС);
+</div>
+</pre>
+        </details>
+        <p></p>
+        <h4 class=dtH4>Смотрите также</h4>
+        <p><a href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</a></p>
+    </div>
+</body>
+</html>

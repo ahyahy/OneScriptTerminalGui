@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>MenuBar Properties</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
+    <script defer src="mobilstyle.js"></script>
+</head>
+<body id=bodyID class=dtBODY onclick="divrightClick(event)">
+    <div id=nsbanner>
+        <div id=bannerrow1>
+            <table class=bannerparthead cellSpacing=0>
+                <tbody>
+                    <tr id=hdr>
+                        <td class=runninghead></td>
+                        <td class=product></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id=TitleRow>
+            <h1 class=dtH1>ПанельМеню (MenuBar)&nbsp;Свойства</h1>
+        </div>
+    </div>
+    <div id=nstext>
+        <p></p>
+        <h4 class=dtH4>Свойства</h4>
+        <div class=tablediv>
+            <table class=dtTABLE cellSpacing=0>
+                <tbody>					
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.MenuBarDataProperty.html">Данные&nbsp;(Data)</a> (унаследовано от Элемент (View))</td>
+                        <td width="50%">Возвращает или задает произвольные данные для элемента.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.MenuBarIsAddedProperty.html">Добавлено&nbsp;(IsAdded)</a> (унаследовано от Элемент (View))</td>
+                        <td width="50%">Возвращает информацию о том добавлен ли элемент к родителю.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.MenuBarEnabledProperty.html">Доступность&nbsp;(Enabled)</a> (унаследовано от Респондент (Responder))</td>
+                        <td width="50%">Возвращает или задает значение, указывающее, может ли элемент реагировать на действия пользователя.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.MenuBarYProperty.html">Игрек&nbsp;(Y)</a> (унаследовано от Элемент (View))</td>
+                        <td width="50%">Возвращает или задает объект <b>Позиция (Pos)</b>, соответствующий координате по оси Y.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.MenuBarIdProperty.html">Идентификатор&nbsp;(Id)</a> (унаследовано от Элемент (View))</td>
+                        <td width="50%">Возвращает или задает идентификатор для элемента.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.MenuBarXProperty.html">Икс&nbsp;(X)</a> (унаследовано от Элемент (View))</td>
+                        <td width="50%">Возвращает или задает объект <b>Позиция (Pos)</b>, соответствующий координате по оси X.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.MenuBarOpenIndexProperty.html">ИндексОткрываемого&nbsp;(OpenIndex)</a></td>
+                        <td width="50%">Индекс пункта подменю панели меню, который будет активирован при нажатии клавиши <b>F9</b> или при нажатии клавиши вызова пункта подменю.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.MenuBarFrameProperty.html">Кадр&nbsp;(Frame)</a> (унаследовано от Элемент (View))</td>
+                        <td width="50%">Возвращает или задает кадр для элемента. Кадр определяется относительно родителя.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.MenuBarKeyProperty.html">Клавиша&nbsp;(Key)</a></td>
+                        <td width="50%">Возвращает или задает клавишу, используемую для активации строки меню с клавиатуры.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.MenuBarTagProperty.html">Метка&nbsp;(Tag)</a> (унаследовано от Элемент (View))</td>
+                        <td width="50%">Возвращает или задает объект, содержащий дополнительные данные.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.MenuBarIsMenuOpenProperty.html">Открыто&nbsp;(IsMenuOpen)</a></td>
+                        <td width="50%">Возвращает <b>Истина</b>, если меню открыто, в противном случае <b>Ложь</b>.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.MenuBarVisibleProperty.html">Отображать&nbsp;(Visible)</a></td>
+                        <td width="50%">Возвращает или задает значение, указывающее, отображаются ли этот элемент и все его дочерние подэлементы.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.MenuBarMenusProperty.html">ПодМеню&nbsp;(Menus)</a></td>
+                        <td width="50%">Возвращает коллекцию подменю для данного меню. Устанавливайте это значение только после того, как станет видна строка меню.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.MenuBarSuperViewProperty.html">Родитель&nbsp;(SuperView)</a> (унаследовано от Элемент (View))</td>
+                        <td width="50%">Возвращает контейнер (родителя) для элемента или <b>Неопределено</b>, если этот элемент не был добавлен в контейнер.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.MenuBarColorSchemeProperty.html">ЦветоваяСхема&nbsp;(ColorScheme)</a> (унаследовано от Элемент (View))</td>
+                        <td width="50%">Задает цветовую схему для элемента.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h4 class=dtH4>Смотрите также</h4>
+        <p><a href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</a></p>
+    </div>
+</body>
+</html>
