@@ -15617,6 +15617,7 @@
 		|        public static IRuntimeContextInstance startupScript = GlobalContext().StartupScript();
 		|        public static string pathStartupScript = startupScript.GetPropValue(startupScript.FindProperty(""Path"")).AsString();
 		|        public static string pathLog = Path.Combine(Utils.pathStartupScript, ""logtui.txt"");
+		|        public static string nameStartupScript = startupScript.GetPropValue(startupScript.FindProperty(""Source"")).AsString();
 		|
 		|        //ScriptEngine.Machine.Values.NullValue NullValue1;
 		|        //ScriptEngine.Machine.Values.BooleanValue BooleanValue1;
@@ -15985,6 +15986,16 @@
 		|            {
 		|                writer.WriteLineAsync("""" + Environment.NewLine + DateTime.Now.ToString() + Environment.NewLine + str);
 		|            }
+		|        }
+		|
+		|        public static string TempName
+		|        {
+		|            get { return $""{Guid.NewGuid():N}""; }
+		|        }
+		|
+		|        public static string NameStartupScript
+		|        {
+		|            get { return nameStartupScript; }
 		|        }
 		|
 		|        public static string PathLog
@@ -16569,6 +16580,9 @@
 		|            return instance;
 		|        }
 		|
+		|        [DllImport(""user32.dll"", CharSet = CharSet.Auto)]
+		|        private static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+		|
 		|        [DllImport(""user32.dll"")]
 		|        private static extern bool GetWindowPlacement(IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
 		|
@@ -16610,6 +16624,7 @@
 		|        private static int currentLeft;
 		|        private const int SW_MAXIMIZE = 3;
 		|        private static bool applicationIsStop = false;
+		|        private const uint WM_CLOSE = 0x0010;
 		|
 		|        private static void MonitorWindowPosition(IntPtr hwnd)
 		|        {
@@ -16659,6 +16674,14 @@
 		|        }
 		|
 		|        // Методы и свойства объекта OneScriptTerminalGui.
+		|
+		|        private bool testMode = false;
+		|        [ContextProperty(""РежимТестирования"", ""TestMode"")]
+		|        public bool TestMode
+		|        {
+		|            get { return testMode; }
+		|            set { testMode = value; }
+		|        }
 		|
 		|        [ContextProperty(""ПлатформаWin"", ""WinPlatform"")]
 		|        public bool WinPlatform
@@ -17118,6 +17141,8 @@
 		|                if (ErrorRecord)
 		|                {
 		|                    Utils.WriteToFile(""Error RunAndShutdown = "" + _ex);
+		|                    Utils.WriteToFile(""{"" + Utils.NameStartupScript + "" Error RunAndShutdown = "" + _ex);
+		|                    instance.Shutdown();
 		|                }
 		|            }
 		|        }
@@ -17136,6 +17161,8 @@
 		|                if (ErrorRecord)
 		|                {
 		|                    Utils.WriteToFile(""Error Run = "" + _ex);
+		|                    Utils.WriteToFile(""{"" + Utils.NameStartupScript + "" Error Run = "" + _ex);
+		|                    instance.Shutdown();
 		|                }
 		|            }
 		|        }
@@ -17973,6 +18000,12 @@
 		|
 		|        // Вспомогательные методы и объекты.
 		|
+		|        [ContextProperty(""СлучайноеИмя"", ""TempName"")]
+		|        public string TempName
+		|        {
+		|            get { return Utils.TempName; }
+		|        }
+		|
 		|        private void Application_NotifyNewRunState(Application.RunState obj)
 		|        {
 		|            OnOpen.Invoke();
@@ -18020,6 +18053,15 @@
 		|            catch (Exception ex)
 		|            {
 		|                Utils.GlobalContext().Echo(""Обработчик не выполнен: "" + action.MethodName + Environment.NewLine + ex.StackTrace);
+		|                Utils.WriteToFile(""{"" + Utils.NameStartupScript + "" Обработчик не выполнен: "" + action.MethodName + Environment.NewLine + ex.StackTrace);
+		|                instance.Shutdown();
+		|
+		|                if (isWin && instance.TestMode)
+		|                {
+		|                    IntPtr hwnd = GetConsoleWindow();
+		|                    // Отправляем сообщение WM_CLOSE — окно получит команду на закрытие
+		|                    SendMessage(hwnd, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
+		|                }
 		|            }
 		|            Event = null;
 		|            try
@@ -84165,14 +84207,31 @@
 	|        /// </remarks>
 	|        public void Clear()
 	|        {
-	|            var h = Frame.Height;
-	|            var w = Frame.Width;
-	|            for (var line = 0; line < h; line++)
+	|            //////var h = Frame.Height;
+	|            //////var w = Frame.Width;
+	|            //////for (var line = 0; line < h; line++)
+	|            //////{
+	|            //////    Move(0, line);
+	|            //////    for (var col = 0; col < w; col++)
+	|            //////        Driver.AddRune(' ');
+	|            //////}
+	|
+	|            //*master//
+	|            // Весь оригинальный код метода поместим в попытку, потому что иногда 
+	|            // нужно в обработчике сценария завершить приложение, а оно генерирует ошибки.
+	|            try
 	|            {
-	|                Move(0, line);
-	|                for (var col = 0; col < w; col++)
-	|                    Driver.AddRune(' ');
+	|                var h = Frame.Height;
+	|                var w = Frame.Width;
+	|                for (var line = 0; line < h; line++)
+	|                {
+	|                    Move(0, line);
+	|                    for (var col = 0; col < w; col++)
+	|                        Driver.AddRune(' ');
+	|                }
 	|            }
+	|            catch { }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
@@ -84350,13 +84409,29 @@
 	|        ///  if set to <see langword=""true""/>, the col, row values are clamped to the screen (terminal) dimensions (0..TerminalDim-1).</param>
 	|        public void Move(int col, int row, bool clipped = false)
 	|        {
-	|            if (Driver.Rows == 0)
-	|            {
-	|                return;
-	|            }
+	|            //////if (Driver.Rows == 0)
+	|            //////{
+	|            //////    return;
+	|            //////}
 	|
-	|            ViewToScreen(col, row, out var rCol, out var rRow, clipped);
-	|            Driver.Move(rCol, rRow);
+	|            //////ViewToScreen(col, row, out var rCol, out var rRow, clipped);
+	|            //////Driver.Move(rCol, rRow);
+	|
+	|            //*master//
+	|            // Весь оригинальный код метода поместим в попытку, потому что иногда 
+	|            // нужно в обработчике сценария завершить приложение, а оно генерирует ошибки.
+	|            try
+	|            {
+	|                if (Driver.Rows == 0)
+	|                {
+	|                    return;
+	|                }
+	|
+	|                ViewToScreen(col, row, out var rCol, out var rRow, clipped);
+	|                Driver.Move(rCol, rRow);
+	|            }
+	|            catch { }
+	|            //master*//
 	|        }
 	|
 	|        /// <summary>
