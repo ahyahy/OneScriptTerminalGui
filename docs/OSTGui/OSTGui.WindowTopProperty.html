@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Top Property</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
+    <script defer src="mobilstyle.js"></script>
+</head>
+<body id=bodyID class=dtBODY onclick="divrightClick(event)">
+    <div id=nsbanner>
+        <div id=bannerrow1>
+            <table class=bannerparthead cellSpacing=0>
+                <tbody>
+                    <tr id=hdr>
+                        <td class=runninghead></td>
+                        <td class=product></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id=TitleRow>
+            <h1 class=dtH1>Окно.Верх&nbsp;(Window.Top)&nbsp;Свойство</h1>
+        </div>
+    </div>
+    <div id=nstext>
+        <h4 class=dtH4>Использование</h4>
+        <p>Только чтение.</p>
+        <h4 class=dtH4>Значение</h4>
+        <p>Тип: <a href="OSTGui.Pos.html">Позиция&nbsp;(Pos)</a>.</p>
+        <p>Возвращает объект <b>Позиция (Pos)</b>, соответствующий координате по оси Y верхнего края элемента.</p>
+        <h4 class=dtH4>Примечание</h4>
+        <p></p>
+        <h4 class=dtH4>Пример</h4>
+            <pre class=code>
+Верх = Окно1.Верх;
+Окно1.Текст = "Окно1.Верх = " + Верх;
+</pre>
+            <details>
+                <summary>Полный пример кода</summary>
+                    <pre class=code>
+<button id="copy1" type="button" style="font-size:100%;">Копировать</button>
+<hr style="border-color: lightgray;"><div id="cont1">
+Перем Верх, Окно1;
+
+Процедура ПриОткрытии() Экспорт
+	Верх = Окно1.Верх;
+	Окно1.Текст = "Окно1.Верх = " + Верх;
+КонецПроцедуры
+
+ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
+ТФ = Новый ТерминалФормыДляОдноСкрипта();
+
+Окно1 = ТФ.Окно("Окно1");
+Окно1.СтильКомпоновки = ТФ.СтильКомпоновки.Абсолютно;
+Окно1.Кадр = ТФ.Прямоугольник(1, 1, 50, 15);
+ТФ.Верхний.Добавить(Окно1);
+
+ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
+
+ТФ.Запуск();
+</div>
+</pre>
+            </details>
+        <p></p>
+        <details>
+            <summary>Тестовый код</summary>
+            <pre class=code>
+<button id="copy2" type="button" style="font-size:100%;">Копировать</button>
+<hr style="border-color: lightgray;"><div id="cont2">
+Перем Верх, Окно1;
+
+Процедура ПриОткрытии() Экспорт
+	Верх = Окно1.Верх;
+КонецПроцедуры
+
+ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
+ТФ = Новый ТерминалФормыДляОдноСкрипта();
+
+Окно1 = ТФ.Окно("Окно1");
+Окно1.Кадр = ТФ.Прямоугольник(1, 1, 50, 15);
+Окно1.СтильКомпоновки = ТФ.СтильКомпоновки.Абсолютно;
+Окно1.Текст = "Окно1.Верх = " + Окно1.Верх;
+ТФ.Верхний.Добавить(Окно1);
+
+ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
+ТФ.ЗапуститьИЗавершить();
+
+Сообщить(?(
+ТипЗнч(Верх) = Тип("ТфПозиция")
+, "", "!!! ") + "Окно.Верх (Window.Top) Свойство" + " " + ТекущаяДата() + Символы.ПС);
+</div>
+</pre>
+        </details>
+        <p></p>
+        <h4 class=dtH4>Смотрите также</h4>
+        <p><a href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</a></p>
+    </div>
+</body>
+</html>
