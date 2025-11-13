@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Toplevel Class</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
+    <script defer src="mobilstyle.js"></script>
+</head>
+<body id=bodyID class=dtBODY onclick="divrightClick(event)">
+    <div id=nsbanner>
+        <div id=bannerrow1>
+            <table class=bannerparthead cellSpacing=0>
+                <tbody>
+                    <tr id=hdr>
+                        <td class=runninghead></td>
+                        <td class=product></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id=TitleRow>
+            <h1 class=dtH1>Верхний (Toplevel) Класс</h1>
+        </div>
+    </div>
+    <div id=nstext>
+        <h4 class=dtH4>Описание</h4>
+        <p>Представляет базовый класс для модальных/всплывающих окон.</p>
+        <p>Элементы верхнего уровня используются как для основного элемента приложения (заполнение всего экрана), так и для всплывающих элементов,таких как диалоги, окна сообщений.</p>
+        <p>
+			Экземпляр класса <b>Верхний (Toplevel)</b> создается, когда приложение активируется. Доступ к верхнему уровню 
+			приложения можно получить через свойство <b>ТерминалФормыДляОдноСкрипта.Верхний (OneScriptTerminalGui.Top)</b>. 
+			<br><br>Можно создавать и запускать дополнительные экземпляры класса <b>Верхний (Toplevel)</b> (например, диалоговые окна). 
+			Но это не желательно, потому что поведение некоторых классов (например класс <b>Граница (Border)</b>) будет не совсем корректно. 
+			Другими словами создавать экземпляр класса <b>Верхний (Toplevel)</b> как 
+			подэлемент <b>ТерминалФормыДляОдноСкрипта.Верхний (OneScriptTerminalGui.Top)</b> и размещать там основную логику событий нежелательно.
+		</p>
+        <h4 class=dtH4>Иерархия</h4>
+        <p>
+            <a href="#no_scroll">System.Object</a>
+            <br>&nbsp;&nbsp;&nbsp;<a href="OSTGui.Responder.html">Респондент (Responder)</a>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OSTGui.View.html">Элемент (View)</a>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Верхний (Toplevel)</b>
+			<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OSTGui.Window.html">Окно (Window)</a>
+        </p>
+        <h4 class=dtH4>Смотрите также</h4>
+        <p><a href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>SuperView Property</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
+    <script defer src="mobilstyle.js"></script>
+</head>
+<body id=bodyID class=dtBODY onclick="divrightClick(event)">
+    <div id=nsbanner>
+        <div id=bannerrow1>
+            <table class=bannerparthead cellSpacing=0>
+                <tbody>
+                    <tr id=hdr>
+                        <td class=runninghead></td>
+                        <td class=product></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id=TitleRow>
+            <h1 class=dtH1>Верхний.Родитель&nbsp;(Toplevel.SuperView)&nbsp;Свойство</h1>
+        </div>
+    </div>
+    <div id=nstext>
+        <h4 class=dtH4>Использование</h4>
+        <p>Только чтение.</p>
+        <h4 class=dtH4>Значение</h4>
+        <p>Тип: Произвольный.</p>
+        <p>Возвращает контейнер (родителя) для элемента или <b>Неопределено</b>, если этот элемент не был добавлен в контейнер.</p>
+        <h4 class=dtH4>Примечание</h4>
+        <p></p>
+        <h4 class=dtH4>Пример</h4>
+            <pre class=code>
+Функция Тест() Экспорт
+	Возврат Окно1.Родитель;
+КонецФункции
+</pre>
+            <details>
+                <summary>Полный пример кода</summary>
+                    <pre class=code>
+<button id="copy1" type="button" style="font-size:100%;">Копировать</button>
+<hr style="border-color: lightgray;"><div id="cont1">
+Перем Окно1;
+
+Функция Тест() Экспорт
+	Возврат Окно1.Родитель;
+КонецФункции
+
+ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
+ТФ = Новый ТерминалФормыДляОдноСкрипта();
+
+ТФ.Верхний.Текст = "Давным-давно в городке на берегу Средиземного моря жил старый столяр Джузеппе по прозванию Сизый Нос.";
+
+Окно1 = ТФ.Окно();
+Окно1.Заголовок = "Текст родителя";
+Окно1.Икс = ТФ.Позиция.Абсолютно(1);
+Окно1.Игрек = ТФ.Позиция.Абсолютно(3);
+Окно1.Ширина = ТФ.Величина.Процент(80);
+Окно1.Высота = ТФ.Величина.Абсолютно(4);
+ТФ.Верхний.Добавить(Окно1);
+
+Родитель = ТФ.Выполнить(ТФ.Действие(ЭтотОбъект, "Тест"));
+Окно1.Текст = Родитель.Текст;
+
+ТФ.Запуск();
+</div>
+</pre>
+            </details>
+        <p></p>
+        <details>
+            <summary>Тестовый код</summary>
+            <pre class=code>
+<button id="copy2" type="button" style="font-size:100%;">Копировать</button>
+<hr style="border-color: lightgray;"><div id="cont2">
+Перем РодительТекст, Окно1;
+
+Процедура ПриОткрытии() Экспорт
+	РодительТекст = Окно1.Родитель.Текст;
+КонецПроцедуры
+
+ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
+ТФ = Новый ТерминалФормыДляОдноСкрипта();
+
+ТФ.Верхний.Текст = "Давным-давно в городке на берегу Средиземного моря жил старый столяр Джузеппе по прозванию Сизый Нос.";
+
+Окно1 = ТФ.Окно();
+Окно1.Заголовок = "Текст родителя";
+Окно1.Икс = ТФ.Позиция.Абсолютно(1);
+Окно1.Игрек = ТФ.Позиция.Абсолютно(3);
+Окно1.Ширина = ТФ.Величина.Процент(80);
+Окно1.Высота = ТФ.Величина.Абсолютно(4);
+ТФ.Верхний.Добавить(Окно1);
+Окно1.Текст = Окно1.Родитель.Текст;
+
+ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
+ТФ.ЗапуститьИЗавершить();
+
+Сообщить(?(
+РодительТекст = ТФ.Верхний.Текст
+, "", "!!! ") + "Верхний.Родитель (Toplevel.SuperView) Свойство" + " " + ТекущаяДата() + Символы.ПС);
+</div>
+</pre>
+        </details>
+        <p></p>
+        <h4 class=dtH4>Смотрите также</h4>
+        <p><a href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>KeyPress Event</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
+    <script defer src="mobilstyle.js"></script>
+</head>
+<body id=bodyID class=dtBODY>
+    <div id=nsbanner>
+        <div id=bannerrow1>
+            <table class=bannerparthead cellSpacing=0>
+                <tbody>
+                    <tr id=hdr>
+                        <td class=runninghead></td>
+                        <td class=product></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id=TitleRow>
+            <h1 class=dtH1>Текстовый.КлавишаНажата&nbsp;(TextView.KeyPress)&nbsp;Событие</h1>
+        </div>
+    </div>
+    <div id=nstext>
+        <h4 class=dtH4>Использование</h4>
+        <p>Чтение и запись.</p>
+        <h4 class=dtH4>Значение</h4>
+        <p>Тип: <a href="OSTGui.Action.html">Действие&nbsp;(Action)</a>.</p>
+        <p>Возвращает или задает код, выполняемый при нажатии клавиши в то время как элемент имеет фокус.</p>
+        <h4 class=dtH4>Примечание</h4>
+        <p></p>
+        <h4 class=dtH4>Аргументы события</h4>
+        <div class=tablediv>
+            <table class=dtTABLE cellSpacing=0>
+                <tbody>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsKeyValueProperty.html">Клавиша&nbsp;(KeyValue)</a></td>
+                        <td width="50%">Возвращает значение для клавиши в виде целого числа.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsKeyToStringProperty.html">КлавишаСтрокой&nbsp;(KeyToString)</a></td>
+                        <td width="50%">Возвращает значение для клавиши в виде строки вместе со значением модификатора, если таковой был применен.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsSenderProperty.html">Отправитель&nbsp;(Sender)</a></td>
+                        <td width="50%">Возвращает источник (объект) последнего события.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsParameterProperty.html">Параметр&nbsp;(Parameter)</a></td>
+                        <td width="50%">Возвращает объект, заданный при установке обработчика события, для передачи в обработчик события.</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsIsAltProperty.html">ЭтоAlt&nbsp;(IsAlt)</a></td>
+                        <td width="50%">Возвращает значение, указывающее, была ли нажата клавиша <b>Alt</b> (реальная или синтезированная).</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsIsCapslockProperty.html">ЭтоCapslock&nbsp;(IsCapslock)</a></td>
+                        <td width="50%">Возвращает значение, указывающее, была ли нажата клавиша <b>CapsLock</b> (реальная или синтезированная).</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsIsCtrlProperty.html">ЭтоCtrl&nbsp;(IsCtrl)</a></td>
+                        <td width="50%">Возвращает значение, указывающее, была ли нажата клавиша <b>Ctrl</b> (реальная или синтезированная).</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsIsNumlockProperty.html">ЭтоNumlock&nbsp;(IsNumlock)</a></td>
+                        <td width="50%">Возвращает значение, указывающее, была ли нажата клавиша <b>NumLock</b> (реальная или синтезированная).</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsIsScrolllockProperty.html">ЭтоScrolllock&nbsp;(IsScrolllock)</a></td>
+                        <td width="50%">Возвращает значение, указывающее, была ли нажата клавиша <b>ScrollLock</b> (реальная или синтезированная).</td>
+                    </tr>
+                    <tr vAlign=top>
+                        <td width="50%"><img src="pubproperty.gif"></img><a href="OSTGui.EventArgsIsShiftProperty.html">ЭтоShift&nbsp;(IsShift)</a></td>
+                        <td width="50%">Возвращает значение, указывающее, была ли нажата клавиша <b>Shift</b> (реальная или синтезированная).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h4 class=dtH4>Пример</h4>
+            <pre class=code>
+Текстовый1.КлавишаНажата = ТФ.Действие(ЭтотОбъект, "Кнопка1_КлавишаНажата");
+</pre>
+            <details>
+                <summary>Полный пример кода</summary>
+                    <pre class=code>
+<button id="copy1" type="button" style="font-size:100%;">Копировать</button>
+<hr style="border-color: lightgray;"><div id="cont1">
+Перем ТФ, Текстовый1, КлавишаНажата;
+
+Процедура ПриОткрытии() Экспорт
+	ТФ.Верхний.Текст = "Текстовый1 сейчас в фокусе. Нажмите любую клавишу. С модификаторами или без.";
+	Текстовый1.УстановитьФокус();
+КонецПроцедуры
+
+Процедура Текстовый1_КлавишаНажата() Экспорт
+	АргументыСобытия = ТФ.АргументыСобытия;
+	ТФ.Верхний.Текст = "Текстовый1 сейчас в фокусе. Нажмите любую клавишу. С модификаторами или без.
+	|Текстовый1_КлавишаНажата = " + ТекущаяУниверсальнаяДатаВМиллисекундах() + "
+	|Отправитель = " + АргументыСобытия.Отправитель + "
+	|Клавиша = " + АргументыСобытия.Клавиша + " (" + ТФ.Клавиши.Имя(АргументыСобытия.Клавиша) + ")
+	|КлавишаСтрокой = " + АргументыСобытия.КлавишаСтрокой + "
+	|ЭтоAlt = " + АргументыСобытия.ЭтоAlt + "
+	|ЭтоCapslock = " + АргументыСобытия.ЭтоCapslock + "
+	|ЭтоCtrl = " + АргументыСобытия.ЭтоCtrl + "
+	|ЭтоNumlock = " + АргументыСобытия.ЭтоNumlock + "
+	|ЭтоScrolllock = " + АргументыСобытия.ЭтоScrolllock + "
+	|ЭтоShift = " + АргументыСобытия.ЭтоShift + "
+	|";
+
+	КлавишаНажата = Истина;
+КонецПроцедуры
+
+ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
+ТФ = Новый ТерминалФормыДляОдноСкрипта();
+
+Текстовый1 = ТФ.Верхний.Добавить(ТФ.Текстовый(2, 4, 50, 10));
+Текстовый1.Текст = "Текстовый1";
+
+
+Текстовый1.Икс = ТФ.Позиция.Абсолютно(1);
+Текстовый1.Игрек = ТФ.Позиция.Абсолютно(14);
+Текстовый1.КлавишаНажата = ТФ.Действие(ЭтотОбъект, "Текстовый1_КлавишаНажата");
+
+ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
+
+ТФ.Запуск();
+</div>
+</pre>
+            </details>
+        <p></p>
+        <details>
+            <summary>Тестовый код</summary>
+            <pre class=code>
+<button id="copy2" type="button" style="font-size:100%;">Копировать</button>
+<hr style="border-color: lightgray;"><div id="cont2">
+Перем ТФ, Текстовый1, КлавишаНажата;
+
+Процедура ПриОткрытии() Экспорт
+	ТФ.Верхний.Текст = "Текстовый1 сейчас в фокусе. Нажмите любую клавишу. С модификаторами или без.";
+	Текстовый1.УстановитьФокус();
+	ТФ.ТаймерНачатьИОстановить(ЭтотОбъект, "ТаймерТик");
+КонецПроцедуры
+
+Процедура Текстовый1_КлавишаНажата() Экспорт
+	АргументыСобытия = ТФ.АргументыСобытия;
+	ТФ.Верхний.Текст = "Текстовый1 сейчас в фокусе. Нажмите любую клавишу. С модификаторами или без.
+	|Текстовый1_КлавишаНажата = " + ТекущаяУниверсальнаяДатаВМиллисекундах() + "
+	|Отправитель = " + АргументыСобытия.Отправитель + "
+	|Клавиша = " + АргументыСобытия.Клавиша + " (" + ТФ.Клавиши.Имя(АргументыСобытия.Клавиша) + ")
+	|КлавишаСтрокой = " + АргументыСобытия.КлавишаСтрокой + "
+	|ЭтоAlt = " + АргументыСобытия.ЭтоAlt + "
+	|ЭтоCapslock = " + АргументыСобытия.ЭтоCapslock + "
+	|ЭтоCtrl = " + АргументыСобытия.ЭтоCtrl + "
+	|ЭтоNumlock = " + АргументыСобытия.ЭтоNumlock + "
+	|ЭтоScrolllock = " + АргументыСобытия.ЭтоScrolllock + "
+	|ЭтоShift = " + АргументыСобытия.ЭтоShift + "
+	|";
+
+	КлавишаНажата = Истина;
+	ТФ.Завершить();
+КонецПроцедуры
+
+Процедура ТаймерТик() Экспорт
+	ТФ.ОтправитьКлавиши("я", Ложь, Ложь, Ложь);
+КонецПроцедуры
+
+ПодключитьВнешнююКомпоненту("C:\444\111\OneScriptTerminalGui\OneScriptTerminalGui\bin\Debug\OneScriptTerminalGui.dll");
+ТФ = Новый ТерминалФормыДляОдноСкрипта();
+
+Текстовый1 = ТФ.Верхний.Добавить(ТФ.Текстовый(2, 4, 50, 10));
+Текстовый1.Текст = "Текстовый1";
+
+
+Текстовый1.Икс = ТФ.Позиция.Абсолютно(1);
+Текстовый1.Игрек = ТФ.Позиция.Абсолютно(14);
+Текстовый1.КлавишаНажата = ТФ.Действие(ЭтотОбъект, "Текстовый1_КлавишаНажата");
+
+ТФ.ПриОткрытии = ТФ.Действие(ЭтотОбъект, "ПриОткрытии");
+ТФ.Запуск();
+
+Сообщить(?(
+КлавишаНажата
+, "", "!!! ") + "Текстовый.КлавишаНажата (TextView.KeyPress) Событие" + " " + ТекущаяДата() + Символы.ПС);
+</div>
+</pre>
+        </details>
+        <p></p>
+        <h4 class=dtH4>Смотрите также</h4>
+        <p><a href="OSTGui.html">Библиотека&nbsp;OneScriptTerminalGui</a></p>
+    </div>
+</body>
+</html>
