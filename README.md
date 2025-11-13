@@ -103,3 +103,9 @@ oscript.exe <script_path>
 ### Заключение
 
 Работать ещё есть над чем. В планах добавление новых классов. Пишите замечания и пожелания. Контакт указан на сайте по ссылке вверху.
+
+### Статья на Инфостарт
+
+<img src="https://infostart.ru/bitrix/templates/sandbox_empty/assets/tpl/abo/img/logo.svg" align="right" width="128">
+
++ По данной работе на сайте Инфостарт размешена публикация [Текстовый пользовательский интерфейс (TUI) для сценарного языка OneScript](https://infostart.ru/1c/articles/2527054/)
